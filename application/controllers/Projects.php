@@ -43,7 +43,7 @@ class Projects extends CI_Controller {
         } else {
             $data ['rows'] = array ();
         }
-        print_r($data);
+        print json_encode($data);
     }
     
     public function view_projects_homepage($offset = 0, $limit = 0){
@@ -55,7 +55,7 @@ class Projects extends CI_Controller {
 
     	$data ['rows'] = $this->projects_model->get_all ( $offset * $MAX_RECORDS, $MAX_RECORDS );
     	$data ['offset'] = $offset + 1;
-    	print_r($data);
+    	print json_encode($data);
     }
 
 }
