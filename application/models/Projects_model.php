@@ -52,7 +52,24 @@ class Projects_model extends CI_Model
         $query = $this->db->get();
         return $query->result();
     }
-
+    
+    public function get_last_chance($offset = 0, $limit = 0, $order = 'projects.date_create', $direction = 'desc')
+    {
+    	$this->db->select('*');
+    	$this->db->from($this->TABLENAME);
+    	$this->db->join('users', "users.users_id = $this->TABLENAME.projects_users_id");
+    	$this->db->where('projects_project_state_id',2);
+    	if (strlen($order) > 0)
+    	{
+    		$this->db->order_by($order, $direction);
+    	}
+    	if ($limit > 0)
+    	{
+    		$this->db->limit($limit, $offset);
+    	}
+    	$query = $this->db->get();
+    	return $query->result();
+    }
     /**
      * Get a record of projects which id
      * is $id

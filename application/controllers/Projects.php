@@ -57,6 +57,18 @@ class Projects extends CI_Controller {
     	$data ['offset'] = $offset + 1;
     	print json_encode($data);
     }
+    
+    public function view_projects_lastchance($offset = 0, $limit = 0){
+    	if ($limit <= 0) {
+    		$MAX_RECORDS = 8; /* each request return 8 records at most */
+    	} else {
+    		$MAX_RECORDS = $limit;
+    	}
+    
+    	$data ['rows'] = $this->projects_model->get_last_chance ( $offset * $MAX_RECORDS, $MAX_RECORDS );
+    	$data ['offset'] = $offset + 1;
+    	print json_encode($data);
+    }
 
 }
 ?>
