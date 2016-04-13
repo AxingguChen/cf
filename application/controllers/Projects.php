@@ -69,6 +69,35 @@ class Projects extends CI_Controller {
     	$data ['offset'] = $offset + 1;
     	print json_encode($data);
     }
+    
+    public function view_projects_filter($type_id = -1, $gender = -1,$offset = 0, $limit = 0){
+    	if ($limit <= 0) {
+    		$MAX_RECORDS = 8; /* each request return 8 records at most */
+    	} else {
+    		$MAX_RECORDS = $limit;
+    	}
+    	
+    	if($type_id == -1 && $gender == -1){
+    		$data ['rows'] = $this->projects_model->get_last_chance ( $offset * $MAX_RECORDS, $MAX_RECORDS );
+    		$data ['offset'] = $offset + 1;
+    		print json_encode($data);
+    	}
+    	elseif($type_id == -1){
+    		$data ['rows'] = $this->projects_model->get_by_gender($gender, $offset * $MAX_RECORDS, $MAX_RECORDS );
+    		$data ['offset'] = $offset + 1;
+    		print json_encode($data);
+    	}
+    	elseif($gender == -1){
+    		$data ['rows'] = $this->projects_model->get_by_type($type_id, $offset * $MAX_RECORDS, $MAX_RECORDS );
+    		$data ['offset'] = $offset + 1;
+    		print json_encode($data);
+    	}
+    	else 
+    		$data ['rows'] = $this->projects_model->get_by_type_gender($type_id,$gender, $offset * $MAX_RECORDS, $MAX_RECORDS );
+    		$data ['offset'] = $offset + 1;
+    		print json_encode($data);
+    	
+    }
 
 }
 ?>
