@@ -100,6 +100,19 @@ class Users extends CI_Controller {
 		}
 	}
 	
+	// access
+	// index.php/projects/view_designers
+	public function view_designers($offset = 0, $limit = 0){
+		if ($limit <= 0) {
+			$MAX_RECORDS = 8; /* each request return 8 records at most */
+		} else {
+			$MAX_RECORDS = $limit;
+		}
+		$data ['rows'] = $this->users_model->get_all($offset, $MAX_RECORDS);
+		print json_encode($data);
+		//print_r($data);
+	}
+	
 }
 
 ?>

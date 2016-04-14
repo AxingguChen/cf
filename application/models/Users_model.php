@@ -30,6 +30,33 @@ class Users_model extends CI_Model {
 		}	
 	}
 	
+   /**
+     * Get all records of users
+     *
+     * @access public
+     * @param integer $offset
+     * @param integer $limit
+     * @param string $order
+     * @param string $direction
+     * @return array records
+     */
+    public function get_all($offset = 0, $limit = 0, $order = 'users.users_id', $direction = 'asc')
+    {
+        $this->db->select('*');
+        $this->db->from($this->TABLENAME);
+        $this->db->where('users_groups_id',10);
+        if (strlen($order) > 0)
+        {
+            $this->db->order_by($order, $direction);
+        }
+        if ($limit > 0)
+        {
+            $this->db->limit($limit, $offset);
+        }
+        $query = $this->db->get();
+        return $query->result();
+    }
+	
 	function signup() {
 		$data = array (
 				'email' => $this->input->post ( 'email' ),
