@@ -113,6 +113,47 @@ class Users extends CI_Controller {
 		//print_r($data);
 	}
 	
+	//according to projects number
+	//index.php/projects/designers_popularity
+	public function designers_popularity($offset = 0, $limit = 0){
+		if ($limit <= 0) {
+			$MAX_RECORDS = 8; /* each request return 8 records at most */
+		} else {
+			$MAX_RECORDS = $limit;
+		}
+		$data ['rows'] = $this->users_model->get_by_popularity($offset, $MAX_RECORDS);
+		$data ['offset'] = $offset + 1;
+		print json_encode($data);
+		//print_r($data);
+	}
+	
+	//according to sales number
+	//index.php/projects/designers_sales
+	public function designers_sales($offset = 0, $limit = 0){
+		if ($limit <= 0) {
+			$MAX_RECORDS = 8; /* each request return 8 records at most */
+		} else {
+			$MAX_RECORDS = $limit;
+		}
+		$data ['rows'] = $this->users_model->get_by_popularity($offset, $MAX_RECORDS);
+		$data ['offset'] = $offset + 1;
+		print json_encode($data);
+		//print_r($data);
+	}
+	
+	//according to schools
+	public function designers_schools($schools_id = 55,$offset = 0, $limit = 0){
+		if ($limit <= 0) {
+			$MAX_RECORDS = 8; /* each request return 8 records at most */
+		} else {
+			$MAX_RECORDS = $limit;
+		}
+		$data ['rows'] = $this->users_model->get_by_schools($schools_id,$offset, $MAX_RECORDS);
+		$data ['offset'] = $offset + 1;
+		print json_encode($data);
+		//print_r($data);
+	}
+	
 }
 
 ?>

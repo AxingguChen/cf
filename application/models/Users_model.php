@@ -12,6 +12,7 @@ class Users_model extends CI_Model {
 	function __construct() {
 		parent::__construct ();
 		#$this->load->model ( 'users_model', '', TRUE );
+		$this->load->model ( 'projects_model', '', TRUE );
 	}
 	
 	function login($email, $password) {
@@ -66,7 +67,39 @@ class Users_model extends CI_Model {
 		);
 		$this->db->insert ( $this->TABLENAME, $data );
 	}
+	public function get_by_popularity($offset = 0, $limit = 0, $order = 'users.users_id', $direction = 'desc'){
+		$this->db->select('*,count(*)');
+		$this->db->from($this->TABLENAME);
+		$this->db->join('projects', "$this->TABLENAME.users_id = projects.projects_users_id");;
+		$this->db->where('projects_project_state_id',2);
+		$this->db->group_by('projects_users_id');
+		if (strlen($order) > 0)
+		{
+			$this->db->order_by($order, $direction);
+		}
+		if ($limit > 0)
+		{
+			$this->db->limit($limit, $offset);
+		}
+		$query = $this->db->get();
+		return $query->result();
+	}
 	
+	public function get_by_schools($schools_id,$offset = 0, $limit = 0, $order = 'COUNT(*)', $direction = 'desc'){
+		$this->db->select('*');
+		$this->db->from($this->TABLENAME);
+		$this->db->where('schools_id',$schools_id);
+		if (strlen($order) > 0)
+		{
+			$this->db->order_by($order, $direction);
+		}
+		if ($limit > 0)
+		{
+			$this->db->limit($limit, $offset);
+		}
+		$query = $this->db->get();
+		return $query->result();
+	}
 	
 }
 
