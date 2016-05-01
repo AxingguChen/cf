@@ -90,32 +90,41 @@ class Projects extends CI_Controller {
     	print json_encode($data);
     }
     
-    public function view_projects_filter($type_id = -1, $gender = -1,$offset = 0, $limit = 0){
+    public function view_projects_filter($type_id = -1, $gender = -1, $color_id = -1,$offset = 0, $limit = 0){
     	if ($limit <= 0) {
     		$MAX_RECORDS = 8; /* each request return 8 records at most */
     	} else {
     		$MAX_RECORDS = $limit;
     	}
     	
-    	if($type_id == -1 && $gender == -1){
+    	if($type_id == -1 && $gender == -1 && $color_id == -1){
     		$data ['rows'] = $this->projects_model->get_last_chance ( $offset * $MAX_RECORDS, $MAX_RECORDS );
-    		$data ['offset'] = $offset + 1;
-    		print json_encode($data);
+    	}
+    	elseif($type_id == -1 && $color_id == -1){
+    		$data ['rows'] = $this->projects_model->get_by_gender($gender, $offset * $MAX_RECORDS, $MAX_RECORDS );
+    	}
+    	elseif($gender == -1 && $color_id == -1){
+    		$data ['rows'] = $this->projects_model->get_by_type($type_id, $offset * $MAX_RECORDS, $MAX_RECORDS );
+    	}
+    	elseif($type_id == -1 && $gender == -1 ){
+    		$data ['rows'] = $this->projects_model->get_by_color($color_id, $offset * $MAX_RECORDS, $MAX_RECORDS );
+    	}
+    	elseif($color_id == -1){
+    		$data ['rows'] = $this->projects_model->get_by_type_gender($type_id,$gender, $offset * $MAX_RECORDS, $MAX_RECORDS );
     	}
     	elseif($type_id == -1){
-    		$data ['rows'] = $this->projects_model->get_by_gender($gender, $offset * $MAX_RECORDS, $MAX_RECORDS );
-    		$data ['offset'] = $offset + 1;
-    		print json_encode($data);
+    		$data ['rows'] = $this->projects_model->get_by_gender_color($gender,$color_id, $offset * $MAX_RECORDS, $MAX_RECORDS );
     	}
     	elseif($gender == -1){
-    		$data ['rows'] = $this->projects_model->get_by_type($type_id, $offset * $MAX_RECORDS, $MAX_RECORDS );
-    		$data ['offset'] = $offset + 1;
-    		print json_encode($data);
+    		$data ['rows'] = $this->projects_model->get_by_type_color($type_id,$color_id, $offset * $MAX_RECORDS, $MAX_RECORDS );
     	}
-    	else 
-    		$data ['rows'] = $this->projects_model->get_by_type_gender($type_id,$gender, $offset * $MAX_RECORDS, $MAX_RECORDS );
-    		$data ['offset'] = $offset + 1;
-    		print json_encode($data);
+    	else{
+    		#$data ['rows'] = "asdf";
+    		$data ['rows'] = $this->projects_model->get_by_type_gender_color($type_id,$gender,$color_id, $offset * $MAX_RECORDS, $MAX_RECORDS );
+    	} 
+    		
+    	$data ['offset'] = $offset + 1;
+    	print json_encode($data);
     	
     }
 

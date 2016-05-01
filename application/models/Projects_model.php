@@ -186,7 +186,61 @@ class Projects_model extends CI_Model
     	$query = $this->db->get();
     	return $query->result();    	
     }
-    
+    public function get_by_color($color_id = 0,$offset = 0, $limit = 0, $order = 'projects.date_publish', $direction = 'asc'){
+    	$this->db->select('*');
+    	$this->db->from($this->TABLENAME);
+    	$this->db->join('users', "users.users_id = $this->TABLENAME.projects_users_id");
+    	$this->db->where('color_id', $color_id);
+    	$this->db->where('projects_project_state_id',2);
+    	if (strlen($order) > 0)
+    	{
+    		$this->db->order_by($order, $direction);
+    	}
+    	if ($limit > 0)
+    	{
+    		$this->db->limit($limit, $offset);
+    	}
+    	$query = $this->db->get();
+    	return $query->result();
+    }
+    public function get_by_gender_color($gender = 0,$color_id,$offset = 0, $limit = 0, $order = 'projects.date_publish', $direction = 'asc')
+    {
+    	$this->db->select('*');
+    	$this->db->from($this->TABLENAME);
+    	$this->db->join('users', "users.users_id = $this->TABLENAME.projects_users_id");
+    	$this->db->where('gender', $gender);
+    	$this->db->where('color_id', $color_id);
+    	$this->db->where('projects_project_state_id',2);
+    	if (strlen($order) > 0)
+    	{
+    		$this->db->order_by($order, $direction);
+    	}
+    	if ($limit > 0)
+    	{
+    		$this->db->limit($limit, $offset);
+    	}
+    	$query = $this->db->get();
+    	return $query->result();
+    }
+    public function get_by_type_color($type_id = 0,$color_id,$offset = 0, $limit = 0, $order = 'projects.date_publish', $direction = 'asc')
+    {
+    	$this->db->select('*');
+    	$this->db->from($this->TABLENAME);
+    	$this->db->join('users', "users.users_id = $this->TABLENAME.projects_users_id");
+    	$this->db->where('projects_type_id', $type_id);
+    	$this->db->where('color_id', $color_id);
+    	$this->db->where('projects_project_state_id',2);
+    	if (strlen($order) > 0)
+    	{
+    		$this->db->order_by($order, $direction);
+    	}
+    	if ($limit > 0)
+    	{
+    		$this->db->limit($limit, $offset);
+    	}
+    	$query = $this->db->get();
+    	return $query->result();
+    } 
     public function get_by_type_gender($type_id = 0,$gender,$offset = 0, $limit = 0, $order = 'projects.date_publish', $direction = 'asc')
     {
     	$this->db->select('*');
@@ -207,8 +261,25 @@ class Projects_model extends CI_Model
     	return $query->result();
     }
     
-
-    
+    public function get_by_type_gender_color($type_id = 0,$gender,$color_id,$offset = 0, $limit = 0, $order = 'projects.date_publish', $direction = 'asc'){
+	    $this->db->select('*');
+    	$this->db->from($this->TABLENAME);
+    	$this->db->join('users', "users.users_id = $this->TABLENAME.projects_users_id");
+    	$this->db->where('projects_type_id', $type_id);
+    	$this->db->where('gender', $gender);
+    	$this->db->where('projects_project_state_id',2);
+    	$this->db->where('color_id',1);
+    	if (strlen($order) > 0)
+    	{
+    		$this->db->order_by($order, $direction);
+    	}
+    	if ($limit > 0)
+    	{
+    		$this->db->limit($limit, $offset);
+    	}
+    	$query = $this->db->get();
+    	return $query->result();
+    }
     
 }
 
