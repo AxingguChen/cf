@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Air Showroom - How it works</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="home-style.css">
+    <link rel="stylesheet" type="text/css" href="how-it-works-style.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  <script src="jquery-1.12.0.min.js"></script>
+</head>
+
+<body>
+
+<div class="container-fluid main-container">
+
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span> 
+      </button>
+      <a class="navbar-brand" href="home.html">Air Showroom</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li><a href="projects.html">Shop</a></li>
+        <li><a href="designers.html">Our Designers</a></li>
+        <li><a href="how-it-works.html">How it works</a></li>
+        <li><a href="about-us.html">About</a></li>
+        <li><a href="campaign.html">+ Launch a campaign</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#search-modal" data-toggle="modal" data-target"search-modal"><span class="glyphicon glyphicon-search"></span></a></li>
+        <li><a href="#search-modal" data-toggle="modal" data-target"search-modal"><span class="glyphicon glyphicon-heart"></span></a></li>
+         <li><a href="#search-modal" data-toggle="modal" data-target"search-modal"><span class="glyphicon glyphicon-shopping-cart"></span></a></li>
+        <li><a href="#signup-modal" data-toggle="modal" data-target"signup-modal"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+   		<li class="dropdown">
+             <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-log-in"></span> Login</a>
+             <ul class="dropdown-menu login-dropdown">
+                <li>
+                   <form role="form" onSubmit="http://localhost/cf/index.php/users/login" method="post"> 
+                   <p id="login-error-label"> Username or password incorrect </p>
+                     <div class="input-group">
+  <span class="input-group-addon" id="basic-addon1">username</span>
+  <input type="text" class="form-control" placeholder="" aria-describedby="basic-addon1">
+</div>
+                     <div class="input-group">
+  <span class="input-group-addon" id="basic-addon1">password</span>
+  <input type="text" class="form-control" placeholder="" aria-describedby="basic-addon1">
+</div>
+   					  <div class="checkbox">
+      					<label><input type="checkbox"> Remember me</label>
+    					</div>
+    					<button type="submit" class="btn btn-default">Submit</button>
+                        <p> <a>Forgot password?</a> </p>
+  				  </form>
+               </li>
+            </ul>
+         </li>
+    </ul>
+    </div>
+  </div>
+</nav>
+
+
+<!-- SING UP Modal -->
+<div id="signup-modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content signin-modal">
+      <div class="modal-header">
+        <h1>JOIN THE SHOWROOM</h1>
+      </div>
+      <div class="modal-body">
+        <p>Lorem ipsum dolor sit amet, consectetur adipisci elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam....Lorem ipsum dolor sit amet, consectetur adipisci elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam....</p>
+        <button type="button" class="btn btn-default" data-dismiss="modal">
+        	<img src="http://localhost/cf/views/icons/arrow-right-512.png" height="256px"/>
+        </button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+
+<!-- LOGIN MODAL -->
+<div id="login-modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Login</h4>
+      </div>
+      <div class="modal-body">
+        <form role="form">
+ 		 <div class="form-group">
+  		  <label for="email">Email address:</label>
+   		 <input type="email" class="form-control" id="email">
+	    </div>
+ 		 <div class="form-group">
+  		  <label for="pwd">Password:</label>
+  		  <input type="password" class="form-control" id="pwd">
+		  </div>
+		  <div class="checkbox">
+ 			  <label><input type="checkbox"> Remember me</label>
+		  </div>
+          </br>
+			  <button type="submit" class="btn btn-default">Submit</button>
+		</form>
+   		 </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- SEARCH MODAL -->
+
+<div id="search-modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-body">
+      	<form class="form-inline" role="form">
+  			<div class="form-group">
+   			 <label for="email"><span class="glyphicon glyphicon-search"></span></label>
+   			 <input type="text" class="form-control" id="text">
+  			</div>
+  			<button type="submit" class="btn btn-default">Search</button>
+		</form>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- Page HEADER -->
+<div class="jumbotron text-center">
+	<h2> Bake your favourite projects </h2>
+	<p>Lorem ipsum dolor sit amet, consectetur adipisci elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam....</p>
+	<div class="row step-row">
+        <div class="col-sm-3">
+           <img src="http://www.indre-reisid.ee/wp-content/themes/envision/lib/images/default-placeholder.png" class="img-circle" width="100px"/>
+           <h3>Step 1</h3>
+        </div>
+        <div class="col-sm-3">
+           <img src="http://www.indre-reisid.ee/wp-content/themes/envision/lib/images/default-placeholder.png" class="img-circle" width="100px"/>
+           <h3>Step 2</h3>
+        </div>
+        <div class="col-sm-3">
+           <img src="http://www.indre-reisid.ee/wp-content/themes/envision/lib/images/default-placeholder.png" class="img-circle" width="100px"/>
+           <h3>Step 3</h3>
+        </div>
+        <div class="col-sm-3">
+           <img src="http://www.indre-reisid.ee/wp-content/themes/envision/lib/images/default-placeholder.png" class="img-circle" width="100px"/>
+           <h3>Step 4</h3>
+        </div>
+	</div>
+</div>
+
+
+<div class="container section-step">
+	<div class="row row-white">
+    	<div class="col-sm-6 section-text-area">
+        	<h3>Step 1</h3>
+            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet.</p>
+        </div>
+        <div class="col-sm-6">
+        	<img src="http://www.indre-reisid.ee/wp-content/themes/envision/lib/images/default-placeholder.png" height="100%" width="100%"/>
+        </div>
+    </div>
+    	<div class="row row-black">
+        <div class="col-sm-6">
+        	<img src="http://www.indre-reisid.ee/wp-content/themes/envision/lib/images/default-placeholder.png" height="100%" width="100%"/>
+        </div>
+            	<div class="col-sm-6 section-text-area">
+        	<h3>Step 2</h3>
+            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet.</p>
+        </div>
+    </div>
+    	<div class="row row-white">
+    	<div class="col-sm-6 section-text-area">
+        	<h3>Step 3</h3>
+            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet.</p>
+        </div>
+        <div class="col-sm-6">
+        	<img src="http://www.indre-reisid.ee/wp-content/themes/envision/lib/images/default-placeholder.png" height="100%" width="100%"/>
+        </div>
+    </div>
+        	<div class="row row-black">
+        <div class="col-sm-6">
+        	<img src="http://www.indre-reisid.ee/wp-content/themes/envision/lib/images/default-placeholder.png" height="100%" width="100%"/>
+        </div>
+            	<div class="col-sm-6 section-text-area">
+        	<h3>Step 4</h3>
+            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet.</p>
+        </div>
+    </div>
+</div>
+
+<div class="container last-section">
+	<h2>The future's clothes</h2>
+    <button class="btn btn-default"> Discover projects </button>
+    <button class="btn btn-default"> Start your project </button>
+</div>
+
+
+<!-- FOOTER -->
+<footer class="container-fluid ftr text-center">
+  <a href="#myPage" title="To Top">
+    <span class="glyphicon glyphicon-chevron-up"></span>
+  </a>
+  <div class="row footer-row">
+    		<div class="col-sm-1"></div>
+            <div class="col-sm-2">
+            	<h4>Discover<h4>
+                <ul>
+                <li><a href="">All projects</a></li>
+                <li><a href="">Shoes</a></li>
+                <li><a href="">Dress</a></li>
+                <li><a href="">dbcskdbcsb</a></li>
+                <li><a href="">sdlcjsdlc</a></li>
+                <li><a href="">sifhdshc</a></li>
+                </ul>
+            </div>
+            <div class="col-sm-2">
+            	<h4><h4>
+                <ul>
+                <li><a href="">csldcnsl</a></li>
+                <li><a href="">cskncsdnc</a></li>
+                <li><a href="">dbcskdbcsb</a></li>
+                <li><a href="">sdlcjsdlc</a></li>
+                <li><a href="">sifhdshc</a></li>
+                </ul>
+            </div>
+            <div class="col-sm-2">
+               	<h4>About Us<h4>
+                <ul>
+                <li><a href="">How it works</a></li>
+                <li><a href="">Wo we are</a></li>
+                <li><a href="">Press</a></li>
+                <li><a href="">Etc</a></li>
+                </ul>
+            </div>
+            <div class="col-sm-2">
+                <h4>Help<h4>
+                <ul>
+                <li><a href="">FAQ</a></li>
+                <li><a href="">Support</a></li>
+                <li><a href="">Term of use</a></li>
+                <li><a href="">Privacy Policy</a></li>
+                <li><a href="">Cookie Policy</a></li>
+                </ul>
+            </div>
+            <div class="col-sm-2">
+                <h4>Hi<h4>
+                <ul>
+                <li><a href="">Facebook</a></li>
+                <li><a href="">Twitter</a></li>
+                <li><a href="">Youtube</a></li>
+                <li><a href="">Etc</a></li>
+                </ul>
+            </div>
+            <div class="col-sm-1"></div>       
+  </div>
+  
+  <div class="container">
+  <div class="row">
+    <div class="col-sm-6"><span class="pull-left"><h4>Next Season Logo</h4></span></div>
+    <div class="col-sm-6"><span class="pull-right">
+    	<p> 2015 New Season, Inc. All Rigts Reserved </p>
+        </span></div>
+  </div>
+</div>
+
+</footer>
+
+</div>
+
+
+<!-- JS CODE -->
+<script>
+
+
+</script>
+
+
+</body>
+</html>

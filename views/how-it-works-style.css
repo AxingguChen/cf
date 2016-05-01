@@ -1,0 +1,20 @@
+@charset "UTF-8";
+/* CSS Document */
+
+.jumbotron { margin-bottom:0; padding-left:0; padding-right:0;}
+.step-row {padding:40px 100px; margin-bottom:0;}
+.step-row img { max-width:100px;}
+
+.container{ width:100%; text-align:center; }
+
+.col-sm-6 { padding:0 0;}
+
+.section-step{ background-color:transparent; padding:0 0; width:100%;}
+.section-step img { width:100% max-width:400px; height:100%; max-height:400px;}
+
+.row-white { background-color:#fff;}
+.row-black { background-color:#595959; color:#fff;}
+
+.section-text-area {padding:40px 60px;}
+
+.last-section {padding:80px; 60px; background-image:url("http://www.indre-reisid.ee/wp-content/themes/envision/lib/images/default-placeholder.png");}
