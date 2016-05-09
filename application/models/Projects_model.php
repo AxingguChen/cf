@@ -53,7 +53,7 @@ class Projects_model extends CI_Model
         return $query->result();
     }
     
-    public function get_last_chance($offset = 0, $limit = 0, $order = 'projects.date_publish', $direction = 'asc')
+    public function get_last_chance( $limit = 0, $order = 'projects.date_publish', $direction = 'asc')
     {
     	$this->db->select('*');
     	$this->db->from($this->TABLENAME);
@@ -149,8 +149,20 @@ class Projects_model extends CI_Model
         return $query->result();
     }
 	
-    public function get_by_gender($gender = 0,$offset = 0, $limit = 0, $order = 'projects.date_publish', $direction = 'asc')
+    public function get_by_gender($gender = 0,$sort = -1,$offset = 0, $limit = 0, $order = 'projects.date_publish', $direction = 'asc')
     {
+    	if($sort == 1){
+    		$order = 'projects.date_publish';
+    		$direction = 'asc';
+    	}
+    	elseif($sort == 2){
+    		$order = 'projects.date_publish';
+    		$direction = 'desc';
+    	}
+    	elseif($sort == 3){
+    		$order = 'projects.sale_current';
+    		$direction = 'desc';
+    	}
     	$this->db->select('*');
     	$this->db->from($this->TABLENAME);
     	$this->db->join('users', "users.users_id = $this->TABLENAME.projects_users_id");
@@ -168,8 +180,20 @@ class Projects_model extends CI_Model
     	return $query->result();
     }
     
-    public function get_by_type($type_id = 0,$offset = 0, $limit = 0, $order = 'projects.date_publish', $direction = 'asc')
+    public function get_by_type($type_id = 0,$sort, $offset = 0, $limit = 0, $order = 'projects.date_publish', $direction = 'asc')
     {
+    	if($sort == 1){
+    		$order = 'projects.date_publish';
+    		$direction = 'asc';
+    	}
+    	elseif($sort == 2){
+    		$order = 'projects.date_publish';
+    		$direction = 'desc';
+    	}
+    	elseif($sort == 3){
+    		$order = 'projects.sale_current';
+    		$direction = 'desc';
+    	}
     	$this->db->select('*');
     	$this->db->from($this->TABLENAME);
     	$this->db->join('users', "users.users_id = $this->TABLENAME.projects_users_id");
@@ -186,7 +210,19 @@ class Projects_model extends CI_Model
     	$query = $this->db->get();
     	return $query->result();    	
     }
-    public function get_by_color($color_id = 0,$offset = 0, $limit = 0, $order = 'projects.date_publish', $direction = 'asc'){
+    public function get_by_color($color_id = 0,$sort,$offset = 0, $limit = 0, $order = 'projects.date_publish', $direction = 'asc'){
+    	if($sort == 1){
+    		$order = 'projects.date_publish';
+    		$direction = 'asc';
+    	}
+    	elseif($sort == 2){
+    		$order = 'projects.date_publish';
+    		$direction = 'desc';
+    	}
+    	elseif($sort == 3){
+    		$order = 'projects.sale_current';
+    		$direction = 'desc';
+    	}
     	$this->db->select('*');
     	$this->db->from($this->TABLENAME);
     	$this->db->join('users', "users.users_id = $this->TABLENAME.projects_users_id");
@@ -203,8 +239,20 @@ class Projects_model extends CI_Model
     	$query = $this->db->get();
     	return $query->result();
     }
-    public function get_by_gender_color($gender = 0,$color_id,$offset = 0, $limit = 0, $order = 'projects.date_publish', $direction = 'asc')
+    public function get_by_gender_color($gender = 0,$color_id,$sort,$offset = 0, $limit = 0, $order = 'projects.date_publish', $direction = 'asc')
     {
+    	if($sort == 1){
+    		$order = 'projects.date_publish';
+    		$direction = 'asc';
+    	}
+    	elseif($sort == 2){
+    		$order = 'projects.date_publish';
+    		$direction = 'desc';
+    	}
+    	elseif($sort == 3){
+    		$order = 'projects.sale_current';
+    		$direction = 'desc';
+    	}
     	$this->db->select('*');
     	$this->db->from($this->TABLENAME);
     	$this->db->join('users', "users.users_id = $this->TABLENAME.projects_users_id");
@@ -222,8 +270,20 @@ class Projects_model extends CI_Model
     	$query = $this->db->get();
     	return $query->result();
     }
-    public function get_by_type_color($type_id = 0,$color_id,$offset = 0, $limit = 0, $order = 'projects.date_publish', $direction = 'asc')
+    public function get_by_type_color($type_id = 0,$color_id,$sort,$offset = 0, $limit = 0, $order = 'projects.date_publish', $direction = 'asc')
     {
+    	if($sort == 1){
+    		$order = 'projects.date_publish';
+    		$direction = 'asc';
+    	}
+    	elseif($sort == 2){
+    		$order = 'projects.date_publish';
+    		$direction = 'desc';
+    	}
+    	elseif($sort == 3){
+    		$order = 'projects.sale_current';
+    		$direction = 'desc';
+    	}
     	$this->db->select('*');
     	$this->db->from($this->TABLENAME);
     	$this->db->join('users', "users.users_id = $this->TABLENAME.projects_users_id");
@@ -241,8 +301,20 @@ class Projects_model extends CI_Model
     	$query = $this->db->get();
     	return $query->result();
     } 
-    public function get_by_type_gender($type_id = 0,$gender,$offset = 0, $limit = 0, $order = 'projects.date_publish', $direction = 'asc')
+    public function get_by_type_gender($type_id = 0,$gender,$sort,$offset = 0, $limit = 0, $order = 'projects.date_publish', $direction = 'asc')
     {
+    	if($sort == 1){
+    		$order = 'projects.date_publish';
+    		$direction = 'asc';
+    	}
+    	elseif($sort == 2){
+    		$order = 'projects.date_publish';
+    		$direction = 'desc';
+    	}
+    	elseif($sort == 3){
+    		$order = 'projects.sale_current';
+    		$direction = 'desc';
+    	}
     	$this->db->select('*');
     	$this->db->from($this->TABLENAME);
     	$this->db->join('users', "users.users_id = $this->TABLENAME.projects_users_id");
@@ -261,8 +333,20 @@ class Projects_model extends CI_Model
     	return $query->result();
     }
     
-    public function get_by_type_gender_color($type_id = 0,$gender,$color_id,$offset = 0, $limit = 0, $order = 'projects.date_publish', $direction = 'asc'){
-	    $this->db->select('*');
+    public function get_by_type_gender_color($type_id = 0,$gender,$color_id,$sort,$offset = 0, $limit = 0, $order = 'projects.date_publish', $direction = 'asc'){
+    	if($sort == 1){
+    		$order = 'projects.date_publish';
+    		$direction = 'asc';
+    	}
+    	elseif($sort == 2){
+    		$order = 'projects.date_publish';
+    		$direction = 'desc';
+    	}
+    	elseif($sort == 3){
+    		$order = 'projects.sale_current';
+    		$direction = 'desc';
+    	}
+    	$this->db->select('*');
     	$this->db->from($this->TABLENAME);
     	$this->db->join('users', "users.users_id = $this->TABLENAME.projects_users_id");
     	$this->db->where('projects_type_id', $type_id);
