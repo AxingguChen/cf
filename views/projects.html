@@ -159,15 +159,13 @@
     </div>
     <div class="col-sm-2">
     	<div class="dropdown filter-dropdown" id="filter-gender">
-  			<button class="btn btn-primary dropdown-toggle filter-dropdown-button" type="button" data-toggle="dropdown">All</button>
+  			<button class="btn btn-primary dropdown-toggle filter-dropdown-button" type="button" data-toggle="dropdown">Any gender</button>
  			<ul class="dropdown-menu">
-                <li><a href="#" id="action-all-gender">All</a></li>
+                <li><a href="#" id="action-all-gender">Any gender</a></li>
                 <li class="divider"></li>
     			<li><a href="#" id="action-woman">Woman</a></li>
                 <li class="divider"></li>
     			<li><a href="#" id="action-man">Man</a></li>
-                <li class="divider"></li>
-    			<li><a href="#" id="action-unisex">Unisex</a></li>
   			</ul>
 		</div>
     </div>
@@ -175,7 +173,7 @@
     	<div class="dropdown filter-dropdown" id="filter-type">
   			<button class="btn btn-primary dropdown-toggle filter-dropdown-button" type="button" data-toggle="dropdown">Any type</button>
  			<ul class="dropdown-menu">
-          	    <li><a href="#" id="action-all-type">Shoes</a></li>
+          	    <li><a href="#" id="action-all-type">Any type</a></li>
                 <li class="divider"></li>
     			<li><a href="#" id="action-shoes">Shoes</a></li>
                 <li class="divider"></li>
@@ -213,13 +211,11 @@
  			<ul class="dropdown-menu">
             	<li><a href="#" id="action-no-sort">None</a></li>
                 <li class="divider"></li>
-                <li><a href="#" id="action-name">Name</a></li>
+                <li><a href="#" id="action-name">Popular</a></li>
                 <li class="divider"></li>
     			<li><a href="#" id="action-last">Last chance</a></li>
                 <li class="divider"></li>
     			<li><a href="#" id="action-new">New</a></li>
-                <li class="divider"></li>
-                <li><a href="#" id="action-price">Price</a></li>
   			</ul>
 		</div>
     </div>
@@ -230,8 +226,10 @@
 </div>
 
 <!-- PROJECTS -->
+    <div class="container-fluid"><h5 id="no-result-banner"> Sorry, no results for these filters. </h5></div>
+
 <div class="container-fluid projects-container" id="projects-container">
-	<div class="row">
+    <div class="row">
     	<div class="col-sm-3">
       				<div class="thumbnail project-thumbnail">
         				<img src="http://www.indre-reisid.ee/wp-content/themes/envision/lib/images/default-placeholder.png" alt="project_img">
@@ -582,45 +580,81 @@
 
 <!-- JS CODE -->
 <script>
-// init url strings
-var base_url = "http://localhost/cf/";
-var urlProjects = base_url+"index.php/projects/view_projects_homepage";
+// filter consts
+const F_ANY_GENDER = -1; 
+const F_ANY_TYPE = -1;
+const F_ANY_COLOR = -1; 
+const F_NO_SORT = -1;
+const F_FEMALE = 0;
+const F_MALE = 1;
+const F_SHOES = 0;
+const F_PANTS = 0;
+const F_TSHIRT= 0;
+const F_WHITE = 0;
+const F_BLACK = 1;
+const F_YELLOW = 2;
+const F_GREEN = 3;
+const F_BLUE = 4;
+const F_RED = 5;
+const F_ORANGE = 6;
+const F_POPULAR = 0;
+const F_NEW = 1;
+const F_LASTCHANCE = 2;
+
+
+// init filters
+var filter_gender = -1;
+var filter_type = -1;
+var filter_color = -1;
+var filter_sort = -1;
+
 var projects_offset=0;
 
+// init url strings
+var base_url = "http://localhost/cf/";
+var urlProjects = base_url+"index.php/projects/view_projects_filter/"+ filter_type + "/"+ filter_gender + "/"+ filter_color + "/" + filter_sort + "/" + projects_offset;
 
-jQuery("#action-all-gender").click(function(e){document.getElementById("filter-gender").childNodes.item(1).innerHTML = "All"; e.preventDefault();});
-jQuery("#action-woman").click(function(e){document.getElementById("filter-gender").childNodes.item(1).innerHTML = "Woman"; e.preventDefault();});
-jQuery("#action-man").click(function(e){document.getElementById("filter-gender").childNodes.item(1).innerHTML = "Man"; e.preventDefault();});
-jQuery("#action-unisex").click(function(e){document.getElementById("filter-gender").childNodes.item(1).innerHTML = "Unisex"; e.preventDefault();});
-jQuery("#action-all-type").click(function(e){document.getElementById("filter-type").childNodes.item(1).innerHTML = "Any type"; e.preventDefault();});
-jQuery("#action-shoes").click(function(e){document.getElementById("filter-type").childNodes.item(1).innerHTML = "Shoes"; e.preventDefault();});
-jQuery("#action-pants").click(function(e){document.getElementById("filter-type").childNodes.item(1).innerHTML = "Pants"; e.preventDefault();});
-jQuery("#action-tshirt").click(function(e){document.getElementById("filter-type").childNodes.item(1).innerHTML = "T-Shirts"; e.preventDefault();});
-jQuery("#action-all-color").click(function(e){document.getElementById("filter-color").childNodes.item(1).innerHTML = "Any color"; e.preventDefault();});
-jQuery("#action-white").click(function(e){document.getElementById("filter-color").childNodes.item(1).innerHTML = '<span class="glyphicon glyphicon-tint" style="color:white;"></span>White'; e.preventDefault();});
-jQuery("#action-black").click(function(e){document.getElementById("filter-color").childNodes.item(1).innerHTML = '<span class="glyphicon glyphicon-tint" style="color:black;"></span>Black'; e.preventDefault();});
-jQuery("#action-yellow").click(function(e){document.getElementById("filter-color").childNodes.item(1).innerHTML = '<span class="glyphicon glyphicon-tint" style="color:yellow;"></span>Yellow'; e.preventDefault();});
-jQuery("#action-green").click(function(e){document.getElementById("filter-color").childNodes.item(1).innerHTML = '<span class="glyphicon glyphicon-tint" style="color:green;"></span>Green'; e.preventDefault();});
-jQuery("#action-blue").click(function(e){document.getElementById("filter-color").childNodes.item(1).innerHTML = '<span class="glyphicon glyphicon-tint" style="color:blue;"></span>Blue'; e.preventDefault();});
-jQuery("#action-red").click(function(e){document.getElementById("filter-color").childNodes.item(1).innerHTML = '<span class="glyphicon glyphicon-tint" style="color:red;"></span>Red'; e.preventDefault();});
-jQuery("#action-orange").click(function(e){document.getElementById("filter-color").childNodes.item(1).innerHTML = '<span class="glyphicon glyphicon-tint" style="color:orange;"></span>Orange'; e.preventDefault();});
-jQuery("#action-no-sort").click(function(e){document.getElementById("filter-sort").childNodes.item(1).innerHTML = "Sort by"; e.preventDefault();});
-jQuery("#action-name").click(function(e){document.getElementById("filter-sort").childNodes.item(1).innerHTML = "Sort by: Name"; e.preventDefault();});
-jQuery("#action-last").click(function(e){document.getElementById("filter-sort").childNodes.item(1).innerHTML = "Sort by: Last Chance"; e.preventDefault();});
-jQuery("#action-new").click(function(e){document.getElementById("filter-sort").childNodes.item(1).innerHTML = "Sort by: New"; e.preventDefault();});
-jQuery("#action-price").click(function(e){document.getElementById("filter-sort").childNodes.item(1).innerHTML = "Sort by: Price"; e.preventDefault();});
+
+jQuery("#action-all-gender").click(function(e){
+	document.getElementById("filter-gender").childNodes.item(1).innerHTML = "Any gender"; 
+	filter_gender = F_ANY_GENDER; e.preventDefault(); getProjects();
+	});
+jQuery("#action-woman").click(function(e){document.getElementById("filter-gender").childNodes.item(1).innerHTML = "Woman"; filter_gender = F_FEMALE; getProjects(); e.preventDefault();});
+jQuery("#action-man").click(function(e){document.getElementById("filter-gender").childNodes.item(1).innerHTML = "Man"; filter_gender = F_MALE; getProjects(); e.preventDefault();});
+jQuery("#action-all-type").click(function(e){document.getElementById("filter-type").childNodes.item(1).innerHTML = "Any type"; filter_type = F_ANY_TYPE; getProjects();  e.preventDefault();});
+jQuery("#action-shoes").click(function(e){document.getElementById("filter-type").childNodes.item(1).innerHTML = "Shoes"; filter_type = F_SHOES; getProjects(); e.preventDefault();});
+jQuery("#action-pants").click(function(e){document.getElementById("filter-type").childNodes.item(1).innerHTML = "Pants"; filter_type = F_PANTS; getProjects(); e.preventDefault();});
+jQuery("#action-tshirt").click(function(e){document.getElementById("filter-type").childNodes.item(1).innerHTML = "T-Shirts"; filter_type = F_TSHIRT; getProjects(); e.preventDefault();});
+jQuery("#action-all-color").click(function(e){document.getElementById("filter-color").childNodes.item(1).innerHTML = "Any color"; filter_color = F_ANY_COLOR; getProjects(); e.preventDefault();});
+jQuery("#action-white").click(function(e){document.getElementById("filter-color").childNodes.item(1).innerHTML = '<span class="glyphicon glyphicon-tint" style="color:white;"></span>White'; filter_color = F_WHITE; getProjects();  e.preventDefault();});
+jQuery("#action-black").click(function(e){document.getElementById("filter-color").childNodes.item(1).innerHTML = '<span class="glyphicon glyphicon-tint" style="color:black;"></span>Black'; filter_color = F_BLACK; getProjects(); e.preventDefault();});
+jQuery("#action-yellow").click(function(e){document.getElementById("filter-color").childNodes.item(1).innerHTML = '<span class="glyphicon glyphicon-tint" style="color:yellow;"></span>Yellow'; filter_color = F_YELLOW; getProjects(); e.preventDefault();});
+jQuery("#action-green").click(function(e){document.getElementById("filter-color").childNodes.item(1).innerHTML = '<span class="glyphicon glyphicon-tint" style="color:green;"></span>Green'; filter_color = F_GREEN; getProjects(); e.preventDefault();});
+jQuery("#action-blue").click(function(e){document.getElementById("filter-color").childNodes.item(1).innerHTML = '<span class="glyphicon glyphicon-tint" style="color:blue;"></span>Blue'; filter_color = F_BLUE; getProjects(); e.preventDefault();});
+jQuery("#action-red").click(function(e){document.getElementById("filter-color").childNodes.item(1).innerHTML = '<span class="glyphicon glyphicon-tint" style="color:red;"></span>Red'; filter_color = F_RED; getProjects(); e.preventDefault();});
+jQuery("#action-orange").click(function(e){document.getElementById("filter-color").childNodes.item(1).innerHTML = '<span class="glyphicon glyphicon-tint" style="color:orange;"></span>Orange'; filter_color = F_ORANGE; getProjects(); e.preventDefault();});
+jQuery("#action-no-sort").click(function(e){document.getElementById("filter-sort").childNodes.item(1).innerHTML = "Sort by"; filter_sort = F_NO_SORT; getProjects(); e.preventDefault();});
+jQuery("#action-name").click(function(e){document.getElementById("filter-sort").childNodes.item(1).innerHTML = "Sort by: Popular"; filter_sort = F_POPULAR; getProjects(); e.preventDefault();});
+jQuery("#action-last").click(function(e){document.getElementById("filter-sort").childNodes.item(1).innerHTML = "Sort by: Last Chance"; filter_sort = F_LASTCHANCE; getProjects();e.preventDefault();});
+jQuery("#action-new").click(function(e){document.getElementById("filter-sort").childNodes.item(1).innerHTML = "Sort by: New"; filter_sort = F_NEW; getProjects();e.preventDefault();});
 
 jQuery("#action-clear-all").click(function(e){
 	document.getElementById("filter-sort").childNodes.item(1).innerHTML = "Sort by"; e.preventDefault();
-	document.getElementById("filter-gender").childNodes.item(1).innerHTML = "All";
+	document.getElementById("filter-gender").childNodes.item(1).innerHTML = "Any gender";
 	document.getElementById("filter-type").childNodes.item(1).innerHTML = "Any type";
 	document.getElementById("filter-color").childNodes.item(1).innerHTML = "Any color";
+	filter_color = -1;
+	filter_gender = -1;
+	filter_type = -1;
+	filter_sort = -1;
+    getProjects();
 	e.preventDefault();
 	});
 	
 	
 // get design data
 function getProjects(){
+    urlProjects = base_url+"index.php/projects/view_projects_filter/"+ filter_type + "/"+ filter_gender + "/"+ filter_color + "/" + filter_sort + "/" + projects_offset;
 var xmlhttpDesign = new XMLHttpRequest();
 xmlhttpDesign.onreadystatechange = function() {
     if (xmlhttpDesign.readyState == 4 && xmlhttpDesign.status == 200) {
@@ -628,14 +662,23 @@ xmlhttpDesign.onreadystatechange = function() {
         updateProjects(arr.rows);
     }
 };
-xmlhttpDesign.open("GET", urlProjects+"/"+projects_offset, true);
+xmlhttpDesign.open("GET", urlProjects, true);
 xmlhttpDesign.send();
 }
 
 
 function updateProjects(arr) {
 	var i,j=0;
-    for(i = 0; i < arr.length; i++) {
+    hideAll();
+    
+    if(arr.length==0) { showNoResult(true); document.getElementById("design-control-right").disabled = true; return;}
+    else {
+        showNoResult(false);
+        if (arr.length<8) {document.getElementById("design-control-right").disabled = true;}
+        else {document.getElementById("design-control-right").disabled = false;}
+    }
+    
+    for(i = 0; i < Math.min(arr.length, 8); i++) {
 		if(i<4) { 
 			var d0 = document.getElementById("projects-container").childNodes.item(1).childNodes.item(j); 
 			if(!d0.hasChildNodes()) {
@@ -651,6 +694,7 @@ function updateProjects(arr) {
 		
 		// set visible
 		d0.childNodes.item(1).style.visibility = "visible";
+        d0.childNodes.item(1).style.display = "inline";
 		
 		// update img	
 		img_path = "http://localhost/cf/pic/"+arr[i].projects_id+"_1.png"
@@ -666,6 +710,18 @@ function updateProjects(arr) {
 	}
 }
 
+function showNoResult (value) {
+    if(value) { document.getElementById("no-result-banner").style.display = "inline"; }
+    else { document.getElementById("no-result-banner").style.display = "none"; }
+}
+    
+function hideAll() {
+    var divsToHide = document.getElementsByClassName("project-thumbnail"); //divsToHide is an array
+    for(var i = 0; i < divsToHide.length; i++){
+        divsToHide[i].style.display = "none"; // depending on what you're doing
+    }
+}
+    
 function designOffsetRight(){
 	projects_offset++;
 	getProjects();
