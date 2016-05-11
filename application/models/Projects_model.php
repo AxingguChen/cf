@@ -301,7 +301,36 @@ class Projects_model extends CI_Model
     	$query = $this->db->get();
     	return $query->result();
     } 
-    public function get_by_type_gender($type_id = 0,$gender,$sort,$offset = 0, $limit = 0, $order = 'projects.date_publish', $direction = 'asc')
+    
+    public function get_by_sort($sort=0,$offset = 0, $limit = 0, $order = 'projects.date_publish', $direction = 'asc'){
+    	if($sort == 1){
+    		$order = 'projects.date_publish';
+    		$direction = 'asc';
+    	}
+    	elseif($sort == 2){
+    		$order = 'projects.date_publish';
+    		$direction = 'desc';
+    	}
+    	elseif($sort == 3){
+    		$order = 'projects.sale_current';
+    		$direction = 'desc';
+    	}
+    	$this->db->select('*');
+    	$this->db->from($this->TABLENAME);
+    	$this->db->join('users', "users.users_id = $this->TABLENAME.projects_users_id");
+    	$this->db->where('projects_project_state_id',2);
+    	if (strlen($order) > 0)
+    	{
+    		$this->db->order_by($order, $direction);
+    	}
+    	if ($limit > 0)
+    	{
+    		$this->db->limit($limit, $offset);
+    	}
+    	$query = $this->db->get();
+    	return $query->result();
+    }
+    public function get_by_type_gender($type_id = 0,$gender,$sort=0,$offset = 0, $limit = 0, $order = 'projects.date_publish', $direction = 'asc')
     {
     	if($sort == 1){
     		$order = 'projects.date_publish';

@@ -57,6 +57,23 @@ class Users_model extends CI_Model {
         $query = $this->db->get();
         return $query->result();
     }
+    public function get_by_id_designer($users_id){
+    	$this->db->select('*');
+    	$this->db->from($this->TABLENAME);
+    	$this->db->where('users_groups_id',10);
+		$this->db->where('users_id',$users_id);
+    	$query = $this->db->get();
+    	return $query->result();
+    }
+    public function get_by_id_user($users_id){
+    	$this->db->select('*');
+    	$this->db->from($this->TABLENAME);
+    	$this->db->where('users_groups_id',12);
+    	$this->db->where('users_id',$users_id);
+    	$query = $this->db->get();
+    	return $query->result();
+    }
+    
 	
 	function signup() {
 		$data = array (

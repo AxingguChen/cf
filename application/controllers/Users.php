@@ -101,6 +101,29 @@ class Users extends CI_Controller {
 	}
 	
 	// access
+	// index.php/projects/view_designer
+	public function view_designer($users_id = 0){
+		if ($users_id > 0) {
+			$data ['rows'] = $this->users_model->get_by_id_designer($users_id);
+		} else {
+			$data ['rows'] = array ();
+		}
+		print json_encode($data);
+		//print_r($data);
+	}
+	
+	// index.php/projects/view_user
+	public function view_user($users_id = 0){
+		if ($users_id > 0) {
+			$data ['rows'] = $this->users_model->get_by_id_user($users_id);
+		} else {
+			$data ['rows'] = array ();
+		}
+		print json_encode($data);
+		//print_r($data);
+	}
+	
+	// access
 	// index.php/projects/view_designers
 	public function view_designers($offset = 0, $limit = 0){
 		if ($limit <= 0) {

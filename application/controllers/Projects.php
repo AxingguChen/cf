@@ -24,7 +24,7 @@ class Projects extends CI_Controller {
 
     // access
     // index.php/projects/view_project/1
-    public function view_project($projects_id = 1){
+    public function view_project($projects_id = 0){
         if ($projects_id > 0) {
             $data ['rows'] = $this->projects_model->get_by_id ( $projects_id );
         } else {
@@ -98,7 +98,7 @@ class Projects extends CI_Controller {
     	}
     	
     	if($type_id == -1 && $gender == -1 && $color_id == -1){
-    		$data ['rows'] = $this->projects_model->get_last_chance ( $offset * $MAX_RECORDS, $MAX_RECORDS );
+    		$data ['rows'] = $this->projects_model->get_by_sort ($sort, $offset * $MAX_RECORDS, $MAX_RECORDS );
     	}
     	elseif($type_id == -1 && $color_id == -1){
     		$data ['rows'] = $this->projects_model->get_by_gender($sort, $gender, $offset * $MAX_RECORDS, $MAX_RECORDS );
