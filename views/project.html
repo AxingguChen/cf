@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Air Showroom - Project</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="home-style.css">
+    <link rel="stylesheet" type="text/css" href="project-style.css">
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="http://malsup.github.com/jquery.form.js"></script>
+
+    <script>
+        $(function(){
+            $('form[name=sign-in-form]').submit(function(){
+                $.post($(this).attr('action'), $(this).serialize(), function(json) {
+                    alert(json);
+                }, 'json');
+                return false;
+            });
+        });
+    </script>
+
+</head>
+
+<body>
+
+<div class="container-fluid main-container">
+
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Air Showroom</a>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav">
+                    <li><a href="projects.html">Shop</a></li>
+                    <li><a href="designers.html">Our Designers</a></li>
+                    <li><a href="how-it-works.html">How it works</a></li>
+                    <li><a href="about-us.html">About</a></li>
+                    <li><a href="campaign.html">+ Launch a campaign</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#search-modal" data-toggle="modal" data-target="search-modal"><span class="glyphicon glyphicon-search"></span></a></li>
+                    <li><a href="#search-modal" data-toggle="modal" data-target="search-modal"><span class="glyphicon glyphicon-heart"></span></a></li>
+                    <li><a href="#search-modal" data-toggle="modal" data-target="search-modal"><span class="glyphicon glyphicon-shopping-cart"></span></a></li>
+                    <li><a href="#signup-modal" data-toggle="modal" data-target="signup-modal"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-log-in"></span> Login</a>
+                        <ul class="dropdown-menu login-dropdown">
+                            <li>
+                                <form role="form" onSubmit="http://localhost/cf/index.php/users/login" method="post">
+                                    <p id="login-error-label"> Username or password incorrect </p>
+                                    <div class="input-group">
+                                        <span class="input-group-addon" id="basic-addon1">username</span>
+                                        <input type="text" class="form-control" placeholder="" aria-describedby="basic-addon1">
+                                    </div>
+                                    <div class="input-group">
+                                        <span class="input-group-addon" id="basic-addon1">password</span>
+                                        <input type="text" class="form-control" placeholder="" aria-describedby="basic-addon1">
+                                    </div>
+                                    <div class="checkbox">
+                                        <label><input type="checkbox"> Remember me</label>
+                                    </div>
+                                    <button type="submit" class="btn btn-default">Submit</button>
+                                    <p> <a>Forgot password?</a> </p>
+                                </form>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+    <!-- SING UP Modal -->
+    <div id="signup-modal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content signin-modal">
+                <div class="modal-header">
+                    <h1>JOIN THE SHOWROOM</h1>
+                </div>
+                <div class="modal-body">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisci elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam....Lorem ipsum dolor sit amet, consectetur adipisci elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam....</p>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">
+                        <img src="http://localhost/cf/views/icons/arrow-right-512.png" height="256px"/>
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+
+    <!-- LOGIN MODAL -->
+    <div id="login-modal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Login</h4>
+                </div>
+                <div class="modal-body">
+                    <form role="form">
+                        <div class="form-group">
+                            <label for="email">Email address:</label>
+                            <input type="email" class="form-control" id="email">
+                        </div>
+                        <div class="form-group">
+                            <label for="pwd">Password:</label>
+                            <input type="password" class="form-control" id="pwd">
+                        </div>
+                        <div class="checkbox">
+                            <label><input type="checkbox"> Remember me</label>
+                        </div>
+                        </br>
+                        <button type="submit" class="btn btn-default">Submit</button>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- SEARCH MODAL -->
+
+    <div id="search-modal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-body">
+                    <form class="form-inline" role="form">
+                        <div class="form-group">
+                            <label for="email"><span class="glyphicon glyphicon-search"></span></label>
+                            <input type="text" class="form-control" id="text">
+                        </div>
+                        <button type="submit" class="btn btn-default">Search</button>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- FILTERS TAB -->
+
+    <!-- DIRECTORY TAB -->
+    <div class="container-fluid directory-tab">
+    </div>
+
+    <!-- PROJECT TAB -->
+    <div class="container-fluid project-tab">
+        <h3 id="project-title"> Titolo </h3>
+        <h5 id="project-designer"> subtitle </h5>
+
+        <div class="row" id="product_section">
+            <div class="col-sm-5" style="height:500px;">
+                <img id="highlight-img" src="http://www.indre-reisid.ee/wp-content/themes/envision/lib/images/default-placeholder.png">
+            </div>
+
+            <div class="col-sm-2" style="height:500px;">
+                <img class="secondary-img" id="secondary-img-1" src="http://www.indre-reisid.ee/wp-content/themes/envision/lib/images/default-placeholder.png">
+                <img class="secondary-img" id="secondary-img-2" src="http://www.indre-reisid.ee/wp-content/themes/envision/lib/images/default-placeholder.png">
+                <img class="secondary-img" id="secondary-img-3" src="http://www.indre-reisid.ee/wp-content/themes/envision/lib/images/default-placeholder.png">
+            </div>
+
+
+            <div class="col-sm-5" style="height:500px;">
+                <div id="metrics-section" class="row" style="height:75px;">
+                    <div class="row design-row">
+                        <div class="col-sm-4">
+                            <div>
+                                <h5 id="price-label">euro</h5>
+                                <h6><small>price</small></h6>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div>
+                                <h5 id="founded-label">X/Y</h5>
+                                <h6><small>founded</small></h6>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div>
+                                <h5 id="days-to-go-label">days</h5>
+                                <h6><small>to go</small></h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" style="height:150px;">
+                    <div id="size-section" class="col-sm-6">
+                        <h5> CHOOSE SIZE </h5>
+                        <div class="dropdown filter-dropdown" id="filter-color">
+                            <button class="btn btn-primary dropdown-toggle filter-dropdown-button" type="button" data-toggle="dropdown">XS<span class="glyphicon glyphicon-chevron-down"></span></button>
+                            <ul class="dropdown-menu">
+                                <li><a href="#" id="action-white">XS</a></li>
+                                <li class="divider"></li>
+                                <li><a href="#" id="action-black">S</a></li>
+                                <li class="divider"></li>
+                                <li><a href="#" id="action-yellow">M</a></li>
+                                <li class="divider"></li>
+                                <li><a href="#" id="action-green">L</a></li>
+                                <li class="divider"></li>
+                                <li><a href="#" id="action-blue">XL</li>
+                                <li class="divider"></li>
+                                <li><a href="#" id="action-red">XXL</a></li>
+                            </ul>
+                        </div>
+                        </br>
+                        <a>Size table</a>
+                    </div>
+                    <div id="color-section" class="col-sm-6">
+                        <div class="row" style="height: 60px">
+                            <div class="col-sm-4"><svg width="75" height="60">
+                                <circle class="color-circle" cx="30" cy="24" r="14"
+                                        stroke="#C3C3C3" stroke-width="2" fill="green" />
+                            </svg></div>
+                            <div class="col-sm-4"><svg width="75" height="60">
+                                <circle class="color-circle" cx="30" cy="24" r="14"
+                                        stroke="#C3C3C3" stroke-width="2" fill="red" />
+                            </svg></div>
+                            <div class="col-sm-4"><svg width="75" height="60">
+                                <circle class="color-circle" cx="30" cy="24" r="14"
+                                        stroke="#C3C3C3" stroke-width="2" fill="blue" />
+                            </svg></div>
+                        </div>
+                        <div class="row" style="height: 60px">
+                            <div class="col-sm-4"><svg width="75" height="60">
+                                <circle class="color-circle" cx="30" cy="16" r="14"
+                                        stroke="#C3C3C3" stroke-width="2" fill="yellow" />
+                            </svg></div>
+                            <div class="col-sm-4"><svg width="75" height="60">
+                                <circle class="color-circle" cx="30" cy="16" r="14"
+                                        stroke="#C3C3C3" stroke-width="2" fill="black" />
+                            </svg></div>
+                            <div class="col-sm-4"><svg width="75" height="60">
+                                <circle class="color-circle" cx="30" cy="16" r="14"
+                                        stroke="#C3C3C3" stroke-width="2" fill="white" />
+                            </svg></div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <ul class="nav nav-tabs">
+                    <li class="active" style="width: 50%; background-color: transparent; text-decoration: underline;" ><a data-toggle="tab" href="#designer-info">DESIGNER</a></li>
+                    <li style="width: 50%; background-color: transparent; text-decoration: underline;"><a data-toggle="tab" href="#product-info">DESCRIPTION</a></li>
+                </ul>
+
+                <div class="tab-content">
+                    <div id="designer-info" class="tab-pane fade in active" style="height:150px;">
+                        <div class="row">
+                            <div class="col-sm-6"> <img class="img-circle" src="http://www.indre-reisid.ee/wp-content/themes/envision/lib/images/default-placeholder.png" height="120px" width="120px"></div>
+                            <div id="designer-info-col-text" class="col-sm-6">
+                                <p id="designer-info-name"> Name Surname </p>
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <p id="designer-info-projects">projects</p>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <p id="designer-info-realized">realized</p>
+                                    </div>
+                                </div>
+                                <p id="designer-info-website"> website </p>
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <p><a>See full info</a></p>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <p id="designer-info-contact"><a>Contact</a></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="product-info" class="tab-pane fade" style="height:150px;">
+                        <p>Product description</p>
+                    </div>
+                </div>
+
+                <div id="icons-section" class="row" style="height:75px;">
+                    <div class="col-sm-6"> <button class="btn btn-primary"> Add to whishlist </button></div>
+                    <div class="col-sm-6">
+                        <div class="row" style="height: 75px">
+                            <div class="col-sm-3"><img class="social-logo" src="icons/facebook-logo.png"></div>
+                            <div class="col-sm-3"><img class="social-logo" src="icons/twitter-logo.png"></div>
+                            <div class="col-sm-3"><img class="social-logo" src="icons/instagram-logo.png"></div>
+                            <div class="col-sm-3"><img class="social-logo" src="icons/linkedin-logo.png"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="info-section">
+        <ul class="nav nav-tabs">
+            <li class="active"><a data-toggle="tab" href="#details">More Details</a></li>
+            <li><a data-toggle="tab" href="#comments">Comments</a></li>
+            <li><a data-toggle="tab" href="#related">Related Products</a></li>
+            <span class="pull-right">
+    				<a href="projects.html"><button type="button" class="btn btn-default">ADD TO CHART</button></a>
+        		</span>
+        </ul>
+
+        <div class="tab-content">
+            <div id="details" class="tab-pane fade in active">
+                <h4>MATERIALS</h4>
+                <p id="materials-field">Some content.</p>
+                <h4>WASH DRY</h4>
+                <p id="wash-dry-field">Some content.</p>
+                <h4>OTHER</h4>
+                <p id="other-info-field">Some content.</p>
+            </div>
+            <div id="comments" class="tab-pane fade">
+                <h4>Comments</h4>
+                <p>Some content</p>
+            </div>
+            <div id="related" class="tab-pane fade">
+                <h4>Related products</h4>
+                <p>Some content</p>
+            </div>
+        </div>
+        </div>
+    </div>
+
+
+    <!-- DETAIL TAB -->
+
+
+    <!-- FOOTER -->
+    <footer class="container-fluid ftr text-center">
+        <a href="#myPage" title="To Top">
+            <span class="glyphicon glyphicon-chevron-up"></span>
+        </a>
+        <div class="row footer-row">
+            <div class="col-sm-1"></div>
+            <div class="col-sm-2">
+                <h4>Discover</h4>
+                    <ul>
+                        <li><a href="">All projects</a></li>
+                        <li><a href="">Shoes</a></li>
+                        <li><a href="">Dress</a></li>
+                        <li><a href="">dbcskdbcsb</a></li>
+                        <li><a href="">sdlcjsdlc</a></li>
+                        <li><a href="">sifhdshc</a></li>
+                    </ul>
+            </div>
+            <div class="col-sm-2">
+                <h4></h4>
+                    <ul>
+                        <li><a href="">csldcnsl</a></li>
+                        <li><a href="">cskncsdnc</a></li>
+                        <li><a href="">dbcskdbcsb</a></li>
+                        <li><a href="">sdlcjsdlc</a></li>
+                        <li><a href="">sifhdshc</a></li>
+                    </ul>
+            </div>
+            <div class="col-sm-2">
+                <h4>About Us</h4>
+                    <ul>
+                        <li><a href="">How it works</a></li>
+                        <li><a href="">Wo we are</a></li>
+                        <li><a href="">Press</a></li>
+                        <li><a href="">Etc</a></li>
+                    </ul>
+            </div>
+            <div class="col-sm-2">
+                <h4>Help</h4>
+                    <ul>
+                        <li><a href="">FAQ</a></li>
+                        <li><a href="">Support</a></li>
+                        <li><a href="">Term of use</a></li>
+                        <li><a href="">Privacy Policy</a></li>
+                        <li><a href="">Cookie Policy</a></li>
+                    </ul>
+            </div>
+            <div class="col-sm-2">
+                <h4>Hi</h4>
+                    <ul>
+                        <li><a href="">Facebook</a></li>
+                        <li><a href="">Twitter</a></li>
+                        <li><a href="">Youtube</a></li>
+                        <li><a href="">Etc</a></li>
+                    </ul>
+            </div>
+            <div class="col-sm-1"></div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6"><span class="pull-left"><h4>Next Season Logo</h4></span></div>
+                <div class="col-sm-6"><span class="pull-right">
+    	<p> 2015 New Season, Inc. All Rigts Reserved </p>
+        </span></div>
+            </div>
+        </div>
+
+    </footer>
+
+</div>
+
+
+<!-- JS CODE -->
+<script>
+    var base_url = "http://localhost/cf/";
+    var url_project = base_url+"index.php/projects/view_project/"+"3";
+
+    var project_id;
+    var project_data;
+
+    function getProject(){
+
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function() {
+            if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                var json_array = JSON.parse(xmlhttp.responseText);
+                project_data = json_array.rows[0];
+                updateProjectInfo(project_data);
+            }
+        };
+        xmlhttp.open("GET", url_project, true);
+        xmlhttp.send();
+    }
+
+    function updateProjectInfo(data) {
+        document.getElementById("project-title").innerHTML = data.title;
+        document.getElementById("project-designer").innerHTML = data.firstname + " " + data.lastname;
+        document.getElementById("highlight-img").src = "http://localhost/cf/pic/"+data.projects_id+"_1.png";
+        document.getElementById("secondary-img-1").src = "http://localhost/cf/pic/"+data.projects_id+"_2.png";
+        document.getElementById("secondary-img-2").src = "http://localhost/cf/pic/"+data.projects_id+"_3.png";
+        document.getElementById("secondary-img-3").src = "http://localhost/cf/pic/"+data.projects_id+"_4.png";
+        document.getElementById("price-label").innerHTML = data.price;
+        document.getElementById("founded-label").innerHTML = data.sale_current + " / " + data.sale_minimum;
+        document.getElementById("days-to-go-label").innerHTML = data.round + " days";
+        document.getElementById("product-info").firstElementChild.innerHTML = data.description;
+        document.getElementById("designer-info-name").innerHTML = data.firstname + " " + data.lastname;
+        var link = "http://" + data.website;
+        document.getElementById("designer-info-website").innerHTML = "<a target='_blank' href="+link+">" +data.website+"</a>";
+        document.getElementById("materials-field").innerHTML = data.materials;
+        document.getElementById("wash-dry-field").innerHTML = data.wash_dry;
+        document.getElementById("other-info-field").innerHTML = data.other;
+    }
+    
+    getProject();
+
+
+
+
+
+</script>
+
+
+</body>
+</html>

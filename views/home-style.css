@@ -23,7 +23,7 @@
 }
 
 .navbar li a, .navbar .navbar-brand {
-    color: ##626262 !important;
+    color: #626262 !important;
 }
 
 .navbar-nav li a:hover, .navbar-nav li.active a {
@@ -127,7 +127,7 @@
 
 
 .jumbotron {
-	background-image:http://ngaitahu.iwi.nz/wp-content/uploads/2015/09/placeholder-banner.jpg;
+	background-image:url("http://ngaitahu.iwi.nz/wp-content/uploads/2015/09/placeholder-banner.jpg");
 	color:#626262;
 	padding:100px 25px;
 	}
@@ -140,6 +140,11 @@
 	color:#ffffff;
 	padding:30px 0;
 	}
+
+.ftr ul{
+	text-align: left;
+}
+
 footer .glyphicon {
     font-size: 20px;
     margin-bottom: 20px;
@@ -157,7 +162,7 @@ footer .glyphicon {
 	}
 
 
-<!-- MEDIA QUERIES -->
+    /* MEDIA QUERIES */
 	/* Small Devices, Tablets */
     @media only screen and (max-width : 768px) {
 		.nav-container, .content1-container {padding:0 100px; text-align:center;}

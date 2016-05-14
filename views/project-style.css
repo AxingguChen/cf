@@ -1,0 +1,117 @@
+
+.project-tab {
+    padding: 40px 200px;
+}
+
+.directory-tab {
+    height: 100px;
+    width: 100%;
+    color: #f6f6f6;
+    background-color: #C3C3C3;
+}
+
+.project-tab {
+    width:100%;
+    background-color: #f6f6f6;
+
+    text-align: center;
+}
+
+#project-title, #project-designer, #product_section, #info-section {min-width: 880px;}
+
+#project-designer { margin-bottom: 40px;}
+
+#product_section {
+    padding-bottom: 40px;
+}
+
+
+#info-section {
+    background-color: #f6f6f6;
+}
+
+#highlight-img {
+    height: 100%;
+    width: auto;
+}
+
+.secondary-img {
+    height: 160px;
+    width: auto;
+    padding: 20px 20px;
+}
+
+#metrics-section {
+    border-bottom: solid;
+    border-color: #C3C3C3;
+    border-width: 1px;
+
+    text-align: left;
+}
+
+#metrics-section h5 {
+    font-size: 20px;
+    margin-bottom: 2px;
+}
+#metrics-section h6{
+    text-align: start;
+    margin-top: 2px;
+}
+
+#color-section, #size-section, #designer-info, #product-info, #icons-section {
+    border-bottom: solid;
+    border-color: #C3C3C3;
+    border-width: 1px;
+
+    height: 150px;
+    text-align: center;
+
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: auto;
+    padding-right: auto;
+}
+
+#designer-info p {
+    font-size: 13px;
+}
+
+#product-info p {
+    font-size: 10px;
+}
+
+#color-section, #designer-info-realized, #designer-info-contact {
+    border-left: solid;
+    border-color: #C3C3C3;
+    border-width: 1px;
+}
+
+#designer-info-realized, #designer-info-contact {text-align: right;}
+
+.color-circle:hover {stroke: #595959; }
+
+
+#designer-info-col-text {text-align: left;}
+#icons-section {height: 75px;}
+
+.nav-tabs {
+    border: none;
+    margin: 0;
+    padding: 0 0;
+}
+
+.social-logo {
+    height: 28px;
+}
+
+.tab-content {
+    text-align: left;
+}
+
+.tab-content h4 {
+    margin-top: 60px;
+    font-size: 14px;
+}
+.tab-content p {
+    font-size: 12px;
+}
