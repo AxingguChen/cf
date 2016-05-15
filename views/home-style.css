@@ -42,11 +42,12 @@
     border-radius: 0;
 	border-style:solid;
 	border-width:1px;
-	border-color:#ffffff;
+    background-color: #ffffff;
+	border-color:#C3C3C3;
 }
 
 #myNavbar ul li a, .navbar li a, .navbar .navbar-brand {
-    color: #f6f6f6;
+    color: #595959;
 }
 
 .navbar-nav li a:hover, .navbar-nav li.active a, .navbar-brand:hover {
@@ -61,12 +62,12 @@
 .navbar ul {
 	border-left-style: solid;
     border-width: 1px;
-	border-color:#ffffff;
+	border-color:#C3C3C3;
 	}
 .nav-icon {
 	border-style: solid;
     border-width: 1px;
-	border-color:#ffffff;
+    border-color: #c3c3c3;;
 	}
 
 .login-dropdown {
@@ -171,8 +172,8 @@
 
 /* Jumbotrone */
 .jumbotron {
+    margin-top: 50px;
 	height: 400px;
-	background-image:url("icons/banner1.jpg");
 	color:#f6f6f6;
 	padding:100px 25px;
 	}

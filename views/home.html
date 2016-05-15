@@ -143,7 +143,7 @@
 
 
 <!-- Page HEADER -->
-<div class="jumbotron text-center">
+<div class="jumbotron text-center" style="background-image: url('icons/banner1.jpg');">
   	<div class="row">
   	<div class="col-sm-6"></div>
   	<div class="col-sm-5">
@@ -700,7 +700,7 @@ function updateDesign(arr) {
 		d0.href = base_url+"views/project.html?"+arr[i].projects_id;
 		
 		// update img	
-		img_path = "http://localhost/cf/pic/"+arr[i].projects_id+"_1.png"
+		img_path = "http://localhost/cf/pic/"+arr[i].projects_id+"_1.png";
 		d0.childNodes.item(1).childNodes.item(1).src = img_path;
 		// update title
 		d0.childNodes.item(1).childNodes.item(3).innerHTML = arr[i].title;
@@ -732,29 +732,6 @@ function designOffsetLeft(){
 function checkLogin(name,pass){ 
 	
 }
-
-// Navbar scroll
-$(document).ready(function(){
-	var scroll_start = 0;
-	var startchange = $('#home-carousel-container');
-	var offset = startchange.offset();
-	$(document).scroll(function() {
-		scroll_start = $(this).scrollTop();
-		if(scroll_start > offset.top) {
-			$('#navbar').css('background-color', '#ffffff');
-            $('#navbar').css('color', '#000000');
-            $('#navbar-brand').css('color', '#000000');
-            $('#myNavbar').css('color', '#000000');
-		} else {
-			$('#navbar').css('background-color', 'transparent');
-			$('#navbar').css('color', '#f6f6f6');
-            $('#navbar-brand').css('color', '#f6f6f6');
-            $('#myNavbar').css('color', '#f6f6f6');
-
-
-		}
-	});
-});
 
 getLastChance();
 getDesigns();

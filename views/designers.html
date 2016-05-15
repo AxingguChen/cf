@@ -566,8 +566,7 @@ function updateDesigners(arr) {
 		d0.childNodes.item(1).href=base_url+"views/designer.html?"+arr[i].users_id;
 		
 		// update img	
-//		img_path = "http://localhost/cf/pic/"+arr[i].projects_id+"_1.png"
-		img_path = "http://www.indre-reisid.ee/wp-content/themes/envision/lib/images/default-placeholder.png";
+		img_path = base_url+"avatar/"+arr[i].users_id+".png";
 		d0.childNodes.item(1).childNodes.item(1).src = img_path;
 		// update name
 		d0.childNodes.item(1).childNodes.item(3).innerHTML = arr[i].firstname + " " + arr[i].lastname;

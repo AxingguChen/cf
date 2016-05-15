@@ -444,6 +444,7 @@
     }
 
     function updateDesignerInfo(data) {
+        document.getElementById("highlight-img").src = base_url+"avatar/"+data.users_id+".png";
         document.getElementById("designer-name").innerHTML = data.firstname + " " + data.lastname;
         document.getElementById("designer-place").innerHTML = data.city + ", " + data.country;
         var link = "http://" + data.website;
