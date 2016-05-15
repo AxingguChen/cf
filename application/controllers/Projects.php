@@ -78,6 +78,32 @@ class Projects extends CI_Controller {
     	$data ['offset'] = $offset + 1;
     	print json_encode($data);
     }
+    
+    
+	//according to users id to get all relevant projects
+    public function view_projects_by_user($projects_users_id, $offset = 0, $limit = 0){
+    	if ($limit <= 0) {
+    		$MAX_RECORDS = 8; /* each request return 8 records at most */
+    	} else {
+    		$MAX_RECORDS = $limit;
+    	}
+    	$data ['rows'] = $this->projects_model->get_by_users_id ($projects_users_id, $offset * $MAX_RECORDS, $MAX_RECORDS );
+    	$data ['offset'] = $offset + 1;
+    	print json_encode($data);
+    }
+    
+    //according to users id to get all relevant projects
+    public function view_project_related($projects_id, $offset = 0, $limit = 0){
+    	if ($limit <= 0) {
+    		$MAX_RECORDS = 8; /* each request return 8 records at most */
+    	} else {
+    		$MAX_RECORDS = $limit;
+    	}
+    	$data ['rows'] = $this->projects_model->get_by_related ($projects_id, $offset * $MAX_RECORDS, $MAX_RECORDS );
+    	$data ['offset'] = $offset + 1;
+    	print json_encode($data);
+    }
+    
     //according to current sale number 
     public function view_projects_popularity($offset = 0, $limit = 0){
     	if ($limit <= 0) {

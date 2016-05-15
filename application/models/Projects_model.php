@@ -53,6 +53,46 @@ class Projects_model extends CI_Model
         return $query->result();
     }
     
+    public function get_by_users_id($projects_users_id, $limit = 0, $order = 'projects.date_publish', $direction = 'asc')
+    {
+    	$this->db->select('*');
+    	$this->db->from($this->TABLENAME);
+    	$this->db->join('users', "users.users_id = $this->TABLENAME.projects_users_id");
+    	$this->db->where('projects_users_id',$projects_users_id);
+    	$this->db->where('projects_project_state_id',2);
+    	if (strlen($order) > 0)
+    	{
+    		$this->db->order_by($order, $direction);
+    	}
+    	if ($limit > 0)
+    	{
+    		$this->db->limit($limit, $offset);
+    	}
+    	$query = $this->db->get();
+    	return $query->result();
+    }
+    
+    public function get_by_related($projects_id, $limit = 0, $order = 'projects.date_publish', $direction = 'asc'){
+    	$str = 'select projects_users_id from projects where projects_id = '.$projects_id;
+    	$result = $this->db->query($str);
+    	$this->db->select('*');
+    	$this->db->from($this->TABLENAME);
+    	$this->db->join('users', "users.users_id = $this->TABLENAME.projects_users_id");
+    	$this->db->where('projects_users_id',$result->row()->projects_users_id);
+    	$this->db->where('projects_id !=',$projects_id);
+    	$this->db->where('projects_project_state_id',2);
+    	if (strlen($order) > 0)
+    	{
+    		$this->db->order_by($order, $direction);
+    	}
+    	if ($limit > 0)
+    	{
+    		$this->db->limit($limit, $offset);
+    	}
+    	$query = $this->db->get();
+    	return $query->result();
+    }
+    
     public function get_last_chance( $limit = 0, $order = 'projects.date_publish', $direction = 'asc')
     {
     	$this->db->select('*');
@@ -136,18 +176,18 @@ class Projects_model extends CI_Model
      * @param integer $user_id
      * @return array records
      */
-    public function get_by_users_id($users_id)
-    {
-        if ($users_id <= 0)
-        {
-            return -1;
-        }
-        $this->db->select('*');
-        $this->db->from($this->TABLENAME);
-        $this->db->where("$this->TABLENAME.projects_users_id", $users_id);
-        $query = $this->db->get();
-        return $query->result();
-    }
+//     public function get_by_users_id($users_id)
+//     {
+//         if ($users_id <= 0)
+//         {
+//             return -1;
+//         }
+//         $this->db->select('*');
+//         $this->db->from($this->TABLENAME);
+//         $this->db->where("$this->TABLENAME.projects_users_id", $users_id);
+//         $query = $this->db->get();
+//         return $query->result();
+//     }
 	
     public function get_by_gender($gender = 0,$sort = -1,$offset = 0, $limit = 0, $order = 'projects.date_publish', $direction = 'asc')
     {
