@@ -4,13 +4,36 @@
   background-color:transparent;
   margin-right: auto;
   margin-left: auto;
-  max-width: 1600px;
+  max-width: 1440px;
   padding:0 0 0 0;
 }
 
+
+/* Font */
+
+
+
+
+/* Buttons */
+
+.btn-default {
+    border-left-style: solid;
+    border-width: 1px;
+    border-color:#000000;
+    border-radius: 10px;
+    background-color: transparent;
+    font-family: "futura-pt-condensed", sans-serif; font-weight: 100;
+}
+
+.btn-default:hover {
+    background-color:#595959;
+    color: #f6f6f6;
+}
+
+
 .navbar {
     margin-bottom: 0;
-    background-color: #f6f6f6;
+    background-color: transparent;
     z-index: 9999;
     border: 0;
     font-size: 12px !important;
@@ -22,11 +45,11 @@
 	border-color:#ffffff;
 }
 
-.navbar li a, .navbar .navbar-brand {
-    color: #626262 !important;
+#myNavbar ul li a, .navbar li a, .navbar .navbar-brand {
+    color: #f6f6f6;
 }
 
-.navbar-nav li a:hover, .navbar-nav li.active a {
+.navbar-nav li a:hover, .navbar-nav li.active a, .navbar-brand:hover {
     color: #000000 !important;
     background-color: #fff !important;
 }
@@ -48,9 +71,12 @@
 
 .login-dropdown {
 	width:400px;
+    color: #595959 !important;
 	padding:20px 30px;
 	text-align:center;
 }
+
+.login-dropdown a {color: #595959 !important;}
 
 #login-error-label {visibility:hidden; color:#DF5C5E}
 
@@ -88,6 +114,12 @@
     background-color: #626262;
 }
 
+.item:link, .item:visited {
+    background-color: transparent;
+    text-decoration: none;
+    color: #595959;
+}
+
 .item h1 {
     font-size: 19px;
     line-height: 1.375em;
@@ -106,6 +138,16 @@
 .design-thumbnail-col {
 	padding: 20px 20px;
 	}
+
+.design-thumbnail-col:link, .design-thumbnail-col:visited {
+	background-color: transparent;
+	text-decoration: none;
+	color: #595959;
+}
+
+.design-thumbnail-col:hover, .design-thumbnail-col:active {
+	background-color: #f6f6f6;
+}
 
 .thumbnail {
     border: none;
@@ -126,17 +168,28 @@
 .progress-bar-custom {background: rgba(0, 0, 0, 1);}
 
 
+
+/* Jumbotrone */
 .jumbotron {
-	background-image:url("http://ngaitahu.iwi.nz/wp-content/uploads/2015/09/placeholder-banner.jpg");
-	color:#626262;
+	height: 400px;
+	background-image:url("icons/banner1.jpg");
+	color:#f6f6f6;
 	padding:100px 25px;
 	}
+
+
+/* Design section */
+
 .bg-grey {
-	background-color:#f6f6f6;
+	background-color:#f5f9fa;
 	padding:60px 10px;
 	}
+
+
+
+/* Footer */
 .ftr {
-	background-color:#595959;
+	background-color:#1e1e1e;
 	color:#ffffff;
 	padding:30px 0;
 	}

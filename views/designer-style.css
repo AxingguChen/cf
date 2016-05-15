@@ -1,3 +1,8 @@
 #designer-section h3, p {text-align: left;}
 
-#designer-description {max-height: 140px;}
+#info-section {
+    padding-top: 100px;
+    padding-bottom: 60px;
+}
+
+#highlight-img { height: 300px;}

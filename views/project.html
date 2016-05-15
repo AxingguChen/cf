@@ -37,7 +37,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">Air Showroom</a>
+                <a class="navbar-brand" href="home.html">Air Showroom</a>
             </div>
             <div class="collapse navbar-collapse" id="myNavbar">
                 <ul class="nav navbar-nav">
@@ -455,7 +455,11 @@
         document.getElementById("wash-dry-field").innerHTML = data.wash_dry;
         document.getElementById("other-info-field").innerHTML = data.other;
     }
-    
+
+    var str = self.location.search;
+    var id = str.replace("?", "");
+    url_project = base_url+"index.php/projects/view_project/"+id;
+
     getProject();
 
 

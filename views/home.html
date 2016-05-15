@@ -15,7 +15,7 @@
 
 <div class="container-fluid main-container">
 
-<nav class="navbar navbar-default navbar-fixed-top">
+<nav class="navbar navbar-default navbar-fixed-top" id="navbar">
   <div class="container">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -23,7 +23,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span> 
       </button>
-      <a class="navbar-brand" href="home.html">Air Showroom</a>
+      <a class="navbar-brand" id="navbar-brand" href="home.html">Air Showroom</a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
@@ -149,7 +149,7 @@
   	<div class="col-sm-5">
     	<h2 id="jumbo_title">Write title here</h2>
         <h4 id="jumbo_subtitle"> Lorem ipsum dolor sit amet, consectetur adipisci elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam....</h4>
-    <button type="button" class="btn btn-default">Start a project</button>
+    <button type="button" class="btn btn-default">START A PROJECT</button>
     </div>
       	<div class="col-sm-1"></div>
 	</div>
@@ -160,12 +160,12 @@
 
 
 <!-- LAST CHANCE SECTION (CARUSEL) -->
-<div class="container-fluid carusel-container">
+<div class="container-fluid carusel-container" id="home-carousel-container">
 <div class="container">
   <div class="row">
     <div class="col-sm-6"><h4>Last chance</h4></div>
     <div class="col-sm-6"><span class="pull-right">
-    	<button type="button" class="btn btn-default">All latest projects</button>
+    	<button type="button" class="btn btn-default">ALL LATEST PROJECTS</button>
         </span></div>
   </div>
 </div>
@@ -179,7 +179,7 @@
 
   <!-- Wrapper for slides -->
   <div class="carousel-inner" role="listbox" id="carusel">
-    <div class="item active">
+    <a class="item active" href="#">
       <h1>
       	  <div class="row highlight-project">
           	<div class="col-sm-2"></div>
@@ -221,8 +221,8 @@
             <div class="col-sm-2"></div>
   		</div>
       </h1>
-    </div>
-    <div class="item">
+    </a>
+    <a class="item" href="#">
       <h1>
       		      	  <div class="row highlight-project">
           	<div class="col-sm-2"></div>
@@ -264,8 +264,8 @@
             <div class="col-sm-2"></div>
   		</div>
       </h1>
-    </div>
-    <div class="item">
+    </a>
+    <a class="item" href="#">
       <h1>
       		      	  <div class="row highlight-project">
           	<div class="col-sm-2"></div>
@@ -307,7 +307,7 @@
             <div class="col-sm-2"></div>
   		</div>
       </h1>
-    </div>
+    </a>
   </div>
 
   <!-- Left and right controls -->
@@ -331,14 +331,14 @@
   		<div class="row">
     		<div class="col-sm-6"><h4>Designs</h4></div>
     			<div class="col-sm-6"><span class="pull-right">
-    				<a href="projects.html"><button type="button" class="btn btn-default">All designs</button></a>
+    				<a href="projects.html"><button type="button" class="btn btn-default">ALL DESIGNS</button></a>
         		</span></div>
   			</div>
 		</div>
 
 		<div class="container-fluid text-center design-container" id="design-container">
   			<div class="row text-center">
-    			<div class="col-sm-4 design-thumbnail-col">
+    			<a class="col-sm-4 design-thumbnail-col" href="#">
       				<div class="thumbnail">
         				<img src="http://www.indre-reisid.ee/wp-content/themes/envision/lib/images/default-placeholder.png" alt="project_img">
         				<h4><strong>Title of the project</strong></h4>
@@ -369,8 +369,8 @@
   							</div>
 						</div>                        
       				</div>
-    			</div>
-                <div class="col-sm-4 design-thumbnail-col">
+    			</a>
+                <a class="col-sm-4 design-thumbnail-col" href="#">
       				<div class="thumbnail">
         				<img src="http://www.indre-reisid.ee/wp-content/themes/envision/lib/images/default-placeholder.png" alt="project_img">
         				<h4><strong>Title of the project</strong></h4>
@@ -401,8 +401,8 @@
   							</div>
 						</div>
       				</div>
-    			</div>
-                <div class="col-sm-4 design-thumbnail-col">
+    			</a>
+                <a class="col-sm-4 design-thumbnail-col" href="#">
       				<div class="thumbnail">
         				<img src="http://www.indre-reisid.ee/wp-content/themes/envision/lib/images/default-placeholder.png" alt="project_img">
         				<h4><strong>Title of the project</strong></h4>
@@ -433,10 +433,10 @@
   							</div>
 						</div>
       				</div>
-    			</div>         
+    			</a>
 			</div>
             <div class="row text-center">
-    			<div class="col-sm-4 design-thumbnail-col">
+    			<a class="col-sm-4 design-thumbnail-col" href="#">
       				<div class="thumbnail">
         				<img src="http://www.indre-reisid.ee/wp-content/themes/envision/lib/images/default-placeholder.png" alt="project_img">
         				<h4><strong>Title of the project</strong></h4>
@@ -467,8 +467,8 @@
   							</div>
 						</div>                        
       				</div>
-    			</div>
-                <div class="col-sm-4 design-thumbnail-col">
+    			</a>
+                <a class="col-sm-4 design-thumbnail-col" href="#">
       				<div class="thumbnail">
         				<img src="http://www.indre-reisid.ee/wp-content/themes/envision/lib/images/default-placeholder.png" alt="project_img">
         				<h4><strong>Title of the project</strong></h4>
@@ -499,8 +499,8 @@
   							</div>
 						</div>
       				</div>
-    			</div>
-                <div class="col-sm-4 design-thumbnail-col">
+    			</a>
+                <a class="col-sm-4 design-thumbnail-col" href="#">
       				<div class="thumbnail">
         				<img src="http://www.indre-reisid.ee/wp-content/themes/envision/lib/images/default-placeholder.png" alt="project_img">
         				<h4><strong>Title of the project</strong></h4>
@@ -531,7 +531,7 @@
   							</div>
 						</div>
       				</div>
-    			</div>         
+    			</a>
 			</div>
 		</div>
         
@@ -664,6 +664,10 @@ function updateLastChance(arr) {
 		if(!el0.hasChildNodes()) {
 			j++; el0 = document.getElementById("carusel").childNodes.item(j);
 			}
+
+        // update link
+        el0.href = base_url+"views/project.html?"+arr[i].projects_id;
+
 		//update title
 		el0.childNodes.item(1).childNodes.item(1).childNodes.item(5).childNodes.item(1).innerHTML = arr[i].title;
 		//update owner and description
@@ -691,6 +695,9 @@ function updateDesign(arr) {
 			j++; d0 = document.getElementById("design-container").childNodes.item(3).childNodes.item(j);
 			}
 			}
+
+		// update link
+		d0.href = base_url+"views/project.html?"+arr[i].projects_id;
 		
 		// update img	
 		img_path = "http://localhost/cf/pic/"+arr[i].projects_id+"_1.png"
@@ -725,6 +732,29 @@ function designOffsetLeft(){
 function checkLogin(name,pass){ 
 	
 }
+
+// Navbar scroll
+$(document).ready(function(){
+	var scroll_start = 0;
+	var startchange = $('#home-carousel-container');
+	var offset = startchange.offset();
+	$(document).scroll(function() {
+		scroll_start = $(this).scrollTop();
+		if(scroll_start > offset.top) {
+			$('#navbar').css('background-color', '#ffffff');
+            $('#navbar').css('color', '#000000');
+            $('#navbar-brand').css('color', '#000000');
+            $('#myNavbar').css('color', '#000000');
+		} else {
+			$('#navbar').css('background-color', 'transparent');
+			$('#navbar').css('color', '#f6f6f6');
+            $('#navbar-brand').css('color', '#f6f6f6');
+            $('#myNavbar').css('color', '#f6f6f6');
+
+
+		}
+	});
+});
 
 getLastChance();
 getDesigns();

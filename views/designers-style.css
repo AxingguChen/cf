@@ -29,6 +29,16 @@
 	text-align:center;
 	padding:40px 100px;
 	}
+
+.designers-container a:link, a:visited {
+	background-color: transparent;
+	text-decoration: none;
+    color: #595959;
+}
+
+.designers-container a:hover, a:active {
+    background-color: #f6f6f6;
+}
 	
 .designers-thumbnail{
 	padding:30px 20px;
