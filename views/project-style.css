@@ -1,25 +1,83 @@
 
-.project-tab {
-    padding: 40px 200px;
+.filters-tab {
+    padding-top: 50px;
+    margin: 0;
+    text-align: left !important;
 }
 
+.filter-tab-element {
+    display: inline-block;
+    width: 10%;
+    text-align: center;
+
+    position: relative;
+}
+
+.dropbtn {
+    border: none;
+    cursor: pointer;
+    background-color: transparent;
+}
+
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #ffffff !important;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+    color: black;
+    background-color: #ffffff !important;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+/* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
+.show {display:block;}
+
+
+
+.btn-filter-clear { margin-left: 60px;}
+
 .directory-tab {
-    height: 100px;
     width: 100%;
-    color: #f6f6f6;
-    background-color: #C3C3C3;
+    padding: 6px 200px 6px 200px;
+
+    color: #000000;
+    background-color: #e4e4e4;
+}
+
+.dir-tab-element-fix, .dir-tab-element {display: inline-block; text-align: center;}
+.dir-tab-element-fix { width: 5%; min-width: 12px; }
+
+.dir-tab-element a {
+    text-decoration: none;
+    color: #c3c3c3;
+}
+.dir-tab-element a:hover {
+    text-decoration: none;
+    color: #1e1e1e;
 }
 
 .project-tab {
     width:100%;
-    background-color: #f6f6f6;
-
+    padding: 40px 200px 20px 200px;
+    background-color: #f1f1f1;
     text-align: center;
 }
 
 #project-title, #project-designer, #product_section, #info-section {min-width: 880px;}
 
-#project-designer { margin-bottom: 40px;}
+#project-designer { margin-bottom: 40px; font-style: italic; color: #626262;}
 
 #product_section {
     padding-bottom: 40px;
@@ -27,7 +85,8 @@
 
 
 #info-section {
-    background-color: #f6f6f6;
+    background-color: #ffffff;
+    padding: 10px 200px 60px 200px;
 }
 
 #highlight-img {
@@ -72,6 +131,17 @@
     padding-right: auto;
 }
 
+#icons-section {border-bottom: none;}
+
+#size-section {
+    text-align: left;
+}
+
+#size-button {
+    width: 100px;
+    text-align: left;
+}
+
 #designer-info p {
     font-size: 13px;
 }
@@ -94,6 +164,12 @@
 #designer-info-col-text {text-align: left;}
 #icons-section {height: 75px;}
 
+#wishlist-button { background-color: #d3d3d3;  color: #1e1e1e; border-color:transparent;}
+#wishlist-button:hover { background-color: #1e1e1e; color: #d3d3d3;}
+
+#chart-button:hover { background-color: #d3d3d3;  color: #1e1e1e;}
+#chart-button { background-color: #1e1e1e; color: #d3d3d3;}
+
 .nav-tabs {
     border: none;
     margin: 0;
@@ -109,11 +185,15 @@
 
 .info-nav-tabs a:link, a:visited {
     text-decoration: none;
+    color: #1e1e1e;
+    font-weight: bold;
 }
 
 .info-nav-tabs li.active a, .info-nav-tabs li.active a:link, .info-nav-tabs li.active a:visited {
     background-color: transparent;
     text-decoration: none;
+    color: #1e1e1e;
+    font-weight: bold;
     border-bottom: solid;
     border-top: none;
     border-left: none;

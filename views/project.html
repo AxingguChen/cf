@@ -157,9 +157,58 @@
     </div>
 
     <!-- FILTERS TAB -->
+    <div class="container-fluid filters-tab">
+        <img src="icons/as-logo-120.png" height="48px" style="display: inline">
+        <div style="display: inline; width: 100%;">
+            <div class="filter-tab-element" style="color: #c3c3c3;"> Show me: </div>
+            <div class="filter-tab-element" style="font-weight: bold;">
+                <button onclick="dropdownFilter1()" class="dropbtn">Shop All</button>
+                <div id="dropdown1" class="dropdown-content">
+                    <a href="#">Link 1</a>
+                    <a href="#">Link 2</a>
+                    <a href="#">Link 3</a>
+                </div>
+            </div>
+            <div class="filter-tab-element" style="font-weight: bold;"> <span class="glyphicon glyphicon-menu-right"></span>  </div>
+            <div class="filter-tab-element" style="font-weight: bold;">
+                <button onclick="dropdownFilter2()" class="dropbtn">Clothing</button>
+                <div id="dropdown2" class="dropdown-content">
+                    <a href="#">Link 1</a>
+                    <a href="#">Link 2</a>
+                    <a href="#">Link 3</a>
+                </div>
+            </div>
+            <div class="filter-tab-element" style="font-weight: bold;"> <span class="glyphicon glyphicon-menu-right"></span>  </div>
+            <div class="filter-tab-element" style="font-weight: bold;">
+                <button onclick="dropdownFilter3()" class="dropbtn">Any color</button>
+                <div id="dropdown3" class="dropdown-content">
+                    <a href="#">Link 1</a>
+                    <a href="#">Link 2</a>
+                    <a href="#">Link 3</a>
+                </div>
+            </div>
+            <div class="filter-tab-element" style="font-weight: bold;"> <span class="glyphicon glyphicon-menu-right"></span>  </div>
+            <div class="filter-tab-element" style="font-weight: bold;">
+                <button onclick="dropdownFilter4()" class="dropbtn">Shop by</button>
+                <div id="dropdown4" class="dropdown-content">
+                    <a href="#">Link 1</a>
+                    <a href="#">Link 2</a>
+                    <a href="#">Link 3</a>
+                </div>
+            </div>
+            <button class="btn-default btn-filter-clear"> clear </button>
+        </div>
+    </div>
 
     <!-- DIRECTORY TAB -->
     <div class="container-fluid directory-tab">
+        <div style="display: inline; width: 100%">
+            <div class="dir-tab-element"><a href="home.html">Homepage</a></div>
+            <div class="dir-tab-element-fix" style="color: #c3c3c3;"> <span class="glyphicon glyphicon-menu-right"></span>  </div>
+            <div class="dir-tab-element" style="color: #c3c3c3;"> <a href="projects.html">Online Shop</a> </div>
+            <div class="dir-tab-element-fix" style="color: #c3c3c3;"> <span class="glyphicon glyphicon-menu-right"></span>  </div>
+            <div class="dir-tab-element" id="dir-product-name" style="font-weight: bold;"> Name of the product </div>
+        </div>
     </div>
 
     <!-- PROJECT TAB -->
@@ -206,7 +255,7 @@
                     <div id="size-section" class="col-sm-6">
                         <h5> CHOOSE SIZE </h5>
                         <div class="dropdown filter-dropdown" id="filter-color">
-                            <button class="btn btn-primary dropdown-toggle filter-dropdown-button" type="button" data-toggle="dropdown">XS<span class="glyphicon glyphicon-chevron-down"></span></button>
+                            <button class="btn btn-default dropdown-toggle filter-dropdown-button" type="button" data-toggle="dropdown" id="size-button">XS<span class="glyphicon glyphicon-menu-down pull-right"></span></button>
                             <ul class="dropdown-menu">
                                 <li><a href="#" id="action-white">XS</a></li>
                                 <li class="divider"></li>
@@ -222,7 +271,7 @@
                             </ul>
                         </div>
                         </br>
-                        <a>Size table</a>
+                        <a href="#" style="text-decoration: underline; color: #1e1e1e;">Size table</a>
                     </div>
                     <div id="color-section" class="col-sm-6">
                         <div class="row" style="height: 60px">
@@ -256,18 +305,18 @@
                     </div>
                 </div>
 
-
+                <div id="info-nav-section">
                 <ul class="nav nav-tabs info-nav-tabs">
-                    <li class="active" style="width: 50%; background-color: transparent; text-decoration: underline;" ><a data-toggle="tab" href="#designer-info">DESIGNER</a></li>
-                    <li style="width: 50%; background-color: transparent; text-decoration: underline;"><a data-toggle="tab" href="#product-info">DESCRIPTION</a></li>
+                    <li class="active" style="width: 50%; background-color: transparent; text-decoration: none;" ><a data-toggle="tab" href="#designer-info">DESIGNER</a></li>
+                    <li style="width: 50%; background-color: transparent; text-decoration: none;"><a data-toggle="tab" href="#product-info">DESCRIPTION</a></li>
                 </ul>
 
                 <div class="tab-content">
                     <div id="designer-info" class="tab-pane fade in active" style="height:150px;">
                         <div class="row">
-                            <div class="col-sm-6"> <img class="img-circle" id="designer-avatar" src="http://www.indre-reisid.ee/wp-content/themes/envision/lib/images/default-placeholder.png" height="120px" width="120px"></div>
+                            <div class="col-sm-6"> <img class="img-circle" id="designer-avatar" src="http://www.indre-reisid.ee/wp-content/themes/envision/lib/images/default-placeholder.png" height="92px" width="92px"></div>
                             <div id="designer-info-col-text" class="col-sm-6">
-                                <p id="designer-info-name"> Name Surname </p>
+                                <p id="designer-info-name" style="font-weight: bold;"> Name Surname </p>
                                 <div class="row">
                                     <div class="col-sm-6">
                                         <p id="designer-info-projects">projects</p>
@@ -279,10 +328,10 @@
                                 <p id="designer-info-website"> website </p>
                                 <div class="row">
                                     <div class="col-sm-6">
-                                        <p><a>See full info</a></p>
+                                        <p><a href="#" style="text-decoration: none; font-weight: bold; color: #1e1e1e">See full info</a></p>
                                     </div>
                                     <div class="col-sm-6">
-                                        <p id="designer-info-contact"><a>Contact</a></p>
+                                        <p id="designer-info-contact"><a href="#" style="text-decoration: none; font-weight: bold; color: #1e1e1e">Contact</a></p>
                                     </div>
                                 </div>
                             </div>
@@ -292,9 +341,10 @@
                         <p>Product description</p>
                     </div>
                 </div>
+                </div>
 
                 <div id="icons-section" class="row" style="height:75px;">
-                    <div class="col-sm-6"> <button class="btn btn-default"> ADD TO WISHLIST </button></div>
+                    <div class="col-sm-6"> <button class="btn btn-default" id="wishlist-button"> ADD TO WISHLIST </button></div>
                     <div class="col-sm-6">
                         <div class="row" style="height: 75px">
                             <div class="col-sm-3"><img class="social-logo" src="icons/facebook-logo.png"></div>
@@ -306,14 +356,17 @@
                 </div>
             </div>
         </div>
+        </div>
 
-        <div id="info-section">
+        <!-- INFO TAB -->
+
+        <div class="container-fluid" id="info-section">
         <ul class="nav nav-tabs info-nav-tabs">
             <li class="active"><a data-toggle="tab" href="#details">More Details</a></li>
             <li><a data-toggle="tab" href="#comments">Comments</a></li>
             <li><a data-toggle="tab" href="#related">Related Products</a></li>
             <span class="pull-right">
-    				<a href="projects.html"><button type="button" class="btn btn-default">ADD TO CHART</button></a>
+    				<a href="projects.html"><button type="button" class="btn btn-default" id="chart-button">ADD TO CHART</button></a>
         		</span>
         </ul>
 
@@ -407,7 +460,8 @@
                     </div><!-- /row -->
 
                 </div><!-- /container -->
-            </div>
+                </div>
+
 
 
 
@@ -447,7 +501,6 @@
                     </div>
                 </div>
             </div>
-        </div>
         </div>
     </div>
 
@@ -536,6 +589,38 @@
     var project_id;
     var project_data;
 
+
+    function dropdownFilter1() {
+        document.getElementById("dropdown1").classList.toggle("show");
+    }
+    function dropdownFilter2() {
+        document.getElementById("dropdown2").classList.toggle("show");
+    }
+    function dropdownFilter3() {
+        document.getElementById("dropdown3").classList.toggle("show");
+    }
+    function dropdownFilter4() {
+        document.getElementById("dropdown4").classList.toggle("show");
+    }
+
+    // Close the dropdown menu if the user clicks outside of it
+    window.onclick = function(event) {
+        if (!event.target.matches('.dropbtn')) {
+
+            var dropdowns = document.getElementsByClassName("dropdown-content");
+            var i;
+            for (i = 0; i < dropdowns.length; i++) {
+                var openDropdown = dropdowns[i];
+                if (openDropdown.classList.contains('show')) {
+                    openDropdown.classList.remove('show');
+                }
+            }
+        }
+    }
+
+
+
+
     function getProject(){
 
         var xmlhttp = new XMLHttpRequest();
@@ -611,12 +696,13 @@
 
     function updateProjectInfo(data) {
         document.getElementById("project-title").innerHTML = data.title;
-        document.getElementById("project-designer").innerHTML = data.firstname + " " + data.lastname;
+        document.getElementById("dir-product-name").innerHTML = data.title;
+        document.getElementById("project-designer").innerHTML = "by " + data.firstname + " " + data.lastname;
         document.getElementById("highlight-img").src = "http://localhost/cf/pic/"+data.projects_id+"_1.png";
         document.getElementById("secondary-img-1").src = "http://localhost/cf/pic/"+data.projects_id+"_2.png";
         document.getElementById("secondary-img-2").src = "http://localhost/cf/pic/"+data.projects_id+"_3.png";
         document.getElementById("secondary-img-3").src = "http://localhost/cf/pic/"+data.projects_id+"_4.png";
-        document.getElementById("price-label").innerHTML = data.price;
+        document.getElementById("price-label").innerHTML = data.price+"€";
         document.getElementById("founded-label").innerHTML = data.sale_current + " / " + data.sale_minimum;
         document.getElementById("days-to-go-label").innerHTML = data.round + " days";
         document.getElementById("product-info").firstElementChild.innerHTML = data.description;

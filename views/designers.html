@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="home-style.css">
   <link rel="stylesheet" type="text/css" href="designers-style.css">
+  <link rel="stylesheet" type="text/css" href="projects-style.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
   <script src="http://malsup.github.com/jquery.form.js"></script> 
@@ -151,83 +152,52 @@
 	<p>Lorem ipsum dolor sit amet, consectetur adipisci elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua....</p>
 </div>
 
-<!-- Filter MENU -->
-<div class="container-fluid filter-menu-container">
-<div class="row">
-	<div class="col-sm-2" style="display:inline-block;">
-        <h4 style="text-align:right;"><small>Filters</small></h4>
-    </div>
-    <div class="col-sm-2">
-    	<div class="dropdown filter-dropdown" id="filter-gender">
-  			<button class="btn btn-primary dropdown-toggle filter-dropdown-button" type="button" data-toggle="dropdown">All<span class="caret"></span></button>
- 			<ul class="dropdown-menu">
-                <li><a href="#" id="action-all-gender">All</a></li>
-                <li class="divider"></li>
-    			<li><a href="#" id="action-woman">Woman</a></li>
-                <li class="divider"></li>
-    			<li><a href="#" id="action-man">Man</a></li>
-                <li class="divider"></li>
-    			<li><a href="#" id="action-unisex">Unisex</a></li>
-  			</ul>
+
+
+	<!-- FILTERS TAB -->
+	<div class="container-fluid filters-tab">
+		<img src="icons/as-logo-120.png" height="48px" style="display: inline">
+		<div style="display: inline; width: 100%;">
+			<div class="filter-tab-element" style="color: #c3c3c3;"> Show me: </div>
+			<div class="filter-tab-element" style="font-weight: bold;">
+				<button onclick="dropdownFilter1()" class="dropbtn">All categories</button>
+				<div id="dropdown1" class="dropdown-content">
+					<a href="#">Womanswear</a>
+					<a href="#">Menswear</a>
+					<a href="#">Unisex</a>
+				</div>
+			</div>
+			<div class="filter-tab-element" style="font-weight: bold;"> <span class="glyphicon glyphicon-menu-right"></span> </div>
+
+			<div class="filter-tab-element" style="font-weight: bold;">
+				<button onclick="dropdownFilter2()" class="dropbtn">All countries</button>
+				<div id="dropdown2" class="dropdown-content">
+					<a href="#">Link 1</a>
+					<a href="#">Link 2</a>
+					<a href="#">Link 3</a>
+				</div>
+			</div>
+			<div class="filter-tab-element" style="font-weight: bold;"><span class="glyphicon glyphicon-menu-right"></span>  </div>
+			<div class="filter-tab-element" style="font-weight: bold;">
+				<button onclick="dropdownFilter3()" class="dropbtn">All schools</button>
+				<div id="dropdown3" class="dropdown-content">
+					<a href="#">Link 1</a>
+					<a href="#">Link 2</a>
+					<a href="#">Link 3</a>
+				</div>
+			</div>
+			<div class="filter-tab-element" style="font-weight: bold;"> <span class="glyphicon glyphicon-menu-right"></span>  </div>
+			<div class="filter-tab-element" style="font-weight: bold;">
+				<button onclick="dropdownFilter4()" class="dropbtn">Sort by</button>
+				<div id="dropdown4" class="dropdown-content">
+					<a href="#">Link 1</a>
+					<a href="#">Link 2</a>
+					<a href="#">Link 3</a>
+				</div>
+			</div>
+			<button class="btn-default btn-filter-clear"> clear </button>
 		</div>
-    </div>
-    <div class="col-sm-2">
-    	<div class="dropdown filter-dropdown" id="filter-type">
-  			<button class="btn btn-primary dropdown-toggle filter-dropdown-button" type="button" data-toggle="dropdown">Any type<span class="caret"></span></button>
- 			<ul class="dropdown-menu">
-          	    <li><a href="#" id="action-all-type">Shoes</a></li>
-                <li class="divider"></li>
-    			<li><a href="#" id="action-shoes">Shoes</a></li>
-                <li class="divider"></li>
-    			<li><a href="#" id="action-pants">Pants</a></li>
-                <li class="divider"></li>
-    			<li><a href="#" id="action-tshirt">T-shirts</a></li>
-  			</ul>
-		</div>
-    </div>
-    <div class="col-sm-2">
-    	<div class="dropdown filter-dropdown" id="filter-color">
-  			<button class="btn btn-primary dropdown-toggle filter-dropdown-button" type="button" data-toggle="dropdown">Any color  <span class="caret"></span></button>
- 			<ul class="dropdown-menu">
-                <li><a href="#" id="action-all-color">Any color</a></li>
-                <li class="divider"></li>
-    			<li><a href="#" id="action-white"><span class="glyphicon glyphicon-tint" style="color:white;"></span>White</a></li>
-                <li class="divider"></li>
-    			<li><a href="#" id="action-black"><span class="glyphicon glyphicon-tint" style="color:black;"></span>Black</a></li>
-                <li class="divider"></li>
-    			<li><a href="#" id="action-yellow"><span class="glyphicon glyphicon-tint" style="color:yellow;"></span>Yellow</a></li>
-                <li class="divider"></li>
-                <li><a href="#" id="action-green"><span class="glyphicon glyphicon-tint" style="color:green;"></span>Green</a></li>
-                <li class="divider"></li>
-    			<li><a href="#" id="action-blue"><span class="glyphicon glyphicon-tint" style="color:blue;"></span>Blue</a></li>
-                <li class="divider"></li>
-    			<li><a href="#" id="action-red"><span class="glyphicon glyphicon-tint" style="color:red;"></span>Red</a></li>
-                <li class="divider"></li>
-                <li><a href="#" id="action-orange"><span class="glyphicon glyphicon-tint" style="color:orange;"></span>Orange</a></li>
-  			</ul>
-		</div>
-    </div>
-    <div class="col-sm-2">
-    	<div class="dropdown filter-dropdown" id="filter-sort">
-  			<button class="btn btn-primary dropdown-toggle filter-dropdown-button" type="button" data-toggle="dropdown">Sort by  <span class="caret"></span></button>
- 			<ul class="dropdown-menu">
-            	<li><a href="#" id="action-no-sort">None</a></li>
-                <li class="divider"></li>
-                <li><a href="#" id="action-name">Name</a></li>
-                <li class="divider"></li>
-    			<li><a href="#" id="action-last">Last chance</a></li>
-                <li class="divider"></li>
-    			<li><a href="#" id="action-new">New</a></li>
-                <li class="divider"></li>
-                <li><a href="#" id="action-price">Price</a></li>
-  			</ul>
-		</div>
-    </div>
-    <div class="col-sm-2">
-    	<a id="action-clear-all"><h4 style="text-align:left;"><small><span class="glyphicon glyphicon-remove"></span>clear</small></h4></a>
-    </div>
-</div>
-</div>
+	</div>
 
 <!-- PROJECTS -->
 <div class="container-fluid designers-container" id="designers-container">
@@ -497,6 +467,34 @@
 var base_url = "http://localhost/cf/";
 var urlDesigners = base_url+"index.php/users/view_designers";
 var designers_offset=0;
+
+function dropdownFilter1() {
+	document.getElementById("dropdown1").classList.toggle("show");
+}
+function dropdownFilter2() {
+	document.getElementById("dropdown2").classList.toggle("show");
+}
+function dropdownFilter3() {
+	document.getElementById("dropdown3").classList.toggle("show");
+}
+function dropdownFilter4() {
+	document.getElementById("dropdown4").classList.toggle("show");
+}
+
+// Close the dropdown menu if the user clicks outside of it
+window.onclick = function(event) {
+	if (!event.target.matches('.dropbtn')) {
+
+		var dropdowns = document.getElementsByClassName("dropdown-content");
+		var i;
+		for (i = 0; i < dropdowns.length; i++) {
+			var openDropdown = dropdowns[i];
+			if (openDropdown.classList.contains('show')) {
+				openDropdown.classList.remove('show');
+			}
+		}
+	}
+}
 
 
 jQuery("#action-all-gender").click(function(e){document.getElementById("filter-gender").childNodes.item(1).innerHTML = "All"; e.preventDefault();});

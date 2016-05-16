@@ -151,7 +151,60 @@
 	<p>Lorem ipsum dolor sit amet, consectetur adipisci elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua....</p>
 </div>
 
-<!-- Filter MENU -->
+	<!-- FILTERS TAB -->
+	<div class="container-fluid filters-tab">
+		<img src="icons/as-logo-120.png" height="48px" style="display: inline">
+		<div style="display: inline; width: 100%;">
+			<div class="filter-tab-element" style="color: #c3c3c3;"> Show me: </div>
+			<div class="filter-tab-element" style="font-weight: bold;">
+                <button onclick="dropdownFilter1()" class="dropbtn">Shop All</button>
+                <div id="dropdown1" class="dropdown-content">
+                    <a href="#">Womanswear</a>
+                    <a href="#">Menswear</a>
+                    <a href="#">Unisex</a>
+                </div>
+            </div>
+			<div class="filter-tab-element" style="font-weight: bold;"> <span class="glyphicon glyphicon-menu-right"></span>  </div>
+            <div class="filter-tab-element" style="font-weight: bold;">
+                <button onclick="dropdownFilter2()" class="dropbtn">Clothing</button>
+                <div id="dropdown2" class="dropdown-content">
+                    <a href="#">Link 1</a>
+                    <a href="#">Link 2</a>
+                    <a href="#">Link 3</a>
+                </div>
+            </div>
+			<div class="filter-tab-element" style="font-weight: bold;"> <span class="glyphicon glyphicon-menu-right"></span>  </div>
+            <div class="filter-tab-element" style="font-weight: bold;">
+                <button onclick="dropdownFilter3()" class="dropbtn">Any color</button>
+                <div id="dropdown3" class="dropdown-content">
+                    <a href="#">Black</a>
+                    <a href="#">Multicolor</a>
+                    <a href="#">White</a>
+                    <a href="#">Grey</a>
+                    <a href="#">Blue</a>
+                    <a href="#">Pattern</a>
+                    <a href="#">Green</a>
+                    <a href="#">Yellow</a>
+                    <a href="#">Other</a>
+                </div>
+            </div>
+			<div class="filter-tab-element" style="font-weight: bold;"> <span class="glyphicon glyphicon-menu-right"></span>  </div>
+            <div class="filter-tab-element" style="font-weight: bold;">
+                <button onclick="dropdownFilter4()" class="dropbtn">Shop by</button>
+                <div id="dropdown4" class="dropdown-content">
+                    <a href="#">New Arrivals</a>
+                    <a href="#">Last Chance</a>
+                    <a href="#">Popularity</a>
+                </div>
+            </div>
+            <button class="btn-default btn-filter-clear"> clear </button>
+		</div>
+	</div>
+
+
+
+
+<!-- Filter MENU
 <div class="container-fluid filter-menu-container">
 <div class="row">
 	<div class="col-sm-2" style="display:inline-block;">
@@ -224,6 +277,8 @@
     </div>
 </div>
 </div>
+
+   -->
 
 <!-- PROJECTS -->
     <div class="container-fluid"><h5 id="no-result-banner"> Sorry, no results for these filters. </h5></div>
@@ -613,6 +668,40 @@ var projects_offset=0;
 // init url strings
 var base_url = "http://localhost/cf/";
 var urlProjects = base_url+"index.php/projects/view_projects_filter/"+ filter_type + "/"+ filter_gender + "/"+ filter_color + "/" + filter_sort + "/" + projects_offset;
+
+
+
+function dropdownFilter1() {
+    document.getElementById("dropdown1").classList.toggle("show");
+}
+function dropdownFilter2() {
+    document.getElementById("dropdown2").classList.toggle("show");
+}
+function dropdownFilter3() {
+    document.getElementById("dropdown3").classList.toggle("show");
+}
+function dropdownFilter4() {
+    document.getElementById("dropdown4").classList.toggle("show");
+}
+
+// Close the dropdown menu if the user clicks outside of it
+window.onclick = function(event) {
+    if (!event.target.matches('.dropbtn')) {
+
+        var dropdowns = document.getElementsByClassName("dropdown-content");
+        var i;
+        for (i = 0; i < dropdowns.length; i++) {
+            var openDropdown = dropdowns[i];
+            if (openDropdown.classList.contains('show')) {
+                openDropdown.classList.remove('show');
+            }
+        }
+    }
+}
+
+
+
+
 
 
 jQuery("#action-all-gender").click(function(e){

@@ -1,5 +1,59 @@
 @charset "UTF-8";
 /* CSS Document */
+
+.filters-tab {
+	padding: 0;
+    margin: 0;
+    text-align: left !important;
+}
+
+.filter-tab-element {
+    display: inline-block;
+    width: 10%;
+    text-align: center;
+
+    position: relative;
+}
+
+.dropbtn {
+    border: none;
+    cursor: pointer;
+    background-color: transparent;
+}
+
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+    z-index: 2;
+    display: none;
+    position: absolute;
+    background-color: #ffffff !important;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+/* Links inside the dropdown */
+.dropdown-content a, .dropdown-content a:link, .dropdown-content a:visited {
+    color: black;
+    background-color: #ffffff !important;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {background-color:#d3d3d3 !important;}
+
+/* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
+.show {display:block;}
+
+
+
+.btn-filter-clear { margin-left: 60px;}
+
+
+
+
 .filter-menu-container {
 	padding:30px 40px;
 	text-align:center;
@@ -29,6 +83,8 @@
 .jumbotron {
 	height: 300px;
 	background-image: url("icons/banner1.jpg");
+    padding-bottom: 0;
+    margin-bottom: 0;
 }
 
 .projects-container {
