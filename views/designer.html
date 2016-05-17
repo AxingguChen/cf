@@ -158,20 +158,65 @@
     </div>
 
     <!-- FILTERS TAB -->
-
-
+    <div class="container-fluid filters-tab">
+        <img src="icons/as-logo-120.png" height="48px" style="display: inline">
+        <div style="display: inline; width: 100%;">
+            <div class="filter-tab-element" style="color: #c3c3c3;"> Show me: </div>
+            <div class="filter-tab-element" style="font-weight: bold;">
+                <button onclick="dropdownFilter1()" class="dropbtn">Shop All</button>
+                <div id="dropdown1" class="dropdown-content">
+                    <a href="#">Link 1</a>
+                    <a href="#">Link 2</a>
+                    <a href="#">Link 3</a>
+                </div>
+            </div>
+            <div class="filter-tab-element" style="font-weight: bold;"> <span class="glyphicon glyphicon-menu-right"></span>  </div>
+            <div class="filter-tab-element" style="font-weight: bold;">
+                <button onclick="dropdownFilter2()" class="dropbtn">Clothing</button>
+                <div id="dropdown2" class="dropdown-content">
+                    <a href="#">Link 1</a>
+                    <a href="#">Link 2</a>
+                    <a href="#">Link 3</a>
+                </div>
+            </div>
+            <div class="filter-tab-element" style="font-weight: bold;"> <span class="glyphicon glyphicon-menu-right"></span>  </div>
+            <div class="filter-tab-element" style="font-weight: bold;">
+                <button onclick="dropdownFilter3()" class="dropbtn">Any color</button>
+                <div id="dropdown3" class="dropdown-content">
+                    <a href="#">Link 1</a>
+                    <a href="#">Link 2</a>
+                    <a href="#">Link 3</a>
+                </div>
+            </div>
+            <div class="filter-tab-element" style="font-weight: bold;"> <span class="glyphicon glyphicon-menu-right"></span>  </div>
+            <div class="filter-tab-element" style="font-weight: bold;">
+                <button onclick="dropdownFilter4()" class="dropbtn">Shop by</button>
+                <div id="dropdown4" class="dropdown-content">
+                    <a href="#">Link 1</a>
+                    <a href="#">Link 2</a>
+                    <a href="#">Link 3</a>
+                </div>
+            </div>
+            <button class="btn-default btn-filter-clear"> clear </button>
+        </div>
+    </div>
 
     <!-- DIRECTORY TAB -->
     <div class="container-fluid directory-tab">
+        <div style="display: inline; width: 100%">
+            <div class="dir-tab-element"><a href="home.html">Homepage</a></div>
+            <div class="dir-tab-element-fix" style="color: #c3c3c3;"> <span class="glyphicon glyphicon-menu-right"></span>  </div>
+            <div class="dir-tab-element" style="color: #c3c3c3;"> <a href="projects.html">Online Shop</a> </div>
+            <div class="dir-tab-element-fix" style="color: #c3c3c3;"> <span class="glyphicon glyphicon-menu-right"></span>  </div>
+            <div class="dir-tab-element" id="dir-product-name" style="font-weight: bold;"> Name of the product </div>
+        </div>
     </div>
-
 
 
 
     <!-- DESIGNER TAB -->
     <div class="container-fluid project-tab">
 
-        <div class="container-fluid">
         <div class="row" id="designer-section">
             <div class="col-sm-5">
                 <img id="highlight-img" src="http://www.indre-reisid.ee/wp-content/themes/envision/lib/images/default-placeholder.png">
@@ -183,165 +228,61 @@
                         <h3 id="designer-name"> NOME e COGNOME </h3>
                     </div>
                     <div class="col-sm-2">
-                        <button class="btn btn-primary">Follow</button>
+                        <button class="btn btn-default">FOLLOW</button>
                     </div>
                 </div>
                 <p id="designer-place"> Place </p>
                 <p> Project realized </p>
                 <p id="designer-website"> website </p>
 
-                <div class="span4 collapse-group">
+                <div class="collapse-group">
                     <p id="designer-description" class="collapse">Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-                    <p><a class="btn" href="#">View details</a></p>
+                    <button class="btn btn-default pull-left">View details</button>
                 </div>
 
             </div>
         </div>
 
-        </div>
+    </div>
 
-        <div id="info-section">
-            <ul class="nav nav-tabs">
+    <div class="container-fluid" id="info-section">
+            <ul class="nav nav-tabs info-nav-tabs" >
                 <li class="active"><a data-toggle="tab" href="#details">Backed</a></li>
             </ul>
 
             <div class="tab-content">
                 <div id="details" class="tab-pane fade in active">
                     <div class="container-fluid" id="backed-container">
+                        <h4 id="no-related-proj">Designer has no projects at this moment.</h4>
                         <div class="row">
-                            <div class="col-sm-3">
+                            <div class="col-sm-3" id="related-0">
                                 <div class="thumbnail project-thumbnail">
-                                    <img src="http://www.indre-reisid.ee/wp-content/themes/envision/lib/images/default-placeholder.png" alt="project_img">
-                                    <h4><strong>Title of the project</strong></h4>
-                                    <div class="row design-row">
-                                        <div class="col-sm-4">
-                                            <div>
-                                                <h5>euro</h5>
-                                                <h5><small>price</small></h5>
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-4">
-                                            <div>
-                                                <h5>X/Y</h5>
-                                                <h5><small>founded</small></h5>
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-4">
-                                            <div>
-                                                <h5>days</h5>
-                                                <h5><small>to go</small></h5>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="progress design-progress">
-                                        <div class="progress-bar progress-bar-custom" role="progressbar" aria-valuenow="70"
-                                             aria-valuemin="0" aria-valuemax="100" style="width:30%">
-                                            <span class="sr-only">30% Complete</span>
-                                        </div>
-                                    </div>
+                                    <img id="related-0-img" src="http://www.indre-reisid.ee/wp-content/themes/envision/lib/images/default-placeholder.png" alt="project_img">
+                                    <h4 id="related-0-title"><strong>Title of the project</strong></h4>
                                 </div>
                             </div>
-                            <div class="col-sm-3">
+                            <div class="col-sm-3" id="related-1">
                                 <div class="thumbnail project-thumbnail">
-                                    <img src="http://www.indre-reisid.ee/wp-content/themes/envision/lib/images/default-placeholder.png" alt="project_img">
-                                    <h4><strong>Title of the project</strong></h4>
-                                    <div class="row design-row">
-                                        <div class="col-sm-4">
-                                            <div>
-                                                <h5>euro</h5>
-                                                <h5><small>price</small></h5>
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-4">
-                                            <div>
-                                                <h5>X/Y</h5>
-                                                <h5><small>founded</small></h5>
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-4">
-                                            <div>
-                                                <h5>days</h5>
-                                                <h5><small>to go</small></h5>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="progress design-progress">
-                                        <div class="progress-bar progress-bar-custom" role="progressbar" aria-valuenow="70"
-                                             aria-valuemin="0" aria-valuemax="100" style="width:30%">
-                                            <span class="sr-only">30% Complete</span>
-                                        </div>
-                                    </div>
+                                    <img id="related-1-img" src="http://www.indre-reisid.ee/wp-content/themes/envision/lib/images/default-placeholder.png" alt="project_img">
+                                    <h4 id="related-1-title"><strong>Title of the project</strong></h4>
                                 </div>
                             </div>
-                            <div class="col-sm-3">
+                            <div class="col-sm-3" id="related-2">
                                 <div class="thumbnail project-thumbnail">
-                                    <img src="http://www.indre-reisid.ee/wp-content/themes/envision/lib/images/default-placeholder.png" alt="project_img">
-                                    <h4><strong>Title of the project</strong></h4>
-                                    <div class="row design-row">
-                                        <div class="col-sm-4">
-                                            <div>
-                                                <h5>euro</h5>
-                                                <h5><small>price</small></h5>
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-4">
-                                            <div>
-                                                <h5>X/Y</h5>
-                                                <h5><small>founded</small></h5>
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-4">
-                                            <div>
-                                                <h5>days</h5>
-                                                <h5><small>to go</small></h5>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="progress design-progress">
-                                        <div class="progress-bar progress-bar-custom" role="progressbar" aria-valuenow="70"
-                                             aria-valuemin="0" aria-valuemax="100" style="width:30%">
-                                            <span class="sr-only">30% Complete</span>
-                                        </div>
-                                    </div>
+                                    <img id="related-2-img" src="http://www.indre-reisid.ee/wp-content/themes/envision/lib/images/default-placeholder.png" alt="project_img">
+                                    <h4 id="related-2-title"><strong>Title of the project</strong></h4>
                                 </div>
                             </div>
-                            <div class="col-sm-3">
+                            <div class="col-sm-3" id="related-3">
                                 <div class="thumbnail project-thumbnail">
-                                    <img src="http://www.indre-reisid.ee/wp-content/themes/envision/lib/images/default-placeholder.png" alt="project_img">
-                                    <h4><strong>Title of the project</strong></h4>
-                                    <div class="row design-row">
-                                        <div class="col-sm-4">
-                                            <div>
-                                                <h5>euro</h5>
-                                                <h5><small>price</small></h5>
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-4">
-                                            <div>
-                                                <h5>X/Y</h5>
-                                                <h5><small>founded</small></h5>
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-4">
-                                            <div>
-                                                <h5>days</h5>
-                                                <h5><small>to go</small></h5>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="progress design-progress">
-                                        <div class="progress-bar progress-bar-custom" role="progressbar" aria-valuenow="70"
-                                             aria-valuemin="0" aria-valuemax="100" style="width:30%">
-                                            <span class="sr-only">30% Complete</span>
-                                        </div>
-                                    </div>
+                                    <img id="related-3-img" src="http://www.indre-reisid.ee/wp-content/themes/envision/lib/images/default-placeholder.png" alt="project_img">
+                                    <h4 id="related-3-title"><strong>Title of the project</strong></h4>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
     </div>
 
 
@@ -437,6 +378,7 @@
                 var json_array = JSON.parse(xmlhttp.responseText);
                 designer_data = json_array.rows[0];
                 updateDesignerInfo(designer_data);
+                getRelatedProducts(designer_data);
             }
         };
         xmlhttp.open("GET", url_designer, true);
@@ -453,6 +395,33 @@
 
         var name = self.location.search;
 
+    }
+
+    function getRelatedProducts(data) {
+        var url_related = base_url+"index.php/projects/view_projects_by_user/"+data.users_id;
+
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function() {
+            if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                var json_array = JSON.parse(xmlhttp.responseText);
+                var related_data = json_array.rows;
+
+                if(related_data.length==0) {
+                    document.getElementById("no-related-proj").style.display = "inline";
+                    return;
+                }
+
+                document.getElementById("no-related-proj").style.display = "none";
+                for(i=0; i<related_data.length && i<4; i++) {
+                    document.getElementById("related-"+i+"-img").src = base_url+"pic/"+related_data[i].projects_id+"_1.png";
+                    document.getElementById("related-"+i+"-title").innerHTML = related_data[i].title;
+                    document.getElementById("related-"+i).style.display = "inline";
+                }
+
+            }
+        };
+        xmlhttp.open("GET", url_related, true);
+        xmlhttp.send();
     }
 
     $('.row .btn').on('click', function(e) {

@@ -1,8 +1,21 @@
+#designer-section {padding-bottom: 40px;}
 #designer-section h3, p {text-align: left;}
 
 #info-section {
-    padding-top: 100px;
-    padding-bottom: 60px;
+    padding: 0 100px 60px 100px;
 }
 
-#highlight-img { height: 300px;}
+#designer-icon { background-color: transparent;}
+
+#highlight-img { height: 300px; background-color: transparent;}
+
+.info-nav-tabs { }
+.tab-content { padding-top: 40px;}
+
+#no-related-proj {padding-top: 0;}
+
+#related-0, #related-1, #related-2, #related-3 {display: none;}
+#related-0-title, #related-1-title, #related-2-title, #related-3-title {
+    margin-top: 10px;
+    text-align: center;
+}
