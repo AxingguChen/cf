@@ -97,6 +97,22 @@
 .login-dropdown p {font-size:10px; letter-spacing:0px; 
 	padding-top:10px;}
 
+
+#login-nav-button {}
+#sign-nav-button {}
+
+#logged-nav-button {
+    margin-left: 30px;
+    display: none;
+}
+#nav-login-name { display: inline-block; margin: 0; padding: 0;}
+
+
+
+
+
+/* ------------------------- MODALS ------------------------- */
+
 .modal {
 	text-align: center;
 }
@@ -106,11 +122,30 @@
     margin-top: 150px;
 	width: 400px;
 	height:300px;
-	padding-bottom:40px;
-  display: inline-block;
-  text-align: center;
-  vertical-align: middle;
+    padding-bottom:40px;
+    display: inline-block;
+    text-align: center;
+    vertical-align: middle;
 }
+
+#search-modal .modal-dialog {width: 100%;}
+#search-modal .modal-content {
+    background-color: transparent;
+    -webkit-box-shadow:0;
+    box-shadow: 0 0 0 transparent;
+    border: transparent;
+}
+#search-modal label { color: #f5f9fa; margin-right: 48px;}
+#search-modal input { color: #f5f9fa; background-color: transparent; width: 600px; }
+#search-modal button { border-color: #f5f9fa; margin-left: 48px; background-color: #f5f9fa; color: #1e1e1e;}
+#search-modal button:hover { color: #f5f9fa; background-color: #1e1e1e;}
+#search-modal label, #search-modal input, #search-modal button { !important; font-size: 22px; font-weight: 200; }
+
+
+
+
+
+/* CAROUSEL */
 
 .carousel-control.right, .carousel-control.left, .design-control {
 	background-color:transparent;

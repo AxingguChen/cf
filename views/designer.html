@@ -256,28 +256,36 @@
                         <h4 id="no-related-proj">Designer has no projects at this moment.</h4>
                         <div class="row">
                             <div class="col-sm-3" id="related-0">
+                                <a href="#">
                                 <div class="thumbnail project-thumbnail">
                                     <img id="related-0-img" src="http://www.indre-reisid.ee/wp-content/themes/envision/lib/images/default-placeholder.png" alt="project_img">
                                     <h4 id="related-0-title"><strong>Title of the project</strong></h4>
                                 </div>
+                                </a>
                             </div>
                             <div class="col-sm-3" id="related-1">
+                                <a href="#">
                                 <div class="thumbnail project-thumbnail">
                                     <img id="related-1-img" src="http://www.indre-reisid.ee/wp-content/themes/envision/lib/images/default-placeholder.png" alt="project_img">
                                     <h4 id="related-1-title"><strong>Title of the project</strong></h4>
                                 </div>
+                                </a>
                             </div>
                             <div class="col-sm-3" id="related-2">
+                                <a href="#">
                                 <div class="thumbnail project-thumbnail">
                                     <img id="related-2-img" src="http://www.indre-reisid.ee/wp-content/themes/envision/lib/images/default-placeholder.png" alt="project_img">
                                     <h4 id="related-2-title"><strong>Title of the project</strong></h4>
                                 </div>
+                                </a>
                             </div>
                             <div class="col-sm-3" id="related-3">
+                                <a href="#">
                                 <div class="thumbnail project-thumbnail">
                                     <img id="related-3-img" src="http://www.indre-reisid.ee/wp-content/themes/envision/lib/images/default-placeholder.png" alt="project_img">
                                     <h4 id="related-3-title"><strong>Title of the project</strong></h4>
                                 </div>
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -416,6 +424,7 @@
                     document.getElementById("related-"+i+"-img").src = base_url+"pic/"+related_data[i].projects_id+"_1.png";
                     document.getElementById("related-"+i+"-title").innerHTML = related_data[i].title;
                     document.getElementById("related-"+i).style.display = "inline";
+                    document.getElementById("related-"+i).childNodes[1].href = base_url+"views/project.html?"+related_data[i].projects_id;
                 }
 
             }

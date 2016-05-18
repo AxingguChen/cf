@@ -684,6 +684,7 @@
                     document.getElementById("related-"+i+"-img").src = base_url+"pic/"+related_data[i].projects_id+"_1.png";
                     document.getElementById("related-"+i+"-title").innerHTML = related_data[i].title;
                     document.getElementById("related-"+i).style.display = "inline";
+                    document.getElementById("related-"+i).childNodes[1].href = base_url+"views/project.html?"+related_data[i].projects_id;
                 }
 
             }

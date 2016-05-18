@@ -497,37 +497,7 @@ window.onclick = function(event) {
 }
 
 
-jQuery("#action-all-gender").click(function(e){document.getElementById("filter-gender").childNodes.item(1).innerHTML = "All"; e.preventDefault();});
-jQuery("#action-woman").click(function(e){document.getElementById("filter-gender").childNodes.item(1).innerHTML = "Woman"; e.preventDefault();});
-jQuery("#action-man").click(function(e){document.getElementById("filter-gender").childNodes.item(1).innerHTML = "Man"; e.preventDefault();});
-jQuery("#action-unisex").click(function(e){document.getElementById("filter-gender").childNodes.item(1).innerHTML = "Unisex"; e.preventDefault();});
-jQuery("#action-all-type").click(function(e){document.getElementById("filter-type").childNodes.item(1).innerHTML = "Any type"; e.preventDefault();});
-jQuery("#action-shoes").click(function(e){document.getElementById("filter-type").childNodes.item(1).innerHTML = "Shoes"; e.preventDefault();});
-jQuery("#action-pants").click(function(e){document.getElementById("filter-type").childNodes.item(1).innerHTML = "Pants"; e.preventDefault();});
-jQuery("#action-tshirt").click(function(e){document.getElementById("filter-type").childNodes.item(1).innerHTML = "T-Shirts"; e.preventDefault();});
-jQuery("#action-all-color").click(function(e){document.getElementById("filter-color").childNodes.item(1).innerHTML = "Any color"; e.preventDefault();});
-jQuery("#action-white").click(function(e){document.getElementById("filter-color").childNodes.item(1).innerHTML = '<span class="glyphicon glyphicon-tint" style="color:white;"></span>White'; e.preventDefault();});
-jQuery("#action-black").click(function(e){document.getElementById("filter-color").childNodes.item(1).innerHTML = '<span class="glyphicon glyphicon-tint" style="color:black;"></span>Black'; e.preventDefault();});
-jQuery("#action-yellow").click(function(e){document.getElementById("filter-color").childNodes.item(1).innerHTML = '<span class="glyphicon glyphicon-tint" style="color:yellow;"></span>Yellow'; e.preventDefault();});
-jQuery("#action-green").click(function(e){document.getElementById("filter-color").childNodes.item(1).innerHTML = '<span class="glyphicon glyphicon-tint" style="color:green;"></span>Green'; e.preventDefault();});
-jQuery("#action-blue").click(function(e){document.getElementById("filter-color").childNodes.item(1).innerHTML = '<span class="glyphicon glyphicon-tint" style="color:blue;"></span>Blue'; e.preventDefault();});
-jQuery("#action-red").click(function(e){document.getElementById("filter-color").childNodes.item(1).innerHTML = '<span class="glyphicon glyphicon-tint" style="color:red;"></span>Red'; e.preventDefault();});
-jQuery("#action-orange").click(function(e){document.getElementById("filter-color").childNodes.item(1).innerHTML = '<span class="glyphicon glyphicon-tint" style="color:orange;"></span>Orange'; e.preventDefault();});
-jQuery("#action-no-sort").click(function(e){document.getElementById("filter-sort").childNodes.item(1).innerHTML = "Sort by"; e.preventDefault();});
-jQuery("#action-name").click(function(e){document.getElementById("filter-sort").childNodes.item(1).innerHTML = "Sort by: Name"; e.preventDefault();});
-jQuery("#action-last").click(function(e){document.getElementById("filter-sort").childNodes.item(1).innerHTML = "Sort by: Last Chance"; e.preventDefault();});
-jQuery("#action-new").click(function(e){document.getElementById("filter-sort").childNodes.item(1).innerHTML = "Sort by: New"; e.preventDefault();});
-jQuery("#action-price").click(function(e){document.getElementById("filter-sort").childNodes.item(1).innerHTML = "Sort by: Price"; e.preventDefault();});
 
-jQuery("#action-clear-all").click(function(e){
-	document.getElementById("filter-sort").childNodes.item(1).innerHTML = "Sort by"; e.preventDefault();
-	document.getElementById("filter-gender").childNodes.item(1).innerHTML = "All";
-	document.getElementById("filter-type").childNodes.item(1).innerHTML = "Any type";
-	document.getElementById("filter-color").childNodes.item(1).innerHTML = "Any color";
-	e.preventDefault();
-	});
-	
-	
 // get design data
 function getDesigners(){
 var xmlhttpDesign = new XMLHttpRequest();

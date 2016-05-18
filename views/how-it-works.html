@@ -35,11 +35,11 @@
         <li><a href="campaign.html">+ Launch a campaign</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#search-modal" data-toggle="modal" data-target"search-modal"><span class="glyphicon glyphicon-search"></span></a></li>
-        <li><a href="#search-modal" data-toggle="modal" data-target"search-modal"><span class="glyphicon glyphicon-heart"></span></a></li>
-         <li><a href="#search-modal" data-toggle="modal" data-target"search-modal"><span class="glyphicon glyphicon-shopping-cart"></span></a></li>
-        <li><a href="#signup-modal" data-toggle="modal" data-target"signup-modal"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-   		<li class="dropdown">
+        <li><a href="#search-modal" data-toggle="modal" data-target="search-modal"><span class="glyphicon glyphicon-search"></span></a></li>
+        <li><a href="#search-modal" data-toggle="modal" data-target="search-modal"><span class="glyphicon glyphicon-heart"></span></a></li>
+         <li><a href="#search-modal" data-toggle="modal" data-target="search-modal"><span class="glyphicon glyphicon-shopping-cart"></span></a></li>
+        <li><a href="#signup-modal" data-toggle="modal" data-target="signup-modal"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+   		<li class="dropdown" id="login-dropdown">
              <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-log-in"></span> Login</a>
              <ul class="dropdown-menu login-dropdown">
                 <li>
@@ -50,8 +50,8 @@
   <input type="text" class="form-control" placeholder="" aria-describedby="basic-addon1">
 </div>
                      <div class="input-group">
-  <span class="input-group-addon" id="basic-addon1">password</span>
-  <input type="text" class="form-control" placeholder="" aria-describedby="basic-addon1">
+  <span class="input-group-addon" id="basic-addon2">password</span>
+  <input type="text" class="form-control" placeholder="" aria-describedby="basic-addon2">
 </div>
    					  <div class="checkbox">
       					<label><input type="checkbox"> Remember me</label>
@@ -61,6 +61,10 @@
   				  </form>
                </li>
             </ul>
+         </li>
+         <li id="logged-nav-button">
+             <p id="nav-login-name"> Name </p>
+             <img class="img-circle" id="nav-login-icon" src="icons/placeholder.png" height="36px">
          </li>
     </ul>
     </div>
@@ -147,25 +151,34 @@
 <!-- Page HEADER -->
 <div class="jumbotron text-center hiw-banner">
 	<h2> Bake your favourite projects </h2>
-	<p>Lorem ipsum dolor sit amet, consectetur adipisci elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam....</p>
-	<div class="row step-row">
+    <p>Lorem ipsum dolor sit amet, consectetur adipisci elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua.</p>
+    <div class="row step-row">
         <div class="col-sm-3">
            <img src="http://www.indre-reisid.ee/wp-content/themes/envision/lib/images/default-placeholder.png" class="img-circle" width="100px"/>
-           <h3>Step 1</h3>
+           <h4>Step 1</h4>
         </div>
         <div class="col-sm-3">
            <img src="http://www.indre-reisid.ee/wp-content/themes/envision/lib/images/default-placeholder.png" class="img-circle" width="100px"/>
-           <h3>Step 2</h3>
+           <h4>Step 2</h4>
         </div>
         <div class="col-sm-3">
            <img src="http://www.indre-reisid.ee/wp-content/themes/envision/lib/images/default-placeholder.png" class="img-circle" width="100px"/>
-           <h3>Step 3</h3>
+           <h4>Step 3</h4>
         </div>
         <div class="col-sm-3">
            <img src="http://www.indre-reisid.ee/wp-content/themes/envision/lib/images/default-placeholder.png" class="img-circle" width="100px"/>
-           <h3>Step 4</h3>
+           <h4>Step 4</h4>
         </div>
 	</div>
+</div>
+
+
+<!-- PAGE NAV -->
+<div class="page-nav">
+    <div class="page-nav-item" id="nav-item-1"> <a>Step 1 </a></div>
+    <div class="page-nav-item"> <a>Step 2 </a> </div>
+    <div class="page-nav-item"> <a>Step 3 </a> </div>
+    <div class="page-nav-item"> <a>Step 4 </a> </div>
 </div>
 
 
@@ -194,12 +207,12 @@
             <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet.</p>
         </div>
         <div class="col-sm-6 hiw-col-img">
-        	<img src="icons/hiw-3.jpg" height="100%" width="100%"/>
+        	<img src="icons/hiw-4.jpg" height="100%" width="100%"/>
         </div>
     </div>
         	<div class="row row-black">
         <div class="col-sm-6 hiw-col-img">
-        	<img src="icons/hiw-4.jpg" height="100%" width="100%"/>
+        	<img src="icons/hiw-5.jpg" height="100%" width="100%"/>
         </div>
             	<div class="col-sm-6 section-text-area">
         	<h3>Step 4</h3>
