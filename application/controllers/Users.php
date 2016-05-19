@@ -12,14 +12,13 @@ class Users extends CI_Controller {
 	
 	public function login(){
 		//This method will have the credentials validation
-	
 		$this->form_validation->set_rules('email', 'Email', 'trim|required');
 		$this->form_validation->set_rules('password', 'Password', 'trim|required|callback_check_database');
 		if($this->form_validation->run() == FALSE)
 		{
 			//Field validation failed.  User redirected to login page
-			//redirect('verification/login', 'refresh');
-			return true;
+			#$this->load->view('welcome_message');	
+			#return false;
 		}
 		else
 		{
@@ -36,9 +35,13 @@ class Users extends CI_Controller {
 // 					'acl_update_check' => $this->users_model->can_do_it('acl_update_checker'),
 // 					'acl_update_acl' => $this->users_model->can_do_it('acl_update_acl')
 // 			));
-// 			$this->load->view('welcome_message',$data);		
-			return false;
+
+			#$_POST["email"]
+			$data ['rows'] = $this->users_model->get_by_id_designer(1);
+			print json_encode($data);
 		}
+		
+// 		print_r($_POST["email"]);
 	}
 	
 	function check_database($password)

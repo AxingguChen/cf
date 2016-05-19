@@ -15,20 +15,29 @@ class Users_model extends CI_Model {
 		$this->load->model ( 'projects_model', '', TRUE );
 	}
 	
+/**
+	 * provide login input of email and password
+	 * return user info if match
+	 *
+	 * @access public
+	 * @param string $email       	
+	 * @param stting $password      	       	
+	 * @return login user records
+	 */
 	function login($email, $password) {
-		$this->db->select ( 'users_id, users_groups_id, email, password' );
-		$this->db->from ( $this->TABLENAME );
+		$this->db->select ( 'users_id, email, firstname, password' );
+		$this->db->from ( 'users' );
 		$this->db->where ( 'email', $email );
 		$this->db->where ( 'password', sha1 ( $password ) );
-		// $this -> db -> limit(1);	
-		$query = $this->db->get();
-	
+		// $this -> db -> limit(1);
+		
+		$query = $this->db->get ();
+		
 		if ($query->num_rows () == 1) {
-			#$this->set_permissions($query->row()->users_groups_id);
 			return $query->result ();
 		} else {
 			return false;
-		}	
+		}
 	}
 	
    /**

@@ -1,0 +1,20 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+   <title>Simple Login with CodeIgniter</title>
+ </head>
+ <body>
+   <h1>Simple Login with CodeIgniter</h1>
+   <?php echo validation_errors(); ?>
+   <form method="post" action="http://localhost/cf/index.php/users/login">
+            <input type="text" name="email" placeholder="E-mail address"></input>
+
+            <input type="password" name="password" placeholder="Password"/></input>
+
+        <button type="submit" class="btn btn-default">Submit</button>
+    
+
+      <div class="ui error message"></div>
+
+    </form>
+ </body>
+</html>
