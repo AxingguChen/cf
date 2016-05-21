@@ -19,6 +19,8 @@ class Users extends CI_Controller {
 			//Field validation failed.  User redirected to login page
 			#$this->load->view('welcome_message');	
 			#return false;
+			$data ['state'] = false;
+			print json_encode($data);
 		}
 		else
 		{
@@ -38,6 +40,7 @@ class Users extends CI_Controller {
 
 			#$_POST["email"]
 			$data ['rows'] = $this->users_model->get_by_id_designer(1);
+			$data ['state'] = true;
 			print json_encode($data);
 		}
 		
