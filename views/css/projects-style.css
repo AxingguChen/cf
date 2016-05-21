@@ -82,7 +82,7 @@
 
 .jumbotron {
 	height: 300px;
-	background-image: url("icons/banner1.jpg");
+	background-image: url("../icons/banner1.jpg");
     padding-bottom: 0;
     margin-bottom: 0;
 }

@@ -22,7 +22,7 @@
 .hiw-banner {
     margin-bottom:0; padding-left:0; padding-right:0;
     height: 500px;
-    background-image: url("icons/hiw-1.png");
+    background-image: url("../icons/hiw-1.png");
     background-position: center;
     background-color: #1e1e1e;
 }
@@ -42,4 +42,4 @@
 .row-white .section-text-area { padding-left: 180px;}
 .row-black .section-text-area { padding-right: 180px;}
 
-.last-section { width:100%; text-align:center; margin: 0; padding:80px 60px; background-image: url("icons/hiw-1.png"); color: #f5f9fa;}
+.last-section { width:100%; text-align:center; margin: 0; padding:80px 60px; background-image: url("../icons/hiw-1.png"); color: #f5f9fa;}
