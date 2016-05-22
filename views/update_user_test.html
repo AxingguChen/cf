@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Update user TEST</title>
+    <link rel="stylesheet" type="text/css" href="css/home-style.css">
+    <style> #test-submit{ margin: 30px 30px;} .form-group {margin: 8px 8px 8px 0}</style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+
+    <!-- EDIT THIS SCRIPT -->
+    <script>
+        var base_url = "http://localhost/cf/";
+        var request_url = base_url + "<!--here url-->" + "/" + "<!--here user id-->";
+
+        // this is executed on submit click
+        $(document).ready(function(){
+            $("#test-submit").click(function(){
+                $.post(request_url,
+                        {
+                            // here assign POST params
+                            firstname: document.getElementById('test-firstname').value,
+                            lastname: document.getElementById('test-lastname').value,
+                            email: document.getElementById('test-email').value,
+                            password: document.getElementById('test-password').value,
+                            phone: document.getElementById('test-phone').value
+                        },
+
+                        // this is callback with server response
+                        function(data,status){
+                            // uncomment this to have alert with text response
+                            // alert(data);
+
+                            // parse text response to json
+                            var json = JSON.parse(data);
+                        });
+            });
+        });
+    </script>
+
+
+</head>
+<body>
+<div>
+    <h3>Update user info TEST</h3>
+    <div class="form-group">
+        <label for="test-firstname">Firstname:</label>
+        <input type="text" class="form-control" placeholder="" id="test-firstname">
+    </div>
+    <div class="form-group">
+        <label for="test-lastname">Lastname:</label>
+        <input type="text" class="form-control" placeholder="" id="test-lastname">
+    </div>
+    <div class="form-group">
+        <label for="test-email">email:</label>
+        <input type="text" class="form-control" placeholder="" id="test-email">
+    </div>
+    <div class="form-group">
+        <label for="test-password">password:</label>
+        <input type="text" class="form-control" placeholder="" id="test-password">
+    </div>
+    <div class="form-group">
+        <label for="test-phone">phone:</label>
+        <input type="text" class="form-control" placeholder="" id="test-phone">
+    </div>
+    <p id="login-error-label"> Username or password incorrect </p>
+    <button id="test-submit" type="submit" class="btn btn-default">Submit</button>
+</div>
+</body>
+</html>
