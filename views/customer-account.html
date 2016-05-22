@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Air Showroom - Customer Account</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/home-style.css">
+    <link rel="stylesheet" type="text/css" href="css/customer-account-style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="js/js-api-global.js"></script>
+    <script src="js/js-navbar.js"></script>
+    <script src="js/js-customer-account.js"></script>
+</head>
+
+
+
+<body data-spy="scroll" data-target="#myScrollspy" data-offset="20">
+
+
+<div class="container-fluid main-container">
+
+    <nav class="navbar navbar-default navbar-fixed-top" id="navbar">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" id="navbar-brand" href="home.html">Air Showroom</a>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav">
+                    <li><a href="projects.html">Shop</a></li>
+                    <li><a href="designers.html">Our Designers</a></li>
+                    <li><a href="how-it-works.html">How it works</a></li>
+                    <li><a href="about-us.html">About</a></li>
+                    <li><a href="campaign.html">+ Launch a campaign</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#search-modal" data-toggle="modal"><span class="glyphicon glyphicon-search"></span></a></li>
+                    <li><a href="#search-modal" data-toggle="modal"><span class="glyphicon glyphicon-heart"></span></a></li>
+                    <li><a href="#search-modal" data-toggle="modal"><span class="glyphicon glyphicon-shopping-cart"></span></a></li>
+                    <li id="sign-nav-button"><a href="#signup-modal" data-toggle="modal"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                    <li id="login-nav-button"><a href="#login-modal" data-toggle="modal"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+
+                    <li class="dropdown" id="logged-nav-button">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" >
+                            <p id="nav-login-name"> Name </p>
+                        </a>
+                        <ul class="dropdown-menu login-dropdown" id="nav-user-dropdown-menu">
+                            <li>
+                                <img class="img-circle" id="nav-login-icon" src="https://keepon.life/images/default_user.jpg" height="128px">
+                                <h4 id="nav-drop-login-name">name surname</h4>
+                                <button class="btn btn-default" style="margin-top: 10px;"> Edit Profile </button>
+                                </br>
+                                <button id="nav-drop-logout-btn" class="btn btn-default" style="margin-top: 10px"> Logout </button>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+
+    <!-- SING UP Modal -->
+    <div id="signup-modal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content signin-modal">
+                <div class="modal-header">
+                    <h1>JOIN THE SHOWROOM</h1>
+                </div>
+                <div class="modal-body">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisci elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam....Lorem ipsum dolor sit amet, consectetur adipisci elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam....</p>
+                    <a href="sign-in.html"><img src="icons/arrow-right-512.png" height="256px"/></a>
+                    <p>Let's start</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+
+    <!-- LOGIN MODAL -->
+    <div id="login-modal" class="modal fade" role="dialog">
+        <div class="modal-dialog" id="login-modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Login</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="login-email-field">Email address:</label>
+                        <input type="email" class="form-control" id="login-email-field">
+                    </div>
+                    <div class="form-group">
+                        <label for="login-password-field">Password:</label>
+                        <input type="password" class="form-control" id="login-password-field">
+                    </div>
+                    <div class="checkbox">
+                        <label><input type="checkbox"> Remember me</label>
+                    </div>
+                    <p id="login-error-label"> Username or password incorrect </p>
+                    <button id="nav-login-submit-button" type="submit" class="btn btn-default">Submit</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+
+
+    <!-- SEARCH MODAL -->
+
+    <div id="search-modal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-body">
+                    <form class="form-inline" role="form">
+                        <div class="form-group">
+                            <label> Search: </label>
+                            <input type="text" class="form-control" id="text" placeholder="Write here...">
+                        </div>
+                        <button type="submit" class="btn btn-default" onclick="nav_search()">GO</button>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+<!-- SCROLL SPY -->
+    <div class="container" id="customer-scrollspy-container">
+
+        <div class="row">
+            <nav class="col-sm-3" id="myScrollspy">
+                <ul class="nav nav-pills nav-stacked">
+                    <h3 id="customer-hi-label"> Hi name</h3>
+                    <li class="active"><a href="#section1">MY ORDERS</a></li>
+                    <li><a href="#section2">PERSONAL DATA</a></li>
+                    <li><a href="#section3">ADDRESS</a></li>
+                    <li><a href="#section4">PAYMENT METHODS</a></li>
+                    <li><a href="#section5">WISHLIST</a></li>
+                    <li><a href="#section6">FOLLOWED DESIGNERS</a></li>
+                    <li><button class="btn-default">LOGOUT</button></li>
+                </ul>
+            </nav>
+
+            <!-- ORDERS -->
+            <div class="col-sm-9">
+                <div id="section1">
+                    <h3>MY ORDERS</h3>
+                    <p>list of user's orders</p>
+                    <button class="btn-default">LOAD MORE</button>
+                    <hr>
+                </div>
+                <div id="section2">
+                    <h3>PERSONAL DATA</h3>
+                    <row>
+                        <div class="col-sm-6">
+                            <p id="customer-firstname-label"><small>FIRST NAME</small> nome </p>
+                            <p id="customer-lastname-label"><small>LAST NAME</small> cognome </p>
+                        </div>
+                        <div class="col-sm-6">
+                            <p id="customer-email-label"><small>EMAIL</small> email </p>
+                            <p><small>PASSWORD</small> ***** </p>
+                            <p><small>PHONE</small> phone </p>
+                        </div>
+                    </row>
+                        <div style="text-align: center;"><button class="btn-default" style="margin-top: 12px; margin-bottom: 20px;">EDIT</button></div>
+                    <hr>
+                </div>
+
+                <!-- ADDRESS -->
+                <div id="section3">
+                    <h3>ADDRESS</h3>
+                    <div class="container table-container">
+                        <table class="table table-striped">
+                            <thead>
+                            <tr>
+                                <th>NAME</th>
+                                <th>ADDRESS</th>
+                                <th>PHONE</th>
+                                <th>SET AS DEFAULT</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>John Doe</td>
+                                <td>piazza della repubblica 12, 210123, Milano, Italy </td>
+                                <td>+39 333 32032032</td>
+                                <td>
+                                    <div class="checkbox">
+                                        <label><input type="checkbox" value="">Shipping Address</label>
+                                    </div>
+                                    <div class="checkbox">
+                                        <label><input type="checkbox" value="">Billing Address</label>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>John Doe</td>
+                                <td>piazza della repubblica 12, 210123, Milano, Italy </td>
+                                <td>+39 333 32032032</td>
+                                <td>
+                                    <div class="checkbox">
+                                        <label><input type="checkbox" value="">Shipping Address</label>
+                                    </div>
+                                    <div class="checkbox">
+                                        <label><input type="checkbox" value="">Billing Address</label>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>John Doe</td>
+                                <td>piazza della repubblica 12, 210123, Milano, Italy </td>
+                                <td>+39 333 32032032</td>
+                                <td>
+                                    <div class="checkbox">
+                                        <label><input type="checkbox" value="">Shipping Address</label>
+                                    </div>
+                                    <div class="checkbox">
+                                        <label><input type="checkbox" value="">Billing Address</label>
+                                    </div>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div style="text-align: center;"><button class="btn-default" style="margin-top: 12px; margin-bottom: 20px;">ADD ADDRESS</button></div>
+                    <hr>
+                </div>
+
+                <!-- PAYMENT METHODS -->
+                <div id="section4">
+                    <h3>PAYMENT METHODS</h3>
+                    <div class="container table-container">
+                        <table class="table table-striped">
+                            <thead>
+                            <tr>
+                                <th>TYPE</th>
+                                <th>NAME</th>
+                                <th>NUMBER</th>
+                                <th>EXPIRY DATE</th>
+                                <th>SET AS DEFAULT</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>Type</td>
+                                <td>John Doe</td>
+                                <td>************4432</td>
+                                <td>06 / 2020</td>
+                                <td>
+                                    <div class="checkbox">
+                                        <label><input type="checkbox" value="">Payment method</label>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Type</td>
+                                <td>John Doe</td>
+                                <td>************4432</td>
+                                <td>06 / 2020</td>
+                                <td>
+                                    <div class="checkbox">
+                                        <label><input type="checkbox" value="">Payment method</label>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Type</td>
+                                <td>John Doe</td>
+                                <td>************4432</td>
+                                <td>06 / 2020</td>
+                                <td>
+                                    <div class="checkbox">
+                                        <label><input type="checkbox" value="">Payment method</label>
+                                    </div>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div style="text-align: center;"><button class="btn-default" style="margin-top: 12px; margin-bottom: 20px;">ADD PAYMENT METHOD</button></div>
+                    <hr>
+                </div>
+
+                <!-- WHISHLIST -->
+                <div id="section5">
+                    <h3>WHISHLIST</h3>
+                    <p>Try to scroll this section and look at the navigation list while scrolling!</p>
+                    <hr>
+                </div>
+
+
+                <!-- FOLLOWED DESIGNERS -->
+                <div id="section6">
+                    <h3>FOLLOWED DESIGNERS</h3>
+                    <p>Try to scroll this section and look at the navigation list while scrolling!</p>
+                    <button class="btn-default">LOAD MORE</button>
+                    <hr>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+</div>
+
+</body>
+</html>

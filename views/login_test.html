@@ -1,32 +1,29 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
  <head>
    <title>Simple Login with CodeIgniter</title>
-         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.js"></script>
-         <script src="http://malsup.github.com/jquery.form.js"></script>
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+     <script>
 
-         <script>
-             // wait for the DOM to be loaded
-             $(document).ready(function() {
-                 // bind 'myForm' and provide a simple callback function
-                 $('#myForm').ajaxForm(function() {
-                     alert("Thank you for your comment!");
-                 });
+         $(document).ready(function(){
+             $("navbutton").click(function(){
+                 $.post("http://localhost/cf/index.php/users/login",
+                         {
+                             email: document.getElementById('email-field').value,
+                             password: document.getElementById('password-field').value
+                         },
+                         function(data,status){
+                             alert("Data: " + data + "\nStatus: " + status);
+                         });
              });
-         </script>
-     </head>
+         });
+     </script>
+
+ </head>
  <body>
    <h1>Simple Login with CodeIgniter</h1>
    <?php echo validation_errors(); ?>
-   <form id="myform" method="post" action="http://localhost/cf/index.php/users/login">
-            <input type="text" name="email" placeholder="E-mail address"/>
-
-            <input type="password" name="password" placeholder="Password"/>
-
-        <button type="submit" class="btn btn-default">Submit</button>
-    
-
-      <div class="ui error message"></div>
-
-    </form>
+            <input id="email-field" type="text" name="email" placeholder="E-mail address"/>
+            <input id="password-field" type="password" name="password" placeholder="Password"/>
+            <button id="navbutton" class="btn btn-default">Submit</button>
  </body>
 </html>

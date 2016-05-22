@@ -9,7 +9,9 @@
   <link rel="stylesheet" type="text/css" href="css/projects-style.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-  <script src="http://malsup.github.com/jquery.form.js"></script> 
+  <script src="http://malsup.github.com/jquery.form.js"></script>
+	<script src="js/js-api-global.js"></script>
+	<script src="js/js-navbar.js"></script>
     
 </head>
 
@@ -17,132 +19,127 @@
 
 <div class="container-fluid main-container">
 
-<nav class="navbar navbar-default navbar-fixed-top">
-  <div class="container">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span> 
-      </button>
-      <a class="navbar-brand" href="home.html">Air Showroom</a>
-    </div>
-    <div class="collapse navbar-collapse" id="myNavbar">
-      <ul class="nav navbar-nav">
-        <li><a href="projects.html">Shop</a></li>
-        <li><a href="designers.html">Our Designers</a></li>
-        <li><a href="how-it-works.html">How it works</a></li>
-        <li><a href="about-us.html">About</a></li>
-        <li><a href="campaign.html">+ Launch a campaign</a></li>
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="#search-modal" data-toggle="modal" data-target=search-modal"><span class="glyphicon glyphicon-search"></span></a></li>
-        <li><a href="#search-modal" data-toggle="modal" data-target="search-modal"><span class="glyphicon glyphicon-heart"></span></a></li>
-         <li><a href="#search-modal" data-toggle="modal" data-target="search-modal"><span class="glyphicon glyphicon-shopping-cart"></span></a></li>
-        <li><a href="#signup-modal" data-toggle="modal" data-target="signup-modal"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-   		<li class="dropdown">
-             <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-log-in"></span> Login</a>
-             <ul class="dropdown-menu login-dropdown">
-                <li>
-                   <form role="form" onSubmit="http://localhost/cf/index.php/users/login" method="post"> 
-                   <p id="login-error-label"> Username or password incorrect </p>
-                     <div class="input-group">
-  <span class="input-group-addon" id="basic-addon1">username</span>
-  <input type="text" class="form-control" placeholder="" aria-describedby="basic-addon1">
-</div>
-                     <div class="input-group">
-  <span class="input-group-addon" id="basic-addon1">password</span>
-  <input type="text" class="form-control" placeholder="" aria-describedby="basic-addon1">
-</div>
-   					  <div class="checkbox">
-      					<label><input type="checkbox"> Remember me</label>
-    					</div>
-    					<button type="submit" class="btn btn-default">Submit</button>
-                        <p> <a>Forgot password?</a> </p>
-  				  </form>
-               </li>
-            </ul>
-         </li>
-    </ul>
-    </div>
-  </div>
-</nav>
+	<nav class="navbar navbar-default navbar-fixed-top" id="navbar">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" id="navbar-brand" href="home.html">Air Showroom</a>
+			</div>
+			<div class="collapse navbar-collapse" id="myNavbar">
+				<ul class="nav navbar-nav">
+					<li><a href="projects.html">Shop</a></li>
+					<li><a href="designers.html">Our Designers</a></li>
+					<li><a href="how-it-works.html">How it works</a></li>
+					<li><a href="about-us.html">About</a></li>
+					<li><a href="campaign.html">+ Launch a campaign</a></li>
+				</ul>
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="#search-modal" data-toggle="modal"><span class="glyphicon glyphicon-search"></span></a></li>
+					<li><a href="#search-modal" data-toggle="modal"><span class="glyphicon glyphicon-heart"></span></a></li>
+					<li><a href="#search-modal" data-toggle="modal"><span class="glyphicon glyphicon-shopping-cart"></span></a></li>
+					<li id="sign-nav-button"><a href="#signup-modal" data-toggle="modal"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+					<li id="login-nav-button"><a href="#login-modal" data-toggle="modal"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
 
-
-<!-- SING UP Modal -->
-<div id="signup-modal" class="modal fade" role="dialog">
-  <div class="modal-dialog">
-
-    <!-- Modal content-->
-    <div class="modal-content signin-modal">
-      <div class="modal-header">
-        <h1>JOIN THE SHOWROOM</h1>
-      </div>
-      <div class="modal-body">
-        <p>Lorem ipsum dolor sit amet, consectetur adipisci elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam....Lorem ipsum dolor sit amet, consectetur adipisci elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam....</p>
-        <button type="button" class="btn btn-default" data-dismiss="modal">
-        	<img src="http://localhost/cf/views/icons/arrow-right-512.png" height="256px"/>
-        </button>
-      </div>
-    </div>
-
-  </div>
-</div>
+					<li class="dropdown" id="logged-nav-button">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown" >
+							<p id="nav-login-name"> Name </p>
+						</a>
+						<ul class="dropdown-menu login-dropdown" id="nav-user-dropdown-menu">
+							<li>
+								<img class="img-circle" id="nav-login-icon" src="https://keepon.life/images/default_user.jpg" height="128px">
+								<h4 id="nav-drop-login-name">name surname</h4>
+								<button id="nav-drop-edit-profile-btn" class="btn btn-default" style="margin-top: 10px;"> Edit Profile </button>
+								</br>
+								<button id="nav-drop-logout-btn" class="btn btn-default" style="margin-top: 10px"> Logout </button>
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</nav>
 
 
 
-<!-- LOGIN MODAL -->
-<div id="login-modal" class="modal fade" role="dialog">
-  <div class="modal-dialog">
+	<!-- SING UP Modal -->
+	<div id="signup-modal" class="modal fade" role="dialog">
+		<div class="modal-dialog">
 
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Login</h4>
-      </div>
-      <div class="modal-body">
-        <form role="form">
- 		 <div class="form-group">
-  		  <label for="email">Email address:</label>
-   		 <input type="email" class="form-control" id="email">
-	    </div>
- 		 <div class="form-group">
-  		  <label for="pwd">Password:</label>
-  		  <input type="password" class="form-control" id="pwd">
-		  </div>
-		  <div class="checkbox">
- 			  <label><input type="checkbox"> Remember me</label>
-		  </div>
-          </br>
-            <button type="submit" class="btn btn-default">Submit</button>
-		</form>
-   		 </div>
-    </div>
+			<!-- Modal content-->
+			<div class="modal-content signin-modal">
+				<div class="modal-header">
+					<h1>JOIN THE SHOWROOM</h1>
+				</div>
+				<div class="modal-body">
+					<p>Lorem ipsum dolor sit amet, consectetur adipisci elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam....Lorem ipsum dolor sit amet, consectetur adipisci elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam....</p>
+					<a href="sign-in.html"><img src="icons/arrow-right-512.png" height="256px"/></a>
+					<p>Let's start</p>
+				</div>
+			</div>
 
-  </div>
-</div>
+		</div>
+	</div>
 
-<!-- SEARCH MODAL -->
 
-<div id="search-modal" class="modal fade" role="dialog">
-  <div class="modal-dialog">
 
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-body">
-      	<form class="form-inline" role="form">
-  			<div class="form-group">
-   			 <label for="email"><span class="glyphicon glyphicon-search"></span></label>
-   			 <input type="text" class="form-control" id="text">
-  			</div>
-  			<button type="submit" class="btn btn-default">Search</button>
-		</form>
-      </div>
-    </div>
+	<!-- LOGIN MODAL -->
+	<div id="login-modal" class="modal fade" role="dialog">
+		<div class="modal-dialog" id="login-modal-dialog">
 
-  </div>
-</div>
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">Login</h4>
+				</div>
+				<div class="modal-body">
+					<div class="form-group">
+						<label for="login-email-field">Email address:</label>
+						<input type="email" class="form-control" id="login-email-field">
+					</div>
+					<div class="form-group">
+						<label for="login-password-field">Password:</label>
+						<input type="password" class="form-control" id="login-password-field">
+					</div>
+					<div class="checkbox">
+						<label><input type="checkbox"> Remember me</label>
+					</div>
+					<p id="login-error-label"> Username or password incorrect </p>
+					<button id="nav-login-submit-button" type="submit" class="btn btn-default">Submit</button>
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+
+
+
+	<!-- SEARCH MODAL -->
+
+	<div id="search-modal" class="modal fade" role="dialog">
+		<div class="modal-dialog">
+
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-body">
+					<form class="form-inline" role="form">
+						<div class="form-group">
+							<label> Search: </label>
+							<input type="text" class="form-control" id="text" placeholder="Write here...">
+						</div>
+						<button type="submit" class="btn btn-default" onclick="nav_search()">GO</button>
+					</form>
+				</div>
+			</div>
+
+		</div>
+	</div>
+
 
 
 <!-- Page HEADER -->

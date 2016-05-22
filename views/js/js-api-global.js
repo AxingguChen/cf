@@ -5,24 +5,10 @@
 var base_url = "http://localhost/cf/";
 
 
-function login(updateFunction){
-    var url_login = base_url+"index.php/users/login";
-    var xmlhttp = new XMLHttpRequest();
-    xmlhttp.onreadystatechange = function() {
-        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-            var json_array = JSON.parse(xmlhttp.responseText);
-            var data = json_array.rows[0];
-            updateFunction(data);
-        }
-    };
-    xmlhttp.open("GET", url_login, true);
-    xmlhttp.send();
-}
-
 //check if user is logged
 function checkUserLogged() {
-    if (sessionStorage.cf-login) {return true;} 
-    return false;
+    if (sessionStorage.cfUserId === undefined) {return false;}
+    return true;
 }
 
 

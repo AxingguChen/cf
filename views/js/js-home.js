@@ -108,13 +108,6 @@ function designOffsetLeft(){
 
 
 
-function login(){
-
-
-}
-
-
-
 getLastChance();
 getHomeDesigns();
 

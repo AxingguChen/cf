@@ -1,0 +1,18 @@
+body {
+    position: relative;}
+
+
+
+ul.nav-pills {
+    top: 20px;
+    position: fixed;
+}
+
+ul.nav-pills.nav-stacked { margin-top: 40px;}
+
+#customer-scrollspy-container {
+    padding-top: 100px;
+}
+#customer-scrollspy-container small { color: #c3c3c3;}
+
+#customer-hi-label { margin-bottom: 32px;}
