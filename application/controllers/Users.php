@@ -6,6 +6,7 @@ class Users extends CI_Controller {
 	{
 		parent::__construct();
 		$this->load->model('users_model','',TRUE);
+		$this->load->model('users_address_model','',TRUE);	
 		$this->load->library('form_validation');
 		$this->load->helper('form');
 	}
@@ -182,6 +183,59 @@ class Users extends CI_Controller {
 		print json_encode($data);
 		//print_r($data);
 	}
+	
+	//get address by user id
+	public function view_address_by_user_id($users_id = 0,$offset = 0, $limit = 0){
+		if ($limit <= 0) {
+			$MAX_RECORDS = 8; /* each request return 8 records at most */
+		} else {
+			$MAX_RECORDS = $limit;
+		}
+		$data ['rows'] = $this->users_address_model->get_address_by_user_id($users_id,$offset, $MAX_RECORDS);
+		$data ['offset'] = $offset + 1;
+		print json_encode($data);
+		//print_r($data);
+	}
+	
+	public function view_followed_designers($users_id = 0,$offset = 0, $limit = 0){
+		if ($limit <= 0) {
+			$MAX_RECORDS = 8; /* each request return 8 records at most */
+		} else {
+			$MAX_RECORDS = $limit;
+		}
+		$data ['rows'] = $this->users_model->get_followers_by_user_id($users_id,$offset, $MAX_RECORDS);
+		$data ['offset'] = $offset + 1;
+		print json_encode($data);
+		//print_r($data);
+	}
+	
+	public function view_payment_method_by_user_id($users_id = 0,$offset = 0, $limit = 0){
+		$this->load->model('payment_method_model','',TRUE);
+		if ($limit <= 0) {
+			$MAX_RECORDS = 8; /* each request return 8 records at most */
+		} else {
+			$MAX_RECORDS = $limit;
+		}
+		$data ['rows'] = $this->payment_method_model->get_payment_mothod_by_user_id($users_id,$offset, $MAX_RECORDS);
+		$data ['offset'] = $offset + 1;
+		print json_encode($data);
+		//print_r($data);
+	}
+	
+	public function view_wishlist_by_user_id($users_id = 0,$offset = 0, $limit = 0){
+		$this->load->model('wishlist_model','',TRUE);
+		if ($limit <= 0) {
+			$MAX_RECORDS = 8; /* each request return 8 records at most */
+		} else {
+			$MAX_RECORDS = $limit;
+		}
+		$data ['rows'] = $this->wishlist_model->get_wishlist_by_user_id($users_id,$offset, $MAX_RECORDS);
+		$data ['offset'] = $offset + 1;
+		print json_encode($data);
+		//print_r($data);
+	}
+	
+	
 	
 }
 

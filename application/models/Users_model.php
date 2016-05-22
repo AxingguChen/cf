@@ -127,6 +127,24 @@ class Users_model extends CI_Model {
 		return $query->result();
 	}
 	
+	public function get_followers_by_user_id($users_id, $offset = 0, $limit = 0, $order = 'users.users_id', $direction = 'desc'){
+		$this->db->select('*');
+		$this->db->from('followers');
+		$this->db->join($this->TABLENAME, "$this->TABLENAME.users_id = followers.follower_id");;
+		$this->db->where('follower_id',$users_id);
+		if (strlen($order) > 0)
+		{
+			$this->db->order_by($order, $direction);
+		}
+		if ($limit > 0)
+		{
+			$this->db->limit($limit, $offset);
+		}
+		$query = $this->db->get();
+		return $query->result();
+	}
+	
+
 }
 
 ?>
