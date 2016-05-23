@@ -83,6 +83,14 @@ class Users_model extends CI_Model {
     	return $query->result();
     }
     
+    public function get_by_id($users_id){
+    	$this->db->select('*');
+    	$this->db->from($this->TABLENAME);
+    	$this->db->where('users_id',$users_id);
+    	$query = $this->db->get();
+    	return $query->result();
+    }
+    
 	
 	function signup() {
 		$data = array (
@@ -142,6 +150,38 @@ class Users_model extends CI_Model {
 		}
 		$query = $this->db->get();
 		return $query->result();
+	}
+	
+	/**
+	 * input from form
+	 * update the data to users(table)
+	 *
+	 * @access public
+	 * @return null
+	 */
+	function update_profile($id) {
+	
+		$this->db->where('users_id', $id);
+		
+		$data = array(
+				'firstname' => $this->input->post('firstname'),
+				'lastname' => $this->input->post('lastname'),
+				'phone' => $this->input->post('phone')
+		);
+		$this->db->update('users', $data);
+	
+		
+		$this->db->trans_complete();
+		if ($this->db->trans_status() === FALSE)
+		{
+			//
+			return -1;
+		}
+		else
+		{
+			return $this->db->affected_rows();
+		}
+	
 	}
 	
 
