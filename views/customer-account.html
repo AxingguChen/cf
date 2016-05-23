@@ -165,8 +165,25 @@
             <div class="col-sm-9">
                 <div id="section1">
                     <h3>MY ORDERS</h3>
-                    <p>list of user's orders</p>
-                    <button class="btn-default">LOAD MORE</button>
+                    <div class="container-fluid" id="order_container">
+                        <!--
+                        <div class="order-item">
+                            <div class="row">
+                                <div class="col-sm-6 order-item-icon"><img src="icons/placeholder.png" height="180px"></div>
+                                <div class="col-sm-6 order-item-container">
+                                    <h4>Title</h4>
+                                    <p><small>ORDER NUMBER</small> ***** </p>
+                                    <p><small>PRICE</small> ***** </p>
+                                    <p><small>DATE</small> ***** </p>
+                                    <p><small>STATUS</small> ***** </p>
+                                    <p><small>MANAGE ORDER</small> ***** </p>
+                                </div>
+                            </div>
+                        </div>
+                        -->
+                    </div>
+
+                    <div style="text-align: center;"><button class="btn-default" style="margin-top: 12px; margin-bottom: 20px;">EDIT</button></div>
                     <hr>
                 </div>
                 <div id="section2">
@@ -179,7 +196,7 @@
                         <div class="col-sm-6">
                             <p id="customer-email-label"><small>EMAIL</small> email </p>
                             <p><small>PASSWORD</small> ***** </p>
-                            <p><small>PHONE</small> phone </p>
+                            <p id="customer-phone-label"><small>PHONE</small> phone </p>
                         </div>
                     </row>
                         <div style="text-align: center;"><button class="btn-default" style="margin-top: 12px; margin-bottom: 20px;">EDIT</button></div>
@@ -199,46 +216,8 @@
                                 <th>SET AS DEFAULT</th>
                             </tr>
                             </thead>
-                            <tbody>
-                            <tr>
-                                <td>John Doe</td>
-                                <td>piazza della repubblica 12, 210123, Milano, Italy </td>
-                                <td>+39 333 32032032</td>
-                                <td>
-                                    <div class="checkbox">
-                                        <label><input type="checkbox" value="">Shipping Address</label>
-                                    </div>
-                                    <div class="checkbox">
-                                        <label><input type="checkbox" value="">Billing Address</label>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>John Doe</td>
-                                <td>piazza della repubblica 12, 210123, Milano, Italy </td>
-                                <td>+39 333 32032032</td>
-                                <td>
-                                    <div class="checkbox">
-                                        <label><input type="checkbox" value="">Shipping Address</label>
-                                    </div>
-                                    <div class="checkbox">
-                                        <label><input type="checkbox" value="">Billing Address</label>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>John Doe</td>
-                                <td>piazza della repubblica 12, 210123, Milano, Italy </td>
-                                <td>+39 333 32032032</td>
-                                <td>
-                                    <div class="checkbox">
-                                        <label><input type="checkbox" value="">Shipping Address</label>
-                                    </div>
-                                    <div class="checkbox">
-                                        <label><input type="checkbox" value="">Billing Address</label>
-                                    </div>
-                                </td>
-                            </tr>
+                            <tbody id="address-table-body">
+
                             </tbody>
                         </table>
                     </div>
@@ -260,40 +239,8 @@
                                 <th>SET AS DEFAULT</th>
                             </tr>
                             </thead>
-                            <tbody>
-                            <tr>
-                                <td>Type</td>
-                                <td>John Doe</td>
-                                <td>************4432</td>
-                                <td>06 / 2020</td>
-                                <td>
-                                    <div class="checkbox">
-                                        <label><input type="checkbox" value="">Payment method</label>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Type</td>
-                                <td>John Doe</td>
-                                <td>************4432</td>
-                                <td>06 / 2020</td>
-                                <td>
-                                    <div class="checkbox">
-                                        <label><input type="checkbox" value="">Payment method</label>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Type</td>
-                                <td>John Doe</td>
-                                <td>************4432</td>
-                                <td>06 / 2020</td>
-                                <td>
-                                    <div class="checkbox">
-                                        <label><input type="checkbox" value="">Payment method</label>
-                                    </div>
-                                </td>
-                            </tr>
+                            <tbody id="payment-table-body">
+
                             </tbody>
                         </table>
                     </div>
@@ -304,7 +251,9 @@
                 <!-- WHISHLIST -->
                 <div id="section5">
                     <h3>WHISHLIST</h3>
-                    <p>Try to scroll this section and look at the navigation list while scrolling!</p>
+                    <div class="container-fluid" id="wishlist_container">
+
+                    </div>
                     <hr>
                 </div>
 
@@ -312,8 +261,8 @@
                 <!-- FOLLOWED DESIGNERS -->
                 <div id="section6">
                     <h3>FOLLOWED DESIGNERS</h3>
-                    <p>Try to scroll this section and look at the navigation list while scrolling!</p>
-                    <button class="btn-default">LOAD MORE</button>
+                    <div class="followed-designer-container" id="followed-designer-container">
+                    </div>
                     <hr>
                 </div>
             </div>
