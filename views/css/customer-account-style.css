@@ -1,12 +1,33 @@
 body {
     position: relative;}
 
+.main-container {background-color: #f2f2f2;}
+
+.divider {
+    height: 1px;
+    background-color: #d3d3d3;
+    margin: 36px 0 64px 0;
+}
+
 ul.nav-pills {
     top: 20px;
     position: fixed;
 }
 
-ul.nav-pills.nav-stacked { margin-top: 40px;}
+ul.nav-pills.nav-stacked {
+    margin-top: 40px;
+    text-align: right;
+}
+ul.nav-pills.nav-stacked{
+    border-right: solid;
+    border-right-color: #d3d3d3;
+    border-right-width: 1px;
+}
+ul.nav-pills.nav-stacked a, ul.nav-pills.nav-stacked h3{ padding-right: 16px; text-decoration: none;}
+ul.nav-pills.nav-stacked a { color: #C3C3C3;}
+.nav-pills>li.active>a, .nav-pills>li.active>a:hover { background-color: transparent; color: #1e1e1e; border-right-color: #1e1e1e; border-right-width: 1px; border-right: solid; border-radius: 0; }
+
+#customer-logout-button {margin-top: 32px; margin-right: 16px;}
 
 #customer-scrollspy-container {
     padding-top: 100px;
@@ -15,6 +36,24 @@ ul.nav-pills.nav-stacked { margin-top: 40px;}
 
 #customer-hi-label { margin-bottom: 32px;}
 
-.order-item, .designer-followed-item {display: inline-block; margin:10px;}
-.order-item {max-width: 400px;}
+.table-striped thead { background-color: #231f20; color: #f5f9fa;}
+
+
+.order-item, .designer-followed-item {display: inline-block; margin:10px; background-color:#ffffff; padding: 16px;}
+.order-item {max-width: 400px; min-width: 300px;}
 .designer-followed-item {text-align: center;}
+
+.edit-modal .modal-dialog {width: 600px; text-align: left;}
+.edit-modal .modal-content {padding: 20px;}
+.edit-modal .form-group {margin: 12px;}
+.edit-modal input {margin-left: auto;}
+.edit-modal label {width: 150px;}
+.save-btn, .cancel-btn { display: inline-block; width: 80px;}
+
+
+
+@media (min-width: 768px) {
+    .form-inline .form-control {
+        width: 300px;
+    }
+}

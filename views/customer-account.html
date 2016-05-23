@@ -90,28 +90,27 @@
 
 
     <!-- LOGIN MODAL -->
-    <div id="login-modal" class="modal fade" role="dialog">
+    <div id="login-modal" class="modal fade login-modal" role="dialog">
         <div class="modal-dialog" id="login-modal-dialog">
 
             <!-- Modal content-->
             <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">Login</h4>
-                </div>
                 <div class="modal-body">
+                    <h4>LOGIN</h4>
+                    <div class="divider"></div>
                     <div class="form-group">
-                        <label for="login-email-field">Email address:</label>
-                        <input type="email" class="form-control" id="login-email-field">
+                        <label for="login-email-field">Email</label>
+                        <input class="form-control" id="login-email-field" placeholder="">
                     </div>
                     <div class="form-group">
-                        <label for="login-password-field">Password:</label>
-                        <input type="password" class="form-control" id="login-password-field">
+                        <label for="login-password-field">Password</label>
+                        <input class="form-control" id="login-password-field" placeholder="">
                     </div>
                     <div class="checkbox">
                         <label><input type="checkbox"> Remember me</label>
                     </div>
                     <p id="login-error-label"> Username or password incorrect </p>
+                    <div class="divider"></div>
                     <button id="nav-login-submit-button" type="submit" class="btn btn-default">Submit</button>
                 </div>
             </div>
@@ -144,6 +143,106 @@
     </div>
 
 
+
+    <!-- PERSONAL INFO MODAL -->
+    <div id="personal-info-modal" class="modal fade edit-modal" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-body">
+                    <h4>PERSONAL DATA</h4>
+                    <div class="divider"></div>
+                    <form class="form-inline" role="form">
+                        <div class="form-group">
+                            <label for="info-firstname-field"> FIRST NAME </label>
+                            <input id="info-firstname-field" type="text" class="form-control" >
+                        </div>
+                        <div class="form-group">
+                            <label for="info-lastname-field"> LAST NAME </label>
+                            <input id="info-lastname-field" type="text" class="form-control" >
+                        </div>
+                        <div class="form-group">
+                            <label for="info-email-field"> EMAIL </label>
+                            <input id="info-email-field" type="text" class="form-control" value="email" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label for="info-phone-field"> PHONE </label>
+                            <input id="info-phone-field" type="text" class="form-control">
+                        </div>
+                        <div class="divider"></div>
+                        <div style="text-align: center;">
+                            <button class="btn btn-default save-btn">SAVE</button>
+                            <button class="btn btn-default cancel-btn">CANCEL</button>
+                        </div>
+                        </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+    <!-- PERSONAL INFO MODAL -->
+    <div id="edit-address-modal" class="modal fade edit-modal" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-body">
+                    <h4>NEW ADDRESS</h4>
+                    <div class="divider"></div>
+                    <form class="form-inline" role="form">
+                        <div class="form-group">
+                            <label for="address-label-field"> ADDRESS LABEL </label>
+                            <input id="address-label-field" type="text" class="form-control" >
+                        </div>
+                        <div class="form-group">
+                            <label for="address-firstname-field"> FIRST NAME </label>
+                            <input id="address-firstname-field" type="text" class="form-control" >
+                        </div>
+                        <div class="form-group">
+                            <label for="address-lastname-field"> LAST NAME </label>
+                            <input id="address-lastname-field" type="text" class="form-control" >
+                        </div>
+                        <div class="form-group">
+                            <label for="address-street-field"> STREET ADDRESS </label>
+                            <input id="address-street-field" type="text" class="form-control" value="">
+                        </div>
+                        <div class="form-group">
+                            <label for="address-additional-field"> ADDITIONAL INFO </label>
+                            <input id="address-additional-field" type="text" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="address-country-field"> COUNTRY </label>
+                            <input id="address-country-field" type="text" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="address-city-field"> CITY </label>
+                            <input id="address-city-field" type="text" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="address-zip-field"> ZIP CODE </label>
+                            <input id="address-zip-field" type="text" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="address-phone-field"> PHONE </label>
+                            <input id="address-phone-field" type="text" class="form-control">
+                        </div>
+                        <div class="divider"></div>
+                        <div style="text-align: center;">
+                            <button class="btn btn-default save-btn">SAVE</button>
+                            <button class="btn btn-default cancel-btn">CANCEL</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+
 <!-- SCROLL SPY -->
     <div class="container" id="customer-scrollspy-container">
 
@@ -152,16 +251,17 @@
                 <ul class="nav nav-pills nav-stacked">
                     <h3 id="customer-hi-label"> Hi name</h3>
                     <li class="active"><a href="#section1">MY ORDERS</a></li>
-                    <li><a href="#section2">PERSONAL DATA</a></li>
-                    <li><a href="#section3">ADDRESS</a></li>
-                    <li><a href="#section4">PAYMENT METHODS</a></li>
-                    <li><a href="#section5">WISHLIST</a></li>
-                    <li><a href="#section6">FOLLOWED DESIGNERS</a></li>
-                    <li><button class="btn-default">LOGOUT</button></li>
+                    <li><a href="#divider2">PERSONAL DATA</a></li>
+                    <li><a href="#divider3">ADDRESS</a></li>
+                    <li><a href="#divider4">PAYMENT METHODS</a></li>
+                    <li><a href="#divider5">WISHLIST</a></li>
+                    <li><a href="#divider6">FOLLOWED DESIGNERS</a></li>
+                    <li><button id="customer-logout-button" class="btn-default">LOGOUT</button></li>
                 </ul>
             </nav>
 
             <!-- ORDERS -->
+
             <div class="col-sm-9">
                 <div id="section1">
                     <h3>MY ORDERS</h3>
@@ -184,7 +284,7 @@
                     </div>
 
                     <div style="text-align: center;"><button class="btn-default" style="margin-top: 12px; margin-bottom: 20px;">EDIT</button></div>
-                    <hr>
+                    <div class="divider" id="divider2"></div>
                 </div>
                 <div id="section2">
                     <h3>PERSONAL DATA</h3>
@@ -199,8 +299,8 @@
                             <p id="customer-phone-label"><small>PHONE</small> phone </p>
                         </div>
                     </row>
-                        <div style="text-align: center;"><button class="btn-default" style="margin-top: 12px; margin-bottom: 20px;">EDIT</button></div>
-                    <hr>
+                        <div style="text-align: center;"><button class="btn-default" data-toggle="modal" data-target="#personal-info-modal" style="margin-top: 12px; margin-bottom: 20px;">EDIT</button></div>
+                    <div class="divider" id="divider3"></div>
                 </div>
 
                 <!-- ADDRESS -->
@@ -221,8 +321,8 @@
                             </tbody>
                         </table>
                     </div>
-                    <div style="text-align: center;"><button class="btn-default" style="margin-top: 12px; margin-bottom: 20px;">ADD ADDRESS</button></div>
-                    <hr>
+                    <div style="text-align: center;"><button class="btn-default" data-toggle="modal" data-target="#edit-address-modal" style="margin-top: 12px; margin-bottom: 20px;">ADD ADDRESS</button></div>
+                    <div class="divider" id="divider4"></div>
                 </div>
 
                 <!-- PAYMENT METHODS -->
@@ -245,7 +345,7 @@
                         </table>
                     </div>
                     <div style="text-align: center;"><button class="btn-default" style="margin-top: 12px; margin-bottom: 20px;">ADD PAYMENT METHOD</button></div>
-                    <hr>
+                    <div class="divider" id="divider5"></div>
                 </div>
 
                 <!-- WHISHLIST -->
@@ -254,7 +354,7 @@
                     <div class="container-fluid" id="wishlist_container">
 
                     </div>
-                    <hr>
+                    <div class="divider" id="divider6"></div>
                 </div>
 
 
@@ -263,7 +363,7 @@
                     <h3>FOLLOWED DESIGNERS</h3>
                     <div class="followed-designer-container" id="followed-designer-container">
                     </div>
-                    <hr>
+                    <div class="divider"></div>
                 </div>
             </div>
         </div>

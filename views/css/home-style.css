@@ -88,6 +88,8 @@
 	text-align:center;
 }
 
+#nav-user-dropdown-menu {width: 260px;}
+
 .login-dropdown a {color: #595959 !important;}
 
 #login-error-label {display: none; color:#DF5C5E;
@@ -99,8 +101,12 @@
 	padding-top:10px;}
 
 
-#login-nav-button {}
-#sign-nav-button {}
+#nav-drop-logout-btn, #nav-drop-logout-btn:hover {
+    border: none;
+    text-decoration: underline;
+    background-color: transparent;
+    color: #595959;
+}
 
 #logged-nav-button {
     margin-left: 30px;
@@ -141,6 +147,15 @@
 #search-modal button:hover { color: #f5f9fa; background-color: #1e1e1e;}
 #search-modal label, #search-modal input, #search-modal button { !important; font-size: 22px; font-weight: 200; }
 
+.login-modal .modal-content {padding: 16px;}
+.login-modal h4, .login-modal label {text-align: left;}
+.login-modal .divider {margin: 16px 0 32px 0;}
+
+.divider {
+    height: 1px;
+    background-color: #d3d3d3;
+    margin: 36px 0 64px 0;
+}
 
 
 

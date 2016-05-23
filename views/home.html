@@ -50,9 +50,9 @@
 					<li>
 						<img class="img-circle" id="nav-login-icon" src="https://keepon.life/images/default_user.jpg" height="128px">
                         <h4 id="nav-drop-login-name">name surname</h4>
-						<button id="nav-drop-edit-profile-btn" class="btn btn-default" style="margin-top: 10px;"> Edit Profile </button>
+						<div><button id="nav-drop-edit-profile-btn" class="btn btn-default" style="margin-top: 10px;"> Edit Profile </button></div>
                         </br>
-						<button id="nav-drop-logout-btn" class="btn btn-default" style="margin-top: 10px"> Logout </button>
+						<div><button id="nav-drop-logout-btn" class="btn btn-default" style="margin-top: 10px"> Logout </button></div>
 					</li>
 				</ul>
 			</li>
@@ -84,36 +84,34 @@
 
 
 
-<!-- LOGIN MODAL -->
-<div id="login-modal" class="modal fade" role="dialog">
-  <div class="modal-dialog" id="login-modal-dialog">
+	<!-- LOGIN MODAL -->
+	<div id="login-modal" class="modal fade login-modal" role="dialog">
+		<div class="modal-dialog" id="login-modal-dialog">
 
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Login</h4>
-      </div>
-      <div class="modal-body">
- 		 <div class="form-group">
-  		  <label for="login-email-field">Email address:</label>
-   		 <input type="email" class="form-control" id="login-email-field">
-	    </div>
- 		 <div class="form-group">
-  		  <label for="login-password-field">Password:</label>
-  		  <input type="password" class="form-control" id="login-password-field">
-		  </div>
-		  <div class="checkbox">
- 			  <label><input type="checkbox"> Remember me</label>
-		  </div>
-          <p id="login-error-label"> Username or password incorrect </p>
-			  <button id="nav-login-submit-button" type="submit" class="btn btn-default">Submit</button>
-   		 </div>
-    </div>
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-body">
+					<h4>LOGIN</h4>
+					<div class="divider"></div>
+					<div class="form-group">
+						<label for="login-email-field">Email</label>
+						<input class="form-control" id="login-email-field" autocomplete="off" placeholder="">
+					</div>
+					<div class="form-group">
+						<label for="login-password-field">Password</label>
+						<input type="password" class="form-control" id="login-password-field" autocomplete="off" placeholder="">
+					</div>
+					<div class="checkbox">
+						<label><input type="checkbox"> Remember me</label>
+					</div>
+					<p id="login-error-label"> Username or password incorrect </p>
+					<div class="divider"></div>
+					<button id="nav-login-submit-button" type="submit" class="btn btn-default">Submit</button>
+				</div>
+			</div>
 
-  </div>
-</div>
-
+		</div>
+	</div>
 
 
 

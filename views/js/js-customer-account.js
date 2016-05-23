@@ -41,6 +41,11 @@ function updateUserData(data) {
     document.getElementById("customer-lastname-label").innerHTML = "<small>LAST NAME</small> " + data.lastname;
     document.getElementById("customer-email-label").innerHTML = "<small>EMAIL</small> " + data.email;
     document.getElementById("customer-phone-label").innerHTML = "<small>PHONE</small> " + data.phone;
+
+    document.getElementById("info-firstname-field").value = data.firstname;
+    document.getElementById("info-lastname-field").value = data.lastname;
+    document.getElementById("info-email-field").value = data.email;
+    document.getElementById("info-phone-field").value = data.phone;
 }
 
 function getAddresses(id){
@@ -141,8 +146,8 @@ function updateUserOrders(data) {
 
                 $("#order_container").append("<div class='order-item'><div class='row'>"+
                     "<div class='col-sm-6 order-item-icon'><img src='"+img_url+"' height='180px'>"+
-                    "</div><div class='col-sm-6 order-item-container'><h4>"+title+"</h4><p><small>ORDER NUMBER</small> "+order_id+" </p>"+
-                    "<p><small>PRICE</small>"+price+"e X"+qty+" </p><p><small>DATE</small> "+date+" </p><p><small>STATUS</small> "+state+" </p>"+
+                    "</div><div class='col-sm-6 order-item-container'><p style='font-weight: bold;'>"+title+"</p><p><small>ORDER NUMBER</small> "+order_id+" </p>"+
+                    "<p><small>PRICE </small>"+price*qty+"€</p><p><small>DATE</small> "+date+" </p><p><small>STATUS</small> "+state+" </p>"+
                     "<p><small>MANAGE ORDER</small> ***** </p></div></div></div>");
             }
         };
@@ -173,8 +178,8 @@ function updateWishlist(data) {
         var img_url = base_url+"pic/"+data[i].projects_id+"_1.png";
 
         $("#wishlist_container").append("<div class='order-item'><div class='row'>"+
-            "<div class='col-sm-4 order-item-icon'><img src='"+img_url+"' height='180px'>"+
-            "</div><div class='col-sm-8 order-item-container'><h4>"+title+"</h4>"+
+            "<div class='col-sm-6 order-item-icon'><img src='"+img_url+"' height='180px'>"+
+            "</div><div class='col-sm-6 order-item-container'><p style='font-weight: bold'>"+title+"</p>"+
             "<p><small>PRICE </small>"+price+"<div><button class='btn-default' style='margin-top: 8px; margin-bottom: 8px;'>ADD TO CART</button></div></div></div></div>");
     }
 }
