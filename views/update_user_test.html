@@ -12,7 +12,7 @@
     <!-- EDIT THIS SCRIPT -->
     <script>
         var base_url = "http://localhost/cf/";
-        var request_url = base_url + "<!--here url-->" + "/" + "<!--here user id-->";
+        var request_url = base_url + "index.php/users/update_profile" + "/" + "1";
 
         // this is executed on submit click
         $(document).ready(function(){
@@ -22,8 +22,8 @@
                             // here assign POST params
                             firstname: document.getElementById('test-firstname').value,
                             lastname: document.getElementById('test-lastname').value,
-                            email: document.getElementById('test-email').value,
-                            password: document.getElementById('test-password').value,
+                            //email: document.getElementById('test-email').value,
+                            //password: document.getElementById('test-password').value,
                             phone: document.getElementById('test-phone').value
                         },
 
@@ -52,14 +52,7 @@
         <label for="test-lastname">Lastname:</label>
         <input type="text" class="form-control" placeholder="" id="test-lastname">
     </div>
-    <div class="form-group">
-        <label for="test-email">email:</label>
-        <input type="text" class="form-control" placeholder="" id="test-email">
-    </div>
-    <div class="form-group">
-        <label for="test-password">password:</label>
-        <input type="text" class="form-control" placeholder="" id="test-password">
-    </div>
+
     <div class="form-group">
         <label for="test-phone">phone:</label>
         <input type="text" class="form-control" placeholder="" id="test-phone">

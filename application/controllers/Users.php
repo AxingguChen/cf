@@ -235,6 +235,33 @@ class Users extends CI_Controller {
 		//print_r($data);
 	}
 	
+	// access
+	// index.php/users/user_profile
+	function update_profile($users_id = 1) {
+		// get session data
+		$sess_array = array(
+				'users_id' => $users_id,
+				'firstname' => 'yuxing'
+		
+		);
+		$this->session->set_userdata('logged_in', $sess_array);
+		
+		if ($this->session->userdata ( 'logged_in' )) {
+			$session_data = $this->session->userdata ( 'logged_in' );
+				
+			//$tmparray = $this->input->post ( NULL, TRUE );
+			$this->users_model->update_profile ( $session_data ['users_id']);
+				
+			// get user data by id
+			$data ['rows'] = $this->users_model->get_by_id ( $session_data ['users_id'] );
+			$data ['state'] = true;
+		} else {
+			$data ['state'] = false;
+			
+		}
+		print json_encode($data);
+	}
+	
 	
 	
 }
