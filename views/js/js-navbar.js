@@ -9,15 +9,29 @@ $(document).ready(function () {
         var user_id = sessionStorage.cfUserId;
         updateNavbarUserLogged(sessionStorage.cfUserFirstname,sessionStorage.cfUserLastname);
     }
+    if(localStorage.cfUserEmail !== undefined && localStorage.cfUserPassword !== undefined ) {
+        document.getElementById('login-email-field').value = localStorage.cfUserEmail;
+        document.getElementById('login-password-field').value = localStorage.cfUserPassword;
+        document.getElementById('login-checkbox').checked = "checked";
+    }
+    else {
+        document.getElementById('login-email-field').value = "";
+        document.getElementById('login-email-field').placeholder = "email";
+        document.getElementById('login-password-field').value = " ";
+    }
 });
 
 // navbar login / logout
 $(document).ready(function(){
     $("#nav-login-submit-button").click(function(){
+        var userEmail = document.getElementById('login-email-field').value;
+        var userPassw = document.getElementById('login-password-field').value;
+
         $.post(base_url+"index.php/users/login",
             {
-                email: document.getElementById('login-email-field').value,
-                password: document.getElementById('login-password-field').value
+                email: userEmail,
+                password: userPassw
+
             },
             function(data,status){
                 var json = JSON.parse(data);
@@ -30,6 +44,12 @@ $(document).ready(function(){
                     sessionStorage.setItem("cfUserFirstname",user.firstname);
                     sessionStorage.setItem("cfUserLastname",user.lastname);
 
+                    if(document.getElementById('login-checkbox').checked) {
+                        localStorage.setItem("cfUserEmail", userEmail);
+                        localStorage.setItem("cfUserPassword", userPassw);
+                    }
+                    else { localStorage.removeItem("cfUserEmail"); localStorage.removeItem("cfUserPassword");}
+
                     document.getElementById("login-error-label").style.display = "none";
                     $('#login-modal').modal('hide');
                     document.getElementById("login-nav-button").style.display = "none";
@@ -37,6 +57,8 @@ $(document).ready(function(){
 
                     document.getElementById("nav-login-name").innerHTML = user.firstname;
                     document.getElementById("nav-drop-login-name").innerHTML = user.firstname + " " + user.lastname;
+
+
                 }
             });
     });
@@ -64,6 +86,7 @@ function updateNavbarUserLogged(firstname, lastname) {
     document.getElementById("login-error-label").style.display = "none";
     $('#login-modal').modal('hide');
     document.getElementById("login-nav-button").style.display = "none";
+    document.getElementById("sign-nav-button").style.display = "none";
     document.getElementById("logged-nav-button").style.display = "inline";
 
     document.getElementById("nav-login-name").innerHTML = firstname;

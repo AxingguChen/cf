@@ -134,6 +134,11 @@
     vertical-align: middle;
 }
 
+.modal-backdrop
+{
+    opacity:0.85 !important;
+}
+
 #search-modal .modal-dialog {width: 100%;}
 #search-modal .modal-content {
     background-color: transparent;
