@@ -8,6 +8,8 @@ class Users extends CI_Controller {
 		$this->load->model('users_model','',TRUE);
 		$this->load->model('users_address_model','',TRUE);	
 		$this->load->library('form_validation');
+		$this->load->model('payment_model','',TRUE);
+		$this->load->model('address_model','',TRUE);
 		$this->load->helper('form');
 	}
 	
@@ -222,6 +224,73 @@ class Users extends CI_Controller {
 		//print_r($data);
 	}
 	
+	public function view_payment_by_id($payment_id = 0){
+		$data ['rows'] = $this->payment_model->get_payment_by_id($payment_id);
+		print json_encode($data);
+		//print_r($data);
+	}
+	
+	public function view_address_by_id($address_id = 0){
+		$data ['rows'] = $this->address_model->get_address_by_id($address_id);
+		print json_encode($data);
+		//print_r($data);
+	}
+	
+	// access
+	// index.php/users/update_payment_by_id
+	function update_payment_by_id($payment_id = 1) {
+		// get session data
+		$sess_array = array(
+				'users_id' => 1,
+				'firstname' => 'yuxing'
+	
+		);
+		$this->session->set_userdata('logged_in', $sess_array);
+	
+		if ($this->session->userdata ( 'logged_in' )) {
+			$session_data = $this->session->userdata ( 'logged_in' );
+	
+			//$tmparray = $this->input->post ( NULL, TRUE );
+			$this->payment_model->update_payment_by_id ($payment_id);
+	
+			// get user data by id
+			$data ['rows'] = $this->payment_model->get_payment_by_id ($payment_id);
+			$data ['state'] = true;
+		} else {
+			$data ['state'] = false;
+				
+		}
+		print json_encode($data);
+	}
+	
+	// access
+	// index.php/users/update_address_by_id
+	function update_address_by_id($address_id = 1) {
+		// get session data
+		$sess_array = array(
+				'users_id' => 1,
+				'firstname' => 'yuxing'
+	
+		);
+		$this->session->set_userdata('logged_in', $sess_array);
+	
+		if ($this->session->userdata ( 'logged_in' )) {
+			$session_data = $this->session->userdata ( 'logged_in' );
+	
+			//$tmparray = $this->input->post ( NULL, TRUE );
+			$this->address_model->update_address_by_id ($address_id);
+	
+			// get user data by id
+			$data ['rows'] = $this->address_model->get_address_by_id ($address_id);
+			$data ['state'] = true;
+		} else {
+			$data ['state'] = false;
+	
+		}
+		print json_encode($data);
+	}
+	
+	
 	public function view_wishlist_by_user_id($users_id = 0,$offset = 0, $limit = 0){
 		$this->load->model('wishlist_model','',TRUE);
 		if ($limit <= 0) {
@@ -236,7 +305,7 @@ class Users extends CI_Controller {
 	}
 	
 	// access
-	// index.php/users/user_profile
+	// index.php/users/update_profile
 	function update_profile($users_id = 1) {
 		// get session data
 		$sess_array = array(
