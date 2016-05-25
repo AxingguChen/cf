@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Air Shooroom - Designer Studio</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/home-style.css">
+    <link rel="stylesheet" type="text/css" href="css/customer-account-style.css">
+    <link rel="stylesheet" type="text/css" href="css/designer-studio-style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="js/js-api-global.js"></script>
+    <script src="js/js-navbar.js"></script>
+    <script src="js/js-designer-studio.js"></script>
+</head>
+
+<body data-spy="scroll" data-target="#myScrollspy" data-offset="20">
+
+
+<div class="container-fluid main-container">
+
+    <nav class="navbar navbar-default navbar-fixed-top" id="navbar">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" id="navbar-brand" href="home.html">Air Showroom</a>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav">
+                    <li><a href="projects.html">Shop</a></li>
+                    <li><a href="designers.html">Our Designers</a></li>
+                    <li><a href="how-it-works.html">How it works</a></li>
+                    <li><a href="about-us.html">About</a></li>
+                    <li><a href="campaign.html">+ Launch a campaign</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#search-modal" data-toggle="modal"><span class="glyphicon glyphicon-search"></span></a></li>
+                    <li><a href="#search-modal" data-toggle="modal"><span class="glyphicon glyphicon-heart"></span></a></li>
+                    <li><a href="#search-modal" data-toggle="modal"><span class="glyphicon glyphicon-shopping-cart"></span></a></li>
+                    <li id="sign-nav-button"><a href="#signup-modal" data-toggle="modal"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                    <li id="login-nav-button"><a href="#login-modal" data-toggle="modal"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+
+                    <li class="dropdown" id="logged-nav-button">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" >
+                            <p id="nav-login-name"> Name </p>
+                        </a>
+                        <ul class="dropdown-menu login-dropdown" id="nav-user-dropdown-menu">
+                            <li>
+                                <img class="img-circle" id="nav-login-icon" src="https://keepon.life/images/default_user.jpg" height="128px">
+                                <h4 id="nav-drop-login-name">name surname</h4>
+                                <button class="btn btn-default" style="margin-top: 10px;"> Edit Profile </button>
+                                </br>
+                                <button id="nav-drop-logout-btn" class="btn btn-default" style="margin-top: 10px"> Logout </button>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+
+    <!-- SING UP Modal -->
+    <div id="signup-modal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content signin-modal">
+                <div class="modal-header">
+                    <h1>JOIN THE SHOWROOM</h1>
+                </div>
+                <div class="modal-body">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisci elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam....Lorem ipsum dolor sit amet, consectetur adipisci elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam....</p>
+                    <a href="sign-in.html"><img src="icons/arrow-right-512.png" height="256px"/></a>
+                    <p>Let's start</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+
+    <!-- LOGIN MODAL -->
+    <div id="login-modal" class="modal fade login-modal" role="dialog">
+        <div class="modal-dialog" id="login-modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-body">
+                    <h4>LOGIN</h4>
+                    <div class="divider"></div>
+                    <div class="form-group">
+                        <label for="login-email-field">Email</label>
+                        <input class="form-control" id="login-email-field" placeholder="">
+                    </div>
+                    <div class="form-group">
+                        <label for="login-password-field">Password</label>
+                        <input class="form-control" id="login-password-field" placeholder="">
+                    </div>
+                    <div class="checkbox">
+                        <label><input type="checkbox"> Remember me</label>
+                    </div>
+                    <p id="login-error-label"> Username or password incorrect </p>
+                    <div class="divider"></div>
+                    <button id="nav-login-submit-button" type="submit" class="btn btn-default">Submit</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+
+
+    <!-- SEARCH MODAL -->
+
+    <div id="search-modal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-body">
+                    <form class="form-inline" role="form">
+                        <div class="form-group">
+                            <label> Search: </label>
+                            <input type="text" class="form-control" id="text" placeholder="Write here...">
+                        </div>
+                        <button type="submit" class="btn btn-default" onclick="nav_search()">GO</button>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+
+    <!-- PERSONAL INFO MODAL -->
+    <div id="personal-info-modal" class="modal fade edit-modal" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-body">
+                    <h4>PERSONAL DATA</h4>
+                    <div class="divider"></div>
+                    <form class="form-inline" role="form">
+                        <div class="form-group">
+                            <label for="info-firstname-field"> FIRST NAME </label>
+                            <input id="info-firstname-field" type="text" class="form-control" >
+                        </div>
+                        <div class="form-group">
+                            <label for="info-lastname-field"> LAST NAME </label>
+                            <input id="info-lastname-field" type="text" class="form-control" >
+                        </div>
+                        <div class="form-group">
+                            <label for="info-email-field"> EMAIL </label>
+                            <input id="info-email-field" type="text" class="form-control" value="email" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label for="info-phone-field"> PHONE </label>
+                            <input id="info-phone-field" type="text" class="form-control">
+                        </div>
+                        <div class="divider"></div>
+                        <div style="text-align: center;">
+                            <button class="btn btn-default save-btn">SAVE</button>
+                            <button class="btn btn-default cancel-btn">CANCEL</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+    <!-- PERSONAL INFO MODAL -->
+    <div id="edit-address-modal" class="modal fade edit-modal" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-body">
+                    <h4>NEW ADDRESS</h4>
+                    <div class="divider"></div>
+                    <form class="form-inline" role="form">
+                        <div class="form-group">
+                            <label for="address-label-field"> ADDRESS LABEL </label>
+                            <input id="address-label-field" type="text" class="form-control" >
+                        </div>
+                        <div class="form-group">
+                            <label for="address-firstname-field"> FIRST NAME </label>
+                            <input id="address-firstname-field" type="text" class="form-control" >
+                        </div>
+                        <div class="form-group">
+                            <label for="address-lastname-field"> LAST NAME </label>
+                            <input id="address-lastname-field" type="text" class="form-control" >
+                        </div>
+                        <div class="form-group">
+                            <label for="address-street-field"> STREET ADDRESS </label>
+                            <input id="address-street-field" type="text" class="form-control" value="">
+                        </div>
+                        <div class="form-group">
+                            <label for="address-additional-field"> ADDITIONAL INFO </label>
+                            <input id="address-additional-field" type="text" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="address-country-field"> COUNTRY </label>
+                            <input id="address-country-field" type="text" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="address-city-field"> CITY </label>
+                            <input id="address-city-field" type="text" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="address-zip-field"> ZIP CODE </label>
+                            <input id="address-zip-field" type="text" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="address-phone-field"> PHONE </label>
+                            <input id="address-phone-field" type="text" class="form-control">
+                        </div>
+                        <div class="divider"></div>
+                        <div style="text-align: center;">
+                            <button class="btn btn-default save-btn">SAVE</button>
+                            <button class="btn btn-default cancel-btn">CANCEL</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+
+    <!-- SCROLL SPY -->
+    <div class="container" id="customer-scrollspy-container">
+
+        <div class="row">
+            <nav class="col-sm-3" id="myScrollspy">
+                <ul class="nav nav-pills nav-stacked">
+                    <h3 id="customer-hi-label"> Hi name</h3>
+                    <li class="active"><a href="#section1">PRODUCT STATUS</a></li>
+                    <li><a href="#divider2">DESIGNER INFO</a></li>
+                    <li><a href="#divider3">CUSTOMER FEEDBACK</a></li>
+                    <li><a href="#divider4">ADDRESS</a></li>
+                    <li><a href="#divider5">PAYMENT METHODS</a></li>
+                    <li><button id="customer-logout-button" class="btn-default">LOGOUT</button></li>
+                </ul>
+            </nav>
+
+
+            <!-- PRODUCT STATUS -->
+            <div class="col-sm-9">
+                <div id="section1">
+                    <h3>PRODUCT STATUS</h3>
+                    <div class="container table-container">
+                        <table class="table table-striped">
+                            <thead>
+                            <tr>
+                                <th>IMG</th>
+                                <th>COST</th>
+                                <th>STATUS</th>
+                                <th>DAYS LEFT</th>
+                                <th>ACTUAL INCOME</th>
+                                <th>ACTION</th>
+                            </tr>
+                            </thead>
+                            <tbody id="product-status-table-body">
+
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div style="text-align: center;"><button class="btn-default" style="margin-top: 12px; margin-bottom: 20px;">+ NEW CAMPAIGN</button></div>
+                    <div class="divider" id="divider2"></div>
+                </div>
+                <div id="section2">
+                    <h3>DESIGNER INFO</h3>
+                    <row>
+                        <div class="col-sm-4">
+                            <img class="img-circle" src="icons/placeholder.png" width="120px"/>
+                        </div>
+                        <div class="col-sm-4">
+                            <p id="designer-firstname-label"><small>FIRSTNAME</small> firstname </p>
+                            <p id="designer-lastname-label"><small>LASTNAME</small> lastname </p>
+                            <p id="designer-school-label"><small>SCHOOL</small> scholl </p>
+                            <p id="designer-city-label"><small>CITY</small> city </p>
+                        </div>
+                        <div class="col-sm-4">
+                            <p id="designer-email-label"><small>EMAIL</small> email </p>
+                            <p id="designer-phone-label"><small>PHONE</small> phone </p>
+                            <p id="designer-website-label"><small>WEBSITE</small> website </p>
+                            <p id="designer-description-label"><small>DESCRIPTION</small> descr </p>
+                        </div>
+                    </row>
+                    <div style="text-align: center;"><button class="btn-default" data-toggle="modal" data-target="#personal-info-modal" style="margin-top: 12px; margin-bottom: 20px;">EDIT</button></div>
+                    <div class="divider" id="divider3"></div>
+                </div>
+
+                <!-- WHISHLIST -->
+                <div id="section3">
+                    <h3>CUSTOMER FEEDBACK</h3>
+                    <div class="container-fluid" id="wishlist_container">
+
+                    </div>
+                    <div class="divider" id="divider4"></div>
+                </div>
+
+                <!-- ADDRESS -->
+                <div id="section4">
+                    <h3>ADDRESS</h3>
+                    <div class="container table-container">
+                        <table class="table table-striped">
+                            <thead>
+                            <tr>
+                                <th>NAME</th>
+                                <th>ADDRESS</th>
+                                <th>PHONE</th>
+                                <th>SET AS DEFAULT</th>
+                            </tr>
+                            </thead>
+                            <tbody id="address-table-body">
+
+                            </tbody>
+                        </table>
+                    </div>
+                    <div style="text-align: center;"><button class="btn-default" data-toggle="modal" data-target="#edit-address-modal" style="margin-top: 12px; margin-bottom: 20px;">ADD ADDRESS</button></div>
+                    <div class="divider" id="divider5"></div>
+                </div>
+
+                <!-- PAYMENT METHODS -->
+                <div id="section5">
+                    <h3>PAYMENT METHODS</h3>
+                    <div class="container table-container">
+                        <table class="table table-striped">
+                            <thead>
+                            <tr>
+                                <th>TYPE</th>
+                                <th>NAME</th>
+                                <th>NUMBER</th>
+                                <th>EXPIRY DATE</th>
+                                <th>SET AS DEFAULT</th>
+                            </tr>
+                            </thead>
+                            <tbody id="payment-table-body">
+
+                            </tbody>
+                        </table>
+                    </div>
+                    <div style="text-align: center;"><button class="btn-default" style="margin-top: 12px; margin-bottom: 20px;">ADD PAYMENT METHOD</button></div>
+                    <div class="divider"></div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+
+</div>
+
+</body>
+</html>

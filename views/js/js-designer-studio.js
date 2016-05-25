@@ -1,4 +1,7 @@
 /**
+ * Created by Giovanni on 25/05/16.
+ */
+/**
  * Created by giovanni on 22/05/16.
  */
 
@@ -16,12 +19,12 @@ getOrdersByUser(userId);
 getAddresses(userId);
 getUserPaymentMethods(userId);
 getWishlistByUser(userId);
-getFollowedDesigners(userId);
 
 
 
 function getUser(id){
-    var url_user = base_url+"index.php/users/view_user/"+id;
+    //var url_user = base_url+"index.php/users/view_user/"+id;
+    var url_user = base_url+"index.php/users/view_user/"+"6";
     var xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = function() {
         if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
@@ -48,7 +51,7 @@ function updateUserData(data) {
 }
 
 function getAddresses(id){
-    var url_address = base_url+"index.php/users/view_address_by_user_id/"+id;
+    var url_address = base_url+"index.php/users/view_address_by_user_id/"+"1";
     var xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = function() {
         if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
@@ -75,7 +78,7 @@ function updateAddressData(data) {
 }
 
 function getUserPaymentMethods(id){
-    var url_p_methods = base_url+"index.php/users/view_payment_method_by_user_id/"+id;
+    var url_p_methods = base_url+"index.php/users/view_payment_method_by_user_id/"+"1";
     var xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = function() {
         if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
@@ -110,7 +113,7 @@ function updateUserPaymentMethods(data) {
 }
 
 function getOrdersByUser(id){
-    var url_orders = base_url+"index.php/orders/view_by_users_id/"+id;
+    var url_orders = base_url+"index.php/orders/view_by_users_id/"+"1";
     var xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = function() {
         if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
@@ -183,26 +186,3 @@ function updateWishlist(data) {
     }
 }
 
-function getFollowedDesigners(id){
-    var url_followed = base_url+"index.php/users/view_followed_designers/"+id;
-    var xmlhttp = new XMLHttpRequest();
-    xmlhttp.onreadystatechange = function() {
-        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-            var json_array = JSON.parse(xmlhttp.responseText);
-            var data = json_array.rows;
-            updateFollowedDesigners(data);
-        }
-    };
-    xmlhttp.open("GET", url_followed, true);
-    xmlhttp.send();
-}
-
-function updateFollowedDesigners(data) {
-    for(var i=0; i<data.length; i++) {
-        var name=data[i].firstname +" "+ data[i].lastname;
-        var img_url = base_url+"avatar/"+data[i].designed_id+".png";
-
-        $("#followed-designer-container").append('<div class="designer-followed-item"><img src="'+img_url+
-            '" height="150px"><h4>'+name+'</h4><div style="text-align: center;"><button class="btn-default" style="margin-top: 8px; margin-bottom: 8px;">unfollow</button></div></div>');
-    }
-}

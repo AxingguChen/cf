@@ -7,7 +7,7 @@
 $(document).ready(function () {
     if(checkUserLogged()) {
         var user_id = sessionStorage.cfUserId;
-        updateNavbarUserLogged(sessionStorage.cfUserFirstname,sessionStorage.cfUserLastname);
+        updateNavbarUserLogged(sessionStorage.cfUserFirstname,sessionStorage.cfUserLastname, sessionStorage.cfUserGroupsId);
     }
     if(localStorage.cfUserEmail !== undefined && localStorage.cfUserPassword !== undefined ) {
         document.getElementById('login-email-field').value = localStorage.cfUserEmail;
@@ -41,6 +41,7 @@ $(document).ready(function(){
                 else {
                     var user = json.rows[0];
                     sessionStorage.setItem("cfUserId",user.users_id);
+                    sessionStorage.setItem("cfUserGroupsId",user.users_groups_id);
                     sessionStorage.setItem("cfUserFirstname",user.firstname);
                     sessionStorage.setItem("cfUserLastname",user.lastname);
 
@@ -54,6 +55,10 @@ $(document).ready(function(){
                     $('#login-modal').modal('hide');
                     document.getElementById("login-nav-button").style.display = "none";
                     document.getElementById("logged-nav-button").style.display = "inline";
+
+                    if(user.users_groups_id == "10") {
+                        document.getElementById("nav-drop-designer-studio-btn").style.display = "inline-block";
+                    }
 
                     document.getElementById("nav-login-name").innerHTML = user.firstname;
                     document.getElementById("nav-drop-login-name").innerHTML = user.firstname + " " + user.lastname;
@@ -75,6 +80,10 @@ $(document).ready(function(){
         window.location.href = base_url+"views/customer-account.html";
     });
 
+    $("#nav-drop-designer-studio-btn").click(function(){
+        window.location.href = base_url+"views/designer-studio.html";
+    });
+
     // login modal
     $("#login-modal").on('hidden.bs.modal', function () {
         document.getElementById("login-error-label").style.display = "none";
@@ -82,12 +91,18 @@ $(document).ready(function(){
 });
 
 
-function updateNavbarUserLogged(firstname, lastname) {
+function updateNavbarUserLogged(firstname, lastname, groups_id) {
     document.getElementById("login-error-label").style.display = "none";
     $('#login-modal').modal('hide');
     document.getElementById("login-nav-button").style.display = "none";
     document.getElementById("sign-nav-button").style.display = "none";
     document.getElementById("logged-nav-button").style.display = "inline";
+
+    if(groups_id == "10") {
+        document.getElementById("nav-drop-designer-studio-btn").style.display = "inline-block";
+        //document.getElementById("nav-login-icon").href = "";
+
+    }
 
     document.getElementById("nav-login-name").innerHTML = firstname;
     document.getElementById("nav-drop-login-name").innerHTML = firstname + " " + lastname;

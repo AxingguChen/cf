@@ -36,6 +36,7 @@ ul.nav-pills.nav-stacked a { color: #C3C3C3;}
 
 #customer-hi-label { margin-bottom: 32px;}
 
+.table-striped {max-width: 900px;}
 .table-striped thead { background-color: #231f20; color: #f5f9fa;}
 
 
