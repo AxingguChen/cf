@@ -38,7 +38,7 @@
 		<ul class="nav navbar-nav navbar-right">
 			<li><a href="#search-modal" data-toggle="modal"><span class="glyphicon glyphicon-search"></span></a></li>
 			<li><a href="#search-modal" data-toggle="modal"><span class="glyphicon glyphicon-heart"></span></a></li>
-			<li><a href="#search-modal" data-toggle="modal"><span class="glyphicon glyphicon-shopping-cart"></span></a></li>
+			<li><a href="#cart-modal" data-toggle="modal"><span class="glyphicon glyphicon-shopping-cart"></span></a></li>
 			<li id="sign-nav-button"><a href="#signup-modal" data-toggle="modal"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
             <li id="login-nav-button"><a href="#login-modal" data-toggle="modal"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
 
@@ -137,6 +137,59 @@
   </div>
 </div>
 
+
+	<!-- SHOPPING-CART Modal -->
+	<div id="cart-modal" class="modal fade" role="dialog">
+		<div class="modal-dialog">
+
+			<!-- Modal content-->
+			<div class="modal-content signin-modal">
+				<div class="modal-body">
+					<h3 style="text-align: left;">YOUR CART</h3>
+					<div class="divider"></div>
+					<div class="cart-item">
+					<div class="row">
+						<div class="col-sm-3">
+							<img src="icons/placeholder.png" width="100%">
+						</div>
+						<div class="col-sm-3">
+							<p> DESCRIPTION</p>
+						</div>
+						<div class="col-sm-2">
+							<p> QUANTITY</p>
+						</div>
+						<div class="col-sm-2">
+							<p> AVAILABILITY</p>
+						</div>
+						<div class="col-sm-2">
+							<p> PRICE</p>
+						</div>
+					</div>
+						<div class="row">
+							<button class="btn-default"> ADD TO WISHLIST </button>
+							<button class="btn-default"> REMOVE </button>
+						</div>
+					</div>
+					<div class="divider"></div>
+					<div class="row">
+						<div class="col-sm-4">
+							<p> ITEM TOTAL</p>
+						</div>
+						<div class="col-sm-4">
+							<p> SHIPPING </p>
+						</div>
+						<div class="col-sm-4">
+							<p> TOTAL PRICE </p>
+						</div>
+					</div>
+					<div class="divider"></div>
+					<button class="btn-default"> BACK </button>
+					<button class="btn-default" id="cart-checkout-btn"> CHECKOUT </button>
+				</div>
+			</div>
+
+		</div>
+	</div>
 
 
 

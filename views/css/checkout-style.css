@@ -1,0 +1,25 @@
+.checkout-container {text-align: center;}
+
+.checkout-section-container {padding: 60px 80px;}
+
+.checkout-top-menu {
+    padding-top: 100px;
+    padding-bottom: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 700px;
+    border-bottom: solid;
+    border-bottom-color: #C3C3C3;
+    border-bottom-width: 1px;
+}
+.checkout-top-menu p {
+    display: inline;
+    padding: 10px 16px;
+}
+#check-item-1 {
+    border-bottom: solid;
+    border-bottom-color: #1e1e1e;
+    border-bottom-width: 3px;
+}
+
+.form-group {width: 200px;}

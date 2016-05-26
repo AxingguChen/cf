@@ -162,7 +162,9 @@
     margin: 36px 0 64px 0;
 }
 
-
+#cart-modal .modal-dialog {position: fixed; right: 0;
+    top:0; margin-top: 50px; width: 600px;}
+#cart-modal .modal-body { padding: 40px 40px;}
 
 
 /* CAROUSEL */

@@ -84,6 +84,10 @@ $(document).ready(function(){
         window.location.href = base_url+"views/designer-studio.html";
     });
 
+    $("#cart-checkout-btn").click(function(){
+        window.location.href = base_url+"views/checkout.html";
+    });
+
     // login modal
     $("#login-modal").on('hidden.bs.modal', function () {
         document.getElementById("login-error-label").style.display = "none";
