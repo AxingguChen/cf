@@ -147,23 +147,25 @@
 				<div class="modal-body">
 					<h3 style="text-align: left;">YOUR CART</h3>
 					<div class="divider"></div>
+					<p id="nav-empty-cart-label"><small>Your cart is empty</small></p>
 					<div id="cart-items-container" style=" max-height: 400px; overflow-y: scroll;">
-                        <p id="nav-empty-cart-label"><small>Your cart is empty</small></p>
+					</div>
+					<div id="cart-modal-info">
+						<div class="divider"></div>
+						<div class="row">
+							<div class="col-sm-4">
+								<p id="cart-subtotal-price"> ITEM TOTAL</p>
+							</div>
+							<div class="col-sm-4">
+								<p id="cart-shipping-price"> SHIPPING </p>
+							</div>
+							<div class="col-sm-4">
+								<p id="cart-total-price"> TOTAL PRICE </p>
+							</div>
+						</div>
 					</div>
 					<div class="divider"></div>
-					<div class="row">
-						<div class="col-sm-4">
-							<p> ITEM TOTAL</p>
-						</div>
-						<div class="col-sm-4">
-							<p> SHIPPING </p>
-						</div>
-						<div class="col-sm-4">
-							<p> TOTAL PRICE </p>
-						</div>
-					</div>
-					<div class="divider"></div>
-					<button class="btn-default"> BACK </button>
+					<button class="btn-default" id="cart-close-btn"> CLOSE </button>
 					<button class="btn-default" id="cart-checkout-btn"> CHECKOUT </button>
 				</div>
 			</div>
@@ -173,7 +175,7 @@
 
 
 
-<!-- Page HEADER -->
+	<!-- Page HEADER -->
 <div class="jumbotron text-center" style="background-image: url('icons/banner1.jpg');">
   	<div class="row">
   	<div class="col-sm-6"></div>

@@ -168,6 +168,23 @@
 #cart-modal .modal-body { padding: 40px 40px;}
 #cart-items-container p{text-align: left;}
 
+#cart-item { margin-top: 32px; margin-bottom: 12px; background-color: #f2f2f2; padding: 8px;}
+
+#cart-modal-info .row{margin-top: 20px; margin-bottom: 20px;}
+#cart-total-price { font-weight: bold;}
+#cart-checkout-btn {
+    background-color: #1e1e1e;
+    color: #ffffff;
+
+}
+.cart-item-button {
+    background-color: #C3C3C3;
+    color: #ffffff;
+    border: none;
+    margin-left: 6px;
+}
+
+
 /* CAROUSEL */
 
 .carousel-control.right, .carousel-control.left, .design-control {

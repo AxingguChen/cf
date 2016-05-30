@@ -22,7 +22,7 @@
     border-bottom-width: 3px;
 }
 
-#checkout-section-1{display: none;}
+#checkout-section-1{}
 #checkout-section-1 .form-group {width: 200px;}
 
 #checkout-section-2{text-align: center; display: none; }
@@ -36,3 +36,4 @@
 #checkout-total {background-color: #1e1e1e; margin: 0; padding: 10px;}
 
 #checkout-section-4 {display: none;}
+#checkout-section-5 {display: none;}

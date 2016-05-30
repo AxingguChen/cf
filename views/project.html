@@ -151,43 +151,25 @@
                 <div class="modal-body">
                     <h3 style="text-align: left;">YOUR CART</h3>
                     <div class="divider"></div>
-                    <div class="cart-item">
+                    <p id="nav-empty-cart-label"><small>Your cart is empty</small></p>
+                    <div id="cart-items-container" style=" max-height: 400px; overflow-y: scroll;">
+                    </div>
+                    <div id="cart-modal-info">
+                        <div class="divider"></div>
                         <div class="row">
-                            <div class="col-sm-3">
-                                <img src="icons/placeholder.png" width="100%">
+                            <div class="col-sm-4">
+                                <p id="cart-subtotal-price"> ITEM TOTAL</p>
                             </div>
-                            <div class="col-sm-3">
-                                <p> DESCRIPTION</p>
+                            <div class="col-sm-4">
+                                <p id="cart-shipping-price"> SHIPPING </p>
                             </div>
-                            <div class="col-sm-2">
-                                <p> QUANTITY</p>
+                            <div class="col-sm-4">
+                                <p id="cart-total-price"> TOTAL PRICE </p>
                             </div>
-                            <div class="col-sm-2">
-                                <p> AVAILABILITY</p>
-                            </div>
-                            <div class="col-sm-2">
-                                <p> PRICE</p>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <button class="btn-default"> ADD TO WISHLIST </button>
-                            <button class="btn-default"> REMOVE </button>
                         </div>
                     </div>
                     <div class="divider"></div>
-                    <div class="row">
-                        <div class="col-sm-4">
-                            <p> ITEM TOTAL</p>
-                        </div>
-                        <div class="col-sm-4">
-                            <p> SHIPPING </p>
-                        </div>
-                        <div class="col-sm-4">
-                            <p> TOTAL PRICE </p>
-                        </div>
-                    </div>
-                    <div class="divider"></div>
-                    <button class="btn-default"> BACK </button>
+                    <button class="btn-default" id="cart-close-btn"> CLOSE </button>
                     <button class="btn-default" id="cart-checkout-btn"> CHECKOUT </button>
                 </div>
             </div>
@@ -195,7 +177,9 @@
         </div>
     </div>
 
-<!-- ADD TO CART MODAL -->
+
+
+    <!-- ADD TO CART MODAL -->
     <div id="cart-add-modal" class="modal fade login-modal" role="dialog">
         <div class="modal-dialog">
 

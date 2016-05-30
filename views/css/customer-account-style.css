@@ -27,7 +27,7 @@ ul.nav-pills.nav-stacked a, ul.nav-pills.nav-stacked h3{ padding-right: 16px; te
 ul.nav-pills.nav-stacked a { color: #C3C3C3;}
 .nav-pills>li.active>a, .nav-pills>li.active>a:hover { background-color: transparent; color: #1e1e1e; border-right-color: #1e1e1e; border-right-width: 1px; border-right: solid; border-radius: 0; }
 
-#customer-logout-button {margin-top: 32px; margin-right: 16px;}
+#customer-logout-button {margin-right: 16px;}
 
 #customer-scrollspy-container {
     padding-top: 100px;

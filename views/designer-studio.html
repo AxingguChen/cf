@@ -42,7 +42,7 @@
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="#search-modal" data-toggle="modal"><span class="glyphicon glyphicon-search"></span></a></li>
                     <li><a href="#search-modal" data-toggle="modal"><span class="glyphicon glyphicon-heart"></span></a></li>
-                    <li><a href="#search-modal" data-toggle="modal"><span class="glyphicon glyphicon-shopping-cart"></span></a></li>
+                    <li><a href="#cart-modal" data-toggle="modal"><span class="glyphicon glyphicon-shopping-cart"></span></a></li>
                     <li id="sign-nav-button"><a href="#signup-modal" data-toggle="modal"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
                     <li id="login-nav-button"><a href="#login-modal" data-toggle="modal"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
 
@@ -54,9 +54,10 @@
                             <li>
                                 <img class="img-circle" id="nav-login-icon" src="https://keepon.life/images/default_user.jpg" height="128px">
                                 <h4 id="nav-drop-login-name">name surname</h4>
-                                <button class="btn btn-default" style="margin-top: 10px;"> Edit Profile </button>
+                                <div><button id="nav-drop-edit-profile-btn" class="btn btn-default" style="margin-top: 10px;"> Edit Profile </button></div>
+                                <div><button id="nav-drop-designer-studio-btn" class="btn btn-default" style="margin-top: 10px; display: none"> Designer Studio </button></div>
                                 </br>
-                                <button id="nav-drop-logout-btn" class="btn btn-default" style="margin-top: 10px"> Logout </button>
+                                <div><button id="nav-drop-logout-btn" class="btn btn-default" style="margin-top: 10px"> Logout </button></div>
                             </li>
                         </ul>
                     </li>
@@ -99,14 +100,14 @@
                     <div class="divider"></div>
                     <div class="form-group">
                         <label for="login-email-field">Email</label>
-                        <input class="form-control" id="login-email-field" placeholder="">
+                        <input class="form-control" id="login-email-field" autocomplete="" placeholder="email">
                     </div>
                     <div class="form-group">
                         <label for="login-password-field">Password</label>
-                        <input class="form-control" id="login-password-field" placeholder="">
+                        <input type="password" class="form-control" id="login-password-field" autocomplete="" placeholder="password">
                     </div>
                     <div class="checkbox">
-                        <label><input type="checkbox"> Remember me</label>
+                        <label><input type="checkbox" id="login-checkbox"> Remember me</label>
                     </div>
                     <p id="login-error-label"> Username or password incorrect </p>
                     <div class="divider"></div>
@@ -116,7 +117,6 @@
 
         </div>
     </div>
-
 
 
 
@@ -135,6 +135,42 @@
                         </div>
                         <button type="submit" class="btn btn-default" onclick="nav_search()">GO</button>
                     </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+    <!-- SHOPPING-CART Modal -->
+    <div id="cart-modal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content signin-modal">
+                <div class="modal-body">
+                    <h3 style="text-align: left;">YOUR CART</h3>
+                    <div class="divider"></div>
+                    <p id="nav-empty-cart-label"><small>Your cart is empty</small></p>
+                    <div id="cart-items-container" style=" max-height: 400px; overflow-y: scroll;">
+                    </div>
+                    <div id="cart-modal-info">
+                        <div class="divider"></div>
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <p id="cart-subtotal-price"> ITEM TOTAL</p>
+                            </div>
+                            <div class="col-sm-4">
+                                <p id="cart-shipping-price"> SHIPPING </p>
+                            </div>
+                            <div class="col-sm-4">
+                                <p id="cart-total-price"> TOTAL PRICE </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="divider"></div>
+                    <button class="btn-default" id="cart-close-btn"> CLOSE </button>
+                    <button class="btn-default" id="cart-checkout-btn"> CHECKOUT </button>
                 </div>
             </div>
 
@@ -182,7 +218,7 @@
     </div>
 
 
-    <!-- PERSONAL INFO MODAL -->
+    <!-- EDIT ADDRESS MODAL -->
     <div id="edit-address-modal" class="modal fade edit-modal" role="dialog">
         <div class="modal-dialog">
 
@@ -242,18 +278,78 @@
 
 
 
+    <!-- NEW CAMPAIGN MODAL -->
+    <div id="new-campaign-modal" class="modal fade edit-modal" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-body">
+                    <h4>NEW CAMPAIGN</h4>
+                    <div class="divider"></div>
+                    <form class="form-inline" role="form">
+                        <div class="form-group">
+                            <label for="campaign-title-label"> TITLE </label>
+                            <input rows="16" id="campaign-title-label" type="text" class="form-control"/>
+                        </div>
+                        <div class="form-group">
+                            <label for="campaign-desc-label"> DESCRIPTION </label>
+                            <textarea rows="12" id="campaign-desc-label" type="text" class="form-control" ></textarea>
+                        </div>
+                        <p style="text-align: left;">* Required</p>
+                        <div class="divider"></div>
+
+                        <label for="campaign-desc-label"> FEATURE PICTURE </label>
+                        <div class="container-fluid">
+                            <img class="add-img-btn" src="icons/add-pic.png"/>
+                        </div>
+
+                        <label for="campaign-desc-label" style="margin-top: 16px;"> OTHER PICTURES </label>
+                        <div class="container-fluid">
+                            <img class="add-img-btn" src="icons/add-pic.png"/>
+                            <img class="add-img-btn" src="icons/add-pic.png"/>
+                            <img class="add-img-btn" src="icons/add-pic.png"/>
+                            <img class="add-img-btn" src="icons/add-pic.png"/>
+                        </div>
+
+                        <label for="campaign-desc-label" style="margin-top: 16px;"> TECHNICAL SEWING</label>
+                        <div class="container-fluid">
+                            <img class="add-img-btn" src="icons/add-pic.png"/>
+                            <img class="add-img-btn" src="icons/add-pic.png"/>
+                        </div>
+
+                        <label for="campaign-desc-label" style="margin-top: 16px;"> MATERIAL LIST </label>
+                        <div class="container-fluid">
+                            <img class="add-img-btn" src="icons/add-pic.png"/>
+                            <img class="add-img-btn" src="icons/add-pic.png"/>
+                        </div>
+
+                        <div style="text-align: center;" style="margin-top: 16px;">
+                            <button class="btn btn-default save-btn">SAVE</button>
+                            <button class="btn btn-default cancel-btn">CANCEL</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
     <!-- SCROLL SPY -->
     <div class="container" id="customer-scrollspy-container">
 
         <div class="row">
             <nav class="col-sm-3" id="myScrollspy">
                 <ul class="nav nav-pills nav-stacked">
-                    <h3 id="customer-hi-label"> Hi name</h3>
+                    <h3 id="designer-hi-label"> Hi name</h3>
                     <li class="active"><a href="#section1">PRODUCT STATUS</a></li>
                     <li><a href="#divider2">DESIGNER INFO</a></li>
                     <li><a href="#divider3">CUSTOMER FEEDBACK</a></li>
                     <li><a href="#divider4">ADDRESS</a></li>
                     <li><a href="#divider5">PAYMENT METHODS</a></li>
+                    <div class="divider"></div>
+                    <li><button id="customer-campaign-button" class="btn-default">+NEW CAMPAIGN</button></li>
                     <li><button id="customer-logout-button" class="btn-default">LOGOUT</button></li>
                 </ul>
             </nav>
@@ -269,6 +365,7 @@
                             <tr>
                                 <th>IMG</th>
                                 <th>COST</th>
+                                <th>PRICE</th>
                                 <th>STATUS</th>
                                 <th>DAYS LEFT</th>
                                 <th>ACTUAL INCOME</th>
@@ -281,14 +378,14 @@
                         </table>
                     </div>
 
-                    <div style="text-align: center;"><button class="btn-default" style="margin-top: 12px; margin-bottom: 20px;">+ NEW CAMPAIGN</button></div>
+                    <div style="text-align: center;"><button class="btn-default" data-toggle="modal" data-target="#new-campaign-modal" style="margin-top: 12px; margin-bottom: 20px;">+ NEW CAMPAIGN</button></div>
                     <div class="divider" id="divider2"></div>
                 </div>
                 <div id="section2">
                     <h3>DESIGNER INFO</h3>
                     <row>
                         <div class="col-sm-4">
-                            <img class="img-circle" src="icons/placeholder.png" width="120px"/>
+                            <img id="designer-studio-icon" class="img-circle" src="icons/placeholder.png" width="120px"/>
                         </div>
                         <div class="col-sm-4">
                             <p id="designer-firstname-label"><small>FIRSTNAME</small> firstname </p>
@@ -307,14 +404,16 @@
                     <div class="divider" id="divider3"></div>
                 </div>
 
-                <!-- WHISHLIST -->
+
+                <!-- CUSTOMER FEEDBACK -->
                 <div id="section3">
                     <h3>CUSTOMER FEEDBACK</h3>
-                    <div class="container-fluid" id="wishlist_container">
+                    <div class="container-fluid" id="designer-feedback-container">
 
                     </div>
                     <div class="divider" id="divider4"></div>
                 </div>
+
 
                 <!-- ADDRESS -->
                 <div id="section4">

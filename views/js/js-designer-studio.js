@@ -12,42 +12,31 @@ var payment_methods = {
     'alipay': '4'
 };
 
+$(document).ready(function () {
+    var userId = sessionStorage.getItem("cfUserId");
+    setPersonalData();
+    getProductsStatus(userId);
+    getAddresses(userId);
+    getUserPaymentMethods(userId);
+    getFeedbacks(userId);
+});
 
-var userId=sessionStorage.getItem("cfUserId");
-getUser(userId);
-getOrdersByUser(userId);
-getAddresses(userId);
-getUserPaymentMethods(userId);
-getWishlistByUser(userId);
 
+function setPersonalData() {
+    document.getElementById("designer-hi-label").innerHTML = getUserInfo().firstname;
+    document.getElementById("designer-studio-icon").src = base_url+"avatar/"+getUserInfo().users_id+".png";
+    document.getElementById("designer-firstname-label").innerHTML = "<small>FIRST NAME</small> " + getUserInfo().firstname;
+    document.getElementById("designer-lastname-label").innerHTML = "<small>LAST NAME</small> " + getUserInfo().lastname;
+    document.getElementById("designer-email-label").innerHTML = "<small>EMAIL</small> " + getUserInfo().email;
+    document.getElementById("designer-phone-label").innerHTML = "<small>PHONE</small> " + getUserInfo().phone;
+    document.getElementById("designer-city-label").innerHTML = "<small>CITY</small> " + getUserInfo().city;
+    document.getElementById("designer-school-label").innerHTML = "<small>SCHOOL</small> " + getUserInfo().schools_id;
+    document.getElementById("designer-website-label").innerHTML = "<small>WEBSITE</small><a  target=_blank href='" + getUserInfo().website + "'> "+getUserInfo().website+"<a/>";
 
-
-function getUser(id){
-    //var url_user = base_url+"index.php/users/view_user/"+id;
-    var url_user = base_url+"index.php/users/view_user/"+"6";
-    var xmlhttp = new XMLHttpRequest();
-    xmlhttp.onreadystatechange = function() {
-        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-            var json_array = JSON.parse(xmlhttp.responseText);
-            var data = json_array.rows[0];
-            updateUserData(data);
-        }
-    };
-    xmlhttp.open("GET", url_user, true);
-    xmlhttp.send();
-}
-
-function updateUserData(data) {
-    document.getElementById("customer-hi-label").innerHTML = data.firstname;
-    document.getElementById("customer-firstname-label").innerHTML = "<small>FIRST NAME</small> " + data.firstname;
-    document.getElementById("customer-lastname-label").innerHTML = "<small>LAST NAME</small> " + data.lastname;
-    document.getElementById("customer-email-label").innerHTML = "<small>EMAIL</small> " + data.email;
-    document.getElementById("customer-phone-label").innerHTML = "<small>PHONE</small> " + data.phone;
-
-    document.getElementById("info-firstname-field").value = data.firstname;
-    document.getElementById("info-lastname-field").value = data.lastname;
-    document.getElementById("info-email-field").value = data.email;
-    document.getElementById("info-phone-field").value = data.phone;
+    document.getElementById("info-firstname-field").value = getUserInfo().firstname;
+    document.getElementById("info-lastname-field").value = getUserInfo().lastname;
+    document.getElementById("info-email-field").value = getUserInfo().email;
+    document.getElementById("info-phone-field").value = getUserInfo().phone;
 }
 
 function getAddresses(id){
@@ -112,77 +101,76 @@ function updateUserPaymentMethods(data) {
     }
 }
 
-function getOrdersByUser(id){
-    var url_orders = base_url+"index.php/orders/view_by_users_id/"+"1";
+function getProductsStatus(id){
+    var url_orders = base_url+"index.php/projects/view_projects_by_user/"+id;
     var xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = function() {
         if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
             var json_array = JSON.parse(xmlhttp.responseText);
             var data = json_array.rows;
-            updateUserOrders(data);
+            updateProductsStatus(data);
         }
     };
     xmlhttp.open("GET", url_orders, true);
     xmlhttp.send();
 }
 
-function updateUserOrders(data) {
+function updateProductsStatus(data) {
     for(var i=0; i<data.length; i++) {
-        var url_product = base_url+"index.php/projects/view_project/"+data[i].orders_projects_id;
-        var xmlhttp = new XMLHttpRequest();
-        var order = data[i];
-        var order_id = order.orders_id;
-        var qty = order.quantity;
-        var date = order.date_create;
-        var state = order.orders_order_state_id;
-        //var img_url = base_url+"pic/"+order.orders_projects_id+"_1.png";
-        var img_url = base_url+"pic/7_1.png";
+        var img_url = base_url+"pic/"+data[i].projects_id+"_1.png";
+        var cost = data[i].cost + " €";
+        var price = data[i].price + " €";
+        var status = data[i].projects_project_state_id;
+        var days_left = data[i].round;
+        var income = "x.xxx €";
 
-        xmlhttp.onreadystatechange = function(order) {
-            if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-                var json_array = JSON.parse(xmlhttp.responseText);
-                var p_data = json_array.rows[0];
-
-                var title = p_data.title;
-                var price = p_data.price;
-
-                $("#order_container").append("<div class='order-item'><div class='row'>"+
-                    "<div class='col-sm-6 order-item-icon'><img src='"+img_url+"' height='180px'>"+
-                    "</div><div class='col-sm-6 order-item-container'><p style='font-weight: bold;'>"+title+"</p><p><small>ORDER NUMBER</small> "+order_id+" </p>"+
-                    "<p><small>PRICE </small>"+price*qty+"€</p><p><small>DATE</small> "+date+" </p><p><small>STATUS</small> "+state+" </p>"+
-                    "<p><small>MANAGE ORDER</small> ***** </p></div></div></div>");
-            }
-        };
-        xmlhttp.open("GET", url_product, true);
-        xmlhttp.send();
-
+        $("#product-status-table-body").append('<tr>' +
+            '<td><img src="'+img_url+'" height="96px"></td>' +
+            '<td>'+cost+'</td>' +
+            '<td>'+price+'</td>' +
+            '<td>'+status+'</td>' +
+            '<td>'+days_left+'</td>' +
+            '<td>'+income+'</td>' +
+            '<td><button class="btn-default">EDIT</button>' +
+            '<button class="btn-default">DELETE</button></td>' +
+            '</tr>');
     }
+    $("#product-status-table-body").append('<tr id="designer-product-status-final-row">' +
+        '<td></td>' +
+        '<td></td>' +
+        '<td></td>' +
+        '<td></td>' +
+        '<td>TOTAL INCOME</td>' +
+        '<td>x.xxx €</td>' +
+        '<td></td>' +
+        '</tr>');
 }
 
-function getWishlistByUser(id){
-    var url_wishlist = base_url+"index.php/users/view_wishlist_by_user_id/"+id;
+function getFeedbacks(id){
+    var url_feed = base_url+"index.php/projects/view_projects_by_user/"+id;
     var xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = function() {
         if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
             var json_array = JSON.parse(xmlhttp.responseText);
             var data = json_array.rows;
-            updateWishlist(data);
+            updateFeedbacks(data);
         }
     };
-    xmlhttp.open("GET", url_wishlist, true);
+    xmlhttp.open("GET", url_feed, true);
     xmlhttp.send();
 }
 
-function updateWishlist(data) {
+function updateFeedbacks(data) {
     for(var i=0; i<data.length; i++) {
         var title=data[i].title;
-        var price=data[i].price;
         var img_url = base_url+"pic/"+data[i].projects_id+"_1.png";
+        var pic_id = "feedback-item-back-"+data[i].projects_id;
 
-        $("#wishlist_container").append("<div class='order-item'><div class='row'>"+
-            "<div class='col-sm-6 order-item-icon'><img src='"+img_url+"' height='180px'>"+
-            "</div><div class='col-sm-6 order-item-container'><p style='font-weight: bold'>"+title+"</p>"+
-            "<p><small>PRICE </small>"+price+"<div><button class='btn-default' style='margin-top: 8px; margin-bottom: 8px;'>ADD TO CART</button></div></div></div></div>");
+        $("#designer-feedback-container").append("<div class='feedback-item'>" +
+            "<h5>"+title+"</h5>" +
+            "<img class='feedback-item-img' src='"+img_url+"'>" +
+            "<button class='btn-default'>VIEW FEEDBACK</button>" +
+            "</div>");
     }
 }
 
