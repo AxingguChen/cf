@@ -1,11 +1,15 @@
 /**
  * Created by Giovanni on 20/05/2016.
  */
+var isLogged = false;
+
+setupChartBasket();
+
 
 // check user logged
-
 $(document).ready(function () {
     if(checkUserLogged()) {
+        isLogged=true;
         var user_id = sessionStorage.cfUserId;
         updateNavbarUserLogged(sessionStorage.cfUserFirstname,sessionStorage.cfUserLastname, sessionStorage.cfUserGroupsId);
     }
@@ -74,6 +78,7 @@ $(document).ready(function(){
         sessionStorage.removeItem("cfUserLastname");
         document.getElementById("login-nav-button").style.display = "inline";
         document.getElementById("logged-nav-button").style.display = "none";
+        isLogged=false;
     });
 
     $("#nav-drop-edit-profile-btn").click(function(){
@@ -112,6 +117,68 @@ function updateNavbarUserLogged(firstname, lastname, groups_id) {
     document.getElementById("nav-drop-login-name").innerHTML = firstname + " " + lastname;
 }
 
+// chart mgmt
+function getChart() {
+    var cart = JSON.parse(sessionStorage.getItem("cfChartList"));
+    if(cart===null) {
+        cart = {
+            products: []
+        };
+    }
+    return cart;
+}
+
+function addElementToChart(data, n) {
+    var cart = getChart();
+    cart.products.push({"data": data, "n": n});
+    sessionStorage.setItem("cfChartList", JSON.stringify(cart));
+    alert(cart);
+}
+
+function removeElementToChart(id) {
+    var cart = getChart();
+    var new_cart = {
+        products: []
+    };
+    for(var i=0; i<cart.products.length; i++) {
+        if(cart.products[i].data.projects_id !== id) {
+            new_cart.products.push({"data":cart.products[i].data, "n":cart.products[i].n});}
+    }
+    sessionStorage.setItem("cfChartList", JSON.stringify(new_cart));
+    alert(new_cart)
+}
+
+function setupChartBasket() {
+    var cart = getChart();
+    //if(chart.length>0) {document.getElementById("nav-empty-cart-label").style.display ="none";}
+    for (var i=0; i<cart.products.length; i++) {
+        const qty = cart.products[i].n;
+        var price = cart.products[i].data.price;
+        var left = cart.products[i].data.left;
+        var title = cart.products[i].data.title;
+        var project_id = cart.products[i].data.projects_id;
+        var img_url = base_url+"pic/"+project_id+"_1.png";
+
+
+        $("#cart-items-container").append('<div class="row">'+
+            '<div class="col-sm-2">'+
+            '<img src="'+img_url+'" width="100%"></div>'+
+            '<div class="col-sm-4"><p><small>DESCRIPTION</small></p><p>'+title+'</p></div>'+
+            '<div class="col-sm-2"><p><small>QUANTITY</small></p><p>'+qty+'</p></div>'+
+            '<div class="col-sm-2">'+ '<p><small>AVAILABILITY</small></p><p>left</p></div>'+
+            '<div class="col-sm-2"><p><small>PRICE</small></p><p>'+price+'</p></div>'+
+            '</div>'+
+            '<button class="btn-default" onclick="addElementToWishlist('+project_id+')"> ADD TO WISHLIST </button>'+
+            '<button class="btn-default" onclick="removeElementToChart('+project_id+')"> REMOVE </button>'+
+            '<div class="divider"</div>');
+
+    }
+    
+}
+
+function addElementToWishlist(id) {
+    
+}
 
 function nav_signup(){
 
@@ -125,6 +192,3 @@ function nav_favourite(){
     
 }
     
-function nav_basket(){
-    
-}

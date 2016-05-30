@@ -1,13 +1,13 @@
 .checkout-container {text-align: center;}
 
-.checkout-section-container {padding: 60px 80px;}
+.checkout-section-container {padding: 60px 200px;}
 
 .checkout-top-menu {
     padding-top: 100px;
     padding-bottom: 10px;
     margin-left: auto;
     margin-right: auto;
-    width: 700px;
+    width: 800px;
     border-bottom: solid;
     border-bottom-color: #C3C3C3;
     border-bottom-width: 1px;
@@ -22,4 +22,17 @@
     border-bottom-width: 3px;
 }
 
-.form-group {width: 200px;}
+#checkout-section-1{display: none;}
+#checkout-section-1 .form-group {width: 200px;}
+
+#checkout-section-2{text-align: center; display: none; }
+
+.table-striped {max-width: 900px;}
+.table-striped thead { background-color: #231f20; color: #f5f9fa;}
+
+#checkout-section-3 { display: none;}
+#checkout-section-3 P { text-align: left; color: #f1f1f1;}
+#checkout-subtotal, #checkout-shipping {background-color: #c3c3c3; margin: 0; padding: 10px;}
+#checkout-total {background-color: #1e1e1e; margin: 0; padding: 10px;}
+
+#checkout-section-4 {display: none;}

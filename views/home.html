@@ -147,28 +147,8 @@
 				<div class="modal-body">
 					<h3 style="text-align: left;">YOUR CART</h3>
 					<div class="divider"></div>
-					<div class="cart-item">
-					<div class="row">
-						<div class="col-sm-3">
-							<img src="icons/placeholder.png" width="100%">
-						</div>
-						<div class="col-sm-3">
-							<p> DESCRIPTION</p>
-						</div>
-						<div class="col-sm-2">
-							<p> QUANTITY</p>
-						</div>
-						<div class="col-sm-2">
-							<p> AVAILABILITY</p>
-						</div>
-						<div class="col-sm-2">
-							<p> PRICE</p>
-						</div>
-					</div>
-						<div class="row">
-							<button class="btn-default"> ADD TO WISHLIST </button>
-							<button class="btn-default"> REMOVE </button>
-						</div>
+					<div id="cart-items-container" style=" max-height: 400px; overflow-y: scroll;">
+                        <p id="nav-empty-cart-label"><small>Your cart is empty</small></p>
 					</div>
 					<div class="divider"></div>
 					<div class="row">

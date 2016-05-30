@@ -162,10 +162,11 @@
     margin: 36px 0 64px 0;
 }
 
+#cart-modal .divider {margin-top: 10px; margin-bottom: 10px;}
 #cart-modal .modal-dialog {position: fixed; right: 0;
     top:0; margin-top: 50px; width: 600px;}
 #cart-modal .modal-body { padding: 40px 40px;}
-
+#cart-items-container p{text-align: left;}
 
 /* CAROUSEL */
 

@@ -15,17 +15,6 @@
     <script src="js/js-navbar.js"></script>
     <script src="js/js-project.js"></script>
 
-    <script>
-        $(function(){
-            $('form[name=sign-in-form]').submit(function(){
-                $.post($(this).attr('action'), $(this).serialize(), function(json) {
-                    alert(json);
-                }, 'json');
-                return false;
-            });
-        });
-    </script>
-
 </head>
 
 <body>
@@ -53,7 +42,7 @@
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="#search-modal" data-toggle="modal"><span class="glyphicon glyphicon-search"></span></a></li>
                     <li><a href="#search-modal" data-toggle="modal"><span class="glyphicon glyphicon-heart"></span></a></li>
-                    <li><a href="#search-modal" data-toggle="modal"><span class="glyphicon glyphicon-shopping-cart"></span></a></li>
+                    <li><a href="#cart-modal" data-toggle="modal"><span class="glyphicon glyphicon-shopping-cart"></span></a></li>
                     <li id="sign-nav-button"><a href="#signup-modal" data-toggle="modal"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
                     <li id="login-nav-button"><a href="#login-modal" data-toggle="modal"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
 
@@ -65,9 +54,10 @@
                             <li>
                                 <img class="img-circle" id="nav-login-icon" src="https://keepon.life/images/default_user.jpg" height="128px">
                                 <h4 id="nav-drop-login-name">name surname</h4>
-                                <button id="nav-drop-edit-profile-btn" class="btn btn-default" style="margin-top: 10px;"> Edit Profile </button>
+                                <div><button id="nav-drop-edit-profile-btn" class="btn btn-default" style="margin-top: 10px;"> Edit Profile </button></div>
+                                <div><button id="nav-drop-designer-studio-btn" class="btn btn-default" style="margin-top: 10px; display: none"> Designer Studio </button></div>
                                 </br>
-                                <button id="nav-drop-logout-btn" class="btn btn-default" style="margin-top: 10px"> Logout </button>
+                                <div><button id="nav-drop-logout-btn" class="btn btn-default" style="margin-top: 10px"> Logout </button></div>
                             </li>
                         </ul>
                     </li>
@@ -100,35 +90,33 @@
 
 
     <!-- LOGIN MODAL -->
-    <div id="login-modal" class="modal fade" role="dialog">
+    <div id="login-modal" class="modal fade login-modal" role="dialog">
         <div class="modal-dialog" id="login-modal-dialog">
 
             <!-- Modal content-->
             <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">Login</h4>
-                </div>
                 <div class="modal-body">
+                    <h4>LOGIN</h4>
+                    <div class="divider"></div>
                     <div class="form-group">
-                        <label for="login-email-field">Email address:</label>
-                        <input type="email" class="form-control" id="login-email-field">
+                        <label for="login-email-field">Email</label>
+                        <input class="form-control" id="login-email-field" autocomplete="" placeholder="email">
                     </div>
                     <div class="form-group">
-                        <label for="login-password-field">Password:</label>
-                        <input type="password" class="form-control" id="login-password-field">
+                        <label for="login-password-field">Password</label>
+                        <input type="password" class="form-control" id="login-password-field" autocomplete="" placeholder="password">
                     </div>
                     <div class="checkbox">
-                        <label><input type="checkbox"> Remember me</label>
+                        <label><input type="checkbox" id="login-checkbox"> Remember me</label>
                     </div>
                     <p id="login-error-label"> Username or password incorrect </p>
+                    <div class="divider"></div>
                     <button id="nav-login-submit-button" type="submit" class="btn btn-default">Submit</button>
                 </div>
             </div>
 
         </div>
     </div>
-
 
 
 
@@ -154,6 +142,83 @@
     </div>
 
 
+    <!-- SHOPPING-CART Modal -->
+    <div id="cart-modal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content signin-modal">
+                <div class="modal-body">
+                    <h3 style="text-align: left;">YOUR CART</h3>
+                    <div class="divider"></div>
+                    <div class="cart-item">
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <img src="icons/placeholder.png" width="100%">
+                            </div>
+                            <div class="col-sm-3">
+                                <p> DESCRIPTION</p>
+                            </div>
+                            <div class="col-sm-2">
+                                <p> QUANTITY</p>
+                            </div>
+                            <div class="col-sm-2">
+                                <p> AVAILABILITY</p>
+                            </div>
+                            <div class="col-sm-2">
+                                <p> PRICE</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <button class="btn-default"> ADD TO WISHLIST </button>
+                            <button class="btn-default"> REMOVE </button>
+                        </div>
+                    </div>
+                    <div class="divider"></div>
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <p> ITEM TOTAL</p>
+                        </div>
+                        <div class="col-sm-4">
+                            <p> SHIPPING </p>
+                        </div>
+                        <div class="col-sm-4">
+                            <p> TOTAL PRICE </p>
+                        </div>
+                    </div>
+                    <div class="divider"></div>
+                    <button class="btn-default"> BACK </button>
+                    <button class="btn-default" id="cart-checkout-btn"> CHECKOUT </button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+<!-- ADD TO CART MODAL -->
+    <div id="cart-add-modal" class="modal fade login-modal" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-body">
+                    <h4>CART</h4>
+                    <div class="divider"></div>
+                        <div class="form-group">
+                            <label class="control-label col-sm-4" for="cart-modal-pieces-label">How many?</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" id="cart-modal-pieces-label" value="1">
+                            </div>
+                        </div>
+                    <div style="text-align: center;">
+                        <button class="btn btn-default save-btn" id="add-cart-cancel">CANCEL</button>
+                        <button class="btn btn-default cancel-btn" id="add-cart-confirm">ADD TO CART</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
 
     <!-- FILTERS TAB -->
     <div class="container-fluid filters-tab">
@@ -365,7 +430,10 @@
             <li><a data-toggle="tab" href="#comments">Comments</a></li>
             <li><a data-toggle="tab" href="#related">Related Products</a></li>
             <span class="pull-right">
-    				<a href="projects.html"><button type="button" class="btn btn-default" id="chart-button">ADD TO CHART</button></a>
+    				<a href="#cart-add-modal" data-toggle="modal">
+                        <button type="button" class="btn btn-default" id="cart-button">ADD TO CHART</button>
+                    </a>
+                <button type="button" class="btn btn-default" id="cart-remove-button" style="display: none;">REMOVE FROM CART</button>
         		</span>
         </ul>
 

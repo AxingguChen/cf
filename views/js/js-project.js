@@ -8,6 +8,28 @@ var project_id;
 var project_data;
 
 
+$(document).ready(function(){
+    $("#add-cart-confirm").click(function(){
+        var n = document.getElementById("cart-modal-pieces-label").value;
+        addElementToChart(project_data, n);
+        document.getElementById("cart-button").style.display="none";
+        document.getElementById("cart-remove-button").style.display="inline";
+        $(function () {
+            $('#cart-add-modal').modal('toggle');
+        });
+    });
+    $("#add-cart-cancel").click(function(){
+        $(function () {
+            $('#cart-add-modal').modal('toggle');
+        });
+    });
+    $("#cart-remove-button").click(function(){
+        removeElementToChart(project_id);
+        document.getElementById("cart-button").style.display="inline";
+        document.getElementById("cart-remove-button").style.display="none";
+    });
+});
+
 function dropdownFilter1() {
     document.getElementById("dropdown1").classList.toggle("show");
 }
@@ -46,6 +68,7 @@ function getProject(){
         if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
             var json_array = JSON.parse(xmlhttp.responseText);
             project_data = json_array.rows[0];
+            project_id = project_data.projects_id;
             updateProjectInfo(project_data);
         }
     };
