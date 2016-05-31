@@ -9,6 +9,9 @@ var project_data;
 
 
 $(document).ready(function(){
+
+    setupChartBasket();
+
     $("#add-cart-confirm").click(function(){
         var n = document.getElementById("cart-modal-pieces-label").value;
         addElementToChart(project_data, n);

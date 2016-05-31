@@ -12,7 +12,8 @@
   <script src="http://malsup.github.com/jquery.form.js"></script>
 	<script src="js/js-api-global.js"></script>
 	<script src="js/js-navbar.js"></script>
-    
+	<script src="js/js-projects.js"></script>
+
 </head>
 
 <body>
@@ -176,6 +177,67 @@
 	</div>
 
 
+	<!-- FILTERS MODAL -->
+
+	<div id="filters-modal" class="modal fade" role="dialog">
+		<div class="modal-dialog">
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-body">
+					<div class="row">
+						<div class="col-sm-2">
+							<ul>
+								<li class="filter-section">TYPE</li>
+								<li class="filter-item">Shop All</li>
+								<li class="filter-item">Womanswear</li>
+								<li class="filter-item">Menswear</li>
+							</ul>
+						</div>
+						<div class="col-sm-2">
+							<ul>
+								<li class="filter-section">CLOTHING</li>
+								<li class="filter-item">All</li>
+								<li class="filter-item">Top</li>
+								<li class="filter-item">Dresses/Jump Suits</li>
+								<li class="filter-item">Bottom</li>
+							</ul>
+						</div>
+						<div class="col-sm-2">
+							<ul>
+								<li class="filter-section">COLOR</li>
+								<li class="filter-item">Any color</li>
+								<li class="filter-item">Black</li>
+								<li class="filter-item">Multicolor</li>
+								<li class="filter-item">White</li>
+								<li class="filter-item">Grey</li>
+								<li class="filter-item">Blue</li>
+								<li class="filter-item">Pattern</li>
+								<li class="filter-item">Green</li>
+								<li class="filter-item">Yellow</li>
+								<li class="filter-item">Other</li>
+							</ul>
+						</div>
+						<div class="col-sm-2">
+							<ul>
+								<li class="filter-section">SORT BY</li>
+								<li class="filter-item">New arrival</li>
+								<li class="filter-item">Last Chance</li>
+								<li class="filter-item">Popularity</li>
+							</ul>
+						</div>
+						<div class="col-sm-4">
+							<ul>
+								<li><button class="btn-default" id="filters-modal-set-btn">SET FILTERS</button></li>
+								<li><button class="btn-default" id="filters-modal-close-btn">BACK</button></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+
 
 <!-- Page HEADER -->
 <div class="jumbotron text-center">
@@ -189,128 +251,23 @@
 		<div style="display: inline; width: 100%;">
 			<div class="filter-tab-element" style="color: #c3c3c3;"> Show me: </div>
 			<div class="filter-tab-element" style="font-weight: bold;">
-                <button onclick="dropdownFilter1()" class="dropbtn">Shop All</button>
-                <div id="dropdown1" class="dropdown-content">
-                    <a href="#">Womanswear</a>
-                    <a href="#">Menswear</a>
-                    <a href="#">Unisex</a>
-                </div>
+                <button data-toggle="modal" data-target="#filters-modal" class="dropbtn">Shop All</button>
             </div>
 			<div class="filter-tab-element" style="font-weight: bold;"> <span class="glyphicon glyphicon-menu-right"></span>  </div>
             <div class="filter-tab-element" style="font-weight: bold;">
                 <button onclick="dropdownFilter2()" class="dropbtn">Clothing</button>
-                <div id="dropdown2" class="dropdown-content">
-                    <a href="#">Link 1</a>
-                    <a href="#">Link 2</a>
-                    <a href="#">Link 3</a>
-                </div>
             </div>
 			<div class="filter-tab-element" style="font-weight: bold;"> <span class="glyphicon glyphicon-menu-right"></span>  </div>
             <div class="filter-tab-element" style="font-weight: bold;">
                 <button onclick="dropdownFilter3()" class="dropbtn">Any color</button>
-                <div id="dropdown3" class="dropdown-content">
-                    <a href="#">Black</a>
-                    <a href="#">Multicolor</a>
-                    <a href="#">White</a>
-                    <a href="#">Grey</a>
-                    <a href="#">Blue</a>
-                    <a href="#">Pattern</a>
-                    <a href="#">Green</a>
-                    <a href="#">Yellow</a>
-                    <a href="#">Other</a>
-                </div>
             </div>
 			<div class="filter-tab-element" style="font-weight: bold;"> <span class="glyphicon glyphicon-menu-right"></span>  </div>
             <div class="filter-tab-element" style="font-weight: bold;">
                 <button onclick="dropdownFilter4()" class="dropbtn">Shop by</button>
-                <div id="dropdown4" class="dropdown-content">
-                    <a href="#">New Arrivals</a>
-                    <a href="#">Last Chance</a>
-                    <a href="#">Popularity</a>
-                </div>
             </div>
             <button class="btn-default btn-filter-clear"> clear </button>
 		</div>
 	</div>
-
-
-
-
-<!-- Filter MENU
-<div class="container-fluid filter-menu-container">
-<div class="row">
-	<div class="col-sm-2" style="display:inline-block;">
-        <h4 style="text-align:right;"><small>Filters</small></h4>
-    </div>
-    <div class="col-sm-2">
-    	<div class="dropdown filter-dropdown" id="filter-gender">
-  			<button class="btn btn-primary dropdown-toggle filter-dropdown-button" type="button" data-toggle="dropdown">Any gender</button>
- 			<ul class="dropdown-menu">
-                <li><a href="#" id="action-all-gender">Any gender</a></li>
-                <li class="divider"></li>
-    			<li><a href="#" id="action-woman">Woman</a></li>
-                <li class="divider"></li>
-    			<li><a href="#" id="action-man">Man</a></li>
-  			</ul>
-		</div>
-    </div>
-    <div class="col-sm-2">
-    	<div class="dropdown filter-dropdown" id="filter-type">
-  			<button class="btn btn-primary dropdown-toggle filter-dropdown-button" type="button" data-toggle="dropdown">Any type</button>
- 			<ul class="dropdown-menu">
-          	    <li><a href="#" id="action-all-type">Any type</a></li>
-                <li class="divider"></li>
-    			<li><a href="#" id="action-shoes">Shoes</a></li>
-                <li class="divider"></li>
-    			<li><a href="#" id="action-pants">Pants</a></li>
-                <li class="divider"></li>
-    			<li><a href="#" id="action-tshirt">T-shirts</a></li>
-  			</ul>
-		</div>
-    </div>
-    <div class="col-sm-2">
-    	<div class="dropdown filter-dropdown" id="filter-color">
-  			<button class="btn btn-primary dropdown-toggle filter-dropdown-button" type="button" data-toggle="dropdown">Any color</button>
- 			<ul class="dropdown-menu">
-                <li><a href="#" id="action-all-color">Any color</a></li>
-                <li class="divider"></li>
-    			<li><a href="#" id="action-white"><span class="glyphicon glyphicon-tint" style="color:white;"></span>White</a></li>
-                <li class="divider"></li>
-    			<li><a href="#" id="action-black"><span class="glyphicon glyphicon-tint" style="color:black;"></span>Black</a></li>
-                <li class="divider"></li>
-    			<li><a href="#" id="action-yellow"><span class="glyphicon glyphicon-tint" style="color:yellow;"></span>Yellow</a></li>
-                <li class="divider"></li>
-                <li><a href="#" id="action-green"><span class="glyphicon glyphicon-tint" style="color:green;"></span>Green</a></li>
-                <li class="divider"></li>
-    			<li><a href="#" id="action-blue"><span class="glyphicon glyphicon-tint" style="color:blue;"></span>Blue</a></li>
-                <li class="divider"></li>
-    			<li><a href="#" id="action-red"><span class="glyphicon glyphicon-tint" style="color:red;"></span>Red</a></li>
-                <li class="divider"></li>
-                <li><a href="#" id="action-orange"><span class="glyphicon glyphicon-tint" style="color:orange;"></span>Orange</a></li>
-  			</ul>
-		</div>
-    </div>
-    <div class="col-sm-2">
-    	<div class="dropdown filter-dropdown" id="filter-sort">
-  			<button class="btn btn-primary dropdown-toggle filter-dropdown-button" type="button" data-toggle="dropdown">Sort by</button>
- 			<ul class="dropdown-menu">
-            	<li><a href="#" id="action-no-sort">None</a></li>
-                <li class="divider"></li>
-                <li><a href="#" id="action-name">Popular</a></li>
-                <li class="divider"></li>
-    			<li><a href="#" id="action-last">Last chance</a></li>
-                <li class="divider"></li>
-    			<li><a href="#" id="action-new">New</a></li>
-  			</ul>
-		</div>
-    </div>
-    <div class="col-sm-2">
-    	<a id="action-clear-all"><h4 style="text-align:left;"><small><span class="glyphicon glyphicon-remove"></span>clear</small></h4></a>
-    </div>
-</div>
-</div>
-
-   -->
 
 <!-- PROJECTS -->
     <div class="container-fluid"><h5 id="no-result-banner"> Sorry, no results for these filters. </h5></div>

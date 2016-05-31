@@ -9,14 +9,18 @@ var payment_methods = {
     'alipay': '4'
 };
 
+$(document).ready(function () {
+    var userId=sessionStorage.getItem("cfUserId");
+    getUser(userId);
+    getOrdersByUser(userId);
+    getAddresses(userId);
+    getUserPaymentMethods(userId);
+    getWishlistByUser(userId);
+    getFollowedDesigners(userId);
+    setupChartBasket();
 
-var userId=sessionStorage.getItem("cfUserId");
-getUser(userId);
-getOrdersByUser(userId);
-getAddresses(userId);
-getUserPaymentMethods(userId);
-getWishlistByUser(userId);
-getFollowedDesigners(userId);
+});
+
 
 
 

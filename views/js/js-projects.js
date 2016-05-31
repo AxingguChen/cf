@@ -36,80 +36,19 @@ var projects_offset=0;
 var base_url = "http://localhost/cf/";
 var urlProjects = base_url+"index.php/projects/view_projects_filter/"+ filter_type + "/"+ filter_gender + "/"+ filter_color + "/" + filter_sort + "/" + projects_offset;
 
-
-getProjects();
-document.getElementById("design-control-left").disabled = true;
-
-
-
-function dropdownFilter1() {
-    document.getElementById("dropdown1").classList.toggle("show");
-}
-function dropdownFilter2() {
-    document.getElementById("dropdown2").classList.toggle("show");
-}
-function dropdownFilter3() {
-    document.getElementById("dropdown3").classList.toggle("show");
-}
-function dropdownFilter4() {
-    document.getElementById("dropdown4").classList.toggle("show");
-}
-
-// Close the dropdown menu if the user clicks outside of it
-window.onclick = function(event) {
-    if (!event.target.matches('.dropbtn')) {
-
-        var dropdowns = document.getElementsByClassName("dropdown-content");
-        var i;
-        for (i = 0; i < dropdowns.length; i++) {
-            var openDropdown = dropdowns[i];
-            if (openDropdown.classList.contains('show')) {
-                openDropdown.classList.remove('show');
-            }
-        }
-    }
-}
-
-
-
-
-
-
-jQuery("#action-all-gender").click(function(e){
-    document.getElementById("filter-gender").childNodes.item(1).innerHTML = "Any gender";
-    filter_gender = F_ANY_GENDER; e.preventDefault(); getProjects();
-});
-jQuery("#action-woman").click(function(e){document.getElementById("filter-gender").childNodes.item(1).innerHTML = "Woman"; filter_gender = F_FEMALE; getProjects(); e.preventDefault();});
-jQuery("#action-man").click(function(e){document.getElementById("filter-gender").childNodes.item(1).innerHTML = "Man"; filter_gender = F_MALE; getProjects(); e.preventDefault();});
-jQuery("#action-all-type").click(function(e){document.getElementById("filter-type").childNodes.item(1).innerHTML = "Any type"; filter_type = F_ANY_TYPE; getProjects();  e.preventDefault();});
-jQuery("#action-shoes").click(function(e){document.getElementById("filter-type").childNodes.item(1).innerHTML = "Shoes"; filter_type = F_SHOES; getProjects(); e.preventDefault();});
-jQuery("#action-pants").click(function(e){document.getElementById("filter-type").childNodes.item(1).innerHTML = "Pants"; filter_type = F_PANTS; getProjects(); e.preventDefault();});
-jQuery("#action-tshirt").click(function(e){document.getElementById("filter-type").childNodes.item(1).innerHTML = "T-Shirts"; filter_type = F_TSHIRT; getProjects(); e.preventDefault();});
-jQuery("#action-all-color").click(function(e){document.getElementById("filter-color").childNodes.item(1).innerHTML = "Any color"; filter_color = F_ANY_COLOR; getProjects(); e.preventDefault();});
-jQuery("#action-white").click(function(e){document.getElementById("filter-color").childNodes.item(1).innerHTML = '<span class="glyphicon glyphicon-tint" style="color:white;"></span>White'; filter_color = F_WHITE; getProjects();  e.preventDefault();});
-jQuery("#action-black").click(function(e){document.getElementById("filter-color").childNodes.item(1).innerHTML = '<span class="glyphicon glyphicon-tint" style="color:black;"></span>Black'; filter_color = F_BLACK; getProjects(); e.preventDefault();});
-jQuery("#action-yellow").click(function(e){document.getElementById("filter-color").childNodes.item(1).innerHTML = '<span class="glyphicon glyphicon-tint" style="color:yellow;"></span>Yellow'; filter_color = F_YELLOW; getProjects(); e.preventDefault();});
-jQuery("#action-green").click(function(e){document.getElementById("filter-color").childNodes.item(1).innerHTML = '<span class="glyphicon glyphicon-tint" style="color:green;"></span>Green'; filter_color = F_GREEN; getProjects(); e.preventDefault();});
-jQuery("#action-blue").click(function(e){document.getElementById("filter-color").childNodes.item(1).innerHTML = '<span class="glyphicon glyphicon-tint" style="color:blue;"></span>Blue'; filter_color = F_BLUE; getProjects(); e.preventDefault();});
-jQuery("#action-red").click(function(e){document.getElementById("filter-color").childNodes.item(1).innerHTML = '<span class="glyphicon glyphicon-tint" style="color:red;"></span>Red'; filter_color = F_RED; getProjects(); e.preventDefault();});
-jQuery("#action-orange").click(function(e){document.getElementById("filter-color").childNodes.item(1).innerHTML = '<span class="glyphicon glyphicon-tint" style="color:orange;"></span>Orange'; filter_color = F_ORANGE; getProjects(); e.preventDefault();});
-jQuery("#action-no-sort").click(function(e){document.getElementById("filter-sort").childNodes.item(1).innerHTML = "Sort by"; filter_sort = F_NO_SORT; getProjects(); e.preventDefault();});
-jQuery("#action-name").click(function(e){document.getElementById("filter-sort").childNodes.item(1).innerHTML = "Sort by: Popular"; filter_sort = F_POPULAR; getProjects(); e.preventDefault();});
-jQuery("#action-last").click(function(e){document.getElementById("filter-sort").childNodes.item(1).innerHTML = "Sort by: Last Chance"; filter_sort = F_LASTCHANCE; getProjects();e.preventDefault();});
-jQuery("#action-new").click(function(e){document.getElementById("filter-sort").childNodes.item(1).innerHTML = "Sort by: New"; filter_sort = F_NEW; getProjects();e.preventDefault();});
-
-jQuery("#action-clear-all").click(function(e){
-    document.getElementById("filter-sort").childNodes.item(1).innerHTML = "Sort by"; e.preventDefault();
-    document.getElementById("filter-gender").childNodes.item(1).innerHTML = "Any gender";
-    document.getElementById("filter-type").childNodes.item(1).innerHTML = "Any type";
-    document.getElementById("filter-color").childNodes.item(1).innerHTML = "Any color";
-    filter_color = -1;
-    filter_gender = -1;
-    filter_type = -1;
-    filter_sort = -1;
+$(document).ready(function(){
     getProjects();
-    e.preventDefault();
+    document.getElementById("design-control-left").disabled = true;
+    setupChartBasket();
 });
+
+
+$(document).ready(function(){
+    $("#filters-modal-close-btn").click(function(){
+        $('#filters-modal').modal('hide');
+    });
+});
+
 
 
 // get design data
