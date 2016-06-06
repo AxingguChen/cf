@@ -326,18 +326,20 @@
                 </tbody>
             </table>
             <div class="row">
-                <div class="col-sm-6"></div>
-                <div class="col-sm-6">
+                <div class="col-sm-8"></div>
+                <div class="col-sm-4">
                     <p id="checkout-subtotal"> SUBTOTAL</p>
                     <p id="checkout-shipping"> SHIPPING</p>
                     <p id="checkout-total"> TOTAL COST</p>
                 </div>
             </div>
             <div style="text-align: center;">
-                <button class="btn btn-default save-btn">BACK</button>
-                <button class="btn btn-default cancel-btn">NEXT</button>
+                <button class="btn btn-default save-btn" id="check-3-back">BACK</button>
+                <button class="btn btn-default cancel-btn" id="check-3-next">NEXT</button>
             </div>
+            <div class="divider"></div>
         </div>
+
 
         <div class="checkout-section-container" id="checkout-section-2">
             <form class="form-horizontal" role="form">
@@ -395,17 +397,23 @@
                         <input type="text" class="form-control" id="check-phone-label">
                     </div>
                 </div>
-                <div class="divider"></div>
-                <div style="text-align: center;">
-                    <button class="btn btn-default save-btn">SAVE</button>
-                    <button class="btn btn-default cancel-btn">CANCEL</button>
-                </div>
             </form>
+            <div style="text-align: center;">
+                <button class="btn btn-default back-btn" id="check-2-back">BACK</button>
+                <button class="btn btn-default next-btn" id="check-2-next">NEXT</button>
+            </div>
+            <div class="divider"></div>
         </div>
 
 
         <div class="checkout-section-container" id="checkout-section-4">
-            <form class="form-horizontal" role="form">
+            <div style="text-align: center;">
+                <button class="payment-icon" id="paypal-method-button"></button>
+                <button class="payment-icon" id="card-method-button"></button>
+            </div>
+            <div class="divider"></div>
+            <p id="paypal-method-label">You will be redirect to PayPal official website.</p>
+            <form class="form-horizontal" role="form" id="credit-card-form">
                 <div class="form-group">
                     <label class="control-label col-sm-3" for="check-card-name-label">NAME ON CARD</label>
                     <div class="col-sm-9">
@@ -436,16 +444,18 @@
                         <input type="text" class="form-control" id="check-card-year-label">
                     </div>
                 </div>
-
-                <div class="divider"></div>
-                <div style="text-align: center;">
-                    <button class="btn btn-default save-btn">BACK</button>
-                    <button class="btn btn-default cancel-btn">NEXT</button>
-                </div>
             </form>
+                <div style="text-align: center;">
+                    <button class="btn btn-default save-btn" id="check-4-back">BACK</button>
+                    <button class="btn btn-default cancel-btn" id="check-4-next">NEXT</button>
+                </div>
+                <div class="divider"></div>
         </div>
 
+
         <div class="checkout-section-container" id="checkout-section-5">
+            <p>Your order has been confirmed. See below the article you just bought.</p>
+            <div class="divider"></div>
             <table class="table table-striped">
             <thead>
             <tr>
@@ -487,13 +497,17 @@
                 </tbody>
             </table>
 
-
+            <div class="form-group">
+                <label for="mailing-list-checkbox"> Please add me to the mailing list</label>
+                <input id="mailing-list-checkbox" type="checkbox" value="checked">
+            </div>
 
 
             <div style="text-align: center;">
-                <button class="btn btn-default save-btn">BACK</button>
-                <button class="btn btn-default cancel-btn">NEXT</button>
+                <button class="btn btn-default save-btn" id="check-5-back">MODIFY ORDER</button>
+                <button class="btn btn-default cancel-btn" id="check-5-next">GO TO HOMEPAGE</button>
             </div>
+            <div class="divider"></div>
         </div>
     </div>
 

@@ -200,7 +200,7 @@ function setupChartBasket() {
         var project_id = cart.products[i].data.projects_id;
         var img_url = base_url+"pic/"+project_id+"_1.png";
         
-        subtotal_price = subtotal_price + parseInt(price);
+        subtotal_price = subtotal_price + parseInt(price)*qty;
 
 
         $("#cart-items-container").append('<div class="row" id="cart-item">'+

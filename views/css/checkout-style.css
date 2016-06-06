@@ -1,6 +1,6 @@
 .checkout-container {text-align: center;}
 
-.checkout-section-container {padding: 60px 200px;}
+.checkout-section-container {padding: 60px 200px 60px 300px;}
 
 .checkout-top-menu {
     padding-top: 100px;
@@ -15,11 +15,12 @@
 .checkout-top-menu p {
     display: inline;
     padding: 10px 16px;
+    border-bottom: solid;
+    border-bottom-color: transparent;
+    border-bottom-width: 3px;
 }
 #check-item-1 {
-    border-bottom: solid;
     border-bottom-color: #1e1e1e;
-    border-bottom-width: 3px;
 }
 
 #checkout-section-1{}
@@ -27,7 +28,7 @@
 
 #checkout-section-2{text-align: center; display: none; }
 
-.table-striped {max-width: 900px;}
+.table-striped {text-align: left;}
 .table-striped thead { background-color: #231f20; color: #f5f9fa;}
 
 #checkout-section-3 { display: none;}
@@ -37,3 +38,25 @@
 
 #checkout-section-4 {display: none;}
 #checkout-section-5 {display: none;}
+
+.payment-icon {
+    height: 96px;
+    width: 172px;
+    border: solid;
+    border-color: #001a5a;
+    border-width: 1px;
+    border-radius: 20px;
+
+    margin: 16px 16px 0 16px;
+    background-size: contain;
+    background-color: #dddddd;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+#paypal-method-button {
+    background-image: url("http://www.guidaconsumatore.com/wp-content/uploads/2015/07/come_funziona_paypal.jpg");
+}
+#card-method-button {background-image: url("http://www.businessciting.com/wp-content/uploads/2012/07/credit_cards.jpg");}
+
+#credit-card-form { display: none;}
