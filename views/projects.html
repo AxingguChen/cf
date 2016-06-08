@@ -195,7 +195,7 @@
 							<div class="divider filters-divider"></div>
 							<ul id="filters-sort-list">
 								<li class="filter-section">SORT BY</li>
-								<li class="filter-item" data-value="2" data-type="sort" style="border-color: #f1f1f1">New arrival</li>
+								<li class="filter-item" data-value="-1" data-type="sort" style="border-color: #f1f1f1">New arrival</li>
 								<li class="filter-item" data-value="1" data-type="sort">Last Chance</li>
 								<li class="filter-item" data-value="3" data-type="sort">Popularity</li>
 							</ul>
@@ -207,7 +207,7 @@
 							<div class="row">
 								<div class="col-sm-6">
 									<ul id="filters-type-list1">
-										<li class="filter-item" data-value="0" data-type="type" style="border-color: #f1f1f1">All</li>
+										<li class="filter-item" data-value="-1" data-type="type" style="border-color: #f1f1f1">All</li>
 										<li class="filter-item" data-value="1" data-type="type">Jackets And Coats</li>
 										<li class="filter-item" data-value="2" data-type="type">Blouses</li>
 										<li class="filter-item" data-value="3" data-type="type">Cropped</li>
@@ -240,7 +240,7 @@
 						<div class="col-sm-2">
 							<ul id="filters-color-list">
 								<li class="filter-section">COLOR</li>
-								<li class="filter-item" data-value="0" data-type="color" style="border-color: #f1f1f1">Any color</li>
+								<li class="filter-item" data-value="-1" data-type="color" style="border-color: #f1f1f1">Any color</li>
 								<li class="filter-item" data-value="2" data-type="color">Black</li>
 								<li class="filter-item" data-value="0" data-type="color">Multicolor</li>
 								<li class="filter-item" data-value="1" data-type="color">White</li>
@@ -284,7 +284,7 @@
             </div>
 			<div class="filter-tab-element" style="font-weight: bold;"> <span class="glyphicon glyphicon-menu-right"></span>  </div>
             <div class="filter-tab-element" style="font-weight: bold;">
-                <button onclick="showFilterModal()" class="dropbtn" data-label="type">Clothing</button>
+                <button onclick="showFilterModal()" class="dropbtn" data-label="type">Any type</button>
             </div>
 			<div class="filter-tab-element" style="font-weight: bold;"> <span class="glyphicon glyphicon-menu-right"></span>  </div>
             <div class="filter-tab-element" style="font-weight: bold;">
@@ -294,7 +294,7 @@
             <div class="filter-tab-element" style="font-weight: bold;">
                 <button onclick="showFilterModal()" class="dropbtn" data-label="sort">Shop by</button>
             </div>
-            <button class="btn-default btn-filter-clear"> clear </button>
+            <button class="btn-default btn-filter-clear" id="filters-clear-btn"> clear </button>
 		</div>
 	</div>
 

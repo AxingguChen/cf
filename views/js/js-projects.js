@@ -4,7 +4,7 @@
 
 // init key-value maps
 var color_strings = {
-    '0': 'Any color',
+    '-1': 'Any color',
     '1': 'White',
     '2': 'Black',
     '3': 'Yellow',
@@ -21,13 +21,13 @@ var gender_strings = {
 };
 
 var sort_strings = {
-    '2': 'New Arrival',
+    '-1': 'New Arrival',
     '1': 'Last Chance',
     '3': 'Popularity'
 };
 
 var type_strings = {
-    '0': 'All',
+    '-1': 'Any type',
     '1': 'Jackets and Coats',
     '2': 'Blouses',
     '3': 'Cropped',
@@ -95,13 +95,20 @@ $(document).ready(function(){
 
 
     $(".filter-item").click(function(e){
-        if($(e.target).data("type")=="color"){resetColorFilter(e);}
-        else if($(e.target).data("type")=="type"){resetTypeFilter(e);}
-        else if($(e.target).data("type")=="gender"){resetGenderFilter(e);}
-        else if($(e.target).data("type")=="sort"){resetSortFilter(e);}
+        if($(e.target).data("type")=="color"){setColorFilter(e);}
+        else if($(e.target).data("type")=="type"){setTypeFilter(e);}
+        else if($(e.target).data("type")=="gender"){setGenderFilter(e);}
+        else if($(e.target).data("type")=="sort"){setSortFilter(e);}
     });
 
-
+    $("#filters-clear-btn").click(function(e){
+        filter_gender = -1;
+        filter_color = -1;
+        filter_sort = -1;
+        filter_type = -1;
+        updateFilterTab();
+        getProjects();
+    });
 
 });
 
@@ -222,7 +229,7 @@ function updateFilterTab(){
 
 
 
-function resetColorFilter(e) {
+function setColorFilter(e) {
     var x = document.getElementById("filters-color-list").getElementsByClassName("filter-item");
     var i;
     for (i = 0; i < x.length; i++) {
@@ -232,7 +239,7 @@ function resetColorFilter(e) {
     color_temp = $(e.target).data("value");
 }
 
-function resetGenderFilter(e) {
+function setGenderFilter(e) {
     var x = document.getElementById("filters-gender-list").getElementsByClassName("filter-item");
     var i;
     for (i = 0; i < x.length; i++) {
@@ -242,7 +249,7 @@ function resetGenderFilter(e) {
     gender_temp = $(e.target).data("value");
 }
 
-function resetSortFilter(e) {
+function setSortFilter(e) {
     var x = document.getElementById("filters-sort-list").getElementsByClassName("filter-item");
     var i;
     for (i = 0; i < x.length; i++) {
@@ -252,7 +259,7 @@ function resetSortFilter(e) {
     sort_temp = $(e.target).data("value");
 }
 
-function resetTypeFilter(e) {
+function setTypeFilter(e) {
     var x = document.getElementById("filters-type-list1").getElementsByClassName("filter-item");
     var i;
     for (i = 0; i < x.length; i++) {

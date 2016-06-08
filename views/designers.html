@@ -13,7 +13,8 @@
   <script src="http://malsup.github.com/jquery.form.js"></script>
 	<script src="js/js-api-global.js"></script>
 	<script src="js/js-navbar.js"></script>
-    
+	<script src="js/js-designers.js"></script>
+
 </head>
 
 <body>
@@ -177,6 +178,58 @@
 	</div>
 
 
+
+	<!-- FILTERS MODAL -->
+
+	<div id="filters-modal" class="modal fade" role="dialog">
+		<div class="modal-dialog">
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-body">
+					<div class="row">
+						<div class="col-sm-2">
+							<ul id="filters-category-list">
+								<li class="filter-section">TYPE</li>
+								<li class="filter-item" data-value="-1" data-type="cat" style="border-color: #f1f1f1">Shop All</li>
+								<li class="filter-item" data-value="0" data-type="cat">Womanswear</li>
+								<li class="filter-item" data-value="1" data-type="cat">Menswear</li>
+								<li class="filter-item" data-value="2" data-type="cat">Other</li>
+							</ul>
+						</div>
+						<div class="col-sm-2">
+							<ul id="filters-country-list">
+								<li class="filter-section">COUNTRY</li>
+								<li class="filter-item" data-value="-1" data-type="country" style="border-color: #f1f1f1">All countries</li>
+							</ul>
+						</div>
+						<div class="col-sm-2">
+							<ul id="filters-school-list">
+								<li class="filter-section">SCHOOL</li>
+								<li class="filter-item" data-value="-1" data-type="school" style="border-color: #f1f1f1">All schools</li>
+							</ul>
+						</div>
+						<div class="col-sm-2">
+							<ul id="filters-sort-list">
+								<li class="filter-section">SORT BY</li>
+								<li class="filter-item" data-value="-1" data-type="sort" style="border-color: #f1f1f1">Sales</li>
+								<li class="filter-item" data-value="1" data-type="sort">Popularity</li>
+							</ul>
+						</div>
+						<div class="col-sm-4">
+							<ul>
+								<li><button class="btn-default" id="filters-modal-set-btn">SET FILTERS</button></li>
+								<li><button class="btn-default" id="filters-modal-close-btn">BACK</button></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+
+
 <!-- Page HEADER -->
 <div class="jumbotron text-center">
 	<h2> We collaborate with furuew fashion designers. </h2>
@@ -186,49 +239,30 @@
 
 
 	<!-- FILTERS TAB -->
-	<div class="container-fluid filters-tab">
+	<div class="container-fluid filters-tab" id="filters-tab">
 		<img src="icons/as-logo-120.png" height="48px" style="display: inline">
 		<div style="display: inline; width: 100%;">
 			<div class="filter-tab-element" style="color: #c3c3c3;"> Show me: </div>
 			<div class="filter-tab-element" style="font-weight: bold;">
-				<button onclick="dropdownFilter1()" class="dropbtn">All categories</button>
-				<div id="dropdown1" class="dropdown-content">
-					<a href="#">Womanswear</a>
-					<a href="#">Menswear</a>
-					<a href="#">Unisex</a>
-				</div>
-			</div>
-			<div class="filter-tab-element" style="font-weight: bold;"> <span class="glyphicon glyphicon-menu-right"></span> </div>
-
-			<div class="filter-tab-element" style="font-weight: bold;">
-				<button onclick="dropdownFilter2()" class="dropbtn">All countries</button>
-				<div id="dropdown2" class="dropdown-content">
-					<a href="#">Link 1</a>
-					<a href="#">Link 2</a>
-					<a href="#">Link 3</a>
-				</div>
-			</div>
-			<div class="filter-tab-element" style="font-weight: bold;"><span class="glyphicon glyphicon-menu-right"></span>  </div>
-			<div class="filter-tab-element" style="font-weight: bold;">
-				<button onclick="dropdownFilter3()" class="dropbtn">All schools</button>
-				<div id="dropdown3" class="dropdown-content">
-					<a href="#">Link 1</a>
-					<a href="#">Link 2</a>
-					<a href="#">Link 3</a>
-				</div>
+				<button onclick="showFilterModal()" class="dropbtn" data-label="cat">All categories</button>
 			</div>
 			<div class="filter-tab-element" style="font-weight: bold;"> <span class="glyphicon glyphicon-menu-right"></span>  </div>
 			<div class="filter-tab-element" style="font-weight: bold;">
-				<button onclick="dropdownFilter4()" class="dropbtn">Sort by</button>
-				<div id="dropdown4" class="dropdown-content">
-					<a href="#">Link 1</a>
-					<a href="#">Link 2</a>
-					<a href="#">Link 3</a>
-				</div>
+				<button onclick="showFilterModal()" class="dropbtn" data-label="country">All countries</button>
 			</div>
-			<button class="btn-default btn-filter-clear"> clear </button>
+			<div class="filter-tab-element" style="font-weight: bold;"> <span class="glyphicon glyphicon-menu-right"></span>  </div>
+			<div class="filter-tab-element" style="font-weight: bold;">
+				<button onclick="showFilterModal()" class="dropbtn" data-label="school">All schools</button>
+			</div>
+			<div class="filter-tab-element" style="font-weight: bold;"> <span class="glyphicon glyphicon-menu-right"></span>  </div>
+			<div class="filter-tab-element" style="font-weight: bold;">
+				<button onclick="showFilterModal()" class="dropbtn" data-label="sort">Sort by</button>
+			</div>
+			<button class="btn-default btn-filter-clear" id="filters-clear-btn"> clear </button>
 		</div>
 	</div>
+
+
 
 <!-- PROJECTS -->
 <div class="container-fluid designers-container" id="designers-container">
@@ -490,119 +524,6 @@
 </footer>
 
 </div>
-
-
-<!-- JS CODE -->
-<script>
-// init url strings
-var base_url = "http://localhost/cf/";
-var urlDesigners = base_url+"index.php/users/view_designers";
-var designers_offset=0;
-
-function dropdownFilter1() {
-	document.getElementById("dropdown1").classList.toggle("show");
-}
-function dropdownFilter2() {
-	document.getElementById("dropdown2").classList.toggle("show");
-}
-function dropdownFilter3() {
-	document.getElementById("dropdown3").classList.toggle("show");
-}
-function dropdownFilter4() {
-	document.getElementById("dropdown4").classList.toggle("show");
-}
-
-// Close the dropdown menu if the user clicks outside of it
-window.onclick = function(event) {
-	if (!event.target.matches('.dropbtn')) {
-
-		var dropdowns = document.getElementsByClassName("dropdown-content");
-		var i;
-		for (i = 0; i < dropdowns.length; i++) {
-			var openDropdown = dropdowns[i];
-			if (openDropdown.classList.contains('show')) {
-				openDropdown.classList.remove('show');
-			}
-		}
-	}
-}
-
-
-
-// get design data
-function getDesigners(){
-var xmlhttpDesign = new XMLHttpRequest();
-xmlhttpDesign.onreadystatechange = function() {
-    if (xmlhttpDesign.readyState == 4 && xmlhttpDesign.status == 200) {
-        var arr = JSON.parse(xmlhttpDesign.responseText);
-        updateDesigners(arr.rows);
-    }
-};
-xmlhttpDesign.open("GET", urlDesigners+"/"+designers_offset, true);
-xmlhttpDesign.send();
-}
-
-function updateDesigners(arr) {
-	var i,j=0;
-    for(i = 0; i < arr.length; i++) {
-		if(i<4) { 
-			var d0 = document.getElementById("designers-container").childNodes.item(1).childNodes.item(j); 
-			if(!d0.hasChildNodes()) {
-			j++; d0 = document.getElementById("designers-container").childNodes.item(1).childNodes.item(j);
-			}
-			}
-		else { 
-			var d0 = document.getElementById("designers-container").childNodes.item(3).childNodes.item(j); 
-			if(!d0.hasChildNodes()) {
-			j++; d0 = document.getElementById("designers-container").childNodes.item(3).childNodes.item(j);
-			}
-			}
-		
-		// set visible
-		d0.childNodes.item(1).style.visibility = "visible";
-
-		// set link
-		d0.childNodes.item(1).href=base_url+"views/designer.html?"+arr[i].users_id;
-		
-		// update img	
-		img_path = base_url+"avatar/"+arr[i].users_id+".png";
-		d0.childNodes.item(1).childNodes.item(1).src = img_path;
-		// update name
-		d0.childNodes.item(1).childNodes.item(3).innerHTML = arr[i].firstname + " " + arr[i].lastname;
-		// update city
-		d0.childNodes.item(1).childNodes.item(5).innerHTML = "<small>"+arr[i].city+"</small>";
-		// update projects
-		//d0.childNodes.item(1).childNodes.item(7).childNodes.item(1).childNodes.item(1).childNodes.item(1).innerHTML = arr[i].price+"€";
-		// update realized
-		//d0.childNodes.item(1).childNodes.item(7).childNodes.item(3).childNodes.item(1).childNodes.item(1).innerHTML = arr[i].sale_current+"/"+arr[i].sale_minimum;
-		j++;
-		if(i==3){j=0;}
-	}
-}
-
-function designOffsetRight(){
-	projects_offset++;
-	getProjects();
-	document.getElementById("design-control-left").disabled = false; 
-	}
-	
-function designOffsetLeft(){
-	if(projects_offset>0) {
-		projects_offset--;
-		getProjects();
-		if(projects_offset==0) {
-			document.getElementById("design-control-left").disabled = true; 
-			}
-		}
-	}
-	
-getDesigners();
-document.getElementById("design-control-left").disabled = true; 
-
-
-
-</script>
-
 
 </body>
 </html>
