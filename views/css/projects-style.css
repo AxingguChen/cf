@@ -118,7 +118,7 @@
     text-align: center;
 }
 
-#filters-modal .modal-dialog {width: 100%;}
+#filters-modal .modal-dialog {width: 100%; margin-top: 80px;}
 #filters-modal .modal-content {
     background-color: transparent;
     -webkit-box-shadow:0;
@@ -129,11 +129,16 @@
     margin:auto;}
 #filters-modal label { color: #f5f9fa; margin-right: 48px;}
 #filters-modal input { color: #f5f9fa; background-color: transparent; width: 600px; }
-#filters-modal ul { list-style-type: none;}
-#filters-modal .col-sm-2 { min-width: 120px;}
+#filters-modal ul { list-style-type: none; padding-left: 0;}
+#filters-modal .col-sm-4 {
+    min-width: 120px;
+    border-right: solid;
+    border-left: solid;
+    border-width: 1px;
+    border-color: #f1f1f1;
+}
 #filters-modal p, li {text-align: center; color: #f5f9fa;
     padding: 4px;}
-
 #filters-modal label, #filters-modal input, #filters-modal button { !important; font-size: 22px; font-weight: 200; }
 
 .filter-section { font-size: 18px; margin: 12px;}

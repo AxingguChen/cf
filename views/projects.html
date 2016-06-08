@@ -186,43 +186,72 @@
 				<div class="modal-body">
 					<div class="row">
 						<div class="col-sm-2">
-							<ul>
+							<ul id="filters-gender-list">
 								<li class="filter-section">TYPE</li>
-								<li class="filter-item">Shop All</li>
-								<li class="filter-item">Womanswear</li>
-								<li class="filter-item">Menswear</li>
+								<li class="filter-item" data-value="-1" data-type="gender" style="border-color: #f1f1f1">Shop All</li>
+								<li class="filter-item" data-value="0" data-type="gender">Womanswear</li>
+								<li class="filter-item" data-value="1" data-type="gender">Menswear</li>
 							</ul>
-						</div>
-						<div class="col-sm-2">
-							<ul>
-								<li class="filter-section">CLOTHING</li>
-								<li class="filter-item">All</li>
-								<li class="filter-item">Top</li>
-								<li class="filter-item">Dresses/Jump Suits</li>
-								<li class="filter-item">Bottom</li>
-							</ul>
-						</div>
-						<div class="col-sm-2">
-							<ul>
-								<li class="filter-section">COLOR</li>
-								<li class="filter-item">Any color</li>
-								<li class="filter-item">Black</li>
-								<li class="filter-item">Multicolor</li>
-								<li class="filter-item">White</li>
-								<li class="filter-item">Grey</li>
-								<li class="filter-item">Blue</li>
-								<li class="filter-item">Pattern</li>
-								<li class="filter-item">Green</li>
-								<li class="filter-item">Yellow</li>
-								<li class="filter-item">Other</li>
-							</ul>
-						</div>
-						<div class="col-sm-2">
-							<ul>
+							<div class="divider filters-divider"></div>
+							<ul id="filters-sort-list">
 								<li class="filter-section">SORT BY</li>
-								<li class="filter-item">New arrival</li>
-								<li class="filter-item">Last Chance</li>
-								<li class="filter-item">Popularity</li>
+								<li class="filter-item" data-value="2" data-type="sort" style="border-color: #f1f1f1">New arrival</li>
+								<li class="filter-item" data-value="1" data-type="sort">Last Chance</li>
+								<li class="filter-item" data-value="3" data-type="sort">Popularity</li>
+							</ul>
+						</div>
+						<div class="col-sm-4">
+							<ul style="margin-bottom: 0">
+								<li class="filter-section">CLOTHING</li>
+							</ul>
+							<div class="row">
+								<div class="col-sm-6">
+									<ul id="filters-type-list1">
+										<li class="filter-item" data-value="0" data-type="type" style="border-color: #f1f1f1">All</li>
+										<li class="filter-item" data-value="1" data-type="type">Jackets And Coats</li>
+										<li class="filter-item" data-value="2" data-type="type">Blouses</li>
+										<li class="filter-item" data-value="3" data-type="type">Cropped</li>
+										<li class="filter-item" data-value="4" data-type="type">Knitwear</li>
+										<li class="filter-item" data-value="5" data-type="type">Shirts</li>
+										<li class="filter-item" data-value="6" data-type="type">T-Shirts</li>
+										<li class="filter-item" data-value="7" data-type="type">Tunics</li>
+										<li class="filter-item" data-value="8" data-type="type">Tanks</li>
+										<li class="filter-item" data-value="9" data-type="type">Evening</li>
+										<li class="filter-item" data-value="10" data-type="type">Casual</li>
+									</ul>
+								</div>
+								<div class="col-sm-6">
+									<ul id="filters-type-list2">
+										<li class="filter-item" data-value="11" data-type="type">Midi</li>
+										<li class="filter-item" data-value="12" data-type="type">Maxi</li>
+										<li class="filter-item" data-value="13" data-type="type">Mini</li>
+										<li class="filter-item" data-value="14" data-type="type">Gown</li>
+										<li class="filter-item" data-value="15" data-type="type">Jump Suit</li>
+										<li class="filter-item" data-value="16" data-type="type">Bridal</li>
+										<li class="filter-item" data-value="17" data-type="type">Skirts</li>
+										<li class="filter-item" data-value="18" data-type="type">Trousers</li>
+										<li class="filter-item" data-value="19" data-type="type">Shorts</li>
+										<li class="filter-item" data-value="20" data-type="type">Leggins</li>
+										<li class="filter-item" data-value="21" data-type="type">Jeans</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-2">
+							<ul id="filters-color-list">
+								<li class="filter-section">COLOR</li>
+								<li class="filter-item" data-value="0" data-type="color" style="border-color: #f1f1f1">Any color</li>
+								<li class="filter-item" data-value="2" data-type="color">Black</li>
+								<li class="filter-item" data-value="0" data-type="color">Multicolor</li>
+								<li class="filter-item" data-value="1" data-type="color">White</li>
+								<li class="filter-item" data-value="0" data-type="color">Grey</li>
+								<li class="filter-item" data-value="5" data-type="color">Blue</li>
+								<li class="filter-item" data-value="0" data-type="color">Pattern</li>
+								<li class="filter-item" data-value="4" data-type="color">Green</li>
+								<li class="filter-item" data-value="3" data-type="color">Yellow</li>
+								<li class="filter-item" data-value="6" data-type="color">Red</li>
+								<li class="filter-item" data-value="7" data-type="color">Orange</li>
+								<li class="filter-item" data-value="0" data-type="color">Other</li>
 							</ul>
 						</div>
 						<div class="col-sm-4">
@@ -246,24 +275,24 @@
 </div>
 
 	<!-- FILTERS TAB -->
-	<div class="container-fluid filters-tab">
+	<div class="container-fluid filters-tab" id="filters-tab">
 		<img src="icons/as-logo-120.png" height="48px" style="display: inline">
 		<div style="display: inline; width: 100%;">
 			<div class="filter-tab-element" style="color: #c3c3c3;"> Show me: </div>
 			<div class="filter-tab-element" style="font-weight: bold;">
-                <button data-toggle="modal" data-target="#filters-modal" class="dropbtn">Shop All</button>
+                <button onclick="showFilterModal()" class="dropbtn" data-label="gender">Shop All</button>
             </div>
 			<div class="filter-tab-element" style="font-weight: bold;"> <span class="glyphicon glyphicon-menu-right"></span>  </div>
             <div class="filter-tab-element" style="font-weight: bold;">
-                <button onclick="dropdownFilter2()" class="dropbtn">Clothing</button>
+                <button onclick="showFilterModal()" class="dropbtn" data-label="type">Clothing</button>
             </div>
 			<div class="filter-tab-element" style="font-weight: bold;"> <span class="glyphicon glyphicon-menu-right"></span>  </div>
             <div class="filter-tab-element" style="font-weight: bold;">
-                <button onclick="dropdownFilter3()" class="dropbtn">Any color</button>
+                <button onclick="showFilterModal()" class="dropbtn" data-label="color">Any color</button>
             </div>
 			<div class="filter-tab-element" style="font-weight: bold;"> <span class="glyphicon glyphicon-menu-right"></span>  </div>
             <div class="filter-tab-element" style="font-weight: bold;">
-                <button onclick="dropdownFilter4()" class="dropbtn">Shop by</button>
+                <button onclick="showFilterModal()" class="dropbtn" data-label="sort">Shop by</button>
             </div>
             <button class="btn-default btn-filter-clear"> clear </button>
 		</div>

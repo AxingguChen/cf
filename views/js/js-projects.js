@@ -2,26 +2,55 @@
  * Created by Giovanni on 25/05/16.
  */
 
-// filter consts
-const F_ANY_GENDER = -1;
-const F_ANY_TYPE = -1;
-const F_ANY_COLOR = -1;
-const F_NO_SORT = -1;
-const F_FEMALE = 0;
-const F_MALE = 1;
-const F_SHOES = 0;
-const F_PANTS = 0;
-const F_TSHIRT= 0;
-const F_WHITE = 0;
-const F_BLACK = 1;
-const F_YELLOW = 2;
-const F_GREEN = 3;
-const F_BLUE = 4;
-const F_RED = 5;
-const F_ORANGE = 6;
-const F_POPULAR = 0;
-const F_NEW = 1;
-const F_LASTCHANCE = 2;
+// init key-value maps
+var color_strings = {
+    '0': 'Any color',
+    '1': 'White',
+    '2': 'Black',
+    '3': 'Yellow',
+    '4': 'Green',
+    '5': 'Blue',
+    '6': 'Red',
+    '7': 'Orange'
+};
+
+var gender_strings = {
+    '-1': 'Shop All',
+    '0': 'Womenswear',
+    '1': 'Menswear'
+};
+
+var sort_strings = {
+    '2': 'New Arrival',
+    '1': 'Last Chance',
+    '3': 'Popularity'
+};
+
+var type_strings = {
+    '0': 'All',
+    '1': 'Jackets and Coats',
+    '2': 'Blouses',
+    '3': 'Cropped',
+    '4': 'Knitwear',
+    '5': 'Shirts',
+    '6': 'T-Shirts',
+    '7': 'Tunics',
+    '8': 'Tanks',
+    '9': 'Evening',
+    '10': 'Casual',
+    '11': 'Midi',
+    '12': 'Maxi',
+    '13': 'Mini',
+    '14': 'Gown',
+    '15': 'Sump Suit',
+    '16': 'Bridal',
+    '17': 'Skirts',
+    '18': 'Trousers',
+    '19': 'Shorts',
+    '20': 'Leggins',
+    '21': 'Jeans'
+};
+
 
 
 // init filters
@@ -29,6 +58,11 @@ var filter_gender = -1;
 var filter_type = -1;
 var filter_color = -1;
 var filter_sort = -1;
+
+var gender_temp = -1;
+var type_temp = -1;
+var color_temp = -1;
+var sort_temp = -1;
 
 var projects_offset=0;
 
@@ -47,6 +81,28 @@ $(document).ready(function(){
     $("#filters-modal-close-btn").click(function(){
         $('#filters-modal').modal('hide');
     });
+
+    $("#filters-modal-set-btn").click(function(){
+
+        filter_gender = gender_temp;
+        filter_color = color_temp;
+        filter_sort = sort_temp;
+        filter_type = type_temp;
+        updateFilterTab();
+        $('#filters-modal').modal('hide');
+        getProjects();
+    });
+
+
+    $(".filter-item").click(function(e){
+        if($(e.target).data("type")=="color"){resetColorFilter(e);}
+        else if($(e.target).data("type")=="type"){resetTypeFilter(e);}
+        else if($(e.target).data("type")=="gender"){resetGenderFilter(e);}
+        else if($(e.target).data("type")=="sort"){resetSortFilter(e);}
+    });
+
+
+
 });
 
 
@@ -138,4 +194,74 @@ function designOffsetLeft(){
             document.getElementById("design-control-left").disabled = true;
         }
     }
+}
+
+function showFilterModal() {
+    $('#filters-modal').modal('show');
+}
+
+
+function updateFilterTab(){
+    var x = document.getElementById("filters-tab").getElementsByClassName("dropbtn");
+    var i;
+    for (i = 0; i < x.length; i++) {
+        if(x[i].getAttribute("data-label")=="color") {
+            x[i].innerHTML = color_strings[filter_color];
+        }
+        else if(x[i].getAttribute("data-label")=="type") {
+            x[i].innerHTML = type_strings[filter_type];
+        }
+        else if(x[i].getAttribute("data-label")=="sort") {
+            x[i].innerHTML = sort_strings[filter_sort];
+        }
+        else if(x[i].getAttribute("data-label")=="gender") {
+            x[i].innerHTML = gender_strings[filter_gender];
+        }
+    }
+}
+
+
+
+function resetColorFilter(e) {
+    var x = document.getElementById("filters-color-list").getElementsByClassName("filter-item");
+    var i;
+    for (i = 0; i < x.length; i++) {
+        x[i].style.borderColor= "transparent";
+    }
+    $(e.target).css("border-color","#f1f1f1");
+    color_temp = $(e.target).data("value");
+}
+
+function resetGenderFilter(e) {
+    var x = document.getElementById("filters-gender-list").getElementsByClassName("filter-item");
+    var i;
+    for (i = 0; i < x.length; i++) {
+        x[i].style.borderColor= "transparent";
+    }
+    $(e.target).css("border-color","#f1f1f1");
+    gender_temp = $(e.target).data("value");
+}
+
+function resetSortFilter(e) {
+    var x = document.getElementById("filters-sort-list").getElementsByClassName("filter-item");
+    var i;
+    for (i = 0; i < x.length; i++) {
+        x[i].style.borderColor= "transparent";
+    }
+    $(e.target).css("border-color","#f1f1f1");
+    sort_temp = $(e.target).data("value");
+}
+
+function resetTypeFilter(e) {
+    var x = document.getElementById("filters-type-list1").getElementsByClassName("filter-item");
+    var i;
+    for (i = 0; i < x.length; i++) {
+        x[i].style.borderColor= "transparent";
+    }
+    x = document.getElementById("filters-type-list2").getElementsByClassName("filter-item");
+    for (i = 0; i < x.length; i++) {
+        x[i].style.borderColor= "transparent";
+    }
+    $(e.target).css("border-color","#f1f1f1");
+    type_temp = $(e.target).data("value");
 }
