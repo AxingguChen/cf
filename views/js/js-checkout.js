@@ -17,20 +17,9 @@ var total_price;
 $(document).ready(function () {
     if(isLogged) {
         document.getElementById("checkout-section-1").style.display ="none";
-
-        document.getElementById("check-address-label").value = getUserInfo().address_label;
-        document.getElementById("check-firstname-label").value = getUserInfo().firstname;
-        document.getElementById("check-lastname-label").value = getUserInfo().lastname;
-        document.getElementById("check-street-label").value = getUserInfo().street;
-        document.getElementById("check-additional-label").value = getUserInfo().additional_info;
-        document.getElementById("check-country-label").value = getUserInfo().country;
-        document.getElementById("check-city-label").value = getUserInfo().city;
-        document.getElementById("check-zip-label").value = getUserInfo().zip_code;
-        document.getElementById("check-phone-label").value = getUserInfo().phone;
-
+        fillUserInfoSection();
         document.getElementById("check-item-1").style.borderBottomColor = "transparent";
         document.getElementById("check-item-2").style.borderBottomColor = "#1e1e1e";
-
 
         document.getElementById("checkout-section-2").style.display ="inline";
 
@@ -39,6 +28,64 @@ $(document).ready(function () {
 });
 
 $(document).ready(function () {
+    $("#checkout-log-submit").click(function(){
+        var userEmail = document.getElementById('checkout-log-email').value;
+        var userPassw = document.getElementById('checkout-log-pass').value;
+
+        $.post(base_url+"index.php/users/login",
+            {
+                email: userEmail,
+                password: userPassw
+
+            },
+            function(data,status){
+                var json = JSON.parse(data);
+                if(json.state==false) {
+                    //login failed
+
+                }
+                else {
+                    // login success
+                    var user = json.rows[0];
+                    setUserInfo(user);
+                    sessionStorage.setItem("cfUserId",user.users_id);
+                    sessionStorage.setItem("cfUserGroupsId",user.users_groups_id);
+                    sessionStorage.setItem("cfUserFirstname",user.firstname);
+                    sessionStorage.setItem("cfUserLastname",user.lastname);
+
+                    // if remember me
+                    if(document.getElementById('login-checkbox').checked) {
+                        localStorage.setItem("cfUserEmail", userEmail);
+                        localStorage.setItem("cfUserPassword", userPassw);
+                    }
+                    else { localStorage.removeItem("cfUserEmail"); localStorage.removeItem("cfUserPassword");}
+
+                    document.getElementById("login-error-label").style.display = "none";
+                    $('#login-modal').modal('hide');
+                    document.getElementById("login-nav-button").style.display = "none";
+                    document.getElementById("sign-nav-button").style.display = "none";
+                    document.getElementById("logged-nav-button").style.display = "inline";
+
+                    if(user.users_groups_id == "10") {
+                        document.getElementById("nav-drop-designer-studio-btn").style.display = "inline-block";
+                    }
+
+                    document.getElementById("nav-login-name").innerHTML = user.firstname;
+                    document.getElementById("nav-drop-login-name").innerHTML = user.firstname + " " + user.lastname;
+
+                    document.getElementById("checkout-section-1").style.display ="none";
+                    fillUserInfoSection();
+                    document.getElementById("check-item-1").style.borderBottomColor = "transparent";
+                    document.getElementById("check-item-2").style.borderBottomColor = "#1e1e1e";
+
+                    document.getElementById("checkout-section-2").style.display ="inline";
+
+                    setupReviewOrder();
+                }
+            });
+    });
+
+
     $("#check-2-next").click(function(){
         if(checkAddress()) {
             document.getElementById("checkout-section-2").style.display ="none";
@@ -200,4 +247,16 @@ function simulatePayment() {
     } else {
 
     }
+}
+
+function fillUserInfoSection() {
+    document.getElementById("check-address-label").value = getUserInfo().address_label;
+    document.getElementById("check-firstname-label").value = getUserInfo().firstname;
+    document.getElementById("check-lastname-label").value = getUserInfo().lastname;
+    document.getElementById("check-street-label").value = getUserInfo().street;
+    document.getElementById("check-additional-label").value = getUserInfo().additional_info;
+    document.getElementById("check-country-label").value = getUserInfo().country;
+    document.getElementById("check-city-label").value = getUserInfo().city;
+    document.getElementById("check-zip-label").value = getUserInfo().zip_code;
+    document.getElementById("check-phone-label").value = getUserInfo().phone;
 }
