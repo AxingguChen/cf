@@ -20,10 +20,10 @@ class Welcome extends CI_Controller {
 	 */
 	public function index()
 	{
-		$this->load->helper('url');
+		#$this->load->helper('url');
 		#$this->load->view('welcome_message');
 		# base_url("/views/index.html");
-		$url_to_go = base_url("/views/home.html");
+		$url_to_go = "http://www.airshowroom.com/cf/views/home.html";
 		header("Location: $url_to_go");
 		echo base_url();
 	}
