@@ -136,8 +136,8 @@ function updateUserOrders(data) {
         var qty = order.quantity;
         var date = order.date_create;
         var state = order.orders_order_state_id;
-        //var img_url = base_url+"pic/"+order.orders_projects_id+"_1.png";
-        var img_url = base_url+"pic/7_1.png";
+        //var img_url = base_url+"pic/"+order.orders_projects_id+"_1.jpeg";
+        var img_url = base_url+"pic/7_1.jpeg";
 
         xmlhttp.onreadystatechange = function(order) {
             if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
@@ -178,7 +178,7 @@ function updateWishlist(data) {
     for(var i=0; i<data.length; i++) {
         var title=data[i].title;
         var price=data[i].price;
-        var img_url = base_url+"pic/"+data[i].projects_id+"_1.png";
+        var img_url = base_url+"pic/"+data[i].projects_id+"_1.jpeg";
 
         $("#wishlist_container").append("<div class='order-item'><div class='row'>"+
             "<div class='col-sm-6 order-item-icon'><img src='"+img_url+"' height='180px'>"+
@@ -204,7 +204,7 @@ function getFollowedDesigners(id){
 function updateFollowedDesigners(data) {
     for(var i=0; i<data.length; i++) {
         var name=data[i].firstname +" "+ data[i].lastname;
-        var img_url = base_url+"avatar/"+data[i].designed_id+".png";
+        var img_url = base_url+"avatar/"+data[i].designed_id+".jpeg";
 
         $("#followed-designer-container").append('<div class="designer-followed-item"><img src="'+img_url+
             '" height="150px"><h4>'+name+'</h4><div style="text-align: center;"><button class="btn-default" style="margin-top: 8px; margin-bottom: 8px;">unfollow</button></div></div>');

@@ -3,7 +3,7 @@
  */
 
 // init url strings
-var base_url = "http://localhost/cf/";
+var base_url = "http://www.airshowroom.com/cf/";
 var urlLastChance = base_url+"index.php/projects/view_projects_lastchance";
 var urlDesign = base_url+"index.php/projects/view_projects_homepage";
 var design_offset=0;
@@ -50,7 +50,7 @@ function updateLastChance(arr) {
         //update owner and description
         el0.childNodes.item(1).childNodes.item(1).childNodes.item(5).childNodes.item(3).innerHTML = "<h4><small>By <strong>"+ arr[i].firstname + arr[i].lastname +"</strong></br></br>" + arr[i].description + "</small></h4>" ;
         // update image
-        img_path = "http://localhost/cf/pic/"+arr[i].projects_id+"_1.png"
+        img_path = "http://localhost/cf/pic/"+arr[i].projects_id+"_1.jpeg"
         el0.childNodes.item(1).childNodes.item(1).childNodes.item(3).childNodes.item(1).src = img_path;
 
         j++;
@@ -77,7 +77,7 @@ function updateDesign(arr) {
         d0.href = base_url+"views/project.html?"+arr[i].projects_id;
 
         // update img	
-        img_path = "http://localhost/cf/pic/"+arr[i].projects_id+"_1.png";
+        img_path = "http://localhost/cf/pic/"+arr[i].projects_id+"_1.jpeg";
         d0.childNodes.item(1).childNodes.item(1).src = img_path;
         // update title
         d0.childNodes.item(1).childNodes.item(3).innerHTML = arr[i].title;

@@ -198,7 +198,7 @@ function setupChartBasket() {
         var left = cart.products[i].data.left;
         var title = cart.products[i].data.title;
         var project_id = cart.products[i].data.projects_id;
-        var img_url = base_url+"pic/"+project_id+"_1.png";
+        var img_url = base_url+"pic/"+project_id+"_1.jpeg";
         
         subtotal_price = subtotal_price + parseInt(price)*qty;
 

@@ -24,7 +24,7 @@ $(document).ready(function () {
 
 function setPersonalData() {
     document.getElementById("designer-hi-label").innerHTML = getUserInfo().firstname;
-    document.getElementById("designer-studio-icon").src = base_url+"avatar/"+getUserInfo().users_id+".png";
+    document.getElementById("designer-studio-icon").src = base_url+"avatar/"+getUserInfo().users_id+".jpeg";
     document.getElementById("designer-firstname-label").innerHTML = "<small>FIRST NAME</small> " + getUserInfo().firstname;
     document.getElementById("designer-lastname-label").innerHTML = "<small>LAST NAME</small> " + getUserInfo().lastname;
     document.getElementById("designer-email-label").innerHTML = "<small>EMAIL</small> " + getUserInfo().email;
@@ -117,7 +117,7 @@ function getProductsStatus(id){
 
 function updateProductsStatus(data) {
     for(var i=0; i<data.length; i++) {
-        var img_url = base_url+"pic/"+data[i].projects_id+"_1.png";
+        var img_url = base_url+"pic/"+data[i].projects_id+"_1.jpeg";
         var cost = data[i].cost + " €";
         var price = data[i].price + " €";
         var status = data[i].projects_project_state_id;
@@ -163,7 +163,7 @@ function getFeedbacks(id){
 function updateFeedbacks(data) {
     for(var i=0; i<data.length; i++) {
         var title=data[i].title;
-        var img_url = base_url+"pic/"+data[i].projects_id+"_1.png";
+        var img_url = base_url+"pic/"+data[i].projects_id+"_1.jpeg";
         var pic_id = "feedback-item-back-"+data[i].projects_id;
 
         $("#designer-feedback-container").append("<div class='feedback-item'>" +

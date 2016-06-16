@@ -60,7 +60,7 @@ var sort_temp = -1;
 
 
 // init url strings
-var base_url = "http://localhost/cf/";
+var base_url = "http://www.airshowroom.com/cf/";
 var urlDesigners = base_url+"index.php/users/view_designers";
 var designers_offset=0;
 
@@ -150,7 +150,7 @@ function updateDesigners(arr) {
         d0.childNodes.item(1).href=base_url+"views/designer.html?"+arr[i].users_id;
 
         // update img	
-        img_path = base_url+"avatar/"+arr[i].users_id+".png";
+        img_path = base_url+"avatar/"+arr[i].users_id+".jpeg";
         d0.childNodes.item(1).childNodes.item(1).src = img_path;
         // update name
         d0.childNodes.item(1).childNodes.item(3).innerHTML = arr[i].firstname + " " + arr[i].lastname;

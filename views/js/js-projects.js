@@ -67,7 +67,7 @@ var sort_temp = -1;
 var projects_offset=0;
 
 // init url strings
-var base_url = "http://localhost/cf/";
+var base_url = "http://www.airshowroom.com/cf/";
 var urlProjects = base_url+"index.php/projects/view_projects_filter/"+ filter_type + "/"+ filter_gender + "/"+ filter_color + "/" + filter_sort + "/" + projects_offset;
 
 $(document).ready(function(){
@@ -162,7 +162,7 @@ function updateProjects(arr) {
         d0.childNodes.item(1).href=base_url+"views/project.html?"+arr[i].projects_id;
 
         // update img	
-        img_path = "http://localhost/cf/pic/"+arr[i].projects_id+"_1.png";
+        img_path = "http://localhost/cf/pic/"+arr[i].projects_id+"_1.jpeg";
         d0.childNodes.item(1).childNodes.item(1).src = img_path;
         // update title
         d0.childNodes.item(1).childNodes.item(3).innerHTML = arr[i].title;
