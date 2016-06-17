@@ -246,7 +246,7 @@ class Users extends CI_Controller {
 	
 		);
 		$this->session->set_userdata('logged_in', $sess_array);
-	
+		//TODO
 		if ($this->session->userdata ( 'logged_in' )) {
 			$session_data = $this->session->userdata ( 'logged_in' );
 	
@@ -267,12 +267,12 @@ class Users extends CI_Controller {
 	// index.php/users/update_address_by_id
 	function update_address_by_id($address_id = 1) {
 		// get session data
-		$sess_array = array(
-				'users_id' => 1,
-				'firstname' => 'yuxing'
+// 		$sess_array = array(
+// 				'users_id' => 1,
+// 				'firstname' => 'yuxing'
 	
-		);
-		$this->session->set_userdata('logged_in', $sess_array);
+// 		);
+// 		$this->session->set_userdata('logged_in', $sess_array);
 	
 		if ($this->session->userdata ( 'logged_in' )) {
 			$session_data = $this->session->userdata ( 'logged_in' );

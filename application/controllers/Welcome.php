@@ -25,6 +25,6 @@ class Welcome extends CI_Controller {
 		# base_url("/views/index.html");
 		$url_to_go = "http://www.airshowroom.com/cf/views/home.html";
 		header("Location: $url_to_go");
-		echo base_url();
+		#echo base_url();
 	}
 }
