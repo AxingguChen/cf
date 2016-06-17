@@ -3,6 +3,7 @@
  */
 
 var base_url = "http://www.airshowroom.com/cf/";
+var img_format = ".jpg";
 
 
 //check if user is logged

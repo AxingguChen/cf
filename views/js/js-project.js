@@ -1,7 +1,7 @@
 /**
  * Created by Giovanni on 20/05/2016.
  */
-var base_url = "http://www.airshowroom.com/cf/";
+
 var url_project = base_url+"index.php/projects/view_project/"+"3";
 
 var project_id;
@@ -125,7 +125,7 @@ function getRelatedProducts(data) {
             var related_data = json_array.rows;
 
             for(i=0; i<related_data.length && i<4; i++) {
-                document.getElementById("related-"+i+"-img").src = base_url+"pic/"+related_data[i].projects_id+"_1.jpeg";
+                document.getElementById("related-"+i+"-img").src = base_url+"pic/"+related_data[i].projects_id+"_1"+img_format;
                 document.getElementById("related-"+i+"-title").innerHTML = related_data[i].title;
                 document.getElementById("related-"+i).style.display = "inline";
                 document.getElementById("related-"+i).childNodes[1].href = base_url+"views/project.html?"+related_data[i].projects_id;
@@ -143,15 +143,15 @@ function updateProjectInfo(data) {
     document.getElementById("project-title").innerHTML = data.title;
     document.getElementById("dir-product-name").innerHTML = data.title;
     document.getElementById("project-designer").innerHTML = "by " + data.firstname + " " + data.lastname;
-    document.getElementById("highlight-img").src = "http://localhost/cf/pic/"+data.projects_id+"_1.jpeg";
-    document.getElementById("secondary-img-1").src = "http://localhost/cf/pic/"+data.projects_id+"_2.jpeg";
-    document.getElementById("secondary-img-2").src = "http://localhost/cf/pic/"+data.projects_id+"_3.jpeg";
-    document.getElementById("secondary-img-3").src = "http://localhost/cf/pic/"+data.projects_id+"_4.jpeg";
+    document.getElementById("highlight-img").src = "http://localhost/cf/pic/"+data.projects_id+"_1"+img_format;
+    document.getElementById("secondary-img-1").src = "http://localhost/cf/pic/"+data.projects_id+"_2"+img_format;
+    document.getElementById("secondary-img-2").src = "http://localhost/cf/pic/"+data.projects_id+"_3"+img_format;
+    document.getElementById("secondary-img-3").src = "http://localhost/cf/pic/"+data.projects_id+"_4"+img_format;
     document.getElementById("price-label").innerHTML = data.price+"€";
     document.getElementById("founded-label").innerHTML = data.sale_current + " / " + data.sale_minimum;
     document.getElementById("days-to-go-label").innerHTML = data.round + " days";
     document.getElementById("product-info").firstElementChild.innerHTML = data.description;
-    document.getElementById("designer-avatar").src = base_url+"avatar/"+data.users_id + ".jpeg";
+    document.getElementById("designer-avatar").src = base_url+"avatar/"+data.users_id + img_format;
     document.getElementById("designer-info-name").innerHTML = data.firstname + " " + data.lastname;
     var link = "http://" + data.website;
     document.getElementById("designer-info-website").innerHTML = "<a target='_blank' href="+link+">" +data.website+"</a>";

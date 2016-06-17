@@ -173,7 +173,7 @@ function setupReviewOrder() {
         var price = cart.products[i].data.price;
         var title = cart.products[i].data.title;
         var project_id = cart.products[i].data.projects_id;
-        var img_url = base_url+"pic/"+project_id+"_1.jpeg";
+        var img_url = base_url+"pic/"+project_id+"_1"+img_format;
 
         subtotal_price = subtotal_price + parseInt(price)*qty;
 
@@ -200,7 +200,7 @@ function fillOrderConfirmation() {
 
     for (var i=0; i<cart.products.length; i++) {
         var project_id = cart.products[i].data.projects_id;
-        var img_url = base_url+"pic/"+project_id+"_1.jpeg";
+        var img_url = base_url+"pic/"+project_id+"_1"+img_format;
 
 
         $("#checkout5-1-table-body").append('<tr>' +

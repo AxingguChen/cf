@@ -67,7 +67,7 @@ var sort_temp = -1;
 var projects_offset=0;
 
 // init url strings
-var base_url = "http://www.airshowroom.com/cf/";
+
 var urlProjects = base_url+"index.php/projects/view_projects_filter/"+ filter_type + "/"+ filter_gender + "/"+ filter_color + "/" + filter_sort + "/" + projects_offset;
 
 $(document).ready(function(){
