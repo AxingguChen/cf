@@ -153,6 +153,105 @@ class Projects extends CI_Controller {
     	print json_encode($data);
     	
     }
+    
+    public function update_project_pic($project_id,$position){
+    	//TODO session
+    	
+    	$file_element_name = 'project_pic_upload';
+    	
+    	// $file_name = $upload_data['file_name'];
+    	
+    	//$session_data = $this->session->userdata ( 'logged_in' );
+    	//$users_id = $session_data ['users_id'];
+    	// $file_name = $users_id . '.pdf';
+    	$filepath = 'pic/';
+    	$path = $_FILES['project_pic_upload']['name'];
+    	$filetype = '.'.pathinfo($path, PATHINFO_EXTENSION);
+    	// $config ['file_name'] = 'e'.$filename.".jpg";
+    	$filename = $project_id . "_" . $position;
+    	$config ['file_name'] = $project_id . "_" . $position;
+    	// used to be './assets/img/certificate' get absolute directory by getcwd()
+    	$config ['upload_path'] = $filepath;
+    	$config ['allowed_types'] = 'gif|jpg|png|doc|txt|pdf';
+    	$config ['max_size'] = 2048; // 2MB
+    	$config ['encrypt_name'] = FALSE;
+    	$config ['overwrite'] = true;
+    	// print_r($config ['upload_path']);
+    	$this->load->library ( 'upload', $config );
+    	if (! $this->upload->do_upload ( $file_element_name )) {
+    		echo $this->upload->display_errors ( '', '' );
+    	} else {
+    		$data = $this->upload->data ();
+    		$image_path = $data ['full_path'];
+    		if (file_exists ( $image_path ) && $this->resizeimg($filepath,$filename,$filetype) ) {
+    			// update db
+    			$data ['state'] = true;
+    		} else {
+    			$data ['state'] = false;
+    		}
+    	}
+    	print json_encode($data);
+    	@unlink ( $_FILES [$file_element_name] );
+    }
 
+    //
+	public function resizeimg($filepath = 'pic/',$filename ='1431248954',$filetype = ".jpg") {
+		//header ( 'Content-Type: image/jpeg' );
+		// $dst_image = base_url().'assets/img/project/1/1430653106_R.jpg';
+		//$src_filename = 'assets/img/project/1/1431248954.jpg';
+		$src_filename = $filepath.$filename.$filetype;
+		//print_r($src_filename);
+		if ($filetype == '.jpg' || $filetype == '.JPG')
+			$src_image = imagecreatefromjpeg ( $src_filename );
+		else if($filetype == '.png' || $filetype == '.PNG')
+			$src_image = imagecreatefrompng ( $src_filename );
+		list ( $src_w, $src_h ) = getimagesize ( $src_filename );
+		$dst_x = 0;
+		$dst_y = 0;
+		$src_x = 0;
+		$src_y = 0;
+		//print_r($src_h/$src_w );
+		if ($src_h/$src_w > 1.5) //too HIGH
+		{
+			$dst_w = $src_w;
+			$dst_h = $src_w * 3 / 2;
+			$src_y = ($src_h-$dst_h)/2;
+	
+		}
+		else  					//too wide
+		{
+			$dst_h = $src_h;
+			$dst_w = $src_h * 2 / 3;
+			$src_x = ($src_w-$dst_w)/2;
+			// 			print_r($dst_w);
+			// 			print_r($dst_h);
+		}
+		
+		// $src_w, $src_h
+		$dst_image = imagecreatetruecolor ( $dst_w, $dst_h );
+		
+		if (imagecopyresampled ( $dst_image, $src_image, $dst_x, $dst_y, $src_x, $src_y, $src_w, $src_h, $dst_w, $dst_h )) {
+			//imagejpeg ( $src_image );
+			//imagejpeg($dst_image,null,100);
+			if ($filetype == '.jpg' || $filetype == '.JPG')
+				imagejpeg($dst_image,$filepath.'r'.$filename.$filetype);
+			else if($filetype == '.png' || $filetype == '.PNG')
+				imagepng($dst_image,$filepath.'r'.$filename.$filetype);
+			//echo '<img width="400" height="300" src='.base_url().'assets/img/project/1/1430653106r.jpg>';
+			//imagefilter ( $dst_image, IMG_FILTER_GRAYSCALE );
+			//imagejpeg ( $dst_image, base_url () . 'assets/img/project/1/1430653106_R.jpg' );
+			imagedestroy ( $src_image );
+			imagedestroy ( $dst_image );
+			return true;
+		} else {
+			imagedestroy ( $src_image );
+			imagedestroy ( $dst_image );
+			return false;
+		}
+		
+		
+	}
+    //
+    
 }
 ?>
