@@ -162,7 +162,7 @@ function updateProjects(arr) {
         d0.childNodes.item(1).href=base_url+"views/project.html?"+arr[i].projects_id;
 
         // update img	
-        img_path = "http://localhost/cf/pic/"+arr[i].projects_id+"_1.jpeg";
+        img_path = base_url+"pic/"+arr[i].projects_id+"_1"+img_format;
         d0.childNodes.item(1).childNodes.item(1).src = img_path;
         // update title
         d0.childNodes.item(1).childNodes.item(3).innerHTML = arr[i].title;

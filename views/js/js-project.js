@@ -143,10 +143,10 @@ function updateProjectInfo(data) {
     document.getElementById("project-title").innerHTML = data.title;
     document.getElementById("dir-product-name").innerHTML = data.title;
     document.getElementById("project-designer").innerHTML = "by " + data.firstname + " " + data.lastname;
-    document.getElementById("highlight-img").src = "http://localhost/cf/pic/"+data.projects_id+"_1"+img_format;
-    document.getElementById("secondary-img-1").src = "http://localhost/cf/pic/"+data.projects_id+"_2"+img_format;
-    document.getElementById("secondary-img-2").src = "http://localhost/cf/pic/"+data.projects_id+"_3"+img_format;
-    document.getElementById("secondary-img-3").src = "http://localhost/cf/pic/"+data.projects_id+"_4"+img_format;
+    document.getElementById("highlight-img").src = base_url+"pic/"+data.projects_id+"_1"+img_format;
+    document.getElementById("secondary-img-1").src = base_url+"pic/"+data.projects_id+"_2"+img_format;
+    document.getElementById("secondary-img-2").src = base_url+"pic/"+data.projects_id+"_3"+img_format;
+    document.getElementById("secondary-img-3").src = base_url+"pic/"+data.projects_id+"_4"+img_format;
     document.getElementById("price-label").innerHTML = data.price+"€";
     document.getElementById("founded-label").innerHTML = data.sale_current + " / " + data.sale_minimum;
     document.getElementById("days-to-go-label").innerHTML = data.round + " days";
