@@ -225,12 +225,14 @@ class Users extends CI_Controller {
 	}
 	
 	public function view_payment_by_id($payment_id = 0){
+		//TODO
 		$data ['rows'] = $this->payment_model->get_payment_by_id($payment_id);
 		print json_encode($data);
 		//print_r($data);
 	}
 	
 	public function view_address_by_id($address_id = 0){
+		//TODO
 		$data ['rows'] = $this->address_model->get_address_by_id($address_id);
 		print json_encode($data);
 		//print_r($data);
@@ -246,7 +248,7 @@ class Users extends CI_Controller {
 	
 		);
 		$this->session->set_userdata('logged_in', $sess_array);
-	
+		//TODO
 		if ($this->session->userdata ( 'logged_in' )) {
 			$session_data = $this->session->userdata ( 'logged_in' );
 	
@@ -267,13 +269,13 @@ class Users extends CI_Controller {
 	// index.php/users/update_address_by_id
 	function update_address_by_id($address_id = 1) {
 		// get session data
-		$sess_array = array(
-				'users_id' => 1,
-				'firstname' => 'yuxing'
+// 		$sess_array = array(
+// 				'users_id' => 1,
+// 				'firstname' => 'yuxing'
 	
-		);
-		$this->session->set_userdata('logged_in', $sess_array);
-	
+// 		);
+// 		$this->session->set_userdata('logged_in', $sess_array);
+		
 		if ($this->session->userdata ( 'logged_in' )) {
 			$session_data = $this->session->userdata ( 'logged_in' );
 	
@@ -292,6 +294,7 @@ class Users extends CI_Controller {
 	
 	
 	public function view_wishlist_by_user_id($users_id = 0,$offset = 0, $limit = 0){
+		//TODO session
 		$this->load->model('wishlist_model','',TRUE);
 		if ($limit <= 0) {
 			$MAX_RECORDS = 8; /* each request return 8 records at most */
@@ -314,7 +317,7 @@ class Users extends CI_Controller {
 		
 		);
 		$this->session->set_userdata('logged_in', $sess_array);
-		
+		//TODO
 		if ($this->session->userdata ( 'logged_in' )) {
 			$session_data = $this->session->userdata ( 'logged_in' );
 				
