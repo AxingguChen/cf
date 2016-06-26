@@ -177,31 +177,6 @@
 
 
 
-    <!-- ADD TO CART MODAL -->
-    <div id="cart-add-modal" class="modal fade login-modal" role="dialog">
-        <div class="modal-dialog">
-
-            <!-- Modal content-->
-            <div class="modal-content">
-                <div class="modal-body">
-                    <h4>CART</h4>
-                    <div class="divider"></div>
-                        <div class="form-group">
-                            <label class="control-label col-sm-4" for="cart-modal-pieces-label">How many?</label>
-                            <div class="col-sm-8">
-                                <input type="text" class="form-control" id="cart-modal-pieces-label" value="1">
-                            </div>
-                        </div>
-                    <div style="text-align: center;">
-                        <button class="btn btn-default save-btn" id="add-cart-cancel">CANCEL</button>
-                        <button class="btn btn-default cancel-btn" id="add-cart-confirm">ADD TO CART</button>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </div>
-
     <!-- FILTERS TAB -->
     <div class="container-fluid filters-tab">
         <img src="icons/as-logo-120.png" height="48px" style="display: inline">
@@ -257,42 +232,57 @@
         </div>
     </div>
 
+
     <!-- PROJECT TAB -->
-    <div class="container-fluid project-tab">
+    <div class="container-fluid project-tab" style="position: relative">
+
+        <!-- ADD ALERT -->
+        <div class="alert alert-success" id="success-alert">
+            <strong>Success! </strong> </br>
+            Product have added to your cart.
+        </div>
+
         <h3 id="project-title"> Titolo </h3>
         <h5 id="project-designer"> subtitle </h5>
 
         <div class="row" id="product_section">
             <div class="col-sm-5" style="height:500px;">
-                <img id="highlight-img" src="http://www.indre-reisid.ee/wp-content/themes/envision/lib/images/default-placeholder.png">
+                <img id="highlight-img">
             </div>
 
-            <div class="col-sm-2" style="height:500px;">
-                <img class="secondary-img" id="secondary-img-1" src="http://www.indre-reisid.ee/wp-content/themes/envision/lib/images/default-placeholder.png">
-                <img class="secondary-img" id="secondary-img-2" src="http://www.indre-reisid.ee/wp-content/themes/envision/lib/images/default-placeholder.png">
-                <img class="secondary-img" id="secondary-img-3" src="http://www.indre-reisid.ee/wp-content/themes/envision/lib/images/default-placeholder.png">
+            <div class="col-sm-2" id="product-thumb-container" style="height:500px;">
+                <img class="secondary-img" id="secondary-img-1" src="">
+                <img class="secondary-img" id="secondary-img-2" src="" >
+                <img class="secondary-img" id="secondary-img-3" src="">
+                <img class="secondary-img" id="secondary-img-4" src="">
             </div>
 
 
             <div class="col-sm-5" style="height:500px;">
                 <div id="metrics-section" class="row" style="height:75px;">
                     <div class="row design-row">
-                        <div class="col-sm-4">
+                        <div class="col-sm-3">
                             <div>
-                                <h5 id="price-label">euro</h5>
+                                <h5 id="price-label"></h5>
                                 <h6><small>price</small></h6>
                             </div>
                         </div>
-                        <div class="col-sm-4">
+                        <div class="col-sm-3">
                             <div>
-                                <h5 id="founded-label">X/Y</h5>
+                                <h5 id="founded-label"></h5>
                                 <h6><small>founded</small></h6>
                             </div>
                         </div>
-                        <div class="col-sm-4">
+                        <div class="col-sm-3">
                             <div>
-                                <h5 id="days-to-go-label">days</h5>
-                                <h6><small>to go</small></h6>
+                                <h5 id="days-to-go-label"></h5>
+                                <h6><small>days to go</small></h6>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div>
+                                <h5 id="project-batch-label"></h5>
+                                <h6><small>batch number</small></h6>
                             </div>
                         </div>
                     </div>
@@ -300,28 +290,23 @@
                 <div class="row" style="height:150px;">
                     <div id="size-section" class="col-sm-6">
                         <h5> CHOOSE SIZE </h5>
-                        <div class="dropdown filter-dropdown" id="filter-color">
-                            <button class="btn btn-default dropdown-toggle filter-dropdown-button" type="button" data-toggle="dropdown" id="size-button">XS<span class="glyphicon glyphicon-menu-down pull-right"></span></button>
-                            <ul class="dropdown-menu">
-                                <li><a href="#" id="action-white">XS</a></li>
-                                <li class="divider"></li>
-                                <li><a href="#" id="action-black">S</a></li>
-                                <li class="divider"></li>
-                                <li><a href="#" id="action-yellow">M</a></li>
-                                <li class="divider"></li>
-                                <li><a href="#" id="action-green">L</a></li>
-                                <li class="divider"></li>
-                                <li><a href="#" id="action-blue">XL</a></li>
-                                <li class="divider"></li>
-                                <li><a href="#" id="action-red">XXL</a></li>
-                            </ul>
-                        </div>
+                        <select id="size-select">
+                                <option selected>XS</option>
+                                <option>S</option>
+                                <option>M</option>
+                                <option>L</option>
+                                <option>XL</option>
+                                <option >XXL</option>
+                        </select>
+
                         </br>
                         <a href="#" style="text-decoration: underline; color: #1e1e1e;">Size table</a>
                     </div>
                     <div id="qty-section" class="col-sm-6">
                         <h5> CHOOSE QUANTITY </h5>
-                        <input id="project-qty-field" value="1"/>
+                        <button class="btn-default btn-plus-minus" onclick="removeQty()">-</button>
+                        <input id="project-qty-field" value="1" readonly/>
+                        <button class="btn-default btn-plus-minus" onclick="addQty()">+</button>
                     </div>
                 </div>
 
@@ -334,7 +319,7 @@
                 <div class="tab-content">
                     <div id="designer-info" class="tab-pane fade in active" style="height:150px;">
                         <div class="row">
-                            <div class="col-sm-6"> <img class="img-circle" id="designer-avatar" src="http://www.indre-reisid.ee/wp-content/themes/envision/lib/images/default-placeholder.png" height="92px" width="92px"></div>
+                            <div class="col-sm-6"> <a id="designer-link"><img class="img-circle" id="designer-avatar" src="http://www.indre-reisid.ee/wp-content/themes/envision/lib/images/default-placeholder.png" height="92px" width="92px"></a></div>
                             <div id="designer-info-col-text" class="col-sm-6">
                                 <p id="designer-info-name" style="font-weight: bold;"> Name Surname </p>
                                 <div class="row">
@@ -348,10 +333,10 @@
                                 <p id="designer-info-website"> website </p>
                                 <div class="row">
                                     <div class="col-sm-6">
-                                        <p><a href="#" style="text-decoration: none; font-weight: bold; color: #1e1e1e">See full info</a></p>
+                                        <p><a href="#" id="designer-full-info-link" style="text-decoration: none; font-weight: bold; color: #1e1e1e">See full info</a></p>
                                     </div>
                                     <div class="col-sm-6">
-                                        <p id="designer-info-contact"><a href="#" style="text-decoration: none; font-weight: bold; color: #1e1e1e">Contact</a></p>
+                                        <p id="designer-info-contact"><a href="#" id="designer-contact-link" style="text-decoration: none; font-weight: bold; color: #1e1e1e">Contact</a></p>
                                     </div>
                                 </div>
                             </div>
@@ -364,15 +349,12 @@
                 </div>
 
                 <div id="icons-section" class="row" style="height:75px;">
-                    <div class="col-sm-6"> <button class="btn btn-default" id="wishlist-button"> ADD TO WISHLIST </button></div>
                     <div class="col-sm-6">
-                        <div class="row" style="height: 75px">
-                            <div class="col-sm-3"><img class="social-logo" src="icons/facebook-logo.png"></div>
-                            <div class="col-sm-3"><img class="social-logo" src="icons/twitter-logo.png"></div>
-                            <div class="col-sm-3"><img class="social-logo" src="icons/instagram-logo.png"></div>
-                            <div class="col-sm-3"><img class="social-logo" src="icons/linkedin-logo.png"></div>
-                        </div>
+                        <button type="button" class="btn btn-default" id="cart-button">ADD TO CHART</button>
+                        <button type="button" class="btn btn-default" id="cart-remove-button" style="display: none;">REMOVE FROM CART</button>
                     </div>
+
+                    <div class="col-sm-6"> <button class="btn btn-default" id="wishlist-button"> ADD TO WISHLIST </button></div>
                 </div>
             </div>
         </div>
@@ -386,11 +368,11 @@
             <li><a data-toggle="tab" href="#comments">Comments</a></li>
             <li><a data-toggle="tab" href="#related">Related Products</a></li>
             <span class="pull-right">
-    				<a href="#cart-add-modal" data-toggle="modal">
-                        <button type="button" class="btn btn-default" id="cart-button">ADD TO CHART</button>
-                    </a>
-                <button type="button" class="btn btn-default" id="cart-remove-button" style="display: none;">REMOVE FROM CART</button>
-        		</span>
+                    <img class="social-logo" src="icons/facebook-logo.png">
+                    <img class="social-logo" src="icons/twitter-logo.png">
+                    <img class="social-logo" src="icons/instagram-logo.png">
+                    <img class="social-logo" src="icons/linkedin-logo.png">
+            </span>
         </ul>
 
         <div class="tab-content">

@@ -30,6 +30,14 @@
     color: #f6f6f6;
 }
 
+.btn-default:focus {outline:0;}
+
+.btn-plus-minus {
+    width: 32px;
+    margin: 0 8px;
+
+}
+
 
 /* Filters Bar */
 .filters-tab {
@@ -38,6 +46,16 @@
 .filter-tab-element {display: inline-block; width: 10%; text-align: center;}
 
 
+
+/* Alerts */
+.alert-success {
+    display: none;
+    width: 200px;
+    height: auto;
+    position: absolute;
+    right: 16px;
+    top: 16px;
+}
 
 
 /* Main Navbar*/

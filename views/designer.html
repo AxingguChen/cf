@@ -426,7 +426,7 @@
     }
 
     function updateDesignerInfo(data) {
-        document.getElementById("highlight-img").src = base_url+"avatar/"+data.users_id+".png";
+        document.getElementById("highlight-img").src = base_url+"avatar/"+data.users_id+img_format;
         document.getElementById("designer-name").innerHTML = data.firstname + " " + data.lastname;
         document.getElementById("designer-place").innerHTML = data.city + ", " + data.country;
         var link = "http://" + data.website;
@@ -453,7 +453,7 @@
 
                 document.getElementById("no-related-proj").style.display = "none";
                 for(i=0; i<related_data.length && i<4; i++) {
-                    document.getElementById("related-"+i+"-img").src = base_url+"pic/"+related_data[i].projects_id+"_1.png";
+                    document.getElementById("related-"+i+"-img").src = base_url+"pic/"+related_data[i].projects_id+"_1"+img_format;
                     document.getElementById("related-"+i+"-title").innerHTML = related_data[i].title;
                     document.getElementById("related-"+i).style.display = "inline";
                     document.getElementById("related-"+i).childNodes[1].href = base_url+"views/project.html?"+related_data[i].projects_id;

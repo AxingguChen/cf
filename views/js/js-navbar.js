@@ -95,12 +95,18 @@ $(document).ready(function(){
     });
 
     $("#cart-checkout-btn").click(function(){
-        window.location.href = base_url+"views/checkout.html";
+        if(checkUserLogged()) {window.location.href = base_url+"views/checkout.html";}
+        else {$('#login-modal').modal('show'); $('#cart-modal').modal('hide');}
     });
 
     $("#cart-close-btn").click(function(){
         $('#cart-modal').modal('hide');
     });
+
+    $("#cart-w").click(function(){
+        $('#cart-modal').modal('hide');
+    });
+
 
     // login modal
     $("#login-modal").on('hidden.bs.modal', function () {
@@ -225,7 +231,8 @@ function setupChartBasket() {
 }
 
 function addElementToWishlist(id) {
-    
+    if(checkUserLogged()) {addToWishlist(id);}
+    else {$('#login-modal').modal('show'); $('#cart-modal').modal('hide');}
 }
 
 function nav_signup(){

@@ -6,31 +6,48 @@ var url_project = base_url+"index.php/projects/view_project/"+"3";
 
 var project_id;
 var project_data;
+var qty=1;
+var size;
 
 
 $(document).ready(function(){
 
+    var str = self.location.search;
+    var id = str.replace("?", "");
+    url_project = base_url+"index.php/projects/view_project/"+id;
+
     setupChartBasket();
 
-    $("#add-cart-confirm").click(function(){
-        var n = document.getElementById("cart-modal-pieces-label").value;
+    $("#cart-button").click(function(){
+        var n = $("#project-qty-field").val();
         addElementToChart(project_data, n);
         document.getElementById("cart-button").style.display="none";
         document.getElementById("cart-remove-button").style.display="inline";
-        $(function () {
-            $('#cart-add-modal').modal('toggle');
-        });
+        $("#success-alert").fadeIn(300);
+        window.setTimeout(function () {
+            $("#success-alert").fadeOut(500); }, 3000);
     });
-    $("#add-cart-cancel").click(function(){
-        $(function () {
-            $('#cart-add-modal').modal('toggle');
-        });
-    });
+
     $("#cart-remove-button").click(function(){
         removeElementToChart(project_id);
         document.getElementById("cart-button").style.display="inline";
         document.getElementById("cart-remove-button").style.display="none";
     });
+
+    $(".secondary-img").click(function(){
+        var src = this.src;
+        $("#highlight-img").attr("src",src);
+    }).load(function() {
+        $(this).show();
+    });
+
+    $("#wishlist-button").click(function(){
+        if(checkUserLogged()) {addToWishlist(project_id)}
+        else {$('#login-modal').modal('show');}
+    });
+
+    getProject();
+
 });
 
 function dropdownFilter1() {
@@ -59,7 +76,7 @@ window.onclick = function(event) {
             }
         }
     }
-}
+};
 
 
 
@@ -143,22 +160,28 @@ function updateProjectInfo(data) {
     document.getElementById("project-title").innerHTML = data.title;
     document.getElementById("dir-product-name").innerHTML = data.title;
     document.getElementById("project-designer").innerHTML = "by " + data.firstname + " " + data.lastname;
-    document.getElementById("highlight-img").src = base_url+"pic/"+data.projects_id+"_1"+img_format;
-    document.getElementById("secondary-img-1").src = base_url+"pic/"+data.projects_id+"_2"+img_format;
-    document.getElementById("secondary-img-2").src = base_url+"pic/"+data.projects_id+"_3"+img_format;
-    document.getElementById("secondary-img-3").src = base_url+"pic/"+data.projects_id+"_4"+img_format;
     document.getElementById("price-label").innerHTML = data.price+"€";
-    document.getElementById("founded-label").innerHTML = data.sale_current + " / " + data.sale_minimum;
-    document.getElementById("days-to-go-label").innerHTML = data.round + " days";
+    document.getElementById("founded-label").innerHTML = data.sale_current + "/" + data.sale_minimum;
+    document.getElementById("days-to-go-label").innerHTML = data.round;
+    document.getElementById("project-batch-label").innerHTML = data.batch;
     document.getElementById("product-info").firstElementChild.innerHTML = data.description;
     document.getElementById("designer-avatar").src = base_url+"avatar/"+data.users_id + img_format;
+    document.getElementById("designer-link").href = base_url+"views/designer.html?"+data.users_id;
+    document.getElementById("designer-full-info-link").href = base_url+"views/designer.html?"+data.users_id;
+    document.getElementById("designer-contact-link").href = base_url+"views/designer.html?"+data.users_id;
     document.getElementById("designer-info-name").innerHTML = data.firstname + " " + data.lastname;
     var link = "http://" + data.website;
     document.getElementById("designer-info-website").innerHTML = "<a target='_blank' href="+link+">" +data.website+"</a>";
     document.getElementById("materials-field").innerHTML = data.materials;
     document.getElementById("wash-dry-field").innerHTML = data.wash_dry;
     document.getElementById("other-info-field").innerHTML = data.other;
-
+    document.getElementById("highlight-img").src = base_url+"pic/"+data.projects_id+"_1"+img_format;
+    document.getElementById("secondary-img-1").src = base_url+"pic/"+data.projects_id+"_1"+img_format;
+    document.getElementById("secondary-img-2").src = base_url+"pic/"+data.projects_id+"_2"+img_format;
+    document.getElementById("secondary-img-3").src = base_url+"pic/"+data.projects_id+"_3"+img_format;
+    document.getElementById("secondary-img-4").src = base_url+"pic/"+data.projects_id+"_4"+img_format;
+    
+    
     getRelatedProducts(data);
     getComments(data);
 }
@@ -170,11 +193,17 @@ function updateComments(comments_data) {
     }
 }
 
-var str = self.location.search;
-var id = str.replace("?", "");
-url_project = base_url+"index.php/projects/view_project/"+id;
-
-getProject();
+function addQty() {
+    qty++;
+    $("#project-qty-field").val(qty);
+}
+function removeQty() {
+    if(qty>1) {
+       qty--; 
+    }
+    else {qty=1;}
+    $("#project-qty-field").val(qty);
+}
 
 
 

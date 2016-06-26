@@ -95,9 +95,10 @@
 }
 
 .secondary-img {
-    height: 160px;
+    display: none;
+    height: 120px;
     width: auto;
-    padding: 20px 20px;
+    padding: 10px 10px;
 }
 
 #metrics-section {
@@ -147,9 +148,19 @@
     text-align: left;
 }
 
-#size-button {
+#size-select {
     width: 100px;
+    height: 32px;
     text-align: left;
+    border: solid;
+    border-color: #C3C3C3;
+    border-width: 1px;
+    margin-bottom: 12px;
+
+}
+
+#size-select option {
+    height: 32px;
 }
 
 #designer-info p {
@@ -225,6 +236,7 @@
 
 .social-logo {
     height: 28px;
+    margin: 0 8px;
 }
 
 .tab-content {

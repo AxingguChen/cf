@@ -170,6 +170,11 @@ function updateProjects(arr) {
         d0.childNodes.item(1).childNodes.item(5).childNodes.item(1).childNodes.item(1).childNodes.item(1).innerHTML = arr[i].price+"€";
         // update founded
         d0.childNodes.item(1).childNodes.item(5).childNodes.item(3).childNodes.item(1).childNodes.item(1).innerHTML = arr[i].sale_current+"/"+arr[i].sale_minimum;
+
+        var progress = d0.getElementsByClassName("progress-bar-custom")[0];
+        var progressValue = 100/arr[i].sale_minimum*arr[i].sale_current;
+        progress.setAttribute("style", "width:"+progressValue+"%");
+
         j++;
         if(i==3){j=0;}
     }
