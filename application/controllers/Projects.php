@@ -248,10 +248,31 @@ class Projects extends CI_Controller {
 			imagedestroy ( $dst_image );
 			return false;
 		}
-		
-		
 	}
     //
     
+	public function launch_project(){
+		// get session data
+		$sess_array = array(
+				'users_id' => 1,
+				'firstname' => 'yuxing'
+		
+		);
+		$this->session->set_userdata('logged_in', $sess_array);
+		//TODO
+		if ($this->session->userdata ( 'logged_in' )) {
+			$session_data = $this->session->userdata ( 'logged_in' );
+		
+			//$tmparray = $this->input->post ( NULL, TRUE );
+			$projects_id = $this->projects_model->insert_project ( $session_data ['users_id']);
+			$data ['state'] = true;
+		} else {
+			$data ['state'] = false;
+				
+		}
+		print json_encode($data);
+	}
+	
+	
 }
 ?>

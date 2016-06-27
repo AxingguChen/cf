@@ -434,6 +434,17 @@ class Projects_model extends CI_Model
     	return $query->result();
     }
     
+    public function insert_project($users_id){
+    	$data = array (
+    			'projects_users_id' => $users_id,
+    			'title' => $this->input->post ( 'title' ),
+    			'description' => $this->input->post ( 'description' ),
+    			'projects_project_state_id' => 1
+    	);
+    	$this->db->insert ( $this->TABLENAME, $data );
+    	return $this->db->insert_id();
+    }
+    
 }
 
 ?>
