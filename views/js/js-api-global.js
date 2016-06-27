@@ -14,4 +14,16 @@ function checkUserLogged() {
 }
 
 
+function logoutUser(){
+    sessionStorage.removeItem("cfUserId");
+    sessionStorage.removeItem("cfUserFirstname");
+    sessionStorage.removeItem("cfUserLastname");
+    document.getElementById("login-nav-button").style.display = "inline";
+    document.getElementById("sign-nav-button").style.display = "inline";
+    document.getElementById("logged-nav-button").style.display = "none";
+    isLogged=false;
+    window.location.href = base_url+"views/home.html";
+}
+
+
 function addToWishlist(productId) {}

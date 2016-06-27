@@ -19,6 +19,11 @@ $(document).ready(function () {
     getAddresses(userId);
     getUserPaymentMethods(userId);
     getFeedbacks(userId);
+
+
+    $("#customer-logout-button").click(function () {
+        logoutUser();
+    })
 });
 
 
