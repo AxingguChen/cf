@@ -13,6 +13,10 @@ class Size extends CI_Controller {
         print json_encode($data);
     }
 
+    public function get_size_by_id($size_id){
+    	$data ['rows'] = $this->Size_model->get_by_id($size_id);
+    	print json_encode($data);
+    }
 
 }
 ?>

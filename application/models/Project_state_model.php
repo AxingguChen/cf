@@ -2,13 +2,13 @@
 
 /**
  * User: jackie
- * Date: 26/06/2016
- * Time: 7:12 PM
- * model for users table
+ * Date: 27/06/2016
+ * Time: 9:15 AM
+ * model for project_state table
 
  */
-class Size_model extends CI_Model {
-	private $TABLENAME = 'size';
+class Project_state_model extends CI_Model {
+	private $TABLENAME = 'project_state';
 	function __construct() {
 		parent::__construct ();
 		#$this->load->model ( 'users_model', '', TRUE );
@@ -21,10 +21,11 @@ class Size_model extends CI_Model {
 		return $query->result();
 	}
 	
-	function get_by_id($size_id){
+
+	function get_by_id($project_state_id){
 		$this->db->select('*');
 		$this->db->from( $this->TABLENAME );
-		$this->db->where('size_id',$size_id);
+		$this->db->where('project_state_id',$project_state_id);
 		$query = $this->db->get();
 		return $query->result();
 	}
