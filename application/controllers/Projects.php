@@ -273,6 +273,15 @@ class Projects extends CI_Controller {
 		print json_encode($data);
 	}
 	
+	public function num_projects_finished($user_id){
+		$data ['row'] = $this->projects_model->get_count_projects_finished($user_id);
+		print json_encode($data);
+	}
+	
+	public function num_projects_published($user_id){
+		$data ['row'] = $this->projects_model->get_count_projects_published($user_id);
+		print json_encode($data);
+	}
 	
 }
 ?>

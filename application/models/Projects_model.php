@@ -444,6 +444,24 @@ class Projects_model extends CI_Model
     	$this->db->insert ( $this->TABLENAME, $data );
     	return $this->db->insert_id();
     }
+ 
+    
+    public function get_count_projects_finished($users_id){
+    	$this->db->select('*');
+    	$this->db->from($this->TABLENAME);
+    	$this->db->where('projects_users_id',$users_id);
+    	$this->db->where('projects_project_state_id',3); //succeeded
+    	$query = $this->db->count_all_results();
+    	return $query;
+    }
+    public function get_count_projects_published($users_id){
+    	$this->db->select('*');
+    	$this->db->from($this->TABLENAME);
+    	$this->db->where('projects_users_id',$users_id);
+    	$this->db->where('projects_project_state_id',2); //published
+    	$query = $this->db->count_all_results();
+    	return $query;
+    }
     
 }
 
