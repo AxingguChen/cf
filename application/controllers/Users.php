@@ -199,6 +199,36 @@ class Users extends CI_Controller {
 		//print_r($data);
 	}
 	
+	// access
+	// index.php/users/update_profile
+	function update_address_default($users_id = 1, $address_id = 1) {
+		// get session data
+		$sess_array = array(
+				'users_id' => $users_id,
+				'firstname' => 'yuxing'
+	
+		);
+		$this->session->set_userdata('logged_in', $sess_array);
+		//TODO
+		if ($this->session->userdata ( 'logged_in' )) {
+			$session_data = $this->session->userdata ( 'logged_in' );
+	
+			//$tmparray = $this->input->post ( NULL, TRUE );
+			$this->users_address_model->update_default ($users_id, $address_id);
+	
+			// get user data by id
+			$data ['rows'] = $this->users_address_model->update_default ($users_id, $address_id);
+			if($data ['rows'] == -1)
+				$data ['state'] = false;
+			else
+				$data ['state'] = true;
+		} else {
+			$data ['state'] = false;
+				
+		}
+		print json_encode($data);
+	}
+	
 	public function view_followed_designers($users_id = 0,$offset = 0, $limit = 0){
 		if ($limit <= 0) {
 			$MAX_RECORDS = 8; /* each request return 8 records at most */

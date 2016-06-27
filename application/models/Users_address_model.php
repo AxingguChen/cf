@@ -30,6 +30,33 @@ class Users_address_model extends CI_Model {
 		return $query->result();
 	}
 
+	function update_default($users_id, $address_id) {
+	
+		$this->db->where('users_id', $users_id);
+		$data = array(
+				'default' => 0
+		);
+		$this->db->update($this->TABLENAME , $data);
+	
+		$this->db->where('address_id', $address_id);
+		$this->db->where('users_id', $users_id);
+		$data = array(
+				'default' => 1
+		);
+		$this->db->update($this->TABLENAME , $data);
+		
+		$this->db->trans_complete();
+		if ($this->db->trans_status() === FALSE)
+		{
+			//
+			return -1;
+		}
+		else
+		{
+			return $this->db->affected_rows();
+		}
+	
+	}
 	
 	
 }
