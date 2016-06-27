@@ -19,6 +19,11 @@ $(document).ready(function () {
     getFollowedDesigners(userId);
     setupChartBasket();
 
+
+    $("#customer-logout-button").click(function () {
+        logoutUser();
+    })
+
 });
 
 

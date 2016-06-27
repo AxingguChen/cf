@@ -72,7 +72,6 @@ var urlProjects = base_url+"index.php/projects/view_projects_filter/"+ filter_ty
 
 $(document).ready(function(){
     getProjects();
-    document.getElementById("design-control-left").disabled = true;
     setupChartBasket();
 });
 
@@ -129,6 +128,19 @@ function getProjects(){
 }
 
 
+function getMoreShop() {
+    var xmlhttpDesign = new XMLHttpRequest();
+    xmlhttpDesign.onreadystatechange = function() {
+        if (xmlhttpDesign.readyState == 4 && xmlhttpDesign.status == 200) {
+            var arr = JSON.parse(xmlhttpDesign.responseText);
+            updateMoreshop(arr.rows);
+        }
+    };
+    xmlhttpDesign.open("GET", urlProjects+"/"+projects_offset, true);
+    xmlhttpDesign.send();
+}
+
+
 function updateProjects(arr) {
     var i,j=0;
     hideAll();
@@ -136,8 +148,6 @@ function updateProjects(arr) {
     if(arr.length==0) { showNoResult(true); document.getElementById("design-control-right").disabled = true; return;}
     else {
         showNoResult(false);
-        if (arr.length<8) {document.getElementById("design-control-right").disabled = true;}
-        else {document.getElementById("design-control-right").disabled = false;}
     }
 
     for(i = 0; i < Math.min(arr.length, 8); i++) {
@@ -276,4 +286,29 @@ function setTypeFilter(e) {
     }
     $(e.target).css("border-color","#f1f1f1");
     type_temp = $(e.target).data("value");
+}
+
+
+function updateMoreshop(arr) {
+    for(i = 0; i < arr.length; i++) {
+        if(i==0||i==4||i==8) {$("#projects-container").append('<div class="row text-center">');}
+
+        var progressValue = 100/arr[i].sale_minimum*arr[i].sale_current;
+
+        $("#projects-container").append('<a class="col-sm-3 design-thumbnail-col" href="'+base_url+"views/project.html?"+arr[i].projects_id
+            +'"><div class="thumbnail"><img src="'+base_url+"pic/"+arr[i].projects_id+"_1"+img_format
+            +'" alt="project_img"><h4><strong>'+arr[i].title
+            +'</strong></h4><div class="row design-row"><div class="col-sm-4"><div><h5>euro</h5><h5><small>'+arr[i].price+"€"
+            +'</small></h5></div></div><div class="col-sm-4"><div><h5>'+arr[i].sale_current+"/"+arr[i].sale_minimum+'</h5><h5><small>founded</small></h5></div></div>'
+            +'<div class="col-sm-4"><div><h5>days</h5><h5><small>to go</small></h5></div></div></div><div class="progress design-progress">'
+            +'<div class="progress-bar progress-bar-custom" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:'+progressValue+'%">'
+            +'<span class="sr-only">50% Complete</span></div></div></div></a>');
+
+        if(i==3||i==7||i==9||i==arr.length-1) {$("#projects-container").append('</div>');}
+    }
+}
+
+function shopLoadMore() {
+    projects_offset++;
+    getMoreShop();
 }
