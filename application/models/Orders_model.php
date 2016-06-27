@@ -43,7 +43,47 @@ class Orders_model extends CI_Model {
 		return $query->result();
 	}
 
+	/**
+	 * update the data to orders(table)
+	 *
+	 * @access public
+	 * @return null
+	 */
+	function update_quantity($orders_id,$quantity) {
+		$this->db->where('orders_id', $orders_id);
 	
+		$data = array(
+				//'orders_users_id' =? $users_id
+				'quantity' => $quantity
+		);
+		$this->db->update($this->TABLENAME, $data);
+	
+	
+		$this->db->trans_complete();
+		if ($this->db->trans_status() === FALSE)
+		{
+			//
+			return -1;
+		}
+		else
+		{
+			return $this->db->affected_rows();
+		}
+	}
+	
+	function delete_preorder ($orders_id){
+		$this->db->where('orders_id', $orders_id);
+		$this->db->delete($this->TABLENAME);
+		if ($this->db->trans_status() === FALSE)
+		{
+			//
+			return -1;
+		}
+		else
+		{
+			return $this->db->affected_rows();
+		}
+	}
 	
 }
 
