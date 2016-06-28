@@ -20,12 +20,10 @@ $(document).ready(function(){
 
     $("#cart-button").click(function(){
         var n = $("#project-qty-field").val();
-        addElementToChart(project_data, n);
+        var size = $("#size-select").val();
+        addElementToChart(project_data, n, size);
         document.getElementById("cart-button").style.display="none";
         document.getElementById("cart-remove-button").style.display="inline";
-        $("#success-alert").fadeIn(300);
-        window.setTimeout(function () {
-            $("#success-alert").fadeOut(500); }, 3000);
     });
 
     $("#cart-remove-button").click(function(){

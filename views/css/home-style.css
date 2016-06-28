@@ -35,7 +35,6 @@
 .btn-plus-minus {
     width: 32px;
     margin: 0 8px;
-
 }
 
 
@@ -50,11 +49,12 @@
 /* Alerts */
 .alert-success {
     display: none;
-    width: 200px;
+    width: 100%;
     height: auto;
-    position: absolute;
-    right: 16px;
-    top: 16px;
+    text-align: center;
+    position: fixed;
+    top: 52px;
+    z-index: 100;
 }
 
 
@@ -182,7 +182,7 @@
 
 #cart-modal .divider {margin-top: 10px; margin-bottom: 10px;}
 #cart-modal .modal-dialog {position: fixed; right: 0;
-    top:0; margin-top: 50px; width: 600px;}
+    top:0; margin-top: 50px; width: 700px;}
 #cart-modal .modal-body { padding: 40px 40px;}
 #cart-items-container p{text-align: left;}
 

@@ -153,10 +153,13 @@ function getChart() {
     return cart;
 }
 
-function addElementToChart(data, n) {
+function addElementToChart(data, n, size) {
     var cart = getChart();
-    cart.products.push({"data": data, "n": n});
+    cart.products.push({"data": data, "n": n, "size":size});
     sessionStorage.setItem("cfChartList", JSON.stringify(cart));
+    $("#success-alert").fadeIn(300);
+    window.setTimeout(function () {
+        $("#success-alert").fadeOut(500); }, 3000);
     setupChartBasket();
 }
 
@@ -167,9 +170,29 @@ function removeElementToChart(id) {
     };
     for(var i=0; i<cart.products.length; i++) {
         if(cart.products[i].data.projects_id != id) {
-            new_cart.products.push({"data":cart.products[i].data, "n":cart.products[i].n});}
+            new_cart.products.push({"data":cart.products[i].data, "n":cart.products[i].n, "size":cart.products[i].size});}
     }
     sessionStorage.setItem("cfChartList", JSON.stringify(new_cart));
+    setupChartBasket();
+}
+
+function changeCartProductQty(id, value){
+    var cart = getChart();
+
+    var data;
+    var n;
+    var size;
+
+    for(var i=0; i<cart.products.length; i++) {
+        if(cart.products[i].data.projects_id == id) {
+            data = cart.products[i].data;
+            n = parseInt(cart.products[i].n,10) + value;
+            size = cart.products[i].size;
+            removeElementToChart(id);
+            break;
+        }
+    }
+    addElementToChart(data,n,size);
     setupChartBasket();
 }
 
@@ -191,9 +214,12 @@ function setupChartBasket() {
     var total_price=0;
     var subtotal_price=0;
     var shipping_price=10;
+    var plus = 1;
+    var minus = -1;
 
     for (var i=0; i<cart.products.length; i++) {
         const qty = cart.products[i].n;
+        const size = cart.products[i].size;
         var price = cart.products[i].data.price;
         var left = cart.products[i].data.left;
         var title = cart.products[i].data.title;
@@ -206,9 +232,11 @@ function setupChartBasket() {
         $("#cart-items-container").append('<div class="row" id="cart-item">'+
             '<div class="col-sm-2">'+
             '<img src="'+img_url+'" width="100%"></div>'+
-            '<div class="col-sm-4"><p><small>DESCRIPTION</small></p><p>'+title+'</p></div>'+
-            '<div class="col-sm-2"><p><small>QUANTITY</small></p><p>'+qty+'</p></div>'+
-            '<div class="col-sm-2">'+ '<p><small>AVAILABILITY</small></p><p>left</p></div>'+
+            '<div class="col-sm-3"><p><small>DESCRIPTION</small></p><p>'+title+'</p></div>'+
+            '<div class="col-sm-3"><p><small>QUANTITY</small></p>'+
+            '<button class="btn-plus-minus" onclick="changeCartProductQty('+project_id+','+minus+')">-</button><span id="cart-qty-label">'+qty+'</span>'+
+            '<button class="btn-plus-minus" onclick="changeCartProductQty('+project_id+','+plus+')">+</button></div>'+
+            '<div class="col-sm-2">'+ '<p><small>SIZE</small></p><p>'+size+'</p></div>'+
             '<div class="col-sm-2"><p><small>PRICE</small></p><p>'+price+'€</p></div>'+
             '</div>'+
             '<button class="btn-default cart-item-button" onclick="addElementToWishlist('+project_id+')"> ADD TO WISHLIST </button>'+
@@ -229,9 +257,6 @@ function addElementToWishlist(id) {
     else {$('#login-modal').modal('show'); $('#cart-modal').modal('hide');}
 }
 
-function nav_signup(){
-
-}
     
 function nav_search(){
     
