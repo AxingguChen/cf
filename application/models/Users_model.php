@@ -92,10 +92,10 @@ class Users_model extends CI_Model {
     }
     
 	
-	function signup() {
+	public function signup() {
 		$data = array (
 				'email' => $this->input->post ( 'email' ),
-				'username' => $this->input->post ( 'username' ),
+				//'username' => $this->input->post ( 'username' ),
 				'users_groups_id' => 10, //designer
 				'password' => sha1 ( $this->input->post ( 'password' ) )
 		);

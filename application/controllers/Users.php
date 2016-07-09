@@ -92,7 +92,7 @@ class Users extends CI_Controller {
 			print json_encode($data);
 			#redirect ( 'verification/login', 'refresh' );
 		} else {
-			$this->users_model->register();
+			$this->users_model->signup();
 			// query the database search by email
 			$result = $this->users_model->getByEmail($this->input->post('email'));
 			//session
