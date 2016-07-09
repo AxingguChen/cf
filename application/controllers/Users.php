@@ -88,7 +88,8 @@ class Users extends CI_Controller {
 		$this->form_validation->set_rules ( 'con_password', 'Password Confirmation', 'trim|required|matches[password]' );
 	
 		if ($this->form_validation->run () == FALSE) {
-			return false;
+			$data ['state'] = false;
+			print json_encode($data);
 			#redirect ( 'verification/login', 'refresh' );
 		} else {
 			$this->users_model->register();
@@ -105,7 +106,8 @@ class Users extends CI_Controller {
 			}
 			// Go to private area
 			#redirect ( 'users/user_profile', 'refresh' );
-			return true;
+			$data ['state'] = true;
+			print json_encode($data);
 		}
 	}
 	
