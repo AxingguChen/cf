@@ -83,7 +83,7 @@ class Users extends CI_Controller {
 		$this->load->library ( 'form_validation' );
 		// error message, validation rules
 		$this->form_validation->set_rules ( 'email', 'Your Email', 'trim|required|valid_email' );
-		$this->form_validation->set_rules ( 'username', 'User Name', 'trim|required' );
+		//$this->form_validation->set_rules ( 'username', 'User Name', 'trim|required' );
 		$this->form_validation->set_rules ( 'password', 'Password', 'trim|required|min_length[4]|max_length[32]' );
 		$this->form_validation->set_rules ( 'con_password', 'Password Confirmation', 'trim|required|matches[password]' );
 	
