@@ -42,7 +42,7 @@ class Users extends CI_Controller {
 // 			));
 
 			$session_data = $this->session->userdata ( 'logged_in' );
-			$data ['rows'] = $this->users_model->get_by_id_designer($session_data ['users_id']);
+			$data ['rows'] = $this->users_model->get_by_id($session_data ['users_id']);
 			$data ['state'] = true;
 			print json_encode($data);
 		}
