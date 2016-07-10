@@ -315,8 +315,8 @@ class Projects extends CI_Controller {
 // 		);
 // 		$this->session->set_userdata('logged_in', $sess_array);
 		//TODO
-		if ($this->session->userdata ( 'logged_in' )) {
-			$session_data = $this->session->userdata ( 'logged_in' );
+		if ($users_id>0) {//TODO seesion
+			//$session_data = $this->session->userdata ( 'logged_in' );
 		
 			//$tmparray = $this->input->post ( NULL, TRUE );
 			$order_id = $this->orders_model->insert_preorder($projects_id,$quantity,$size_id,$users_id);
