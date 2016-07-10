@@ -154,6 +154,17 @@ class Projects extends CI_Controller {
     	
     }
     
+    public function view_pending_projects($offset = 0, $limit = 0){
+    	if ($limit <= 0) {
+    		$MAX_RECORDS = 8; /* each request return 8 records at most */
+    	} else {
+    		$MAX_RECORDS = $limit;
+    	}
+    	$data ['rows'] = $this->projects_model->get_pending_projects($offset * $MAX_RECORDS, $MAX_RECORDS );
+    	$data ['offset'] = $offset + 1;
+    	print json_encode($data);
+    }
+    
     public function update_project_pic($project_id,$position){
     	//TODO session
     	
@@ -269,6 +280,17 @@ class Projects extends CI_Controller {
 		} else {
 			$data ['state'] = false;
 				
+		}
+		print json_encode($data);
+	}
+	
+	public function verify_project($project_id){
+		//TODO checker user checking 
+		$data ['row'] =$this->projects_model->verify_project($project_id);
+		if ($data ['row']<0){
+			$data ['state'] = false;
+		}else {
+			$data ['state'] = true;
 		}
 		print json_encode($data);
 	}

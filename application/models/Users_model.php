@@ -104,6 +104,15 @@ class Users_model extends CI_Model {
 		$data = array (
 				'email' => $this->input->post ( 'email' ),
 				//'username' => $this->input->post ( 'username' ),
+				'firstname' => $this->input->post ( 'firstname' ),
+				'lastname' => $this->input->post ( 'lastname' ),
+				'about' => $this->input->post ( 'about' ),
+				'phone' => $this->input->post ( 'phone' ),
+				'website' => $this->input->post ( 'website' ),
+				'company' => $this->input->post ( 'company' ),
+				'country' => $this->input->post ( 'country' ),
+				'city' => $this->input->post ( 'city' ),
+				'zip_code' => $this->input->post ( 'zip_code' ),
 				'users_groups_id' => 10, //designer
 				'password' => sha1 ( $this->input->post ( 'password' ) )
 		);

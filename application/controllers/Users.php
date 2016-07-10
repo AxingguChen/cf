@@ -41,8 +41,8 @@ class Users extends CI_Controller {
 // 					'acl_update_acl' => $this->users_model->can_do_it('acl_update_acl')
 // 			));
 
-			#$_POST["email"]
-			$data ['rows'] = $this->users_model->get_by_id_designer(1);
+			$session_data = $this->session->userdata ( 'logged_in' );
+			$data ['rows'] = $this->users_model->get_by_id_designer($session_data ['users_id']);
 			$data ['state'] = true;
 			print json_encode($data);
 		}

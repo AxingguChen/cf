@@ -129,6 +129,23 @@ class Projects_model extends CI_Model
     	return $query->result();
     }
     
+    public function get_pending_projects($offset = 0, $limit = 0, $order = 'projects.date_create', $direction = 'asc'){
+    	$this->db->select('*');
+    	$this->db->from($this->TABLENAME);
+    	$this->db->join('users', "users.users_id = $this->TABLENAME.projects_users_id");
+    	//$this->db->where('projects_project_state_id',1); //TODO
+    	if (strlen($order) > 0)
+    	{
+    		$this->db->order_by($order, $direction);
+    	}
+    	if ($limit > 0)
+    	{
+    		$this->db->limit($limit, $offset);
+    	}
+    	$query = $this->db->get();
+    	return $query->result();
+    }
+    
     public function get_by_popularity($offset = 0, $limit = 0, $order = 'projects.sale_current', $direction = 'desc')
     {
     	$this->db->select('*');
@@ -443,6 +460,27 @@ class Projects_model extends CI_Model
     	);
     	$this->db->insert ( $this->TABLENAME, $data );
     	return $this->db->insert_id();
+    }
+    
+    public function verify_project($projects_id){
+    	$this->db->where('projects_id', $projects_id);
+		
+		$data = array(
+				'projects_project_state_id' => 2
+		);
+		$this->db->update($this->TABLENAME, $data);
+	
+		
+		$this->db->trans_complete();
+		if ($this->db->trans_status() === FALSE)
+		{
+			//
+			return -1;
+		}
+		else
+		{
+			return $this->db->affected_rows();
+		}
     }
  
     
