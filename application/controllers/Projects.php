@@ -263,10 +263,10 @@ class Projects extends CI_Controller {
 	}
     //
     
-	public function launch_project(){
+	public function launch_project($user_id){
 		// get session data
 		$sess_array = array(
-				'users_id' => 1,
+				'users_id' => $user_id,
 				'firstname' => 'yuxing'
 		
 		);
@@ -285,9 +285,9 @@ class Projects extends CI_Controller {
 		print json_encode($data);
 	}
 	
-	public function verify_project($project_id){
+	public function verify_project($project_id,$flag=0){
 		//TODO checker user checking 
-		$data ['row'] =$this->projects_model->verify_project($project_id);
+		$data ['row'] =$this->projects_model->verify_project($project_id,$flag);
 		if ($data ['row']<0){
 			$data ['state'] = false;
 		}else {

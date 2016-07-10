@@ -462,12 +462,18 @@ class Projects_model extends CI_Model
     	return $this->db->insert_id();
     }
     
-    public function verify_project($projects_id){
+    public function verify_project($projects_id,$flag){
     	$this->db->where('projects_id', $projects_id);
-		
-		$data = array(
-				'projects_project_state_id' => 2
-		);
+		if($flag == 1){
+			$data = array(
+					'projects_project_state_id' => 2
+			);
+		}
+		else{
+			$data = array(
+					'projects_project_state_id' => 6
+			);
+		}
 		$this->db->update($this->TABLENAME, $data);
 	
 		

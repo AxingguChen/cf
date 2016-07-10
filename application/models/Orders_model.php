@@ -91,7 +91,7 @@ class Orders_model extends CI_Model {
 				'quantity' => $quantity,
 				'orders_users_id' => $users_id,
 				'size_id' => $size_id,
-				'orders_order_state_id' => 1
+				'orders_order_state_id' => 4
 		);
 		$this->db->insert ( $this->TABLENAME, $data );
 		return $this->db->insert_id();
