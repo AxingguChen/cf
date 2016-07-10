@@ -9,7 +9,8 @@
 class Projects extends CI_Controller {
     public function __construct() {
         parent::__construct ();
-        $this->load->model ( 'projects_model', '', TRUE );;
+        $this->load->model ( 'projects_model', '', TRUE );
+        $this->load->model ( 'orders_model', '', TRUE );
  //       $this->load->model ( 'users_model', '', TRUE );
  //       $this->load->model ( 'acl_model', '', TRUE );
     }
@@ -275,7 +276,7 @@ class Projects extends CI_Controller {
 			$session_data = $this->session->userdata ( 'logged_in' );
 		
 			//$tmparray = $this->input->post ( NULL, TRUE );
-			$projects_id = $this->projects_model->insert_project ( $session_data ['users_id']);
+			$projects_id = $this->projects_model->insert_project( $session_data ['users_id']);
 			$data ['state'] = true;
 		} else {
 			$data ['state'] = false;
@@ -305,5 +306,27 @@ class Projects extends CI_Controller {
 		print json_encode($data);
 	}
 	
+	public function add_preorder($projects_id,$quantity,$size_id,$users_id){
+		// get session data
+// 		$sess_array = array(
+// 				'users_id' => $users_id,
+// 				//'firstname' => 'yuxing'
+		
+// 		);
+// 		$this->session->set_userdata('logged_in', $sess_array);
+		//TODO
+		if ($this->session->userdata ( 'logged_in' )) {
+			$session_data = $this->session->userdata ( 'logged_in' );
+		
+			//$tmparray = $this->input->post ( NULL, TRUE );
+			$order_id = $this->orders_model->insert_preorder($projects_id,$quantity,$size_id,$users_id);
+			$data ['state'] = true;
+		} else {
+			$data ['state'] = false;
+				
+		}
+		print json_encode($data);
+		
+	}
 }
 ?>

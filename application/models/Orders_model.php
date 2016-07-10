@@ -85,6 +85,18 @@ class Orders_model extends CI_Model {
 		}
 	}
 	
+	public function insert_preorder($projects_id,$quantity,$size_id,$users_id){
+		$data = array (
+				'orders_projects_id' => $projects_id,
+				'quantity' => $quantity,
+				'orders_users_id' => $users_id,
+				'size_id' => $size_id,
+				'orders_order_state_id' => 1
+		);
+		$this->db->insert ( $this->TABLENAME, $data );
+		return $this->db->insert_id();
+	}
+	
 }
 
 ?>
