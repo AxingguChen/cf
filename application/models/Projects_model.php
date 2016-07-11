@@ -456,6 +456,10 @@ class Projects_model extends CI_Model
     			'projects_users_id' => $users_id,
     			'title' => $this->input->post ( 'title' ),
     			'description' => $this->input->post ( 'description' ),
+    			'materials' => $this->input->post ( 'materials' ),
+    			'wash_dry' => $this->input->post ( 'wash_dry' ),
+    			'price' => $this->input->post ( 'price' ),
+    			'sale_minimum' => $this->input->post ( 'sale_minimum' ),
     			'projects_project_state_id' => 1
     	);
     	$this->db->insert ( $this->TABLENAME, $data );
