@@ -101,11 +101,35 @@ $(document).ready(function(){
         $('#cart-modal').modal('hide');
     });
 
+    $("#fav-nav-btn").click(function() {
+        if(checkUserLogged()){window.location.href = base_url+"views/customer-account.html";}
+        else {$('#login-modal').modal('show'); $('#cart-modal').modal('hide'); $('#signup-modal').modal('hide');}
+    });
+
 
     // login modal
     $("#login-modal").on('hidden.bs.modal', function () {
         document.getElementById("login-error-label").style.display = "none";
     });
+
+    $("#nav-lang-submit-button").click(function(){
+        $('#lang-modal').modal('hide');
+        var value = $("#lang-selection").val();
+        $("#nav-lang").html('<span class="glyphicon glyphicon-globe"></span>'+value);
+    });
+
+    $("#nav-currency-submit-button").click(function(){
+        $('#currency-modal').modal('hide');
+        var value = $("#currency-selection").val();
+        var icon;
+        if(value=="USD") {icon='<span class="glyphicon glyphicon-usd"></span>';}
+        else if (value=="GBP") {icon='<span class="glyphicon glyphicon-gbp"></span>';}
+        else if (value=="YEN") {icon='<span class="glyphicon glyphicon-yen"></span>';}
+        else {icon='<span class="glyphicon glyphicon-eur"></span>';}
+        $("#nav-currency").html(icon);
+    });
+
+
 });
 
 

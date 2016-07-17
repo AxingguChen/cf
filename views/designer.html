@@ -14,6 +14,7 @@
     <script src="http://malsup.github.com/jquery.form.js"></script>
     <script src="js/js-api-global.js"></script>
     <script src="js/js-navbar.js"></script>
+    <script src="js/js-designer.js"></script>
 
     <script>
         $(function(){
@@ -45,14 +46,16 @@
             <div class="collapse navbar-collapse" id="myNavbar">
                 <ul class="nav navbar-nav">
                     <li><a href="projects.html">Shop</a></li>
-                    <li><a href="designers.html">Our Designers</a></li>
+                    <li><a href="designers.html">Designers</a></li>
                     <li><a href="how-it-works.html">How it works</a></li>
                     <li><a href="about-us.html">About</a></li>
-                    <li><a href="campaign.html">+ Launch a campaign</a></li>
+                    <li><a href="campaign.html">+ Campaign</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="#search-modal" data-toggle="modal"><span class="glyphicon glyphicon-search"></span></a></li>
-                    <li><a href="#search-modal" data-toggle="modal"><span class="glyphicon glyphicon-heart"></span></a></li>
+                    <li><a id="nav-lang" href="#lang-modal" data-toggle="modal"><span class="glyphicon glyphicon-globe"></span>EN</a></li>
+                    <li><a id="nav-currency" href="#currency-modal" data-toggle="modal"><span class="glyphicon glyphicon-euro"></span></a></li>
+                    <li><a id="fav-nav-btn" data-toggle="modal"><span class="glyphicon glyphicon-heart"></span></a></li>
                     <li><a href="#cart-modal" data-toggle="modal"><span class="glyphicon glyphicon-shopping-cart"></span></a></li>
                     <li id="sign-nav-button"><a href="#signup-modal" data-toggle="modal"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
                     <li id="login-nav-button"><a href="#login-modal" data-toggle="modal"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
@@ -129,7 +132,57 @@
         </div>
     </div>
 
+    <!-- LANGUAGE Modal -->
+    <div id="lang-modal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
 
+            <!-- Modal content-->
+            <div class="modal-content signin-modal">
+                <div class="modal-header">
+                    <h4>LANGUAGE</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="lang-selection">Select language:</label>
+                        <select class="form-control" id="lang-selection">
+                            <option value="EN">English</option>
+                            <option value="CH">Chinese</option>
+                            <option value="OT">other language 1</option>
+                            <option value="OT">other language 2</option>
+                        </select>
+                    </div>
+                    <button id="nav-lang-submit-button" type="submit" class="btn btn-default">Submit</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- CURRENCY Modal -->
+    <div id="currency-modal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content signin-modal">
+                <div class="modal-header">
+                    <h4>CURRENCY</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="currency-selection">Select currency:</label>
+                        <select class="form-control" id="currency-selection">
+                            <option value="EUR">Euro</option>
+                            <option value="USD">USD</option>
+                            <option value="GBP">GBP</option>
+                            <option value="YEN">Yen</option>
+                        </select>
+                    </div>
+                    <button id="nav-currency-submit-button" type="submit" class="btn btn-default">Submit</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
 
     <!-- SEARCH MODAL -->
 
@@ -238,9 +291,9 @@
         <div style="display: inline; width: 100%">
             <div class="dir-tab-element"><a href="home.html">Homepage</a></div>
             <div class="dir-tab-element-fix" style="color: #c3c3c3;"> <span class="glyphicon glyphicon-menu-right"></span>  </div>
-            <div class="dir-tab-element" style="color: #c3c3c3;"> <a href="projects.html">Online Shop</a> </div>
+            <div class="dir-tab-element" style="color: #c3c3c3;"> <a href="projects.html">Designers</a> </div>
             <div class="dir-tab-element-fix" style="color: #c3c3c3;"> <span class="glyphicon glyphicon-menu-right"></span>  </div>
-            <div class="dir-tab-element" id="dir-product-name" style="font-weight: bold;"> Name of the product </div>
+            <div class="dir-tab-element" id="dir-designer-name" style="font-weight: bold;"> Name </div>
         </div>
     </div>
 
@@ -279,7 +332,7 @@
 
     <div class="container-fluid" id="info-section">
             <ul class="nav nav-tabs info-nav-tabs" >
-                <li class="active"><a data-toggle="tab" href="#details">Backed</a></li>
+                <li class="active"><a data-toggle="tab" href="#details">Collection</a></li>
             </ul>
 
             <div class="tab-content">
@@ -402,87 +455,6 @@
 </div>
 
 
-<!-- JS CODE -->
-<script>
-    var base_url = "http://localhost/cf/";
-    var url_designer = base_url+"index.php/users/view_designer/"+"2";
-
-    var designer_id;
-    var designer_data;
-
-    function getDesigner(){
-
-        var xmlhttp = new XMLHttpRequest();
-        xmlhttp.onreadystatechange = function() {
-            if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-                var json_array = JSON.parse(xmlhttp.responseText);
-                designer_data = json_array.rows[0];
-                updateDesignerInfo(designer_data);
-                getRelatedProducts(designer_data);
-            }
-        };
-        xmlhttp.open("GET", url_designer, true);
-        xmlhttp.send();
-    }
-
-    function updateDesignerInfo(data) {
-        document.getElementById("highlight-img").src = base_url+"avatar/"+data.users_id+img_format;
-        document.getElementById("designer-name").innerHTML = data.firstname + " " + data.lastname;
-        document.getElementById("designer-place").innerHTML = data.city + ", " + data.country;
-        var link = "http://" + data.website;
-        document.getElementById("designer-website").innerHTML = "<a target='_blank' href="+link+">" +data.website+"</a>";
-        document.getElementById("designer-description").innerHTML = data.about;
-
-        var name = self.location.search;
-
-    }
-
-    function getRelatedProducts(data) {
-        var url_related = base_url+"index.php/projects/view_projects_by_user/"+data.users_id;
-
-        var xmlhttp = new XMLHttpRequest();
-        xmlhttp.onreadystatechange = function() {
-            if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-                var json_array = JSON.parse(xmlhttp.responseText);
-                var related_data = json_array.rows;
-
-                if(related_data.length==0) {
-                    document.getElementById("no-related-proj").style.display = "inline";
-                    return;
-                }
-
-                document.getElementById("no-related-proj").style.display = "none";
-                for(i=0; i<related_data.length && i<4; i++) {
-                    document.getElementById("related-"+i+"-img").src = base_url+"pic/"+related_data[i].projects_id+"_1"+img_format;
-                    document.getElementById("related-"+i+"-title").innerHTML = related_data[i].title;
-                    document.getElementById("related-"+i).style.display = "inline";
-                    document.getElementById("related-"+i).childNodes[1].href = base_url+"views/project.html?"+related_data[i].projects_id;
-                }
-
-            }
-        };
-        xmlhttp.open("GET", url_related, true);
-        xmlhttp.send();
-    }
-
-    $('.row .btn').on('click', function(e) {
-        e.preventDefault();
-        var $this = $(this);
-        var $collapse = $this.closest('.collapse-group').find('.collapse');
-        $collapse.collapse('toggle');
-    });
-
-    var str = self.location.search;
-    var id = str.replace("?", "");
-    url_designer = base_url+"index.php/users/view_designer/"+id;
-
-    getDesigner();
-
-
-
-
-
-</script>
 
 
 </body>
