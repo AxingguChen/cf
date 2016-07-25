@@ -35,13 +35,13 @@
 	padding:40px 100px;
 	}
 
-.designers-container a:link, a:visited {
+.designers-container a:link, .designers-container a:visited {
 	background-color: transparent;
 	text-decoration: none;
     color: #595959;
 }
 
-.designers-container a:hover, a:active {
+.designers-container a:hover, .designers-container a:active {
     background-color: #f6f6f6;
 }
 	

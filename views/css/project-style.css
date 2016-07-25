@@ -204,7 +204,7 @@
     border-color: #c3c3c3;
 }
 
-.info-nav-tabs a:link, a:visited {
+.info-nav-tabs a:link, .info-nav-tabs a:visited, .tab-content a:link {
     text-decoration: none;
     color: #1e1e1e;
     font-weight: bold;

@@ -4,9 +4,11 @@
 var isLogged = false;
 
 
+// navbar login / logout
+$(document).ready(function(){
+    $("#header").load("templates/header.html");
+    $("#footer").load("templates/footer.html");
 
-// check user logged
-$(document).ready(function () {
     if(checkUserLogged()) {
         isLogged=true;
         var user_id = sessionStorage.cfUserId;
@@ -24,10 +26,8 @@ $(document).ready(function () {
     }
 
     setupChartBasket();
-});
 
-// navbar login / logout
-$(document).ready(function(){
+
     $("#nav-login-submit-button").click(function(){
         var userEmail = document.getElementById('login-email-field').value;
         var userPassw = document.getElementById('login-password-field').value;
