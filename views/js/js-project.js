@@ -40,10 +40,20 @@ $(document).ready(function(){
     });
 
     $("#wishlist-button").click(function(){
-        if(checkUserLogged()) {addToWishlist(project_id)}
+        if(checkUserLogged()) {
+            addElementToWishlist(project_id);
+            $("#wishlist-button").hide();
+            $("#wishlist-remove-button").show();
+        }
         else {$('#login-modal').modal('show');}
     });
 
+    $("#wishlist-remove-button").click(function () {
+        $("#wishlist-remove-button").hide();
+        $("#wishlist-button").show();
+        removeElementFromWishlist(project_id);
+    });
+    
     getProject();
 
 });

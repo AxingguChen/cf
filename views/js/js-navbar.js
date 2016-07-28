@@ -3,131 +3,134 @@
  */
 var isLogged = false;
 
-
 // navbar login / logout
 $(document).ready(function(){
-    $("#header").load("templates/header.html");
-    $("#footer").load("templates/footer.html");
 
-    if(checkUserLogged()) {
-        isLogged=true;
-        var user_id = sessionStorage.cfUserId;
-        updateNavbarUserLogged(sessionStorage.cfUserFirstname,sessionStorage.cfUserLastname, sessionStorage.cfUserGroupsId);
-    }
-    if(localStorage.cfUserEmail !== undefined && localStorage.cfUserPassword !== undefined ) {
-        $('#login-email-field').val(localStorage.cfUserEmail);
-        $('#login-password-field').val(localStorage.cfUserPassword);
-        $('#login-checkbox').attr('checked','checked');
-    }
-    else {
-        $('#login-email-field').val("").attr('placeholder','email');
-        $('#login-password-field').val("");
-    }
+    $("#header").load("templates/header.html", function() {
+        $("#footer").load("templates/footer.html", function () {
 
-    setupChartBasket();
+            if(checkUserLogged()) {
+                isLogged=true;
+                var user_id = sessionStorage.cfUserId;
+                updateNavbarUserLogged(sessionStorage.cfUserFirstname,sessionStorage.cfUserLastname, sessionStorage.cfUserGroupsId);
+            }
+            if(localStorage.cfUserEmail !== undefined && localStorage.cfUserPassword !== undefined ) {
+                $('#login-email-field').val(localStorage.cfUserEmail);
+                $('#login-password-field').val(localStorage.cfUserPassword);
+                $('#login-checkbox').attr('checked','checked');
+            }
+            else {
+                $('#login-email-field').val("").attr('placeholder','email');
+                $('#login-password-field').val("");
+            }
 
-
-    $("#nav-login-submit-button").click(function(){
-        var userEmail = $('#login-email-field').val();
-        var userPassw = $('#login-password-field').val();
-
-        $.post(base_url+"index.php/users/login",
-            {
-                email: userEmail,
-                password: userPassw
-
-            },
-            function(data,status){
-                var json = JSON.parse(data);
-                if(json.state==false) {
-                    $("#login-error-label").show();
-                }
-                else {
-                    var user = json.rows[0];
-                    setUserInfo(user);
-                    sessionStorage.setItem("cfUserId",user.users_id);
-                    sessionStorage.setItem("cfUserGroupsId",user.users_groups_id);
-                    sessionStorage.setItem("cfUserFirstname",user.firstname);
-                    sessionStorage.setItem("cfUserLastname",user.lastname);
-
-                    // if remember me
-                    if($('#login-checkbox').is(':checked')) {
-                        localStorage.setItem("cfUserEmail", userEmail);
-                        localStorage.setItem("cfUserPassword", userPassw);
-                    }
-                    else { localStorage.removeItem("cfUserEmail"); localStorage.removeItem("cfUserPassword");}
-
-                   $("#login-error-label").hide();
-                    $('#login-modal').modal('hide');
-                    $("#login-nav-button").hide();
-                    $("#sign-nav-button").hide();
-                    $("#logged-nav-button").show();
-
-                    if(user.users_groups_id == "10") {
-                        document.getElementById("nav-drop-designer-studio-btn").style.display = "inline-block";
-                    }
-
-                    $("#nav-login-name").html(user.firstname);
-                    $("#nav-drop-login-name").html(user.firstname + " " + user.lastname);
+            setupChartBasket();
 
 
-                }
+            $("#nav-login-submit-button").click(function(){
+                var userEmail = $('#login-email-field').val();
+                var userPassw = $('#login-password-field').val();
+
+                $.post(base_url+"index.php/users/login",
+                    {
+                        email: userEmail,
+                        password: userPassw
+
+                    },
+                    function(data,status){
+                        var json = JSON.parse(data);
+                        if(json.state==false) {
+                            $("#login-error-label").show();
+                        }
+                        else {
+                            var user = json.rows[0];
+                            setUserInfo(user);
+                            sessionStorage.setItem("cfUserId",user.users_id);
+                            sessionStorage.setItem("cfUserGroupsId",user.users_groups_id);
+                            sessionStorage.setItem("cfUserFirstname",user.firstname);
+                            sessionStorage.setItem("cfUserLastname",user.lastname);
+
+                            // if remember me
+                            if($('#login-checkbox').is(':checked')) {
+                                localStorage.setItem("cfUserEmail", userEmail);
+                                localStorage.setItem("cfUserPassword", userPassw);
+                            }
+                            else { localStorage.removeItem("cfUserEmail"); localStorage.removeItem("cfUserPassword");}
+
+                            $("#login-error-label").hide();
+                            $('#login-modal').modal('hide');
+                            $("#login-nav-button").hide();
+                            $("#sign-nav-button").hide();
+                            $("#logged-nav-button").show();
+
+                            if(user.users_groups_id == "10") {
+                                document.getElementById("nav-drop-designer-studio-btn").style.display = "inline-block";
+                            }
+
+                            $("#nav-login-name").html(user.firstname);
+                            $("#nav-drop-login-name").html(user.firstname + " " + user.lastname);
+
+
+                        }
+                    });
             });
+
+            $("#nav-drop-logout-btn").click(function(){
+                logoutUser();
+            });
+
+            $("#nav-drop-edit-profile-btn").click(function(){
+                window.location.href = base_url+"views/customer-account.html";
+            });
+
+            $("#nav-drop-designer-studio-btn").click(function(){
+                window.location.href = base_url+"views/designer-studio.html";
+            });
+
+            $("#cart-checkout-btn").click(function(){
+                if(checkUserLogged()) {window.location.href = base_url+"views/checkout.html";}
+                else {$('#login-modal').modal('show'); $('#cart-modal').modal('hide');}
+            });
+
+            $("#cart-close-btn").click(function(){
+                $('#cart-modal').modal('hide');
+            });
+
+            $("#cart-w").click(function(){
+                $('#cart-modal').modal('hide');
+            });
+
+            $("#fav-nav-btn").click(function() {
+                if(checkUserLogged()){window.location.href = base_url+"views/customer-account.html";}
+                else {$('#login-modal').modal('show'); $('#cart-modal').modal('hide'); $('#signup-modal').modal('hide');}
+            });
+
+
+            // login modal
+            $("#login-modal").on('hidden.bs.modal', function () {
+                $("#login-error-label").hide();
+            });
+
+            $("#nav-lang-submit-button").click(function(){
+                $('#lang-modal').modal('hide');
+                var value = $("#lang-selection").val();
+                $("#nav-lang").html('<span class="glyphicon glyphicon-globe"></span>'+value);
+            });
+
+            $("#nav-currency-submit-button").click(function(){
+                $('#currency-modal').modal('hide');
+                var value = $("#currency-selection").val();
+                var icon;
+                if(value=="USD") {icon='<span class="glyphicon glyphicon-usd"></span>';}
+                else if (value=="GBP") {icon='<span class="glyphicon glyphicon-gbp"></span>';}
+                else if (value=="YEN") {icon='<span class="glyphicon glyphicon-yen"></span>';}
+                else {icon='<span class="glyphicon glyphicon-eur"></span>';}
+                $("#nav-currency").html(icon);
+            });
+
+        });
+
     });
-
-    $("#nav-drop-logout-btn").click(function(){
-        logoutUser();
-    });
-
-    $("#nav-drop-edit-profile-btn").click(function(){
-        window.location.href = base_url+"views/customer-account.html";
-    });
-
-    $("#nav-drop-designer-studio-btn").click(function(){
-        window.location.href = base_url+"views/designer-studio.html";
-    });
-
-    $("#cart-checkout-btn").click(function(){
-        if(checkUserLogged()) {window.location.href = base_url+"views/checkout.html";}
-        else {$('#login-modal').modal('show'); $('#cart-modal').modal('hide');}
-    });
-
-    $("#cart-close-btn").click(function(){
-        $('#cart-modal').modal('hide');
-    });
-
-    $("#cart-w").click(function(){
-        $('#cart-modal').modal('hide');
-    });
-
-    $("#fav-nav-btn").click(function() {
-        if(checkUserLogged()){window.location.href = base_url+"views/customer-account.html";}
-        else {$('#login-modal').modal('show'); $('#cart-modal').modal('hide'); $('#signup-modal').modal('hide');}
-    });
-
-
-    // login modal
-    $("#login-modal").on('hidden.bs.modal', function () {
-       $("#login-error-label").hide();
-    });
-
-    $("#nav-lang-submit-button").click(function(){
-        $('#lang-modal').modal('hide');
-        var value = $("#lang-selection").val();
-        $("#nav-lang").html('<span class="glyphicon glyphicon-globe"></span>'+value);
-    });
-
-    $("#nav-currency-submit-button").click(function(){
-        $('#currency-modal').modal('hide');
-        var value = $("#currency-selection").val();
-        var icon;
-        if(value=="USD") {icon='<span class="glyphicon glyphicon-usd"></span>';}
-        else if (value=="GBP") {icon='<span class="glyphicon glyphicon-gbp"></span>';}
-        else if (value=="YEN") {icon='<span class="glyphicon glyphicon-yen"></span>';}
-        else {icon='<span class="glyphicon glyphicon-eur"></span>';}
-        $("#nav-currency").html(icon);
-    });
-
 
 });
 
@@ -180,7 +183,7 @@ function addElementToChart(data, n, size) {
     var cart = getChart();
     cart.products.push({"data": data, "n": n, "size":size});
     sessionStorage.setItem("cfChartList", JSON.stringify(cart));
-    $("#success-alert").fadeIn(300);
+    $("#success-alert").html("<strong>Success!</strong></br>Product have added to your cart.").fadeIn(300);
     window.setTimeout(function () {
         $("#success-alert").fadeOut(500); }, 3000);
     setupChartBasket();
@@ -211,12 +214,14 @@ function changeCartProductQty(id, value){
             data = cart.products[i].data;
             n = parseInt(cart.products[i].n,10) + value;
             size = cart.products[i].size;
-            removeElementToChart(id);
-            break;
+            if(n>0) {
+                removeElementToChart(id);
+                addElementToChart(data, n, size);
+                setupChartBasket();
+            }
+            return;
         }
     }
-    addElementToChart(data,n,size);
-    setupChartBasket();
 }
 
 
@@ -233,7 +238,7 @@ function setupChartBasket() {
     $("#nav-empty-cart-label").hide();
     $("#cart-checkout-btn").show();
     $("#cart-modal-info").show();
-    
+
     var total_price=0;
     var subtotal_price=0;
     var shipping_price=10;
@@ -248,7 +253,7 @@ function setupChartBasket() {
         var title = cart.products[i].data.title;
         var project_id = cart.products[i].data.projects_id;
         var img_url = base_url+"pic/"+project_id+"_1"+img_format;
-        
+
         subtotal_price = subtotal_price + parseInt(price)*qty;
 
 
@@ -266,26 +271,41 @@ function setupChartBasket() {
             '<button class="btn-default cart-item-button" onclick="removeElementToChart('+project_id+')"> REMOVE </button>');
 
     }
-    
+
     total_price = subtotal_price + shipping_price;
     $("#cart-subtotal-price").html('<small>ITEM TOTAL: </small>'+subtotal_price+'€');
     $("#cart-shipping-price").html('<small>SHIPPING: </small>'+shipping_price+'€');
     $("#cart-total-price").html('TOTAL PRICE: '+total_price+'€');
 
-    
+
 }
 
 function addElementToWishlist(id) {
-    if(checkUserLogged()) {addToWishlist(id);}
+    if(checkUserLogged()) {
+        addToWishlist(id);
+        $("#success-alert").html("<strong>Success!</strong></br>Product have been added to your favourites.").fadeIn(300);
+        window.setTimeout(function () {
+            $("#success-alert").fadeOut(500); }, 3000);
+        
+    }
     else {$('#login-modal').modal('show'); $('#cart-modal').modal('hide');}
 }
 
-    
+function removeElementFromWishlist(id) {
+    if(checkUserLogged()) {
+        removeFromWishlist(id);
+        $("#success-alert").html("<strong>Success!</strong></br>Product have been removed from your favourites.").fadeIn(300);
+        window.setTimeout(function () {
+            $("#success-alert").fadeOut(500); }, 3000);
+
+    }
+    else {$('#login-modal').modal('show'); $('#cart-modal').modal('hide');}
+}
+
 function nav_search(){
-    
+
 }
-    
+
 function nav_favourite(){
-    
+
 }
-    

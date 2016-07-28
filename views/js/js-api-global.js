@@ -27,3 +27,4 @@ function logoutUser(){
 
 
 function addToWishlist(productId) {}
+function removeFromWishlist(productId) {}
