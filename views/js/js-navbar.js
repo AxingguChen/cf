@@ -15,22 +15,21 @@ $(document).ready(function(){
         updateNavbarUserLogged(sessionStorage.cfUserFirstname,sessionStorage.cfUserLastname, sessionStorage.cfUserGroupsId);
     }
     if(localStorage.cfUserEmail !== undefined && localStorage.cfUserPassword !== undefined ) {
-        document.getElementById('login-email-field').value = localStorage.cfUserEmail;
-        document.getElementById('login-password-field').value = localStorage.cfUserPassword;
-        document.getElementById('login-checkbox').checked = "checked";
+        $('#login-email-field').val(localStorage.cfUserEmail);
+        $('#login-password-field').val(localStorage.cfUserPassword);
+        $('#login-checkbox').attr('checked','checked');
     }
     else {
-        document.getElementById('login-email-field').value = "";
-        document.getElementById('login-email-field').placeholder = "email";
-        document.getElementById('login-password-field').value = " ";
+        $('#login-email-field').val("").attr('placeholder','email');
+        $('#login-password-field').val("");
     }
 
     setupChartBasket();
 
 
     $("#nav-login-submit-button").click(function(){
-        var userEmail = document.getElementById('login-email-field').value;
-        var userPassw = document.getElementById('login-password-field').value;
+        var userEmail = $('#login-email-field').val();
+        var userPassw = $('#login-password-field').val();
 
         $.post(base_url+"index.php/users/login",
             {
@@ -41,7 +40,7 @@ $(document).ready(function(){
             function(data,status){
                 var json = JSON.parse(data);
                 if(json.state==false) {
-                    document.getElementById("login-error-label").style.display = "block";
+                    $("#login-error-label").show();
                 }
                 else {
                     var user = json.rows[0];
@@ -52,24 +51,24 @@ $(document).ready(function(){
                     sessionStorage.setItem("cfUserLastname",user.lastname);
 
                     // if remember me
-                    if(document.getElementById('login-checkbox').checked) {
+                    if($('#login-checkbox').is(':checked')) {
                         localStorage.setItem("cfUserEmail", userEmail);
                         localStorage.setItem("cfUserPassword", userPassw);
                     }
                     else { localStorage.removeItem("cfUserEmail"); localStorage.removeItem("cfUserPassword");}
 
-                    document.getElementById("login-error-label").style.display = "none";
+                   $("#login-error-label").hide();
                     $('#login-modal').modal('hide');
-                    document.getElementById("login-nav-button").style.display = "none";
-                    document.getElementById("sign-nav-button").style.display = "none";
-                    document.getElementById("logged-nav-button").style.display = "inline";
+                    $("#login-nav-button").hide();
+                    $("#sign-nav-button").hide();
+                    $("#logged-nav-button").show();
 
                     if(user.users_groups_id == "10") {
                         document.getElementById("nav-drop-designer-studio-btn").style.display = "inline-block";
                     }
 
-                    document.getElementById("nav-login-name").innerHTML = user.firstname;
-                    document.getElementById("nav-drop-login-name").innerHTML = user.firstname + " " + user.lastname;
+                    $("#nav-login-name").html(user.firstname);
+                    $("#nav-drop-login-name").html(user.firstname + " " + user.lastname);
 
 
                 }
@@ -109,7 +108,7 @@ $(document).ready(function(){
 
     // login modal
     $("#login-modal").on('hidden.bs.modal', function () {
-        document.getElementById("login-error-label").style.display = "none";
+       $("#login-error-label").hide();
     });
 
     $("#nav-lang-submit-button").click(function(){
@@ -134,20 +133,20 @@ $(document).ready(function(){
 
 
 function updateNavbarUserLogged(firstname, lastname, groups_id) {
-    document.getElementById("login-error-label").style.display = "none";
+    $("#login-error-label").hide();
     $('#login-modal').modal('hide');
-    document.getElementById("login-nav-button").style.display = "none";
-    document.getElementById("sign-nav-button").style.display = "none";
-    document.getElementById("logged-nav-button").style.display = "inline";
+    $("#login-nav-button").hide();
+    $("#sign-nav-button").hide();
+    $("#logged-nav-button").show();
 
     if(groups_id == "10") {
-        document.getElementById("nav-drop-designer-studio-btn").style.display = "inline-block";
+       $("#nav-drop-designer-studio-btn").show();
         //document.getElementById("nav-login-icon").href = "";
 
     }
 
-    document.getElementById("nav-login-name").innerHTML = firstname;
-    document.getElementById("nav-drop-login-name").innerHTML = firstname + " " + lastname;
+    $("#nav-login-name").html(firstname);
+    $("#nav-drop-login-name").html(firstname + " " + lastname);
 }
 
 
@@ -226,14 +225,14 @@ function setupChartBasket() {
     $("#cart-items-container").empty();
     var cart = getChart();
     if(cart.products.length==0) {
-        document.getElementById("nav-empty-cart-label").style.display ="inline";
-        document.getElementById("cart-modal-info").style.display ="none";
-        document.getElementById("cart-checkout-btn").style.display ="none";
+        $("#nav-empty-cart-label").show();
+        $("#cart-modal-info").hide();
+        $("#cart-checkout-btn").hide();
         return;
     }
-    document.getElementById("nav-empty-cart-label").style.display ="none";
-    document.getElementById("cart-checkout-btn").style.display ="inline";
-    document.getElementById("cart-modal-info").style.display ="inline";
+    $("#nav-empty-cart-label").hide();
+    $("#cart-checkout-btn").show();
+    $("#cart-modal-info").show();
     
     var total_price=0;
     var subtotal_price=0;
@@ -269,9 +268,9 @@ function setupChartBasket() {
     }
     
     total_price = subtotal_price + shipping_price;
-    document.getElementById("cart-subtotal-price").innerHTML = '<small>ITEM TOTAL: </small>'+subtotal_price+'€';
-    document.getElementById("cart-shipping-price").innerHTML = '<small>SHIPPING: </small>'+shipping_price+'€';
-    document.getElementById("cart-total-price").innerHTML = 'TOTAL PRICE: '+total_price+'€';
+    $("#cart-subtotal-price").html('<small>ITEM TOTAL: </small>'+subtotal_price+'€');
+    $("#cart-shipping-price").html('<small>SHIPPING: </small>'+shipping_price+'€');
+    $("#cart-total-price").html('TOTAL PRICE: '+total_price+'€');
 
     
 }

@@ -127,8 +127,9 @@ function homeLoadMore() {
 }
 
 
+$(document).ready(function(){
+    getLastChance();
+    getHomeDesigns();
+});
 
-getLastChance();
-getHomeDesigns();
 
-document.getElementById("design-control-left").disabled = true; 
